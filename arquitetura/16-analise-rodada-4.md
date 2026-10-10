@@ -145,3 +145,31 @@ para quem **paga**, e o ROAS da plataforma está inflado. Antes de qualquer conv
 "40 mil a mais"), isto precisa ser corrigido. Caminhos técnicos, para o Esdras e o agente de tráfego:
 disparar `purchase` só na aprovação (servidor, via webhook da JET) · ou ajustes de conversão no
 Google Ads retraindo os não pagos · ou importar a compra paga da JET como conversão offline.
+
+### 8.1 ✅ Confirmado em 10/10 com o export de todos os status (01/08–09/10, sem marketplace)
+
+Export da JET gerado pelo Gabriel até 09/10, sem filtro de status (só sem marketplace): 1.030 pedidos,
+180 não aprovados. Cruzado com 919 compras do GA4 (R$ 249.979):
+
+| O que era a "compra" que o Google recebeu | Compras | % | Receita no GA4 |
+|---|---|---|---|
+| pedido **pago e válido** na JET | 709 | 77% | R$ 164.569 |
+| pedido **cancelado sem pagamento** (82 PIX, 16 boleto, 12 cartão) | **110** | **12%** | R$ 23.098 |
+| pedido pago e **depois cancelado** | 22 | 2% | R$ 3.111 |
+| **sem par na JET** (ticket alto, médio ~R$ 760; não é pré-pedido) | 78 | 8% | R$ 59.201 |
+| eventos duplicados (mesmo ID 2×) | +42 eventos | — | — |
+
+E na direção oposta: **119 pedidos pagos na JET (R$ 45.905) não chegaram ao GA4** (108 B2C).
+
+**Conclusão:** ✅ **provado** que o Google dá lance aprendendo com pedido não pago: ~1 em cada 7
+"compras" é PIX/boleto/cartão que nunca foi pago, e ~1 em cada 4 não é venda válida. Da receita que o
+Google enxerga, só ~66% é venda válida, e ele ainda deixa de ver ~R$ 46 mil de venda real.
+Por mês, os não pagos foram 13% (ago), 15% (set) e 5% (out até 09/10). ⚠️ Outubro ainda pode
+subir ou ter melhorado de fato; não verificado.
+
+⚠️ **Em aberto: os 78 sem par (R$ 59 mil).** Não estão no export, não são número de pré-pedido e têm
+ticket alto. Hipóteses a checar: pedido apagado, pedido de outro canal fora do export, ou disparo
+indevido do `purchase`. Perguntar ao Esdras e à JET.
+
+**O que muda:** é a primeira tarefa técnica do plano, antes de qualquer escala — o `purchase` só deve
+chegar ao Google quando o pagamento for aprovado (dono: Esdras; o agente de tráfego valida o efeito).
