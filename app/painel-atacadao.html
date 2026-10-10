@@ -1,0 +1,858 @@
+<title>Plano Vivo Atacadão</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#F4F6F8; --surface:#FFFFFF; --surface-2:#EDF0F4; --line:#D8DEE6;
+  --ink:#141A21; --ink-2:#4A5763; --ink-3:#7A8794;
+  --accent:#1F5A7A; --accent-soft:#E3EDF3;
+  --crit:#B3271E; --crit-bg:#FBE9E7; --warn:#9A6100; --warn-bg:#FDF0D9;
+  --ok:#1F6B47; --ok-bg:#E2F0E9;
+  --shadow:0 1px 2px rgba(20,26,33,.06),0 4px 12px rgba(20,26,33,.05);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0E1318; --surface:#161D25; --surface-2:#1E2731; --line:#2C3742;
+  --ink:#E7ECF1; --ink-2:#A7B3BF; --ink-3:#76838F;
+  --accent:#6FB2D6; --accent-soft:#17303F;
+  --crit:#F08479; --crit-bg:#361714; --warn:#E0A63C; --warn-bg:#33260D;
+  --ok:#5FC195; --ok-bg:#12291F;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.3);
+}}
+:root[data-theme="dark"]{
+  --ground:#0E1318; --surface:#161D25; --surface-2:#1E2731; --line:#2C3742;
+  --ink:#E7ECF1; --ink-2:#A7B3BF; --ink-3:#76838F;
+  --accent:#6FB2D6; --accent-soft:#17303F;
+  --crit:#F08479; --crit-bg:#361714; --warn:#E0A63C; --warn-bg:#33260D;
+  --ok:#5FC195; --ok-bg:#12291F;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);
+  font:400 15px/1.55 "IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:0 64px}
+h1,h2,h3{font-family:Archivo,"IBM Plex Sans",sans-serif;font-weight:700;
+  text-wrap:balance;margin:0;letter-spacing:-.015em}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+
+/* ---------- topo ---------- */
+header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.hd{max-width:1080px;margin:0 auto;padding:16px 20px;display:flex;flex-wrap:wrap;
+  gap:12px 28px;align-items:baseline}
+.hd h1{font-size:20px}
+.hd .sub{color:var(--ink-3);font-size:13px}
+.hd .spacer{flex:1 1 auto;min-width:0}
+.kpi{display:flex;flex-direction:column;gap:1px}
+.kpi b{font-family:"IBM Plex Mono",monospace;font-size:17px;font-weight:600;font-variant-numeric:tabular-nums}
+.kpi.crit b{color:var(--crit)}
+
+/* ---------- abas ---------- */
+nav{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:19}
+.tabs{max-width:1080px;margin:0 auto;padding-inline:20px;display:flex;gap:2px;overflow-x:auto}
+.tabs button{appearance:none;background:none;border:0;border-bottom:2px solid transparent;
+  color:var(--ink-2);font:600 14px/1 "IBM Plex Sans",sans-serif;padding:13px 14px;
+  cursor:pointer;white-space:nowrap}
+.tabs button:hover{color:var(--ink)}
+.tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:3px}
+
+/* ---------- blocos ---------- */
+section{margin-top:32px}
+section>h2{font-size:16px;margin-bottom:4px}
+section>.note{color:var(--ink-2);font-size:13.5px;margin:0 0 14px;max-width:70ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px}
+.grid{display:grid;gap:14px}
+@media(min-width:720px){.g2{grid-template-columns:1fr 1fr}}
+
+/* ---------- gargalos ---------- */
+.garg{display:flex;flex-direction:column;gap:0;background:var(--surface);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
+.garg .row{display:flex;gap:12px;align-items:flex-start;padding:11px 14px 11px 0;
+  border-left:4px solid var(--line);border-top:1px solid var(--line)}
+.garg .row:first-child{border-top:0}
+.garg .row.sev0{border-left-color:var(--crit);background:var(--crit-bg)}
+.garg .row.sev1{border-left-color:var(--warn)}
+.garg .row .tag{flex:0 0 auto;margin-left:14px;font-size:10.5px;font-weight:600;
+  letter-spacing:.07em;text-transform:uppercase;padding:3px 7px;border-radius:3px;
+  background:var(--surface-2);color:var(--ink-2)}
+.garg .row.sev0 .tag{background:var(--crit);color:#fff}
+.garg .row.sev1 .tag{background:var(--warn);color:#fff}
+.garg .row p{margin:0;font-size:14px}
+.garg .row .why{display:block;color:var(--ink-2);font-size:12.5px;margin-top:2px}
+
+/* ---------- espinha do ciclo de receita ---------- */
+.espinha{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin:6px 0 10px}
+@media(max-width:640px){.espinha{grid-template-columns:repeat(2,1fr)}}
+.et{background:var(--surface);border:1px solid var(--line);border-radius:5px;
+  padding:10px 9px;display:flex;flex-direction:column;gap:5px;min-height:88px;position:relative}
+.et .n{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-3)}
+.et .nm{font-size:12.5px;font-weight:600;line-height:1.25}
+.et .dot{width:9px;height:9px;border-radius:50%;background:var(--ok)}
+.et.warning .dot{background:var(--warn)} .et.critical .dot{background:var(--crit)}
+.et.warning{background:var(--warn-bg)} .et.healthy{background:var(--ok-bg)}
+.et.critical{background:var(--crit-bg);border-color:var(--crit);border-width:2px}
+.et .trava{font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--crit);margin-top:auto}
+.et .src{font-size:10.5px;color:var(--ink-3);margin-top:auto;line-height:1.3}
+
+/* ---------- timeline de eventos ---------- */
+.tl{position:relative;padding:26px 0 8px;overflow-x:auto}
+.tl-inner{min-width:640px;position:relative}
+.tl-ax{position:relative;height:20px;border-bottom:1px solid var(--line);margin-bottom:10px}
+.tl-ax span{position:absolute;top:0;transform:translateX(-50%);font-size:10.5px;
+  color:var(--ink-3);font-family:"IBM Plex Mono",monospace;white-space:nowrap}
+.tl-ax span::after{content:"";position:absolute;left:50%;top:15px;width:1px;height:5px;background:var(--line)}
+.tl-row{position:relative;height:34px;margin-bottom:5px}
+.tl-bar{position:absolute;height:20px;top:0;border-radius:3px;background:var(--accent-soft);
+  border:1px solid var(--accent);display:flex;align-items:center;padding:0 7px;gap:6px}
+.tl-bar.agrava{background:var(--crit-bg);border-color:var(--crit)}
+.tl-bar b{font-size:11.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-mk{position:absolute;top:-3px;width:2px;height:26px;background:var(--ink)}
+.tl-mk::after{content:attr(data-d);position:absolute;top:26px;left:-2px;font-size:10px;
+  font-family:"IBM Plex Mono",monospace;color:var(--ink-2);white-space:nowrap}
+.tl-hoje{position:absolute;top:-24px;bottom:0;width:2px;background:var(--accent);z-index:2}
+.tl-hoje::after{content:"hoje";position:absolute;top:-14px;left:-11px;font-size:10px;
+  font-weight:600;color:var(--accent);font-family:"IBM Plex Mono",monospace}
+
+/* ---------- ciclos ---------- */
+.ciclo{background:var(--surface);border:1px solid var(--line);border-radius:8px;
+  padding:16px 18px;display:flex;flex-direction:column;gap:11px}
+.ciclo.p1{border-left:4px solid var(--crit)}
+.ciclo header{background:none;border:0;position:static;display:flex;flex-wrap:wrap;
+  gap:8px 12px;align-items:baseline}
+.ciclo h3{font-size:15px;flex:1 1 220px}
+.pill{font-size:11px;font-weight:600;padding:3px 8px;border-radius:20px;
+  background:var(--surface-2);color:var(--ink-2);white-space:nowrap}
+.pill.crit{background:var(--crit);color:#fff}
+.pill.warn{background:var(--warn-bg);color:var(--warn)}
+.pill.ok{background:var(--ok-bg);color:var(--ok)}
+.meta-line{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--ink-2)}
+.meta-line b{color:var(--ink);font-weight:600}
+.check{display:flex;flex-direction:column;gap:2px;margin:0;padding:0;list-style:none}
+.check li{display:flex;gap:9px;align-items:flex-start;padding:5px 6px;border-radius:4px;font-size:13.5px}
+.check li:hover{background:var(--surface-2)}
+.check input{margin:3px 0 0;width:15px;height:15px;accent-color:var(--accent);flex:0 0 auto;cursor:pointer}
+.check label{cursor:pointer;line-height:1.45}
+.check li.done label{color:var(--ink-3);text-decoration:line-through}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-top:2px}
+select,input[type=text],textarea{font:400 13.5px/1.5 "IBM Plex Sans",sans-serif;color:var(--ink);
+  background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:6px 9px}
+select:focus-visible,input:focus-visible,textarea:focus-visible,button:focus-visible{
+  outline:2px solid var(--accent);outline-offset:1px}
+textarea{width:100%;resize:vertical;min-height:76px;font-family:"IBM Plex Sans",sans-serif}
+.btn{appearance:none;font:600 13px/1 "IBM Plex Sans",sans-serif;padding:8px 13px;border-radius:5px;
+  border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+:root[data-theme="dark"] .btn,:root:not([data-theme="light"]) .btn{color:#0E1318}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .btn{color:#fff}}
+.btn.ghost{background:none;color:var(--accent)}
+.btn:hover{filter:brightness(1.08)}
+
+/* ---------- tabelas ---------- */
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{text-align:left;padding:8px 12px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}
+td.num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+.vazio{color:var(--crit);font-weight:600}
+
+/* ---------- pauta ---------- */
+.sec{border-left:2px solid var(--line);padding-left:16px;margin-bottom:24px}
+.sec .lbl{margin-bottom:3px}
+.sec h3{font-size:14.5px;margin-bottom:7px}
+.src-q{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);
+  background:var(--surface-2);padding:5px 8px;border-radius:4px;margin-bottom:10px;
+  display:block;overflow-wrap:anywhere}
+.callout{background:var(--crit-bg);border-left:3px solid var(--crit);padding:11px 14px;
+  border-radius:0 5px 5px 0;font-size:13.5px;margin:10px 0}
+.callout b{color:var(--crit)}
+.saved{font-size:11.5px;color:var(--ok);opacity:0;transition:opacity .2s}
+.saved.on{opacity:1}
+.offline{background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn);
+  padding:9px 13px;border-radius:6px;font-size:13px;margin-top:14px}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
+  color:var(--ink-3);font-size:12.5px}
+</style>
+
+<header>
+  <div class="hd">
+    <div>
+      <h1>Atacadão Posto 13</h1>
+      <div class="sub mono">Plano vigente 2026-Q4 · squad Fúria da Noite</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="kpi crit"><span class="lbl">Trava</span><b>Decisão</b></div>
+    <div class="kpi"><span class="lbl">Meta e-commerce</span><b>R$ 150 mil/mês</b></div>
+    <div class="kpi" id="kpiDias"><span class="lbl">Q4 começa em</span><b>—</b></div>
+  </div>
+</header>
+
+<nav>
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-t="plano">Plano</button>
+    <button role="tab" aria-selected="false" data-t="ciclos">Ciclos PDCA</button>
+    <button role="tab" aria-selected="false" data-t="eventos">Eventos do Q4</button>
+    <button role="tab" aria-selected="false" data-t="pauta">Pauta do check-in</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ============ PLANO ============ -->
+<div data-p="plano">
+  <section>
+    <h2>Gargalos</h2>
+    <p class="note">Derivados do plano e dos ciclos, ordenados por severidade. Um gargalo some
+      daqui quando o arquivo que o origina muda — não quando alguém o ignora.</p>
+    <div class="garg" id="gargalos"></div>
+  </section>
+
+  <section>
+    <h2>Ciclo de Receita</h2>
+    <p class="note">A espinha do plano. Regra da trava: severidade primeiro, ordem do ciclo como
+      desempate. Há um <b>critical</b>, então a trava é <b>Decisão</b> — sem empate.</p>
+    <div class="espinha" id="espinha"></div>
+    <p class="note" style="margin-top:2px">⚠️ Os <b>warning</b> de Interesse, Qualificação e
+      Compromisso são por <b>ausência de instrumento</b>, não por diagnóstico. Não são leitura de
+      saúde — são confissão de cegueira.</p>
+  </section>
+
+  <section>
+    <h2>Baseline e critério de saída</h2>
+    <p class="note">O campo que decide se a revisão de Q4 é medição ou opinião. Preencher aqui
+      quando o <span class="mono">ciclo-02</span> produzir o número.</p>
+    <div class="card">
+      <div id="baselineVazio">
+        <div class="callout"><b>⛔ Gargalo 0.</b> A taxa de conversão do checkout
+          <b>não é medida</b>. Sem ela não há de onde partir, o critério de saída não é
+          escrevível, e a revisão do quarter vira opinião.</div>
+      </div>
+      <div class="grid g2" style="margin-top:12px">
+        <div>
+          <label class="lbl" for="bValor">Baseline — taxa de conversão do checkout (%)</label>
+          <input type="text" id="bValor" inputmode="decimal" placeholder="ex: 0,9"
+                 style="width:100%;margin-top:5px" class="mono">
+        </div>
+        <div>
+          <label class="lbl" for="bData">Data da medição</label>
+          <input type="text" id="bData" placeholder="ex: 2026-09-30"
+                 style="width:100%;margin-top:5px" class="mono">
+        </div>
+      </div>
+      <div style="margin-top:12px">
+        <label class="lbl" for="bCrit">Critério de saída — em número, não em adjetivo</label>
+        <input type="text" id="bCrit" style="width:100%;margin-top:5px"
+               placeholder="ex: taxa-conversao-checkout >= 2,0% por 2 semanas consecutivas">
+      </div>
+      <div class="ctrl" style="margin-top:12px">
+        <button class="btn" id="bSalvar">Salvar baseline</button>
+        <span class="saved" id="bSaved">salvo</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Métricas do plano</h2>
+    <p class="note">Quatro das seis são manuais. As duas automáticas medem justamente as etapas
+      que já estão saudáveis.</p>
+    <div class="card tw">
+      <table>
+        <thead><tr><th>Métrica</th><th>Etapa</th><th>Fonte</th><th>Coleta</th></tr></thead>
+        <tbody id="tMetricas"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Onde o plano falha</h2>
+    <div class="card">
+      <ul style="margin:0;padding-left:20px;font-size:14px;line-height:1.7">
+        <li><b>A conversão do checkout continua não medida.</b> Então nada é verificável, e a
+          revisão de Q4 vira opinião. É o risco nº 1, e é o ciclo-02</li>
+        <li><b>A plataforma é do cliente, não da agência.</b> Os ciclos 03 e 04 dependem de ação
+          de terceiro</li>
+        <li><b>A Black Friday chega com a trava aberta</b> e o pico multiplica a perda</li>
+        <li><b>O plano vira apresentação.</b> Se não gerar a pauta do check-in, é a tentativa nº 6</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<!-- ============ CICLOS ============ -->
+<div data-p="ciclos" hidden>
+  <section>
+    <h2>Ciclos PDCA</h2>
+    <p class="note">Um ciclo sem métrica de interesse não é hipótese — é tarefa, e tarefa vai
+      para demandas. Marcar item e mudar status fica salvo para quem abrir depois.</p>
+    <div class="grid" id="ciclos"></div>
+  </section>
+
+  <section>
+    <h2>Demanda fora do plano</h2>
+    <p class="note">Dia das Crianças é loja física, onde a trava do e-commerce não se aplica.
+      Fica registrada como <span class="mono">relacao_com_plano: fora</span> para não contaminar
+      a leitura da trava — e para contar na razão dentro/fora.</p>
+    <div class="card">
+      <div class="meta-line" style="margin-bottom:12px">
+        <span>Prazo <b class="mono">12/10/2026</b></span>
+        <span>Janela abre <b class="mono">21/09/2026</b></span>
+        <span>Canal <b>loja física</b></span>
+        <span>vs. trava <b>neutro</b></span>
+      </div>
+      <div class="tw"><table>
+        <thead><tr><th>Entregável</th><th>Qtd</th><th>Responsável</th><th>Depende de</th></tr></thead>
+        <tbody id="tEntreg"></tbody>
+      </table></div>
+      <p class="note" style="margin:12px 0 0">⚠️ <b>gravação é do cliente</b> nos roteiros: a edição
+        só começa depois de ele gravar. É o ponto mais provável de estouro de prazo — precisa de
+        data combinada, não de "assim que puder".</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Pendência com o cliente</h2>
+    <div class="card">
+      <div class="meta-line" style="margin-bottom:10px">
+        <span class="pill warn">sem movimento</span>
+        <span>Escalada ao check-in <b>sim</b></span>
+      </div>
+      <h3 style="font-size:14.5px;margin-bottom:6px">Registro e medição da venda assistida
+        (televendas e WhatsApp)</h3>
+      <p style="margin:0;font-size:13.5px;color:var(--ink-2)">Sem isso, Qualificação e Compromisso
+        ficam permanentemente cegas — e o canal assistido, declarado como muito relevante, não tem
+        nenhuma medição. Parte do efeito da trava pode estar escondida ali, aparecendo como custo
+        de pessoa em vez de queda de conversão.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ============ EVENTOS ============ -->
+<div data-p="eventos" hidden>
+  <section>
+    <h2>Janelas de preparação do Q4</h2>
+    <p class="note">A data do evento é o <b>fim</b> do prazo, não o prazo. A barra é a janela de
+      preparação; o traço vertical é o dia do evento.</p>
+    <div class="card"><div class="tl"><div class="tl-inner" id="tl"></div></div></div>
+  </section>
+
+  <section>
+    <h2>Eventos</h2>
+    <p class="note">Um evento com janela aberta e sem demanda vinculada é gargalo. Onde
+      <b>interacao_com_trava = agrava</b>, o pico cai sobre a etapa travada e multiplica a perda —
+      não se escala mídia até a trava ser tratada.</p>
+    <div class="grid g2" id="eventos"></div>
+  </section>
+
+  <section>
+    <h2>A decisão que este calendário força</h2>
+    <div class="card">
+      <div class="callout"><b>A janela para consertar a plataforma fecha em 19/10</b>, quando abre
+        a preparação da Black Friday. Depois disso, mexer em checkout durante o pico é risco, não
+        melhoria.</div>
+      <p style="font-size:14px;margin:12px 0 6px"><b>A plataforma será consertada até 19/10?</b></p>
+      <ul style="margin:0;padding-left:20px;font-size:14px;line-height:1.7">
+        <li><b>Sim</b> → escalar e-commerce na Black Friday</li>
+        <li><b>Não</b> → <b>não escalar e-commerce</b>; redirecionar para loja física, onde a
+          trava não se aplica</li>
+      </ul>
+      <p style="font-size:13.5px;color:var(--ink-2);margin:10px 0 0">Não decidir é escolher a
+        primeira opção por omissão — a mais cara. Registrar a decisão abaixo, com data.</p>
+      <div style="margin-top:12px">
+        <label class="lbl" for="decBF">Decisão registrada</label>
+        <textarea id="decBF" placeholder="Quem decidiu, quando, e com que fundamento."></textarea>
+      </div>
+      <div class="ctrl"><button class="btn" id="decSalvar">Salvar decisão</button>
+        <span class="saved" id="decSaved">salvo</span></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ PAUTA ============ -->
+<div data-p="pauta" hidden>
+  <section>
+    <h2>Check-in quinzenal — 17/09/2026</h2>
+    <p class="note">Esta pauta é <b>gerada</b>, não redigida. Cada seção declara a consulta que a
+      produziu. É o teste da fase: se não servir para conduzir a reunião, não se constrói mais tela.</p>
+    <div id="pauta"></div>
+  </section>
+
+  <section>
+    <h2>Notas e decisões</h2>
+    <div class="card">
+      <label class="lbl" for="pNotas">Notas da reunião</label>
+      <textarea id="pNotas" style="margin:5px 0 14px"></textarea>
+      <label class="lbl" for="pDec">Decisões — registrar o que altera o plano de Q4</label>
+      <textarea id="pDec" style="margin-top:5px"></textarea>
+      <div class="ctrl" style="margin-top:12px">
+        <button class="btn" id="pSalvar">Salvar</button>
+        <span class="saved" id="pSaved">salvo</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Avaliação do formato — o portão da fase</h2>
+    <p class="note">Preencher <b>depois</b> da reunião. É isto que decide se o sistema avança para
+      as próximas telas.</p>
+    <div class="card"><ul class="check" id="aval"></ul></div>
+  </section>
+</div>
+
+<footer>
+  <p style="margin:0 0 6px">Derivado dos arquivos <span class="mono">.md</span> em
+    <span class="mono">clientes/atacadao-posto-13/</span> — plano, ciclos, demanda, pendência e
+    pauta. <b>Os arquivos são a fonte da verdade;</b> esta tela é índice.</p>
+  <p style="margin:0" id="dbStatus">O que você marca e escreve aqui fica salvo.</p>
+</footer>
+</div>
+
+<script>
+"use strict";
+/* ================= dados derivados dos .md =================
+   Bloco isolado de propósito: um gerador que lê o front matter dos .md
+   escreve exatamente este objeto. Tudo abaixo dele é apresentacao. */
+const D = {
+  hoje: new Date(),
+  q4: "2026-10-01",
+  ciclo_receita: [
+    {n:1, id:"exposicao",    nome:"Exposição",    st:"healthy",  src:"Google Ads · automático"},
+    {n:2, id:"atencao",      nome:"Atenção",      st:"healthy",  src:"Google Ads · automático"},
+    {n:3, id:"interesse",    nome:"Interesse",    st:"warning",  src:"sem instrumento"},
+    {n:4, id:"qualificacao", nome:"Qualificação", st:"warning",  src:"sem registro da venda assistida"},
+    {n:5, id:"compromisso",  nome:"Compromisso",  st:"warning",  src:"sem instrumento"},
+    {n:6, id:"decisao",      nome:"Decisão",      st:"critical", src:"não medido"},
+    {n:7, id:"retencao",     nome:"Retenção",     st:"warning",  src:"app de fidelidade, sem leitura"}
+  ],
+  metricas: [
+    {nome:"taxa-conversao-checkout", etapa:"Decisão",   fonte:"Google Analytics → Wake", auto:false},
+    {nome:"receita-ecommerce",       etapa:"Decisão",   fonte:"Wake",                    auto:false},
+    {nome:"taxa-abandono-carrinho",  etapa:"Decisão",   fonte:"Google Analytics → Wake", auto:false},
+    {nome:"pedidos-cancelados",      etapa:"Retenção",  fonte:"Wake",                    auto:false},
+    {nome:"investimento-midia",      etapa:"Exposição", fonte:"Google Ads",              auto:true},
+    {nome:"cliques",                 etapa:"Atenção",   fonte:"Google Ads",              auto:true}
+  ],
+  ciclos: [
+    {id:"ciclo-02", prio:1, titulo:"Produzir a linha de base da conversão do checkout",
+     sla:"2026-09-30", lado:"agencia", metrica:"taxa-conversao-checkout", etapa:"Decisão",
+     resumo:"Não é ciclo de melhoria, é de instrumentação. O entregável é um número com data e fonte.",
+     itens:["Existe propriedade GA4? Há eventos de e-commerce (begin_checkout, purchase)?",
+            "Se há: extrair 12 meses de funil — sessões → carrinho → checkout → compra",
+            "Abrir o GTM: quais tags de conversão existem, e desde quando",
+            "Abrir o Merchant Center: quantos produtos reprovados e por qual motivo",
+            "Confrontar a receita do GA com os ~R$ 50 mil/mês declarados em mar/2026",
+            "Se A não resolver: pedir ao cliente o funil de checkout da Wake",
+            "Escrever a definição única no glossário de métricas",
+            "Preencher baseline e critério de saída no plano"]},
+    {id:"ciclo-03", prio:2, titulo:"Auditar checkout e cálculo de frete",
+     sla:"2026-10-17", lado:"cliente", metrica:"taxa-abandono-carrinho", etapa:"Decisão",
+     resumo:"O erro de frete já custa capacidade humana, não só conversão: obriga a venda assistida por WhatsApp.",
+     itens:["Reproduzir o erro — 3 faixas de valor × 3 CEPs, com print do frete calculado",
+            "Confrontar com a regra comercial (grátis acima de R$ 1.000 em RJ e Baixada)",
+            "T.I. do cliente / fornecedor da Wake: identificar a causa",
+            "Classificar: erro de configuração vs. defeito de plataforma",
+            "Corrigir e reexecutar o teste de 9 cenários"]},
+    {id:"ciclo-04", prio:3, titulo:"Integridade de catálogo, variações e estoque",
+     sla:"2026-10-19", lado:"cliente", metrica:"pedidos-cancelados", etapa:"Decisão",
+     resumo:"Produto que existe no estoque e não está no site é demanda já paga e perdida. Parte do Q4 não exige mídia nova — exige cadastro.",
+     itens:["Extrair os produtos reprovados no Merchant Center, por motivo",
+            "Cruzar a Curva ABC com o que está publicado: quantos itens de curva A faltam?",
+            "Auditar variações dos itens de curva A — cor e estampa conferem com a foto?",
+            "Levantar cancelamentos dos últimos 3 meses, por motivo",
+            "Levantar quanto do televendas é demanda desviada do site",
+            "Definir o corte mínimo de integridade para a Black Friday"]},
+    {id:"ciclo-01", prio:9, titulo:"Preparar criativos para a Semana do Consumidor",
+     sla:"2026-03-15", lado:"agencia", metrica:null, etapa:"Atenção", fechado:true,
+     resumo:"Único ciclo da história do cliente. Entregou em 05/03, dentro do prazo — e sem métrica de interesse nem Check. Cumpriu prazo sem produzir conhecimento.",
+     itens:[]}
+  ],
+  entregaveis: [
+    {id:"criativo", nome:"Criativo estático", qtd:4, dep:"—"},
+    {id:"roteiro",  nome:"Roteiro de vídeo",  qtd:5, dep:"gravação é do cliente"},
+    {id:"edicao",   nome:"Edição de vídeo",   qtd:5, dep:"roteiro"}
+  ],
+  eventos: [
+    {id:"dia-das-criancas", nome:"Dia das Crianças", data:"2026-10-12", abre:"2026-09-21",
+     canal:"loja física", trava:"neutro", demanda:"registrada", rel:"crítica",
+     nota:"Maior pico de fluxo em loja do ano, declarado pelo cliente. Canal físico — a trava do e-commerce não se aplica."},
+    {id:"black-friday", nome:"Black Friday", data:"2026-11-27", abre:"2026-10-19",
+     canal:"e-commerce", trava:"agrava", demanda:null, rel:"crítica",
+     nota:"Sem série histórica consolidada. O cliente declara dependência de promoção."},
+    {id:"natal", nome:"Natal", data:"2026-12-25", abre:"2026-11-16",
+     canal:"ambos", trava:"agrava", demanda:null, rel:"alta",
+     nota:"Presente para data especial é dor declarada do público."},
+    {id:"ano-novo", nome:"Ano Novo", data:"2026-12-31", abre:"2026-12-07",
+     canal:"loja física", trava:"neutro", demanda:null, rel:"média",
+     nota:"⚠️ Nunca medido. Hipótese de encaixe com a expansão para itens de festa."},
+    {id:"volta-as-aulas", nome:"Volta às aulas 2027", data:"2027-01-15", abre:"2026-12-01",
+     canal:"ambos", trava:"neutro", demanda:null, rel:"média",
+     nota:"⚠️ Hipótese. O cliente declarou querer expandir mix para papelaria."}
+  ],
+  pauta: [
+    {t:"Resultados", q:"medicao das métricas do plano no período", vazio:true,
+     c:"<p><b>Seção vazia — e isso é o resultado mais importante desta reunião.</b> A métrica que instrumenta a trava não existe. As duas que existem medem justamente as etapas que já estão saudáveis.</p><p style='margin-bottom:0'>→ A conversa começa aqui, e não em campanha.</p>"},
+    {t:"Objetivos — KPIs e metas", q:"plano.baseline · criterio_saida · trava_alvo · meta",
+     c:"<p>Trava <b>Decisão</b> · meta <b>R$ 150 mil/mês</b> · observado ~R$ 50 mil/mês em mar/2026, então a meta é <b>3×</b>, com confiança <b>baixa</b>: meta declarada, não projeção.</p><p style='margin-bottom:0'>Referência obrigatória: <b>uma</b> loja física fatura acima de R$ 500 mil/mês; o e-commerce inteiro, ~R$ 50 mil. Assimetria de 10×.</p>"},
+    {t:"Entregas do período", q:"ciclo_pdca fechados 15d + demandas concluídas", vazio:true,
+     c:"<p style='margin-bottom:0'><b>Nenhuma.</b> Último ciclo fechado: 05/03/2026 — há 6 meses, sem métrica e sem Check. Isso não significa que nada foi feito: significa que o que foi feito não está registrado em lugar que gere pauta.</p>"},
+    {t:"Cronograma dos próximos dias", q:"ciclo_pdca abertos + demandas em curso, por SLA",
+     c:"<p style='margin-bottom:0'>30/09 ciclo-02 · 12/10 Dia das Crianças · 17/10 ciclo-03 · 19/10 ciclo-04. <b>Dois dos quatro dependem do cliente e um não tem responsável.</b> Só o ciclo-02 está inteiramente na mão da agência — e é o de prioridade 1. Começar por ele é começar pelo único que ninguém pode bloquear.</p>"},
+    {t:"Eventos à vista", q:"plano.eventos[] com janela aberta ou abrindo · 60d se agrava a trava",
+     c:"<p style='margin-bottom:0'>Dia das Crianças (janela abre 21/09, demanda existe, sem responsável) · <b>Black Friday sem demanda aberta</b>, janela em 19/10, e agrava a trava.</p>"},
+    {t:"Pontos a resolver com o cliente", q:"tudo com escalar_para_checkin = true",
+     c:"<ol style='margin:0;padding-left:20px;line-height:1.7'><li><b>Data de gravação</b> dos 5 vídeos — único item com prazo em dias</li><li><b>Auditoria de checkout e frete</b> — trava aberta na Black Friday</li><li><b>Corte de integridade de catálogo</b> para a BF</li><li><b>Registro da venda assistida</b> — Qualificação e Compromisso seguem cegas</li></ol><p style='margin:9px 0 0'>⚠️ Pedir os quatro com o mesmo peso é o mesmo que não pedir nada.</p>"},
+    {t:"Adições não específicas", q:"campo livre",
+     c:"<ul style='margin:0;padding-left:20px;line-height:1.7'><li><b>R$ 8.040/mês de budget sem alocação documentada</b> — 40% de R$ 20 mil. Resolver antes de 19/10</li><li>Distribuição ~84% Google / ~16% Meta, mas o público declara buscar por Facebook e Instagram</li><li>Revalidar stakeholders do cliente — o quadro tem 18 meses</li><li>Pergunta de memória: o que foi feito no Dia das Crianças de 2025, e qual foi o resultado?</li></ul>"}
+  ],
+  avaliacao: ["A pauta cobriu o que precisava ser tratado?","Faltou alguma seção?",
+    "Alguma seção foi ruído?","A reunião foi conduzida por este documento, ou ele ficou aberto sem uso?",
+    "O coordenador confirmou que serviu?"]
+};
+
+/* ================= util ================= */
+const $ = s => document.querySelector(s);
+const el = (t,c,h) => {const e=document.createElement(t); if(c)e.className=c;
+  if(h!==undefined)e.innerHTML=h; return e;};
+const esc = s => String(s).replace(/[&<>"]/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+const dt = s => {const [a,m,d] = s.split("-").map(Number); return new Date(a,m-1,d);};
+const br = s => {const [a,m,d] = s.split("-"); return `${d}/${m}`;};
+const brl = s => {const [a,m,d] = s.split("-"); return `${d}/${m}/${a}`;};
+const dias = s => Math.round((dt(s) - D.hoje) / 864e5);
+
+/* ================= estado editavel (db) ================= */
+let db = null;
+const S = {ciclos:{}, plano:{}, eventos:{}, demanda:{}, reuniao:{}};
+
+async function salvar(col, id, patch){
+  Object.assign(S[col][id] = S[col][id] || {}, patch);
+  if(!db) return;
+  try { await db.doc(`${col}/${id}`).set(S[col][id]); }
+  catch(e){ if(e && e.code === "quota_exceeded") aviso("Banco cheio — apague algo antes de salvar.");
+            else if(e && e.code !== "unavailable") aviso("Não foi possível salvar agora."); }
+}
+function aviso(txt){
+  let n = $("#aviso");
+  if(!n){ n = el("div","offline"); n.id = "aviso"; $("footer").appendChild(n); }
+  n.textContent = txt;
+}
+function flash(id){ const n = $(id); if(!n) return; n.classList.add("on");
+  setTimeout(() => n.classList.remove("on"), 1400); }
+
+/* ================= abas ================= */
+document.querySelectorAll(".tabs button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".tabs button").forEach(x =>
+    x.setAttribute("aria-selected", String(x === b)));
+  document.querySelectorAll("[data-p]").forEach(p => p.hidden = p.dataset.p !== b.dataset.t);
+  window.scrollTo({top:0, behavior:"instant"});
+}));
+
+/* ================= render: cabecalho ================= */
+(function(){
+  const n = dias(D.q4);
+  $("#kpiDias b").textContent = n > 0 ? `${n} dias` : (n === 0 ? "hoje" : "em curso");
+  if(n <= 0) $("#kpiDias .lbl").textContent = "Q4";
+})();
+
+/* ================= render: espinha ================= */
+$("#espinha").append(...D.ciclo_receita.map(e => {
+  const d = el("div", `et ${e.st}`);
+  d.append(el("span","n",`${e.n}`), el("span","dot"), el("span","nm",esc(e.nome)));
+  d.append(e.st === "critical" ? el("span","trava","◆ TRAVA") : el("span","src",esc(e.src)));
+  return d;
+}));
+
+/* ================= render: metricas ================= */
+$("#tMetricas").append(...D.metricas.map(m => {
+  const tr = el("tr");
+  tr.append(el("td","",`<span class="mono">${esc(m.nome)}</span>`),
+            el("td","",esc(m.etapa)), el("td","",esc(m.fonte)),
+            el("td","", m.auto ? '<span class="pill ok">automática</span>'
+                                : '<span class="pill">manual</span>'));
+  return tr;
+}));
+
+/* ================= render: gargalos ================= */
+function gargalos(){
+  const g = [];
+  const b = S.plano.baseline || {};
+  if(!b.valor) g.push([0, "A métrica da trava não é medida",
+    "taxa-conversao-checkout vem da Wake e não tem série. Sem baseline, a revisão de Q4 não consegue responder se a trava foi resolvida."]);
+  if(!b.criterio) g.push([0, "Sem critério de saída escrito em número",
+    "Enquanto for adjetivo, a trava nunca é declarada resolvida por dado."]);
+  D.eventos.forEach(e => {
+    const st = S.eventos[e.id] || {};
+    if(st.demanda || e.demanda) return;
+    const d = dias(e.abre), h = e.trava === "agrava" ? 60 : 30;
+    if(d > h) return;
+    g.push([e.trava === "agrava" ? 0 : 1,
+      `${e.nome} sem demanda aberta`,
+      (d < 0 ? `Janela abriu há ${-d} dias.` : `Janela abre em ${d} dias.`) +
+      (e.trava === "agrava" ? " Agrava a trava — o pico cai sobre a etapa travada. Não escalar mídia." : "")]);
+  });
+  const semResp = D.entregaveis.reduce((s,x) =>
+    s + ((S.demanda[x.id] || {}).responsavel ? 0 : x.qtd), 0);
+  if(semResp) g.push([1, `${semResp} entregáveis do Dia das Crianças sem responsável`,
+    `A janela abre em ${dias("2026-09-21")} dias e nenhum deles tem dono nomeado.`]);
+  D.ciclos.filter(c => !c.fechado).forEach(c => {
+    if((S.ciclos[c.id] || {}).status === "fechado") return;
+    const d = dias(c.sla);
+    if(d < 0) g.push([0, `${c.id} com SLA vencido há ${-d} dias`, c.titulo]);
+    else if(d <= 21) g.push([1, `${c.id} vence em ${d} dias`,
+      `${c.titulo} · responsabilidade do lado ${c.lado}`]);
+  });
+  g.push([2, "Meta 3× o observado, com confiança baixa",
+    "R$ 150 mil/mês contra ~R$ 50 mil observados. Meta declarada, não projeção — a revisão saberá que avalia contra um número escolhido."]);
+  g.push([2, "R$ 8.040/mês de budget sem alocação documentada",
+    "O plano de mídia aloca 60% de R$ 20 mil. No quarter de maior investimento do ano, é dinheiro sem dono."]);
+
+  const box = $("#gargalos"); box.textContent = "";
+  const rot = {0:"crítico", 1:"alto", 2:"médio"};
+  g.sort((a,b) => a[0] - b[0]).forEach(([sev, txt, why]) => {
+    const r = el("div", `row sev${sev}`);
+    r.append(el("span","tag",rot[sev]),
+             el("p","",`${esc(txt)}<span class="why">${esc(why)}</span>`));
+    box.appendChild(r);
+  });
+}
+
+/* ================= render: ciclos ================= */
+function ciclos(){
+  const box = $("#ciclos"); box.textContent = "";
+  D.ciclos.forEach(c => {
+    const st = S.ciclos[c.id] || {};
+    const status = st.status || (c.fechado ? "fechado" : "aberto");
+    const feitos = st.feitos || [];
+    const card = el("div", `ciclo${c.prio === 1 ? " p1" : ""}`);
+
+    const h = el("header");
+    h.append(el("h3","",`<span class="mono" style="color:var(--ink-3)">${c.id}</span> · ${esc(c.titulo)}`));
+    if(c.prio === 1) h.append(el("span","pill crit","prioridade 1"));
+    const d = dias(c.sla);
+    h.append(el("span", `pill ${status === "fechado" ? "ok" : (d < 0 ? "crit" : (d <= 21 ? "warn" : ""))}`,
+      status === "fechado" ? "fechado" : (d < 0 ? `SLA vencido ${-d}d` : `SLA em ${d}d`)));
+    card.append(h);
+
+    const m = el("div","meta-line");
+    m.append(el("span","",`SLA <b class="mono">${brl(c.sla)}</b>`),
+             el("span","",`Etapa <b>${esc(c.etapa)}</b>`),
+             el("span","",`Métrica <b class="mono">${c.metrica ? esc(c.metrica) : "⚠️ nenhuma"}</b>`),
+             el("span","",`Lado <b>${esc(c.lado)}</b>`));
+    card.append(m, el("p","note",esc(c.resumo)));
+
+    if(c.itens.length){
+      const ul = el("ul","check");
+      c.itens.forEach((it, i) => {
+        const li = el("li"), cid = `${c.id}-i${i}`, on = feitos.includes(i);
+        if(on) li.classList.add("done");
+        const cb = el("input"); cb.type = "checkbox"; cb.id = cid; cb.checked = on;
+        cb.addEventListener("change", async () => {
+          const f = new Set((S.ciclos[c.id] || {}).feitos || []);
+          cb.checked ? f.add(i) : f.delete(i);
+          li.classList.toggle("done", cb.checked);
+          await salvar("ciclos", c.id, {feitos:[...f].sort((a,b)=>a-b)});
+          gargalos();
+        });
+        const lb = el("label","",esc(it)); lb.setAttribute("for", cid);
+        li.append(cb, lb); ul.append(li);
+      });
+      card.append(ul);
+      const n = feitos.length;
+      card.append(el("div","meta-line",
+        `<span class="mono">${n} de ${c.itens.length} itens concluídos</span>`));
+    }
+
+    const ctrl = el("div","ctrl");
+    const sel = el("select"); sel.id = `st-${c.id}`;
+    ["aberto","check","fechado","bloqueado"].forEach(o => {
+      const op = el("option","",o); op.value = o; if(o === status) op.selected = true; sel.append(op);
+    });
+    sel.addEventListener("change", async () => {
+      await salvar("ciclos", c.id, {status:sel.value}); ciclos(); gargalos();
+    });
+    const resp = el("input"); resp.type = "text"; resp.id = `rp-${c.id}`;
+    resp.placeholder = "responsável"; resp.value = st.responsavel || "";
+    resp.style.width = "170px";
+    resp.addEventListener("change", () => salvar("ciclos", c.id, {responsavel:resp.value.trim()}));
+    const l1 = el("span","lbl","status"), l2 = el("span","lbl","responsável");
+    ctrl.append(l1, sel, l2, resp);
+    card.append(ctrl);
+    box.append(card);
+  });
+}
+
+/* ================= render: entregaveis ================= */
+function entregaveis(){
+  const tb = $("#tEntreg"); tb.textContent = "";
+  D.entregaveis.forEach(x => {
+    const st = S.demanda[x.id] || {};
+    const tr = el("tr");
+    const tdR = el("td");
+    const inp = el("input"); inp.type = "text"; inp.id = `en-${x.id}`;
+    inp.placeholder = "⚠️ a definir"; inp.value = st.responsavel || ""; inp.style.width = "100%";
+    inp.addEventListener("change", async () => {
+      await salvar("demanda", x.id, {responsavel:inp.value.trim()}); gargalos();
+    });
+    tdR.append(inp);
+    tr.append(el("td","",`<b>${esc(x.nome)}</b>`), el("td","num",String(x.qtd)), tdR,
+              el("td","",esc(x.dep)));
+    tb.append(tr);
+  });
+}
+
+/* ================= render: timeline ================= */
+function timeline(){
+  const box = $("#tl"); box.textContent = "";
+  const ini = dt("2026-09-15"), fim = dt("2027-01-20");
+  const span = fim - ini;
+  const pos = d => ((dt(d) - ini) / span) * 100;
+
+  const ax = el("div","tl-ax");
+  [["2026-10-01","out"],["2026-11-01","nov"],["2026-12-01","dez"],["2027-01-01","jan"]]
+    .forEach(([d,n]) => {const s = el("span","",n); s.style.left = pos(d) + "%"; ax.append(s);});
+  box.append(ax);
+
+  D.eventos.forEach(e => {
+    const row = el("div","tl-row");
+    const a = pos(e.abre), b = pos(e.data);
+    const bar = el("div", `tl-bar${e.trava === "agrava" ? " agrava" : ""}`);
+    bar.style.left = a + "%"; bar.style.width = Math.max(b - a, 6) + "%";
+    bar.append(el("b","",esc(e.nome)));
+    const mk = el("div","tl-mk"); mk.style.left = b + "%"; mk.dataset.d = br(e.data);
+    row.append(bar, mk); box.append(row);
+  });
+
+  const hojePct = ((D.hoje - ini) / span) * 100;
+  if(hojePct >= 0 && hojePct <= 100){
+    const h = el("div","tl-hoje"); h.style.left = hojePct + "%";
+    h.style.height = (D.eventos.length * 39 + 30) + "px"; box.append(h);
+  }
+}
+
+/* ================= render: eventos ================= */
+function eventos(){
+  const box = $("#eventos"); box.textContent = "";
+  D.eventos.forEach(e => {
+    const st = S.eventos[e.id] || {};
+    const temD = e.demanda || st.demanda;
+    const d = dias(e.abre);
+    const card = el("div","card");
+    const h = el("div","ciclo"); h.style.padding = "0"; h.style.border = "0"; h.style.background = "none";
+    const hh = el("header");
+    hh.append(el("h3","",esc(e.nome)));
+    hh.append(el("span", `pill ${e.trava === "agrava" ? "crit" : ""}`,
+      e.trava === "agrava" ? "agrava a trava" : e.trava));
+    h.append(hh);
+    h.append(el("div","meta-line",
+      `<span>Evento <b class="mono">${brl(e.data)}</b></span>
+       <span>Janela abre <b class="mono">${brl(e.abre)}</b></span>
+       <span>Canal <b>${esc(e.canal)}</b></span>`));
+    h.append(el("p","note", esc(e.note || e.nota)));
+
+    const status = el("div","meta-line");
+    status.innerHTML = temD
+      ? `<span class="pill ok">demanda vinculada</span>`
+      : `<span class="pill ${d <= (e.trava === "agrava" ? 60 : 30) ? "crit" : ""}">sem demanda</span>
+         <span class="mono">${d < 0 ? `janela aberta há ${-d}d` : `abre em ${d}d`}</span>`;
+    h.append(status);
+
+    if(!temD){
+      const ctrl = el("div","ctrl");
+      const b = el("button","btn ghost","Registrar demanda aberta");
+      b.addEventListener("click", async () => {
+        await salvar("eventos", e.id, {demanda:true, em:new Date().toISOString().slice(0,10)});
+        eventos(); gargalos();
+      });
+      ctrl.append(b); h.append(ctrl);
+    } else if(st.em){
+      h.append(el("div","meta-line",`<span class="mono">registrada em ${esc(st.em)}</span>`));
+    }
+    card.append(h); box.append(card);
+  });
+}
+
+/* ================= render: pauta ================= */
+(function(){
+  const box = $("#pauta");
+  D.pauta.forEach((s, i) => {
+    const d = el("div","sec");
+    d.append(el("span","lbl",`seção ${i+1}`), el("h3","",esc(s.t)),
+             el("code","src-q",`fonte: ${esc(s.q)}`), el("div","",s.c));
+    box.append(d);
+  });
+  const ul = $("#aval");
+  D.avaliacao.forEach((q, i) => {
+    const li = el("li"), id = `av-${i}`;
+    const cb = el("input"); cb.type = "checkbox"; cb.id = id;
+    cb.addEventListener("change", async () => {
+      const f = new Set((S.reuniao["2026-09-17"] || {}).aval || []);
+      cb.checked ? f.add(i) : f.delete(i);
+      li.classList.toggle("done", cb.checked);
+      await salvar("reuniao","2026-09-17",{aval:[...f].sort((a,b)=>a-b)});
+    });
+    const lb = el("label","",esc(q)); lb.setAttribute("for", id);
+    li.append(cb, lb); ul.append(li);
+  });
+})();
+
+/* ================= formularios ================= */
+$("#bSalvar").addEventListener("click", async () => {
+  await salvar("plano","baseline",{
+    valor:$("#bValor").value.trim(), data:$("#bData").value.trim(),
+    criterio:$("#bCrit").value.trim()});
+  flash("#bSaved"); pintarBaseline(); gargalos();
+});
+$("#decSalvar").addEventListener("click", async () => {
+  await salvar("eventos","black-friday",{decisao:$("#decBF").value.trim()}); flash("#decSaved");
+});
+$("#pSalvar").addEventListener("click", async () => {
+  await salvar("reuniao","2026-09-17",{notas:$("#pNotas").value, decisoes:$("#pDec").value});
+  flash("#pSaved");
+});
+
+function pintarBaseline(){
+  const b = S.plano.baseline || {};
+  $("#baselineVazio").hidden = !!b.valor;
+  if(b.valor !== undefined && document.activeElement !== $("#bValor")) $("#bValor").value = b.valor || "";
+  if(b.data !== undefined && document.activeElement !== $("#bData")) $("#bData").value = b.data || "";
+  if(b.criterio !== undefined && document.activeElement !== $("#bCrit")) $("#bCrit").value = b.criterio || "";
+}
+
+/* ================= primeira pintura, sem db ================= */
+ciclos(); entregaveis(); timeline(); eventos(); gargalos(); pintarBaseline();
+
+/* ================= db: liga quando chegar ================= */
+(async () => {
+  db = await (window.claude?.use?.("db") ?? Promise.resolve(null));
+  if(!db){
+    $("#dbStatus").textContent =
+      "Modo somente leitura: esta cópia não consegue salvar o que você marcar.";
+    return;
+  }
+  const cols = ["ciclos","plano","eventos","demanda","reuniao"];
+  cols.forEach(c => {
+    db.collection(c).onSnapshot(snap => {
+      snap.docs.forEach(doc => { S[c][doc.id] = doc.data() || {}; });
+      if(c === "ciclos") ciclos();
+      if(c === "demanda") entregaveis();
+      if(c === "eventos") eventos();
+      if(c === "plano") pintarBaseline();
+      if(c === "reuniao"){
+        const r = S.reuniao["2026-09-17"] || {};
+        if(document.activeElement !== $("#pNotas")) $("#pNotas").value = r.notas || "";
+        if(document.activeElement !== $("#pDec"))   $("#pDec").value = r.decisoes || "";
+        (r.aval || []).forEach(i => {
+          const cb = $(`#av-${i}`); if(cb && !cb.checked){ cb.checked = true;
+            cb.closest("li").classList.add("done"); }
+        });
+      }
+      if(c === "eventos"){
+        const bf = S.eventos["black-friday"] || {};
+        if(document.activeElement !== $("#decBF")) $("#decBF").value = bf.decisao || "";
+      }
+      gargalos();
+    }, e => {
+      if(e.code === "revoked" || e.code === "not_granted")
+        $("#dbStatus").textContent = "Modo somente leitura nesta sessão.";
+    });
+  });
+})();
+</script>

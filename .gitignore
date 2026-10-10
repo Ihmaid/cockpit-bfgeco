@@ -1,0 +1,57 @@
+# ============================================================
+# Segredos — NUNCA versionar
+# ============================================================
+# Os tokens do Ekyte viajam na query string (?apiKey=..., ?token=...),
+# logo aparecem em log de servidor e em historico de shell. O do MCP
+# escreve na empresa inteira com a identidade do usuario.
+.env
+.env.*
+!.env.exemplo
+
+# Credenciais do Google Ads (o MCP oficial le o adc.json de ~/.config)
+adc.json
+google-ads.yaml
+*.pem
+*.key
+*credential*
+*secret*
+*token*
+!docs/17-google-ads-token-passo-a-passo.md
+!docs/24-meta-token.md
+
+# ============================================================
+# Artefatos locais
+# ============================================================
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.sqlite
+*.sqlite3
+*.db
+
+# indice derivado: reconstruivel a partir dos .md, nao e fonte da verdade
+/indice/
+/.cache/
+
+# ============================================================
+# Dado bruto de cliente (export de pedidos com dado pessoal)
+# ============================================================
+# Fica só na máquina. O que vai para a Base é o agregado em metricas/manual.csv.
+**/metricas/bruto/
+
+# ============================================================
+# Sistema operacional e editor
+# ============================================================
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
+*.swp
+~$*
+
+# ============================================================
+# URLs de webhook do Cockpit (sem autenticação; CLAUDE.md: não publicar)
+# ============================================================
+docs/referencia/webhooks_clientes.csv

@@ -1,0 +1,8 @@
+- [Perfil de Gabriel na V4 BFG&Co](perfil-gabriel-v4-bfgco.md) — sócio/prestador, Account dos 12 clientes do Fúria da Noite, forte em Power BI, pensa por Teoria das Restrições
+- [Papel: guardião do sistema operacional](papel-guardiao-do-cockpit.md) — consultoria contínua; escopo ampliado para o sistema próprio da unidade; manter docs/ atualizado é parte da função
+- [Premissas de trabalho](premissas-de-trabalho-bfgco.md) — melhoria contínua sobre perfeição, nunca padronizar em cima de um cliente só, sazonalidade obrigatória no quarter, e a trava do cliente é hipótese (confirmá-la é saída do sistema, não entrada)
+- [Tese do sistema da BFG&Co](tese-do-sistema-bfgco.md) — apêndice de ritual, não destino; o produto é clareza sobre a rotina que falta; e nunca conectar fonte de dado antes de existir a pergunta
+- [Pauta com roteiro](pauta-com-roteiro.md) — toda pauta de ritual abre com 6–8 perguntas em ordem, com dono e seção dos números
+- [Foco no AP13 antes da carteira](foco-ap13-antes-da-carteira.md) — até o portão de escala, só o que faz o Atacadão funcionar; nada de outros clientes, nem cadastro no Ekyte
+- [Transcrição da sprint no Drive](transcricao-sprint-no-drive.md) — pasta do squad no Fúria, doc do Gemini de ~70 mil caracteres, filtrar pelo cliente
+- [Objetivo: a semana na frente](objetivo-semana-na-frente.md) — no domingo ver seg–sex dele e do time, com estágio e atraso; agentes são o meio; 1º teste real = Black Friday do AP13

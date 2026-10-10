@@ -1,0 +1,101 @@
+# Árvore de métricas — modelo E-COMMERCE
+#
+# Definição ÚNICA do acompanhamento (arquitetura/14). Nada disto é copiado para o repo do
+# cliente (regra dura do 13 §5): o cliente.md declara os IDs, as regras de compra e os campos
+# manuais; as fórmulas vivem só aqui. Lido por scripts/metricas.py e scripts/pauta.py.
+#
+# Nasce das abas 5.0/5.1/5.2 do Growth Pack, JÁ CORRIGIDAS (14 §3), e das regras achadas no
+# 1º teste com o Atacadão Posto 13 (14 §6–§9). Criado em 28/09/2026.
+#
+# ⚠️ Não padronizar em um cliente só (premissa 2): o que é do AP13 fica no cliente.md.
+#    lead.yaml nasce com o 2º cliente, não antes.
+
+modelo: ecommerce
+versao: 1
+
+# ------------------------------------------------------------------ campos base, por fonte
+# Cada fonte grava metricas/serie/<fonte>.csv (dia, campo, valor). O manual vive em
+# metricas/manual.csv. Os nomes abaixo são o contrato entre as fontes e as fórmulas.
+fontes:
+  manual_jet:
+    arquivo: manual.csv
+    tipo: manual            # fonte da verdade do resultado; gravada por scripts/jet.py
+    campos: [compras, pedidos, receita, frete, desconto, receita_pj, pedidos_pj, receita_b2b,
+             receita_utm_google, receita_utm_meta, receita_utm_flowbiz, receita_utm_sem_utm, receita_utm_outros,
+             pedidos_utm_google, pedidos_utm_meta, pedidos_utm_flowbiz, pedidos_utm_sem_utm]
+  ga4:
+    arquivo: serie/ga4.csv
+    tipo: api
+    campos: [sessoes, transacoes_ga4, receita_ga4, add_to_cart, begin_checkout, add_payment_info, purchase_ga4]
+    regra: "valor (receita, compras) NUNCA sai daqui: o GA4 superconta ~20–25% no AP13 (14 §9). Serve de denominador (sessões) e de tendência"
+  google_ads:
+    arquivo: serie/google_ads.csv
+    tipo: api
+    campos: [investimento_google, impressoes_google, cliques_google, compras_google, receita_google]
+    regra: "compra = metrics.conversions da categoria declarada em cliente.md (google_ads_compra_categoria). 'Conversões' sem filtro mistura compra com visita à loja (14 §6)"
+    provisorio_dias: 7      # a conversão retroage pela data do clique: a última semana é provisória (14 §8)
+  meta_ads:
+    arquivo: serie/meta_ads.csv
+    tipo: api_ou_conector   # sem token, o Claude preenche o cache pelo conector (executor trocável, P2)
+    campos: [investimento_meta, impressoes_meta, cliques_meta, compras_meta, receita_meta,
+             investimento_meta_venda, compras_meta_venda, receita_meta_venda]
+    regra: "compra = offsite_conversion.fb_pixel_purchase. *_venda = só campanhas com o objetivo declarado em cliente.md (meta_objetivo_ecommerce) (14 §7)"
+
+# ------------------------------------------------------------------ derivadas
+# Sempre a RAZÃO DAS SOMAS do período, nunca média de razões diárias (14, desenho).
+# formato: brl | pct | num | x (multiplicador)
+derivadas:
+  taxa_sessao_compra:    { formula: "compras / sessoes",                         formato: pct, nome: "Sessão → compra", nota: "métrica da trava decisao (glossário)" }
+  ticket:                { formula: "receita / compras",                         formato: brl, nome: "Ticket" }
+  investimento_total:    { formula: "investimento_google + investimento_meta",   formato: brl, nome: "Investimento total" }
+  mer:                   { formula: "receita / investimento_total",              formato: x,   nome: "Receita real ÷ investimento", nota: "o ROAS que não depende de atribuição" }
+  roas_google:           { formula: "receita_google / investimento_google",      formato: x,   nome: "ROAS Google (plataforma)" }
+  roas_real_google:      { formula: "receita_utm_google / investimento_google",  formato: x,   nome: "ROAS Google (JET, último toque)" }
+  cpa_google:            { formula: "investimento_google / compras_google",      formato: brl, nome: "Custo por compra Google" }
+  ctr_google:            { formula: "cliques_google / impressoes_google",        formato: pct, nome: "CTR Google" }
+  cpc_google:            { formula: "investimento_google / cliques_google",      formato: brl, nome: "CPC Google" }
+  cpm_google:            { formula: "investimento_google / impressoes_google * 1000", formato: brl, nome: "CPM Google" }
+  roas_meta_venda:       { formula: "receita_meta_venda / investimento_meta_venda", formato: x, nome: "ROAS Meta, campanhas de venda (plataforma)" }
+  roas_real_meta:        { formula: "receita_utm_meta / investimento_meta",      formato: x,   nome: "ROAS Meta (JET, último toque)" }
+  cpa_meta_venda:        { formula: "investimento_meta_venda / compras_meta_venda", formato: brl, nome: "Custo por compra Meta (venda)" }
+  ctr_meta:              { formula: "cliques_meta / impressoes_meta",            formato: pct, nome: "CTR Meta (link)" }
+  cpc_meta:              { formula: "investimento_meta / cliques_meta",          formato: brl, nome: "CPC Meta (link)" }
+  cpm_meta:              { formula: "investimento_meta / impressoes_meta * 1000", formato: brl, nome: "CPM Meta" }
+  fator_ga4:             { formula: "receita_ga4 / receita",                     formato: x,   nome: "Receita GA4 ÷ receita real", nota: "divergência entre fontes vira gargalo (14)" }
+  carrinho_checkout_ga4: { formula: "begin_checkout / add_to_cart",              formato: pct, nome: "Carrinho → checkout (GA4)" }
+  pagamento_por_checkout_ga4: { formula: "add_payment_info / begin_checkout",    formato: pct, nome: "Pagamento ÷ checkout (GA4)", nota: "> 100% = begin_checkout subcontando (medição quebrada)" }
+
+# ------------------------------------------------------------------ o que a pauta mostra
+# Formato decidido pelo usuário na avaliação da 1ª sprint (28/09, 14): resultado real no topo,
+# canais embaixo; roteiro + desvios; tabelas em anexo.
+pauta:
+  resultado_real: [receita, compras, ticket, sessoes, taxa_sessao_compra, investimento_total, mer]
+  canais:
+    google: [investimento_google, cliques_google, ctr_google, cpc_google, cpm_google, compras_google, receita_google, roas_google, cpa_google, receita_utm_google, roas_real_google]
+    meta:   [investimento_meta, cliques_meta, ctr_meta, cpc_meta, cpm_meta, investimento_meta_venda, compras_meta_venda, receita_meta_venda, roas_meta_venda, cpa_meta_venda, receita_utm_meta, roas_real_meta]
+    jet_por_origem: [receita_utm_google, receita_utm_meta, receita_utm_flowbiz, receita_utm_sem_utm, receita_utm_outros, receita_pj, receita_b2b]
+  funil_ga4: [sessoes, add_to_cart, begin_checkout, add_payment_info, purchase_ga4, carrinho_checkout_ga4, pagamento_por_checkout_ga4, receita_ga4, fator_ga4]
+
+# ------------------------------------------------------------------ régua de desvio
+# O que vira item de "Desvios" e, dele, pergunta do rascunho do roteiro. Limiares iniciais:
+# ajustar pelo uso (melhoria contínua, premissa 1).
+desvios:
+  variacao:        # compara última semana × penúltima, e mês × mês anterior
+    - { campo: receita,            limiar: 0.20, dono: account }
+    - { campo: compras,            limiar: 0.20, dono: account }
+    - { campo: sessoes,            limiar: 0.20, dono: trafego }
+    - { campo: taxa_sessao_compra, limiar: 0.15, dono: tech }
+    - { campo: ticket,             limiar: 0.20, dono: account }
+    - { campo: investimento_google, limiar: 0.25, dono: trafego }
+    - { campo: investimento_meta,  limiar: 0.25, dono: trafego }
+    - { campo: roas_real_google,   limiar: 0.25, dono: trafego }
+    - { campo: cpm_google,         limiar: 0.20, dono: trafego }
+    - { campo: receita_utm_flowbiz, limiar: 0.30, dono: email }
+  verba:           # ritmo mensal do investimento × budget do cliente.md
+    tolerancia: 0.10
+    dono: trafego
+  trava:           # taxa_sessao_compra do mês × baseline e critério de saída do plano vigente
+    campo: taxa_sessao_compra
+  medicao:         # regras de medição quebrada
+    - { se: "add_payment_info > begin_checkout", texto: "begin_checkout subcontando: o evento de checkout do GA4 está quebrado", dono: tech }
+    - { se: "fator_ga4 > 1.35 or fator_ga4 < 0.9", texto: "a receita do GA4 se afastou da JET além do normal (~1,2×)", dono: tech }

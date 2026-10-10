@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plano Vivo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ sidebar ============ -->
+  <aside class="side">
+    <div class="brand">
+      <span class="mark" aria-hidden="true"></span>
+      <div>
+        <b>Plano Vivo</b>
+        <small>V4 BFG&amp;Co</small>
+      </div>
+    </div>
+
+    <label class="side-lbl" for="selCliente">Cliente</label>
+    <select id="selCliente" class="side-sel"></select>
+
+    <nav class="menu" id="menu" aria-label="Seções">
+      <button data-v="visao"     class="on"><i data-i="visao"></i>Visão geral<span class="badge" id="bgVisao"></span></button>
+      <button data-v="ciclos"><i data-i="ciclos"></i>Ciclos PDCA<span class="badge" id="bgCiclos"></span></button>
+      <button data-v="eventos"><i data-i="eventos"></i>Eventos<span class="badge" id="bgEventos"></span></button>
+      <button data-v="entregas"><i data-i="entregas"></i>Entregas<span class="badge" id="bgEntregas"></span></button>
+      <button data-v="pauta"><i data-i="pauta"></i>Check-in</button>
+      <button data-v="contexto"><i data-i="contexto"></i>Contexto</button>
+    </nav>
+
+    <div class="side-foot">
+      <button class="lnk" id="btnTema" type="button">Alternar tema</button>
+      <p class="mono" id="rodape">fonte: arquivos .md</p>
+    </div>
+  </aside>
+
+  <!-- ============ conteudo ============ -->
+  <main class="main">
+    <header class="top">
+      <div class="top-id">
+        <h1 id="tCliente">—</h1>
+        <span class="chip" id="tQuarter"></span>
+        <span class="chip crit" id="tTrava"></span>
+      </div>
+      <div class="top-kpis" id="topKpis"></div>
+    </header>
+
+    <div class="views" id="views">
+      <section data-view="visao"></section>
+      <section data-view="ciclos" hidden></section>
+      <section data-view="eventos" hidden></section>
+      <section data-view="entregas" hidden></section>
+      <section data-view="pauta" hidden></section>
+      <section data-view="contexto" hidden></section>
+    </div>
+  </main>
+</div>
+
+<!-- ============ drawer: todo texto longo vive aqui ============ -->
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-labelledby="drTitulo" role="dialog" aria-modal="true">
+  <header>
+    <div>
+      <span class="lbl" id="drTipo"></span>
+      <h2 id="drTitulo"></h2>
+    </div>
+    <div class="dr-acoes">
+      <button class="icon" id="drExpandir" type="button" aria-label="Expandir">⤢</button>
+      <button class="icon" id="drFechar" type="button" aria-label="Fechar">×</button>
+    </div>
+  </header>
+  <div class="drawer-body" id="drCorpo"></div>
+</aside>
+
+<div class="toast" id="toast" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>
