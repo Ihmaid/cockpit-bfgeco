@@ -26,10 +26,13 @@ a `-14`; questionário em `arquitetura/15`; análise e trajeto em **`arquitetura
 - **Agente de tráfego construído junto, com método próprio e repertório.** Perguntas dele: a estrutura
   atual é a melhor? o que foi testado e funcionou? dá para escalar com segurança?
 - **Ekyte:** quebrar o ciclo agora; o time preenche. **Novo no escopo: playbook próprio no Ekyte**
-- ⭐ **Achado de 10/10 (`arquitetura/16` §8):** a "GA4 purchase" é a conversão pela qual o Google dá
-  lance, e **23% das compras do GA4 (R$ 59 mil de R$ 182 mil, ago–set) não existem no export da JET**.
-  O lance aprende com pedido que provavelmente não foi pago e o ROAS da plataforma está inflado.
-  ⏳ Fecha com um export da JET com todos os status (pedido ao Gabriel)
+- ⭐ **Achado de 10/10, CONFIRMADO com o export de todos os status (`arquitetura/16` §8.1):** a
+  "GA4 purchase" é a conversão pela qual o Google dá lance. De 919 compras do GA4 (01/08–09/10),
+  **110 (12%) são pedidos cancelados sem pagamento** (82 PIX), 22 pagos e depois cancelados, 78 sem par
+  na JET (R$ 59 mil, ⚠️ origem em aberto) e 42 duplicadas; e **119 vendas pagas (R$ 46 mil) não chegam
+  ao Google**. Só ~2/3 da receita que o Google enxerga é venda válida. **Corrigir antes de escalar**
+  (dono: Esdras). Export novo em `metricas/bruto/` (não vai para o git)
+- ⏳ **O outro computador ainda não recebeu o clone** (pendente desde 10/10)
 - ⛔ O "evento na Baixada" foi só um exemplo. Não levar adiante
 
 **Próximo passo (proposto, aguarda o "vai"):** 13–14/10 fechar a Fase A numa sessão (7 pontos, com
