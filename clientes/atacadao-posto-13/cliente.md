@@ -18,19 +18,21 @@ budget_meta_ads: 6000
 google_ads_customer_id: "6295738385"
 meta_ads_account: "212245853"   # "Grupo Atacadão Posto 13", BM do cliente; validado pelo conector em 28/09 (docs/24)
 ga4_property_id: "363402252"   # "Atacadão Posto Treze – GA4"; validado por scripts/ga4.py em 28/09 (docs/25)
-plataforma_ecommerce: wake
+plataforma_ecommerce: jet   # era Wake até 2025; a BF 2025 da Wake não é mais exportável (13/10)
 fonte_metrica_conversao: "jet ÷ ga4"   # 28/09: compras da JET (scripts/jet.py) ÷ sessões do GA4. Wake não foi preciso
-eventos_ga4_confiaveis: [sessions, purchase]   # begin_checkout quebrado desde ~09–30/08; add_to_cart suspeito (docs/25)
+eventos_ga4_confiaveis: [sessions]   # 13/10: purchase saiu — conta pedido não pago e duplicado (arquitetura/16 §8.1), serve só de tendência · begin_checkout quebrado desde ~09–30/08; add_to_cart suspeito (docs/25)
+stakeholder_principal: Paulo   # avalia por resultado; dores em contexto/04
+capacidade_horas_semana: 10   # 8–10 h/semana do TIME INTEIRO no AP13 (13/10). Orçamento de horas do plano: plano que não cabe aqui está errado
 canal_interno: "GChat — Fúria da Noite"
 # acompanhamento de métricas (scripts/metricas.py + scripts/pauta.py, 28/09):
 ekyte_workspace_id: 91023
 modelo_metricas: ecommerce   # → compartilhado/arvores-metricas/ecommerce.yaml
 google_ads_compra_categoria: PURCHASE   # só a "GA4 (web) purchase" tem essa categoria; "Compras Site" é DEFAULT e fica fora
 meta_objetivo_ecommerce: OUTCOME_SALES  # as campanhas OUTCOME_TRAFFIC levam à loja física/Instagram e não entram no ROAS do e-commerce
-responsaveis: { trafego: "Breno Ferreira", tech: "Esdras Wesley", email: "Lucas Brandão", account: "Gabriel Ihmaid" }
+responsaveis: { trafego: "Breno Ferreira", tech: "Esdras Wesley", email: "Lucas Brandão", account: "Gabriel Ihmaid", designer: "Pedro", coordenador: "Lucas Bastos", copy: "Gabriel Ihmaid (com IA)" }
 campos_manuais:
   - { fonte: jet, o_que: "pedidos, compras e receita real", origem: "export de pedidos da JET → metricas/bruto/relatorio-pedidos-jet/ → scripts/jet.py", responsavel: "Gabriel ou GT", cadencia_dias: 7, quando: "segunda, antes da sprint" }
-atualizado_em: 2026-09-28
+atualizado_em: 2026-10-13
 ---
 
 # Atacadão Posto 13
@@ -46,14 +48,12 @@ mercado, origem em Mesquita (RJ — Baixada Fluminense). Opera em **varejo e ata
 O digital é o canal **em construção**, não o principal. Toda leitura de resultado precisa dessa
 proporção — sem ela, comemora-se ou lamenta-se o número errado.
 
-## Campos em aberto
+## Time e stakeholder (13/10/2026)
 
-| Campo | Situação |
-|---|---|
-| `fee_mensal` | ✅ **R$ 4.200**, confirmado pelo usuário em 27/09/2026 (a planilha usava 5.706 — errado) |
-| `meta_ads_account` | ⚠️ não mapeado. O Google já está: `6295738385` |
-| Gestor de tráfego · designer · social | ⚠️ não identificados (`contexto/05`) |
-| Sponsor econômico | ⚠️ não identificado — kick-off respondido por auxiliar de marketing |
+Gabriel (gestor de projeto, account e copy com IA) · Lucas Bastos (coordenador) · Breno (tráfego) ·
+Pedro (designer) · Esdras (tech, e-mails do CRM) · Lucas Brandão (e-mail). Stakeholder principal:
+**Paulo**. Os campos que estavam em aberto foram todos resolvidos (fee 27/09, Meta 28/09, time e
+stakeholder 10/10).
 
 ## Índice
 

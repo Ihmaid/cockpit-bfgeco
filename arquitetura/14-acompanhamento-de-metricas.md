@@ -252,3 +252,29 @@ duas vezes). O baseline de 0,78% usa a mesma base, então a comparação fica co
 
 ⚠️ **Não construído nesta etapa:** leitura do Meta por API (espera o token, `docs/24`) · aba
 *Acompanhamento* no app · escrita no Ekyte · automação.
+
+---
+
+## ✅ Fase A FECHADA em 13/10/2026 — validação ponto a ponto
+
+| # | Ponto | Decisão do usuário | O que mudou |
+|---|---|---|---|
+| 1 | Formato da pauta | ✅ ok | a §2 mostra só os desvios que **não** viraram pergunta no roteiro (`pauta.py`) |
+| 2 | Roteiro em rascunho | ✅ ok | nada. A revisão do rascunho é onde o agente de tráfego vai entrar |
+| 3 | Régua de desvio | ✅ ok | alerta de medição do GA4 baixou de 1,35× para **1,10×** ("conta pedido não pago"); `cpm_google` saiu da régua |
+| 4 | Definição única no núcleo | ✅ ok | regra do GA4 no `ecommerce.yaml` reescrita com a causa provada |
+| 5 | Receita real ÷ investimento | ✅ **usar, mas NÃO substitui o ROAS de Google e Meta** | anotado no `ecommerce.yaml`. Os ROAS das plataformas continuam na pauta |
+| 6 | Rotina de segunda | ✅ **fica na segunda, antes das 9h** — "consigo subir os dados antes da sprint, é tranquilo" | nada. A proposta de domingo foi recusada |
+| 7 | O que o `cliente.md` declara | ✅ ok | plataforma `jet` · `purchase` saiu dos eventos confiáveis · designer, coordenador e copy · `stakeholder_principal: Paulo` · `capacidade_horas_semana: 10` |
+
+**⛔ Defeito achado no teste e corrigido (13/10): o `jet.py` somava a receita de TODOS os pedidos,
+inclusive cancelados.** Com o export antigo, que quase só trazia pedido pago, não aparecia; com o export
+de todos os status (10/10), a semana 20–26/09 subiu para R$ 29.091. Agora **receita e compras contam só
+venda válida (aprovada e não cancelada)**, e `pedidos_cancelados` vira campo. A semana 20–26/09 ficou em
+**91 compras / R$ 25.955** (era 90 / R$ 26.253 na pauta de 28/09: um pedido aprovado depois e um
+estornado). Glossário atualizado.
+
+**Pauta de teste:** `clientes/atacadao-posto-13/metricas/teste-regressao/2026-10-12-sprint-teste-fase-a.md`
+(dados até 10/10). Mostra as lacunas como devia: Meta só até 27/09 (conector fora desta sessão) e JET até 09/10.
+
+**Próximo:** agente de tráfego (`arquitetura/16` §5).

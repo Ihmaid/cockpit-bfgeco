@@ -217,6 +217,8 @@ def montar(res, ek, ek_erro, data_reuniao, agora):
     if rit:
         L.append("3. **Investimento:** ritmo de %s/mês no mês e de %s/mês na última semana, para uma verba de %s"
                  % (fmt(rit["mes"], "brl"), fmt(rit.get("semana"), "brl"), fmt(rit["budget"], "brl")))
+    else:
+        L.append("3. **Investimento:** sem o total do período, porque falta uma fonte de mídia (§4)")
     if ek:
         L.append("4. **Ekyte:** %d tarefas vencidas, %d empurradas, %d vencem nesta semana"
                  % (sum(i["vencida"] for i in ek["itens"]), sum(i["empurrada"] for i in ek["itens"]), sum(i["semana"] for i in ek["itens"])))
@@ -247,12 +249,13 @@ def montar(res, ek, ek_erro, data_reuniao, agora):
         if d["tipo"] == "variacao" and d["escopo"] == "mês" and d["peso"] < 2:
             continue                      # o mês só vira pergunta quando o desvio passa do dobro da régua
         vistos.add(d["campo"])
-        perguntas.append((d["pergunta"], d["dono"], d["base"]))
+        perguntas.append((d["pergunta"], d["dono"], d["base"], d))
     for l in lac:
         if l[0].startswith("JET"):
             perguntas.append(("**Quem lança a JET da semana?** Sem ela, o resultado real fica em branco", "%s · %s" % (resp.get("account", "account"), resp.get("trafego", "GT")), "§4"))
     perguntas = perguntas[:7] + [("**Fechamento:** o que vira tarefa no Ekyte, com dono e prazo?", "todos", "§5")]
-    for n, (p, dono, base) in enumerate(perguntas, 1):
+    no_roteiro = [q[3] for q in perguntas if len(q) > 3]   # desvios que viraram pergunta saem da §2
+    for n, (p, dono, base) in enumerate((q[:3] for q in perguntas), 1):
         L.append("| %d | %s | %s | %s |" % (n, p, dono, base))
     L.append("")
     L += ["---", ""]
@@ -264,11 +267,14 @@ def montar(res, ek, ek_erro, data_reuniao, agora):
 
     # 2 desvios
     L += ["## 2 · Desvios (acima da régua do `%s.yaml`)" % arv.get("modelo"), ""]
-    if ds:
+    resto_ds = [d for d in ds if not any(d is u for u in no_roteiro)]
+    if no_roteiro:
+        L += ["%d desvio(s) já estão no roteiro como pergunta. Aqui fica só o resto." % len(no_roteiro), ""]
+    if resto_ds:
         L += ["| Desvio | Para quem | Base |", "|---|---|---|"]
-        for d in ds:
+        for d in resto_ds:
             L.append("| %s | %s | %s |" % (d["texto"], d["dono"], d["base"]))
-    else:
+    elif not ds:
         L.append("Nenhum desvio acima da régua.")
     L += ["", "---", ""]
 

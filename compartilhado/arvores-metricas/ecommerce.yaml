@@ -27,7 +27,7 @@ fontes:
     arquivo: serie/ga4.csv
     tipo: api
     campos: [sessoes, transacoes_ga4, receita_ga4, add_to_cart, begin_checkout, add_payment_info, purchase_ga4]
-    regra: "valor (receita, compras) NUNCA sai daqui: o GA4 superconta ~20–25% no AP13 (14 §9). Serve de denominador (sessões) e de tendência"
+    regra: "valor (receita, compras) NUNCA sai daqui. O GA4 conta ~20–25% a mais que a JET no AP13 e a causa foi provada em 10/10 (arquitetura/16 §8.1): o purchase dispara no pedido feito, não no pago (12% são cancelados sem pagamento), há duplicados e há venda paga que não chega. Serve de denominador (sessões) e de tendência"
   google_ads:
     arquivo: serie/google_ads.csv
     tipo: api
@@ -48,7 +48,7 @@ derivadas:
   taxa_sessao_compra:    { formula: "compras / sessoes",                         formato: pct, nome: "Sessão → compra", nota: "métrica da trava decisao (glossário)" }
   ticket:                { formula: "receita / compras",                         formato: brl, nome: "Ticket" }
   investimento_total:    { formula: "investimento_google + investimento_meta",   formato: brl, nome: "Investimento total" }
-  mer:                   { formula: "receita / investimento_total",              formato: x,   nome: "Receita real ÷ investimento", nota: "o ROAS que não depende de atribuição" }
+  mer:                   { formula: "receita / investimento_total",              formato: x,   nome: "Receita real ÷ investimento", nota: "não depende de atribuição. COMPLEMENTA, não substitui, o ROAS de Google e Meta (decisão do usuário, 13/10)" }
   roas_google:           { formula: "receita_google / investimento_google",      formato: x,   nome: "ROAS Google (plataforma)" }
   roas_real_google:      { formula: "receita_utm_google / investimento_google",  formato: x,   nome: "ROAS Google (JET, último toque)" }
   cpa_google:            { formula: "investimento_google / compras_google",      formato: brl, nome: "Custo por compra Google" }
@@ -81,6 +81,7 @@ pauta:
 # ajustar pelo uso (melhoria contínua, premissa 1).
 desvios:
   variacao:        # compara última semana × penúltima, e mês × mês anterior
+                   # 13/10: cpm_google saiu (ruído sem decisão em 28/09, Fase A ponto 3); segue no anexo
     - { campo: receita,            limiar: 0.20, dono: account }
     - { campo: compras,            limiar: 0.20, dono: account }
     - { campo: sessoes,            limiar: 0.20, dono: trafego }
@@ -89,7 +90,6 @@ desvios:
     - { campo: investimento_google, limiar: 0.25, dono: trafego }
     - { campo: investimento_meta,  limiar: 0.25, dono: trafego }
     - { campo: roas_real_google,   limiar: 0.25, dono: trafego }
-    - { campo: cpm_google,         limiar: 0.20, dono: trafego }
     - { campo: receita_utm_flowbiz, limiar: 0.30, dono: email }
   verba:           # ritmo mensal do investimento × budget do cliente.md
     tolerancia: 0.10
@@ -98,4 +98,4 @@ desvios:
     campo: taxa_sessao_compra
   medicao:         # regras de medição quebrada
     - { se: "add_payment_info > begin_checkout", texto: "begin_checkout subcontando: o evento de checkout do GA4 está quebrado", dono: tech }
-    - { se: "fator_ga4 > 1.35 or fator_ga4 < 0.9", texto: "a receita do GA4 se afastou da JET além do normal (~1,2×)", dono: tech }
+    - { se: "fator_ga4 > 1.10 or fator_ga4 < 0.9", texto: "o GA4 está contando pedido não pago: é esse sinal que o lance do Google usa (arquitetura/16 §8.1)", dono: tech }   # 13/10: 1,2× deixou de ser "normal"; era o defeito

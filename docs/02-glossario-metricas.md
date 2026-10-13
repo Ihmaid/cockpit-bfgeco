@@ -91,7 +91,7 @@ vale para qualquer e-commerce. A **fonte** de cada termo é declarada no `client
 | Métrica | Definição | Fonte no AP13 | Observação |
 |---|---|---|---|
 | **compra** | pré-pedido **aprovado** = 1 checkout pago. Uma compra pode virar N pedidos (divisão por centro de distribuição) | JET (`scripts/jet.py`) | O comparável às "transações" do GA4 é a compra, não o pedido |
-| **receita-ecommerce** | Σ "Valor total pedido" (produto + frete − desconto) | JET | ⛔ O GA4 superconta ~20–25% no AP13. Usar o GA4 só para tendência |
+| **receita-ecommerce** | Σ "Valor total pedido" (produto + frete − desconto) **só de venda válida: aprovada e não cancelada** (13/10) | JET | ⛔ O GA4 superconta ~20–25% no AP13 porque conta pedido não pago (arquitetura/16 §8.1). Usar o GA4 só para tendência. **Compra** = pré-pedido com ao menos um pedido válido |
 | **taxa-conversao-sessao-compra** | compras ÷ sessões, no mesmo período. Razão das somas, nunca média de razões diárias | compras: JET · sessões: GA4 | **Métrica da trava `decisao` do AP13** desde 28/09. Baseline 0,78% |
 | **ticket** | receita-ecommerce ÷ compras | JET | ~R$ 250 em set/2026 |
 | **taxa-conversao-checkout** | compras ÷ `begin_checkout` | JET ÷ GA4 | ⛔ **Suspensa no AP13** enquanto o `begin_checkout` estiver quebrado. Volta como diagnóstico, não como métrica da trava |

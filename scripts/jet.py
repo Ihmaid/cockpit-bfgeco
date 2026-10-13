@@ -17,7 +17,7 @@ Definicoes (docs/02-glossario-metricas.md, bloco E-commerce):
 - pre_pedido = a compra (1 checkout). A JET divide uma compra em N pedidos por centro de
   distribuicao, entao pedidos > pre_pedidos. O comparavel as transacoes do GA4 e' o pre_pedido
 - aprovado = tem Data Aprovacao. Pedido "Novo" sem aprovacao nao conta como compra paga
-- receita = "Valor total pedido" (produto + frete - desconto)
+- receita = "Valor total pedido" (produto + frete - desconto), SO de venda valida: aprovada e nao cancelada (13/10)
 - canal_utm = UTM de origem gravada no pedido (ultimo toque), agrupada
 
 Levantado em 28/09/2026 sobre o export 01-08a27-09.csv (678 pedidos, 112 colunas).
@@ -33,7 +33,7 @@ COL = {
     "aprovacao": "Data Aprovação - PEDIDO", "total": "Valor total pedido - PEDIDO",
     "frete": "Valor total frete - PEDIDO", "desconto": "Desconto - PEDIDO",
     "canal": "Canal venda- PEDIDO", "pessoa": "Tipo Pessoa - CLIENTE", "tabela": "Tabela de preço",
-    "vendedor": "Código Vendedor", "utm": "UTM Origem(Source)",
+    "vendedor": "Código Vendedor", "utm": "UTM Origem(Source)", "status": "Status pedido - PEDIDO",
 }
 
 
@@ -79,6 +79,7 @@ def ler_pedidos(pasta):
                 pedidos[n] = {       # o arquivo mais novo sobrescreve
                     "pre": r[COL["pre"]], "dia": data(r[COL["data"]]),
                     "aprovado": bool(data(r[COL["aprovacao"]])),
+                    "cancelado": r[COL["status"]].strip().lower() == "cancelado",
                     "total": brl(r[COL["total"]]), "frete": brl(r[COL["frete"]]),
                     "desconto": brl(r[COL["desconto"]]),
                     "pj": r[COL["pessoa"]].strip() == "Jurídica",
@@ -95,13 +96,20 @@ def agregar(pedidos):
     pre_dia, pre_aprov = {}, set()
     for p in pedidos.values():
         d = por_dia[p["dia"]]
-        d["pedidos"] += 1
+        d["pedidos"] += 1                     # todo pedido feito, inclusive cancelado
+        if p["cancelado"]:
+            d["pedidos_cancelados"] += 1
+        if p["pre"] not in pre_dia or p["dia"] < pre_dia[p["pre"]]:
+            pre_dia[p["pre"]] = p["dia"]
+        # 13/10: venda valida = aprovada E nao cancelada. O export com todos os status traz
+        # PIX/boleto nao pago e pedido estornado; somar tudo inflava a receita (arquitetura/16 §8.1)
+        if not p["aprovado"] or p["cancelado"]:
+            continue
+        pre_aprov.add(p["pre"])
         d["receita"] += p["total"]
+        d["receita_aprovada"] += p["total"]
         d["frete"] += p["frete"]
         d["desconto"] += p["desconto"]
-        if p["aprovado"]:
-            d["receita_aprovada"] += p["total"]
-            pre_aprov.add(p["pre"])
         if p["pj"]:
             d["pedidos_pj"] += 1
             d["receita_pj"] += p["total"]
@@ -110,12 +118,10 @@ def agregar(pedidos):
             d["receita_b2b"] += p["total"]
         d["pedidos_utm_" + p["utm"]] += 1
         d["receita_utm_" + p["utm"]] += p["total"]
-        if p["pre"] not in pre_dia or p["dia"] < pre_dia[p["pre"]]:
-            pre_dia[p["pre"]] = p["dia"]
     for pre, dia in pre_dia.items():
         por_dia[dia]["pre_pedidos"] += 1
         if pre in pre_aprov:
-            por_dia[dia]["compras"] += 1      # pre-pedido aprovado = compra paga
+            por_dia[dia]["compras"] += 1      # pre-pedido com venda valida = compra paga
     return por_dia
 
 

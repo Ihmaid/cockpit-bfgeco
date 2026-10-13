@@ -35,9 +35,15 @@ a `-14`; questionário em `arquitetura/15`; análise e trajeto em **`arquitetura
 - ⏳ **O outro computador ainda não recebeu o clone** (pendente desde 10/10)
 - ⛔ O "evento na Baixada" foi só um exemplo. Não levar adiante
 
-**Próximo passo (proposto, aguarda o "vai"):** 13–14/10 fechar a Fase A numa sessão (7 pontos, com
-recomendação do Claude) → construir o agente de tráfego (método + repertório + auditoria do AP13) →
-projeção (lógica do Growth Pack) → plano Q4 revisado + plano da BF até 25/10. Trajeto em `arquitetura/16` §5.
+**✅ 13/10: trajeto aprovado ("vai") e FASE A FECHADA** (`arquitetura/14`, seção final). Os 7 pontos
+aprovados; duas ressalvas do usuário: **"receita real ÷ investimento" não substitui o ROAS de Google e
+Meta**, e **a rotina fica na segunda antes das 9h**. ⛔ O teste achou e corrigiu um defeito: o `jet.py`
+somava pedido cancelado; agora receita e compras são **só venda válida** (20–26/09 = 91 compras /
+R$ 25.955). ⚠️ **O conector do Meta não carregou nesta sessão** (no claude.ai está ativo): conferir
+com `/mcp` ou abrir sessão nova antes da auditoria do agente de tráfego.
+
+**Próximo passo:** construir o agente de tráfego (método + repertório + auditoria do AP13) →
+projeção (lógica do Growth Pack) → plano Q4 revisado + plano da BF até **25/10**. Trajeto em `arquitetura/16` §5.
 
 ---
 
