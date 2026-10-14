@@ -9,7 +9,7 @@
 |---|---|---|
 | Plano base | `planos/2026-Q4.md` é um bom ponto de partida (Q34) | completar e revisar, não redesenhar |
 | Time do AP13 | Gabriel (GP, faz a copy com IA) · Lucas (coordenador) · Breno (GT) · Pedro (designer) · Esdras (tech, e-mails do CRM) (Q35) | o plano tem 5 donos possíveis; copy não tem dono humano dedicado |
-| Capacidade | "o quanto for necessário"; saudável = **8–10 h/semana** para o AP13 (Q35) | ⭐ **o plano tem orçamento de horas.** Plano que não cabe em ~40 h/mês está errado |
+| Capacidade | "o quanto for necessário"; saudável = **8–10 h/semana** para o AP13 (Q35) | ⭐ **o plano tem orçamento de horas.** ~~Plano que não cabe em ~40 h/mês está errado~~ ⚠️ **Corrigido em 14/10:** é referência de rentabilidade, não teto; semana de evento pede mais |
 | Carga | medida por **número de tarefas**, e o alarme é a soma da carteira, não o AP13 (Q36) | o AP13 é o piloto do método; a carga é um problema do squad |
 | Formato | **o plano é seguido no Ekyte** (Q37) — mas o Ekyte "há muito tempo não é usado da forma correta" | ⛔ conformidade do Ekyte é pré-requisito do plano (tese nº 4) |
 | Fixo × variável | "não sei" (Q38) | proposta na §3 |

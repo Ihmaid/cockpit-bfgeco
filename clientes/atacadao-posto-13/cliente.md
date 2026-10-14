@@ -22,7 +22,7 @@ plataforma_ecommerce: jet   # era Wake até 2025; a BF 2025 da Wake não é mais
 fonte_metrica_conversao: "jet ÷ ga4"   # 28/09: compras da JET (scripts/jet.py) ÷ sessões do GA4. Wake não foi preciso
 eventos_ga4_confiaveis: [sessions]   # 13/10: purchase saiu — conta pedido não pago e duplicado (arquitetura/16 §8.1), serve só de tendência · begin_checkout quebrado desde ~09–30/08; add_to_cart suspeito (docs/25)
 stakeholder_principal: Paulo   # avalia por resultado; dores em contexto/04
-capacidade_horas_semana: 10   # 8–10 h/semana do TIME INTEIRO no AP13 (13/10). Orçamento de horas do plano: plano que não cabe aqui está errado
+capacidade_horas_semana: 10   # 8–10 h/semana do TIME INTEIRO no AP13 (13/10). REFERÊNCIA de rentabilidade, não teto (14/10): semana de evento pede mais
 canal_interno: "GChat — Fúria da Noite"
 # acompanhamento de métricas (scripts/metricas.py + scripts/pauta.py, 28/09):
 ekyte_workspace_id: 91023

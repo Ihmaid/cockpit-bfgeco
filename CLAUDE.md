@@ -3,7 +3,20 @@
 Projeto de gestão, análise e implementação do **Cockpit**: sistema para centralizar a gestão
 **estratégica, comercial e administrativa** da unidade BFG&Co da V4 Company.
 
-## 🔖 Onde paramos — 14/10/2026
+## 🔖 Onde paramos — 14/10/2026 (tarde)
+
+**✅ Conector do Meta funcionando.** **Agente de tráfego começou** (estrutura aprovada com 4 correções):
+- `compartilhado/agentes/trafego/metodo.md` (**v0.1 rascunho, aguarda revisão do usuário**) — genérico,
+  fontes vêm do `cliente.md`; princípio = **Step V0–V3 da V4** (implementação · testes+validação ·
+  maturação · escala), achado em `pesquisa-metodo-v4.md`. ⚠️ "STEP" de 2026 da matriz é OUTRA coisa
+  (portfólio Saber/Ter/Executar/Potencializar). Fala com o Gabriel, ensina objetivo; acionável sob demanda
+- **Registro de testes é do CLIENTE** (`clientes/<c>/testes/`), não do agente. Horas 8–10/sem = referência, não teto
+- ⭐ **1º diagnóstico:** `clientes/atacadao-posto-13/diagnosticos/trafego-2026-10-14.md`. "ROAS 8–10 → 2" =
+  volume baixo + ticket oscilando + **pedido inválido de ticket alto** (24/08: 12,5 → 6,7 válido).
+  NADIR 7,2 no Google ≈ 3,7 válido ≈ PMAX principal 3,9. Meta Brinquedos 7,4 = 9% válido. **Escala
+  bloqueada pelo sinal.** Pista dos 78 sem par: pedido lançado pelo painel admin (`painel1.plataformaneo`)
+- **Próximo:** usuário revisa método + diagnóstico → R2/R4 com o Esdras → registro de testes (R7) →
+  repertório (PMax × Shopping) → estrutura da BF
 
 > ▶️ **ABRINDO UM CHAT NOVO? Faça nesta ordem:**
 > 1. `git pull` (o repositório é a fonte; a sessão anterior fez push até 14/10)
