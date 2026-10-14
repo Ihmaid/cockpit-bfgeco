@@ -29,6 +29,7 @@ Projeto de gestão, análise e implementação do **Cockpit**: sistema para cent
 >    ROAS muito diferente" (Q55, ele não sabe qual campanha — o agente investiga)
 > 4. Prazo duro: **plano da Black Friday até 25/10**. Trajeto em `arquitetura/16` §5
 >
+> **D22 (14/10, explorar no futuro):** sinal de VENDA PAGA para as plataformas (`arquitetura/decisoes-em-aberto.md`).
 > **Pendências em aberto:** clone no outro computador (passos: renomear a pasta antiga, `git clone
 > https://github.com/Ihmaid/cockpit-bfgeco.git Cockpit`, copiar de volta `.env` e `metricas/bruto/`,
 > importar `docs/migracao/memoria/`) · Esdras corrigir o `purchase` do GA4 (só pago) e explicar os

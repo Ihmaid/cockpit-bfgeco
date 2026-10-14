@@ -218,6 +218,28 @@ Atraso vira gargalo de rotina. **Definir no piloto** (AP13 + um cliente de lead)
 
 ---
 
+### D22 · Sinal de venda paga para as plataformas — ⏳ em aberto, explorar no futuro (14/10)
+
+*"Mantém esse ponto registrado pois vamos explorar ele no futuro."* (usuário, 14/10)
+
+**A pergunta:** como as plataformas passam a aprender com **venda paga**, e não com pedido criado? O
+padrão de mercado conta no navegador, antes da confirmação. No Brasil, PIX e boleto tornam isso caro.
+
+**Quatro caminhos**, com as regras oficiais em `compartilhado/agentes/trafego/repertorio.md` §1.4:
+- (A) evento enviado pelo servidor na aprovação;
+- (B) retração no Google;
+- (C) importação offline da venda paga;
+- (D) duas conversões na transição.
+
+**Antes de decidir:**
+- **Esdras:** o `Purchase` do servidor no Meta (JEX PIXEL) sai na criação ou na aprovação? A JET
+  avisa quando o pedido muda de status (webhook)?
+- O dataset **"CONVERSÃO OFFILINE"** (Meta, criado em 14/07, nunca usado): quem criou e por que parou?
+
+**Consequência:** é pré-requisito de escala no método (`metodo.md` §3 e repertório §1.5). É também
+**invariante do núcleo**: vale para todo cliente cujo pagamento não é aprovado na hora. Caso de
+origem: AP13, `diagnosticos/trafego-2026-10-14.md`.
+
 ## Restrições já decididas — não reabrir
 
 Registradas antes deste dump, valem para toda a arquitetura:
