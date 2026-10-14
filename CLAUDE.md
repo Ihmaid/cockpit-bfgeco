@@ -3,7 +3,25 @@
 Projeto de gestão, análise e implementação do **Cockpit**: sistema para centralizar a gestão
 **estratégica, comercial e administrativa** da unidade BFG&Co da V4 Company.
 
-## 🔖 Onde paramos — 10/10/2026
+## 🔖 Onde paramos — 14/10/2026
+
+> ▶️ **ABRINDO UM CHAT NOVO? Faça nesta ordem:**
+> 1. `git pull` (o repositório é a fonte; a sessão anterior fez push até 14/10)
+> 2. **Conector do Meta Ads:** no claude.ai está ativo, mas não carregou nas sessões de 12–13/10
+>    (o Google Drive também caiu). Testar com a ferramenta de contas do Meta (conta `212245853`). Se
+>    não aparecer, o usuário roda `/mcp`. **Esse é o motivo deste chat novo.**
+> 3. Com o Meta de pé: **começar o agente de tráfego** — primeiro **propor a ESTRUTURA do documento
+>    de método** para o usuário validar, **antes** de escrever (ele constrói o agente junto).
+>    Primeira pauta do agente: o sinal de conversão contaminado (abaixo) e "campanhas parecidas com
+>    ROAS muito diferente" (Q55, ele não sabe qual campanha — o agente investiga)
+> 4. Prazo duro: **plano da Black Friday até 25/10**. Trajeto em `arquitetura/16` §5
+>
+> **Pendências em aberto:** clone no outro computador (passos: renomear a pasta antiga, `git clone
+> https://github.com/Ihmaid/cockpit-bfgeco.git Cockpit`, copiar de volta `.env` e `metricas/bruto/`,
+> importar `docs/migracao/memoria/`) · Esdras corrigir o `purchase` do GA4 (só pago) e explicar os
+> 78 "sem par" · confirmar que o repositório no GitHub está **Private**.
+> **Ferramenta nova:** `scripts/reconcilia_ga4_jet.py --ini --fim` refaz o cruzamento GA4 × JET.
+> Rodar depois da correção do Esdras: a linha "NAO pago" tem de ir a ~0.
 
 > 🔁 **Duas máquinas, sincronizadas por git** (repositório privado no GitHub, decidido em 10/10;
 > substitui o "sem versionamento" da D19). **Sempre `git pull` ao abrir e `git push` ao fechar.**
@@ -528,6 +546,7 @@ as capacidades do produto, não a realidade da unidade.
   + Meta + JET); [scripts/jet.py](scripts/jet.py) (JET → `manual.csv`); [scripts/ga4.py](scripts/ga4.py);
   [scripts/meta_cache.py](scripts/meta_cache.py) (conector → cache); definição em
   [compartilhado/arvores-metricas/ecommerce.yaml](compartilhado/arvores-metricas/ecommerce.yaml). Rotina em `arquitetura/14`
+- [scripts/reconcilia_ga4_jet.py](scripts/reconcilia_ga4_jet.py) — **reconciliação GA4 × JET** (10/10): o que é cada "compra" que o Google Ads recebe. Só lê, só agregados
 - [scripts/radar.py](scripts/radar.py) — ⭐ **radar da carteira**: lê o front matter dos `.md` e
   imprime o Ciclo de Receita, a razão dentro/fora do plano e os **gargalos por severidade**.
   Só lê, nunca escreve. `uv run --with pyyaml python scripts/radar.py`
