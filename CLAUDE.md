@@ -3,6 +3,16 @@
 Projeto de gestão, análise e implementação do **Cockpit**: sistema para centralizar a gestão
 **estratégica, comercial e administrativa** da unidade BFG&Co da V4 Company.
 
+## 🔖 Onde paramos — 15/10/2026
+
+**⭐ Projeção do Q4 feita (rascunho, aguarda revisão):** método no núcleo `compartilhado/projecao/ecommerce.md`
+(cascata do Growth Pack a partir de sessões, calibrada pela JET) · `scripts/projecao.py` · parâmetros e
+leitura em `clientes/atacadao-posto-13/planos/projecao-2026-Q4.md`. Achados: **set/26 = R$ 99 mil de venda
+válida** (desejo é +48%, não 3×) · realista out 110k / nov 121k / dez 105k · **desejo ⇔ conversão 1,21% ≈
+critério de saída da trava (1,3%)** · aprovação 80→90% (PIX/boleto) = +R$ 13 mil/mês · margem 20% →
+equilíbrio R$ 111 mil (margem real = pergunta ao Paulo) · na BF o que pesa é o ticket. **Próximo:** usuário
+revisa a projeção → plano Q4 revisado + plano da BF (até 25/10) → tarefas no Ekyte.
+
 ## 🔖 Onde paramos — 14/10/2026 (tarde)
 
 **✅ Conector do Meta funcionando.** **Agente de tráfego começou** (estrutura aprovada com 4 correções):
@@ -32,8 +42,9 @@ Projeto de gestão, análise e implementação do **Cockpit**: sistema para cent
 > **D22 (14/10, explorar no futuro):** sinal de VENDA PAGA para as plataformas (`arquitetura/decisoes-em-aberto.md`).
 > **15/10:** ✅ repositório no GitHub **confirmado privado**. ⛔ Clone no outro computador: **não
 > lembrar**; o usuário chama quando precisar. ⭐ **O tracking (purchase só pago, 78 sem par, pixel
-> antigo) saiu do Esdras: Gabriel + Claude executam.** Próximo passo dele: export do contêiner do
-> GTM + tela de integrações do painel da JET. Premissas da projeção no `cliente.md`: margem 20%,
+> antigo) saiu do Esdras: Gabriel + Claude executam.** Próximo passo dele: **conseguir acesso ao GTM** do AP13
+> (não tinha, 15/10) → export do contêiner + tela de integrações do painel da JET. A **API do GTM como
+> ferramenta do agente fica para o próximo ciclo** (decidido 15/10); agora só a leitura única para o plano da BF. Premissas da projeção no `cliente.md`: margem 20%,
 > verba BF R$ 18 mil, BF 2025 não é referência (⚠️ outubro/2025 ~R$ 70 mil a confirmar).
 > **Ferramenta nova:** `scripts/reconcilia_ga4_jet.py --ini --fim` refaz o cruzamento GA4 × JET.
 > Rodar depois da correção do Esdras: a linha "NAO pago" tem de ir a ~0.

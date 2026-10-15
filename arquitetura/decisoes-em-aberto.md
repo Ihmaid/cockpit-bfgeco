@@ -237,6 +237,9 @@ padrão de mercado conta no navegador, antes da confirmação. No Brasil, PIX e 
   (`/api/sendEventMeta` da JET). Logo, ele nasce na página, ou seja, na criação do pedido
 - **Ler a configuração inteira:** export do contêiner do GTM, que a JET injeta se estiver ativado no
   painel, mais a tela de integrações do painel da JET (pixel, conversão do Google Ads, GTM)
+- **GTM (15/10):** o usuário ainda não tem acesso; vai conseguir. Agora: leitura única pelo export, para
+  decidir se a correção cabe antes da BF (troca de conversão precisa entrar até ~1–5/11). **API do GTM
+  como ferramenta do agente de tráfego: próximo ciclo do AP13**
 - A JET avisa quando o pedido muda de status (webhook)? Sem documentação pública; perguntar à JET
 - ⚠️ Hipótese a testar: a página do PIX acompanha o pagamento e mostra "pago"? Se sim, dá para
   disparar a compra do PIX no navegador **só depois do pagamento**, sem servidor
