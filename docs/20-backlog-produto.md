@@ -144,6 +144,27 @@ anteriores nunca tiveram.
 
 ---
 
+## 8 💡 Planejamento de projetos — questionário fixo, depois com IA
+
+**Origem:** 15/10/2026, no plano da Black Friday do AP13. As perguntas que eu fiz para montar a BF
+(meta, decisões até a data, oferta, mídia, CRM, criativo, cronograma, acompanhamento) **são as
+mesmas para qualquer projeto**. O usuário:
+
+> *"Talvez elas sejam perguntas fixas ali para a construção de qualquer projeto. [...] talvez
+> construir um template ali para esse tipo de tarefa é importante. [...] pensando no sistema,
+> talvez adicionar um questionário, igual esse que você está me fazendo, e depois quando a gente
+> integrar ali a IA direto no sistema, seja via Claude Code aqui para ser local, ou seja via API
+> da Anthropic [...] isso vai ser uma tarefa recorrente ali desse sistema."*
+
+- **Agora:** template + questionário em `.md`, preenchido em conversa (Claude Code). A BF do AP13 é
+  a primeira instância; o cronograma que sai dele vira as tarefas no Ekyte
+- **Depois (app):** o questionário vira formulário na aplicação local; respostas gravadas no `.md`
+- **Depois (IA):** a IA conduz o questionário, propõe o cronograma e a fila de tarefas; o Gabriel
+  aprova. Mesma decisão pendente da seção 6: **Claude Code local (opção a) ou API direta (opção b)**
+- ⭐ É a peça que liga o plano de 3 meses à semana na frente: projeto → cronograma → Ekyte
+
+---
+
 ## Corrigido em 11/09/2026 — não é mais backlog
 
 Levantado pelo usuário na primeira rodada de uso e **já resolvido**:

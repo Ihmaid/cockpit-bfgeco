@@ -54,6 +54,11 @@ lamenta-se o número errado.
 Entrega em 24 h na região via Uber e Lalamove · frete grátis acima de **R$ 1.000** para Rio de
 Janeiro e Baixada Fluminense · fora da área, frete por conta do cliente.
 
+> ⚠️ **Atualizado em 15/10/2026 (Gabriel), vale sobre o formulário de 2025:** no site atual (JET),
+> **frete grátis acima de R$ 200 no Grande Rio**, entrega em **até 2 dias**. Leitura da JET
+> (01/08–09/10, pedidos B2C válidos): **71% dos pedidos ficam abaixo de R$ 200** e 3 em cada 4
+> deles pagam frete (média R$ 8–15). O limite de R$ 200 é alavanca de ticket, não trava.
+
 ## Público
 
 Classe média · **26–55 anos** · predominantemente **mulheres** ·

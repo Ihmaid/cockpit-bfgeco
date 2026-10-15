@@ -19,7 +19,7 @@ aquisição** — são de **plataforma e estoque**, ou seja, ficam **depois do c
 
 | # | Restrição | Efeito |
 |---|---|---|
-| 1 | **Erro no checkout** — frete calculado incorreto e excessivamente caro | Impede a finalização. Frete é fator decisivo de compra |
+| 1 | **Erro no checkout** — frete calculado incorreto e excessivamente caro | Impede a finalização. Frete é fator decisivo de compra. ⚠️ *15/10/2026: dado da era Wake. Na JET, frete grátis acima de R$ 200 no Grande Rio, até 2 dias (Gabriel). Fora da lista de suspeitos da trava no Grande Rio; reabrir só com evidência* |
 | 2 | **Erro de estoque** — produto vendido sem estar disponível no local indicado | Atraso na separação e entrega, reclamação de prazo |
 | 3 | **Produtos não cadastrados no site**, sobretudo com pouca unidade em estoque | Cliente vê nas redes, não acha no site, recorre a televendas |
 | 4 | **Variações (cor/estampa) mal cadastradas** | Recebe item diferente do escolhido → troca e cancelamento |

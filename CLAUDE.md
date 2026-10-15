@@ -17,6 +17,18 @@ Wake) e **no app local, seção "Projeção"** (`#projecao`): mês a mês, **sem
 JET** (régua da segunda), alavancas e equilíbrio. O app importa `scripts/projecao.py` (`resumo()`), sem
 cópia do cálculo. Flowbiz: já recupera carrinho, **não recupera pedido não pago** (Gabriel vai ver).
 
+✅ *15/10 (noite), respostas do Gabriel para o plano da BF:* **meta da BF = projeção realista**
+(R$ 47 mil na semana de 23/11) · **sinal SERÁ corrigido antes da BF** (falta o acesso ao GTM) ·
+oferta em discussão (ele traz; levei sugestões com dado da JET para o check-in de 15/10) ·
+⛔ **frete NÃO é trava:** o "frete caro" vinha do formulário de 2025 (era Wake); na JET é **grátis
+acima de R$ 200 no Grande Rio, até 2 dias** (`contexto/01` e `08` atualizados). JET 01/08–09/10:
+**71% dos pedidos B2C válidos < R$ 200** (28% da receita); **3% ≥ R$ 1 mil = 27% da receita** ·
+congelamento de mídia **~10 dias antes** (proposta: seg 16/11) · CRM: ele traz o calendário de
+e-mail e a recuperação de carrinho; WhatsApp fraco; pedido não pago = suporte da Flowbiz ·
+⭐ **NOVA PREMISSA DO SISTEMA: planejamento de projetos com questionário fixo** (template agora, IA
+depois; `docs/20` §8). O cronograma do Ekyte da BF sai dele. **Próximo:** validar a estrutura do
+template → preencher com a BF → cronograma → Ekyte.
+
 ## 🔖 Onde paramos — 14/10/2026 (tarde)
 
 **✅ Conector do Meta funcionando.** **Agente de tráfego começou** (estrutura aprovada com 4 correções):
