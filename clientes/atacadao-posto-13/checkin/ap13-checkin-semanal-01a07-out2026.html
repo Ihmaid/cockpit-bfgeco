@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!--bfg-seo-->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<!--/bfg-seo-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check-in Semanal — Atacadão Posto 13 · 01–07 Outubro 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#e01b24; --red-dark:#9a0f15; --red-glow:rgba(224,27,36,.35);
+  --bg:#090909; --bg2:#111111; --bg3:#1a1a1a;
+  --white:#f5f5f0; --muted:#888880;
+  --green:#26a269; --yellow:#e5a50a; --blue:#1a5fb4; --purple:#a347ba;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;}
+section{display:flex;flex-direction:column;justify-content:center;padding:120px 80px 100px;position:relative;overflow:hidden;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,13vw,180px);line-height:.88;letter-spacing:-1px;}
+h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,80px);line-height:1;letter-spacing:1px;margin-bottom:40px;}
+.section-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:16px;}
+.section-divider{width:48px;height:3px;background:var(--red);margin-bottom:24px;border-radius:2px;}
+section > p.lead{font-size:15px;color:var(--muted);line-height:1.7;max-width:820px;margin-bottom:24px;}
+section > p.lead strong{color:var(--white);font-weight:500;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--red-dark);border-radius:2px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(9,9,9,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.05);transition:padding .3s;}
+nav.scrolled{padding:10px 48px;background:rgba(9,9,9,.95);}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;display:flex;align-items:center;gap:10px;}
+.nav-logo span{display:inline-block;background:var(--red);color:#fff;padding:2px 8px;border-radius:4px;font-size:14px;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--red);transition:width .3s;}
+.nav-links a:hover{color:var(--white);}
+.nav-links a.active{color:var(--white);}
+.nav-links a.active::after{width:100%;}
+
+/* SCROLL PROGRESS */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--red-dark),var(--red));z-index:101;width:0;transition:width .1s linear;}
+
+/* BACK TO TOP */
+.btt{position:fixed;bottom:32px;right:32px;width:48px;height:48px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;opacity:0;transform:translateY(20px);transition:all .3s;z-index:99;border:none;box-shadow:0 4px 20px var(--red-glow);}
+.btt.show{opacity:1;transform:translateY(0);}
+.btt:hover{transform:translateY(-4px);box-shadow:0 8px 30px var(--red-glow);}
+
+/* PDF BTN */
+.pdf-btn{position:fixed;top:18px;right:18px;width:24px;height:24px;padding:0;border-radius:4px;background:transparent;color:var(--muted,#888);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;opacity:.25;transition:opacity .3s;z-index:200;}
+.pdf-btn:hover{opacity:.9;color:var(--white,#fff);}
+.pdf-btn:disabled{cursor:wait;opacity:.5;}
+.pdf-btn svg{width:14px;height:14px;}
+
+/* HERO */
+#hero{background:radial-gradient(ellipse at 80% 20%,rgba(224,27,36,.18) 0%,transparent 55%),radial-gradient(ellipse at 10% 90%,rgba(224,27,36,.1) 0%,transparent 50%),var(--bg);min-height:100vh;padding-top:120px;}
+.grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+.particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.particle{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--red);opacity:.15;animation:float-particle linear infinite;}
+@keyframes float-particle{0%{transform:translateY(100vh) scale(0);}50%{opacity:.3;}100%{transform:translateY(-100px) scale(1);opacity:0;}}
+.hero-solo{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;max-width:1000px;position:relative;z-index:2;}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:28px;}
+#hero h1 span{color:var(--red);}
+.hero-sub{font-family:'DM Mono',monospace;font-size:15px;color:var(--muted);margin-top:28px;}
+.hero-period{font-family:'DM Mono',monospace;font-size:14px;color:var(--white);margin-top:20px;display:flex;align-items:center;gap:10px;}
+.hero-period::before{content:'';display:inline-block;width:24px;height:1px;background:var(--red);}
+.hero-pills{display:flex;gap:12px;margin-top:44px;flex-wrap:wrap;}
+.hero-pill{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1px;padding:8px 20px;border-radius:20px;border:1px solid rgba(224,27,36,.3);color:var(--red);background:rgba(224,27,36,.06);transition:all .3s;cursor:pointer;text-decoration:none;}
+.hero-pill:hover{background:var(--red);color:#fff;border-color:var(--red);transform:translateY(-2px);box-shadow:0 8px 24px var(--red-glow);}
+.hero-stats{margin-top:56px;display:flex;gap:56px;flex-wrap:wrap;}
+.hero-stat-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:8px;}
+.hero-stat-val{font-family:'Bebas Neue',sans-serif;font-size:44px;line-height:1;}
+.hero-stat-sub{font-size:11px;color:var(--muted);margin-top:4px;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:none;}
+.reveal-delay-1{transition-delay:.1s;}
+.reveal-delay-2{transition-delay:.2s;}
+.reveal-delay-3{transition-delay:.3s;}
+.reveal-delay-4{transition-delay:.4s;}
+
+/* CONSOLIDADO — week-grid style comparativo */
+.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:16px;}
+.cmp-card{background:var(--bg3);padding:36px 40px;position:relative;overflow:hidden;transition:all .3s;}
+.cmp-card:hover{background:#1e1e1e;}
+.cmp-card.jul{border-top:3px solid var(--red);}
+.cmp-card.jun{border-top:3px solid rgba(255,255,255,.15);}
+.cmp-period{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:8px;}
+.cmp-period.jul{color:var(--red);}
+.cmp-big{font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:1;}
+.cmp-sub{font-size:12px;color:var(--muted);margin:6px 0 20px;}
+.cmp-rows{border-top:1px solid rgba(255,255,255,.06);padding-top:16px;display:flex;flex-direction:column;gap:10px;}
+.cmp-row{display:flex;justify-content:space-between;font-size:13px;}
+.cmp-row-label{color:var(--muted);}
+.cmp-row-val{font-family:'DM Mono',monospace;font-weight:500;}
+
+/* DELTA metric cards */
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:16px;}
+.metric-card{background:var(--bg3);padding:32px 24px;text-align:left;transition:all .4s;position:relative;overflow:hidden;}
+.metric-card:hover{background:#202020;transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,.3);}
+.metric-card::before{content:'';position:absolute;top:0;left:0;width:0;height:3px;background:var(--red);transition:all .4s;}
+.metric-card:hover::before{width:100%;}
+.metric-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:14px;}
+.metric-val{font-family:'Bebas Neue',sans-serif;font-size:46px;line-height:1;margin-bottom:6px;}
+.metric-desc{font-size:12px;color:var(--muted);line-height:1.5;}
+.delta{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;display:inline-block;margin-top:8px;padding:3px 10px;border-radius:4px;}
+.delta.up{color:var(--green);background:rgba(38,162,105,.1);}
+.delta.down{color:var(--red);background:rgba(224,27,36,.1);}
+.delta.flat{color:var(--muted);background:rgba(255,255,255,.05);}
+
+/* RANKING / LEADERBOARD */
+.champ-grid{display:flex;flex-direction:column;gap:3px;margin-top:16px;}
+.champ-card{display:grid;grid-template-columns:72px 1fr;align-items:center;background:var(--bg3);overflow:hidden;transition:background .25s;}
+.champ-card:first-child{border-radius:10px 10px 0 0;}
+.champ-card:last-child{border-radius:0 0 10px 10px;}
+.champ-card:hover{background:#202020;}
+.champ-rank{font-family:'Bebas Neue',sans-serif;font-size:32px;color:rgba(255,255,255,.08);text-align:center;padding:24px 0;border-right:1px solid rgba(255,255,255,.04);}
+.champ-card:hover .champ-rank{color:var(--red);}
+.champ-body{padding:20px 28px;display:flex;flex-direction:column;gap:10px;}
+.champ-name{font-size:15px;font-weight:600;color:var(--white);}
+.champ-name .tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--green);border:1px solid rgba(38,162,105,.3);padding:2px 6px;border-radius:4px;margin-left:8px;vertical-align:middle;}
+.champ-name .tag.new{color:var(--yellow);border-color:rgba(229,165,10,.3);}
+.champ-stats{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.champ-stat{display:flex;align-items:baseline;gap:8px;}
+.champ-stat-val{font-family:'Bebas Neue',sans-serif;font-size:26px;}
+.champ-stat-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);}
+.champ-div{width:1px;height:24px;background:rgba(255,255,255,.08);}
+.champ-bar-wrap{height:3px;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden;}
+.champ-bar{height:100%;background:linear-gradient(90deg,var(--red-dark),var(--red));border-radius:2px;transition:width 1.2s ease;}
+
+/* ROI TABLE */
+.table-wrap{overflow-x:auto;margin-top:24px;}
+.roi-table{width:100%;border-collapse:separate;border-spacing:0 2px;min-width:720px;}
+.roi-table th{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;text-align:left;padding:12px 20px;border-bottom:1px solid rgba(255,255,255,.06);}
+.roi-table td{background:var(--bg3);padding:16px 20px;font-size:13px;transition:all .3s;}
+.roi-table tr:hover td{background:#212121;}
+.roi-table td strong{font-weight:500;color:var(--white);}
+.roi-table .num{font-family:'DM Mono',monospace;}
+.roi-table tfoot td{background:rgba(224,27,36,.07);font-weight:500;}
+
+/* FUNNEL */
+.funnel-wrap{margin-top:24px;display:flex;flex-direction:column;gap:6px;max-width:760px;}
+.funnel-row{display:grid;grid-template-columns:200px 1fr;align-items:center;gap:20px;}
+.funnel-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--muted);text-transform:uppercase;}
+.funnel-bar-wrap{height:44px;background:rgba(255,255,255,.04);border-radius:8px;overflow:hidden;position:relative;}
+.funnel-bar{height:100%;background:linear-gradient(90deg,var(--red-dark),var(--red));display:flex;align-items:center;padding:0 18px;border-radius:8px;transition:width 1.3s cubic-bezier(.4,0,.2,1);white-space:nowrap;}
+.funnel-bar-val{font-family:'Bebas Neue',sans-serif;font-size:22px;color:#fff;}
+.funnel-bar-pct{font-family:'DM Mono',monospace;font-size:12px;color:rgba(255,255,255,.85);margin-left:12px;}
+
+/* INSIGHT BOX */
+.insight-box{margin-top:28px;padding:24px 28px;background:rgba(224,27,36,.06);border-left:3px solid var(--red);border-radius:0 8px 8px 0;font-size:14px;line-height:1.7;color:rgba(245,245,240,.85);max-width:860px;}
+.insight-box strong{color:var(--white);font-weight:500;}
+
+/* GOOGLE CARDS */
+.g-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:16px;}
+.g-card{background:var(--bg3);padding:32px 28px;transition:all .3s;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:6px;}
+.g-card:hover{background:#202020;transform:translateY(-4px);}
+.g-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),transparent);opacity:0;transition:opacity .3s;}
+.g-card:hover::after{opacity:1;}
+.g-type{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;}
+.g-name{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.5px;margin-bottom:6px;}
+.g-roas{font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:1;color:var(--green);}
+.g-roas.low{color:var(--yellow);}
+.g-roas-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;}
+.g-rows{display:flex;flex-direction:column;gap:6px;border-top:1px solid rgba(255,255,255,.06);padding-top:14px;}
+.g-row{display:flex;justify-content:space-between;font-size:12px;}
+.g-row span:first-child{color:var(--muted);}
+.g-row span:last-child{font-family:'DM Mono',monospace;}
+
+/* PILAR ACCORDION */
+.pilar-grid{display:flex;flex-direction:column;gap:2px;margin-top:16px;}
+.pilar-block{background:var(--bg3);overflow:hidden;transition:background .3s;}
+.pilar-block:hover{background:#1e1e1e;}
+.pilar-header{display:flex;align-items:center;justify-content:space-between;padding:26px 36px;cursor:pointer;user-select:none;transition:all .3s;}
+.pilar-header:hover{padding-left:44px;}
+.pilar-header-left{display:flex;align-items:center;gap:16px;}
+.pilar-block-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;}
+.pilar-toggle{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:18px;transition:all .4s;flex-shrink:0;}
+.pilar-block.open .pilar-toggle{transform:rotate(45deg);background:var(--red);border-color:var(--red);color:#fff;}
+.pilar-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1),padding .3s;}
+.pilar-block.open .pilar-body{max-height:700px;}
+.pilar-body-inner{padding:0 36px 28px;}
+.pilar-items{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.pilar-items li{font-size:13.5px;color:var(--muted);line-height:1.6;display:flex;align-items:flex-start;gap:10px;opacity:0;transform:translateX(-12px);transition:all .3s ease;}
+.pilar-block.open .pilar-items li{opacity:1;transform:translateX(0);}
+.pilar-block.open .pilar-items li:nth-child(1){transition-delay:.05s;}
+.pilar-block.open .pilar-items li:nth-child(2){transition-delay:.1s;}
+.pilar-block.open .pilar-items li:nth-child(3){transition-delay:.15s;}
+.pilar-block.open .pilar-items li:nth-child(4){transition-delay:.2s;}
+.pilar-block.open .pilar-items li:nth-child(5){transition-delay:.25s;}
+.pilar-items li::before{content:'→';color:var(--red);font-size:12px;flex-shrink:0;margin-top:3px;}
+.pilar-items li strong{color:var(--white);font-weight:500;}
+.pilar-items li .dep{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--yellow);border:1px solid rgba(229,165,10,.3);padding:2px 7px;border-radius:4px;margin-left:6px;text-transform:uppercase;white-space:nowrap;}
+
+/* TIMELINE (feito / a fazer) */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:16px;}
+@media (max-width:900px){.two-col{grid-template-columns:1fr;}}
+.col-block{background:var(--bg3);padding:36px 40px;}
+.col-title{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px;margin-bottom:24px;display:flex;align-items:center;gap:12px;}
+.col-title .dot{width:10px;height:10px;border-radius:50%;}
+.dot.done{background:var(--green);box-shadow:0 0 12px rgba(38,162,105,.5);}
+.dot.next{background:var(--red);box-shadow:0 0 12px var(--red-glow);}
+.task-list{list-style:none;display:flex;flex-direction:column;gap:16px;}
+.task{display:flex;gap:14px;align-items:flex-start;font-size:13.5px;line-height:1.5;color:rgba(245,245,240,.82);}
+.task .ico{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:1px;}
+.ico.check{background:rgba(38,162,105,.15);color:var(--green);border:1px solid rgba(38,162,105,.3);}
+.ico.arrow{background:rgba(224,27,36,.12);color:var(--red);border:1px solid rgba(224,27,36,.3);}
+.task .txt strong{color:var(--white);font-weight:500;}
+.task .stat{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:4px;margin-left:8px;white-space:nowrap;display:inline-block;}
+.stat.and{color:var(--yellow);border:1px solid rgba(229,165,10,.3);}
+.stat.dep{color:var(--blue);border:1px solid rgba(26,95,180,.4);}
+.stat.acc{color:var(--purple);border:1px solid rgba(163,71,186,.4);}
+.stat.novo{color:var(--red);border:1px solid rgba(224,27,36,.3);}
+
+/* POS GRID */
+.pos-grid{display:grid;grid-template-columns:1fr 60px 1fr;align-items:stretch;margin-top:16px;}
+@media (max-width:900px){.pos-grid{grid-template-columns:1fr;}.pos-vs{padding:16px 0;}}
+.pos-col{background:var(--bg3);padding:40px;display:flex;flex-direction:column;gap:14px;}
+.pos-col.bad{border-left:3px solid var(--yellow);}
+.pos-col.bad:hover{background:#1a1712;}
+.pos-col.good{border-left:3px solid var(--green);}
+.pos-col.good:hover{background:#111a15;}
+.pos-vs{display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:32px;color:rgba(255,255,255,.1);}
+.pos-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;margin-bottom:8px;}
+.pos-item{font-size:13.5px;color:var(--muted);line-height:1.5;transition:transform .2s;display:flex;gap:10px;align-items:flex-start;}
+.pos-item:hover{transform:translateX(6px);}
+.pos-item::before{content:'●';font-size:7px;flex-shrink:0;margin-top:6px;}
+.pos-col.bad .pos-item::before{color:var(--yellow);}
+.pos-col.good .pos-item::before{color:var(--green);}
+
+/* VISAO */
+.visao-box{margin-top:48px;padding:44px 52px;background:rgba(224,27,36,.06);border:1px solid rgba(224,27,36,.15);border-radius:12px;max-width:920px;position:relative;overflow:hidden;}
+.visao-box::before{content:'';position:absolute;top:-50%;right:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(224,27,36,.05) 0%,transparent 60%);pointer-events:none;animation:pulse-glow 4s ease-in-out infinite;}
+@keyframes pulse-glow{0%,100%{opacity:.5;transform:scale(1);}50%{opacity:1;transform:scale(1.05);}}
+.visao-text{font-size:16px;line-height:1.8;color:rgba(245,245,240,.9);position:relative;z-index:1;}
+.visao-text strong{color:var(--white);font-weight:500;}
+.visao-text .hl{color:var(--red);font-weight:500;}
+
+/* CRIATIVOS */
+.crv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:16px;}
+.crv-card{background:var(--bg3);display:flex;flex-direction:column;overflow:hidden;transition:all .3s;}
+.crv-card:hover{background:#202020;transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,.35);}
+.crv-img{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;background:#000;}
+.crv-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;filter:saturate(1.05);}
+.crv-card:hover .crv-img img{transform:scale(1.05);}
+.crv-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,9,.55) 0%,transparent 45%);pointer-events:none;}
+.crv-rank{position:absolute;top:14px;left:14px;z-index:2;font-family:'Bebas Neue',sans-serif;font-size:26px;line-height:1;color:#fff;background:var(--red);padding:4px 12px;border-radius:6px;box-shadow:0 4px 16px var(--red-glow);}
+.crv-body{padding:26px 26px 30px;display:flex;flex-direction:column;gap:14px;}
+.crv-name{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.5px;line-height:1.05;}
+.crv-stats{display:flex;gap:22px;flex-wrap:wrap;}
+.crv-stat{display:flex;flex-direction:column;gap:2px;}
+.crv-stat-val{font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:1;}
+.crv-stat-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;}
+.crv-rec{font-family:'DM Mono',monospace;font-size:12px;color:var(--green);}
+.crv-bar-wrap{height:3px;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden;}
+.crv-bar{height:100%;background:linear-gradient(90deg,var(--red-dark),var(--red));border-radius:2px;transition:width 1.2s ease;}
+.crv-note{font-size:12.5px;color:var(--muted);line-height:1.6;border-top:1px solid rgba(255,255,255,.06);padding-top:14px;}
+
+/* FOOTER */
+.foot{padding:60px 80px;background:var(--bg2);border-top:1px solid rgba(255,255,255,.05);}
+.foot p{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);line-height:1.9;}
+
+@media (max-width:768px){
+  section{padding:80px 24px 60px;}
+  nav{padding:12px 20px;}
+  .nav-links{display:none;}
+  .hero-stats{flex-direction:column;gap:24px;}
+  .cmp-grid{grid-template-columns:1fr;}
+  .metrics-grid{grid-template-columns:1fr 1fr;}
+  .g-grid{grid-template-columns:1fr;}
+  .crv-grid{grid-template-columns:1fr;}
+  .funnel-row{grid-template-columns:1fr;gap:6px;}
+}
+
+/* ============ PRINT ============ */
+@media print{
+  @page{size:A4;margin:18mm 16mm 16mm 16mm;}
+  *,*::before,*::after{background:transparent !important;background-image:none !important;background-color:transparent !important;color:#111 !important;text-shadow:none !important;box-shadow:none !important;filter:none !important;backdrop-filter:none !important;animation:none !important;transition:none !important;opacity:1 !important;transform:none !important;-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
+  html,body{background:#fff !important;color:#111 !important;font-family:'DM Sans',sans-serif !important;font-size:10pt;line-height:1.5;overflow:visible !important;}
+  .pdf-btn,.btt,.scroll-progress,#mainNav,nav,.particles,.grid-overlay,.section-divider{display:none !important;}
+  .reveal{opacity:1 !important;transform:none !important;}
+  section{padding:0 !important;margin:0 0 24pt 0 !important;min-height:auto !important;display:block !important;page-break-inside:auto;}
+  #hero{page-break-after:always;break-after:page;padding-top:40pt !important;}
+  .hero-eyebrow{font-family:'DM Mono',monospace !important;font-size:9pt !important;letter-spacing:3pt !important;color:#666 !important;margin-bottom:24pt !important;}
+  #hero h1{font-family:'Bebas Neue',sans-serif !important;font-size:64pt !important;line-height:.95 !important;color:#111 !important;margin-bottom:20pt !important;}
+  #hero h1 span{color:#111 !important;}
+  .hero-sub{font-size:12pt !important;color:#444 !important;margin-bottom:8pt !important;}
+  .hero-period{font-size:10pt !important;color:#111 !important;margin-bottom:32pt !important;}
+  .hero-pills{display:none !important;}
+  .hero-stats{display:grid !important;grid-template-columns:repeat(2,1fr) !important;gap:20pt 32pt !important;margin-top:24pt !important;}
+  .hero-stat-label{font-family:'DM Mono',monospace !important;font-size:8pt !important;letter-spacing:1.5pt !important;color:#666 !important;margin-bottom:4pt !important;}
+  .hero-stat-val{font-family:'Bebas Neue',sans-serif !important;font-size:28pt !important;color:#111 !important;}
+  .hero-stat-sub{font-size:8pt !important;color:#666 !important;}
+  .section-label{font-family:'DM Mono',monospace !important;font-size:8pt !important;letter-spacing:2pt !important;color:#666 !important;border-top:1pt solid #111 !important;padding-top:12pt !important;margin-bottom:8pt !important;}
+  h2{font-family:'Bebas Neue',sans-serif !important;font-size:30pt !important;color:#111 !important;margin-bottom:12pt !important;line-height:1 !important;}
+  h2 span{color:#111 !important;}
+  p.lead{font-size:10pt !important;color:#444 !important;max-width:100% !important;margin-bottom:14pt !important;}
+  p.lead strong{color:#111 !important;}
+  .cmp-grid{display:grid !important;grid-template-columns:1fr 1fr !important;gap:0 !important;border-top:1pt solid #111 !important;border-left:1pt solid #111 !important;margin:12pt 0 !important;}
+  .cmp-card{border-right:1pt solid #111 !important;border-bottom:1pt solid #111 !important;padding:12pt !important;page-break-inside:avoid;}
+  .cmp-period{font-size:8pt !important;color:#666 !important;}
+  .cmp-big{font-family:'Bebas Neue',sans-serif !important;font-size:34pt !important;color:#111 !important;}
+  .cmp-sub{font-size:8pt !important;color:#666 !important;}
+  .cmp-row{font-size:9pt !important;}
+  .cmp-row-label{color:#444 !important;}
+  .cmp-row-val{color:#111 !important;}
+  .metrics-grid{display:grid !important;grid-template-columns:repeat(4,1fr) !important;gap:0 !important;border-top:1pt solid #111 !important;border-left:1pt solid #111 !important;margin:12pt 0 !important;}
+  .metric-card{border-right:1pt solid #111 !important;border-bottom:1pt solid #111 !important;padding:12pt !important;page-break-inside:avoid;}
+  .metric-label{font-size:7.5pt !important;color:#666 !important;}
+  .metric-val{font-family:'Bebas Neue',sans-serif !important;font-size:28pt !important;color:#111 !important;}
+  .metric-desc{font-size:8pt !important;color:#555 !important;}
+  .delta{font-size:8pt !important;border:.5pt solid #999 !important;color:#111 !important;padding:1pt 5pt !important;}
+  .champ-card{display:grid !important;grid-template-columns:40pt 1fr !important;border:.5pt solid #ddd !important;margin-bottom:4pt !important;page-break-inside:avoid;}
+  .champ-rank{font-size:18pt !important;color:#999 !important;padding:8pt 0 !important;}
+  .champ-name{font-size:10pt !important;color:#111 !important;}
+  .champ-name .tag{color:#111 !important;border:.5pt solid #999 !important;}
+  .champ-stat-val{font-family:'Bebas Neue',sans-serif !important;font-size:16pt !important;color:#111 !important;}
+  .champ-stat-label{font-size:7pt !important;color:#666 !important;}
+  .champ-bar-wrap,.champ-div{display:none !important;}
+  .roi-table{border:1pt solid #111 !important;min-width:0 !important;margin:12pt 0 !important;}
+  .roi-table th,.roi-table td{border:.5pt solid #999 !important;padding:5pt 7pt !important;color:#111 !important;font-size:8pt !important;}
+  .funnel-wrap{margin:12pt 0 !important;page-break-inside:avoid;}
+  .funnel-row{display:grid !important;grid-template-columns:120pt 1fr !important;gap:10pt !important;margin-bottom:4pt !important;}
+  .funnel-label{font-size:8pt !important;color:#444 !important;}
+  .funnel-bar-wrap{height:22pt !important;background:#f0f0f0 !important;border:.5pt solid #ddd !important;}
+  .funnel-bar{background:#111 !important;padding:0 8pt !important;}
+  .funnel-bar-val{font-family:'Bebas Neue',sans-serif !important;font-size:13pt !important;color:#fff !important;}
+  .funnel-bar-pct{color:#fff !important;font-size:8pt !important;}
+  .insight-box{border:none !important;border-left:2pt solid #111 !important;padding:8pt 12pt !important;margin:12pt 0 !important;font-size:9.5pt !important;color:#222 !important;page-break-inside:avoid;}
+  .insight-box strong{color:#111 !important;}
+  .g-grid{display:grid !important;grid-template-columns:repeat(3,1fr) !important;gap:0 !important;border-top:1pt solid #111 !important;border-left:1pt solid #111 !important;margin:12pt 0 !important;}
+  .g-card{border-right:1pt solid #111 !important;border-bottom:1pt solid #111 !important;padding:12pt !important;page-break-inside:avoid;}
+  .g-type{font-size:7pt !important;color:#666 !important;}
+  .g-name{font-family:'Bebas Neue',sans-serif !important;font-size:14pt !important;color:#111 !important;}
+  .g-roas{font-family:'Bebas Neue',sans-serif !important;font-size:34pt !important;color:#111 !important;}
+  .g-roas-label{font-size:7pt !important;color:#666 !important;}
+  .g-row{font-size:8pt !important;}
+  .g-row span{color:#333 !important;}
+  .pilar-block{border:1pt solid #111 !important;margin-bottom:8pt !important;page-break-inside:avoid;}
+  .pilar-header{padding:10pt 12pt !important;border-bottom:.5pt solid #ddd !important;}
+  .pilar-toggle{display:none !important;}
+  .pilar-block-title{font-family:'Bebas Neue',sans-serif !important;font-size:14pt !important;color:#111 !important;}
+  .pilar-body{max-height:none !important;overflow:visible !important;}
+  .pilar-body-inner{padding:10pt 12pt !important;}
+  .pilar-items li{opacity:1 !important;transform:none !important;font-size:9pt !important;color:#222 !important;}
+  .pilar-items li strong{color:#111 !important;}
+  .pilar-items li .dep{color:#111 !important;border:.5pt solid #999 !important;}
+  .two-col{display:grid !important;grid-template-columns:1fr 1fr !important;gap:0 !important;border-top:1pt solid #111 !important;border-left:1pt solid #111 !important;margin:12pt 0 !important;}
+  .col-block{border-right:1pt solid #111 !important;border-bottom:1pt solid #111 !important;padding:12pt !important;page-break-inside:avoid;}
+  .col-title{font-family:'Bebas Neue',sans-serif !important;font-size:14pt !important;color:#111 !important;margin-bottom:10pt !important;}
+  .col-title .dot{display:none !important;}
+  .task{font-size:9pt !important;color:#222 !important;margin-bottom:6pt !important;}
+  .task .ico{display:none !important;}
+  .task .txt strong{color:#111 !important;}
+  .task .stat{color:#111 !important;border:.5pt solid #999 !important;font-size:6.5pt !important;}
+  .pos-grid{display:grid !important;grid-template-columns:1fr 1fr !important;gap:0 !important;border:1pt solid #111 !important;margin:12pt 0 !important;}
+  .pos-vs{display:none !important;}
+  .pos-col{border-right:.5pt solid #999 !important;padding:12pt !important;}
+  .pos-title{font-family:'Bebas Neue',sans-serif !important;font-size:13pt !important;color:#111 !important;}
+  .pos-item{font-size:9pt !important;color:#222 !important;}
+  .visao-box{border:1pt solid #111 !important;padding:16pt !important;margin:12pt 0 !important;page-break-inside:avoid;}
+  .visao-text{font-size:11pt !important;color:#222 !important;}
+  .visao-text strong,.visao-text .hl{color:#111 !important;}
+  .crv-grid{display:grid !important;grid-template-columns:repeat(3,1fr) !important;gap:8pt !important;margin:12pt 0 !important;}
+  .crv-card{border:.5pt solid #999 !important;page-break-inside:avoid;overflow:visible !important;}
+  .crv-img{aspect-ratio:1/1 !important;border:.5pt solid #ddd !important;}
+  .crv-img img{filter:grayscale(100%) contrast(1.05) !important;-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
+  .crv-img::after{display:none !important;}
+  .crv-rank{background:#111 !important;color:#fff !important;font-size:14pt !important;padding:2pt 6pt !important;box-shadow:none !important;}
+  .crv-body{padding:8pt !important;}
+  .crv-name{font-family:'Bebas Neue',sans-serif !important;font-size:13pt !important;color:#111 !important;}
+  .crv-stat-val{font-family:'Bebas Neue',sans-serif !important;font-size:16pt !important;color:#111 !important;}
+  .crv-stat-lbl{font-size:6.5pt !important;color:#666 !important;}
+  .crv-rec{font-size:8pt !important;color:#333 !important;}
+  .crv-bar-wrap{display:none !important;}
+  .crv-note{font-size:8pt !important;color:#333 !important;border-top:.5pt solid #ddd !important;padding-top:6pt !important;}
+  .foot{border-top:1pt solid #111 !important;padding:12pt 0 0 0 !important;margin-top:24pt !important;}
+  .foot p{font-size:8pt !important;color:#666 !important;}
+  h2,.section-label{page-break-after:avoid;}
+}
+</style>
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+<button class="btt" id="btt" onclick="window.scrollTo({top:0})">↑</button>
+<button class="pdf-btn" id="pdfBtn" onclick="exportarPDF()" aria-label="Baixar PDF">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+</button>
+
+<nav id="mainNav">
+  <div class="nav-logo"><span>V4</span> BFG &amp; co.</div>
+  <ul class="nav-links">
+    <li><a href="#hero">Capa</a></li>
+    <li><a href="#consolidado">Consolidado</a></li>
+    <li><a href="#meta">Meta Ads</a></li>
+    <li><a href="#google">Google Ads</a></li>
+    <li><a href="#crm">CRM</a></li>
+    <li><a href="#plano">Plano</a></li>
+    <li><a href="#fechamento">Fechamento</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="grid-overlay"></div>
+  <div class="particles" id="particles"></div>
+  <div class="hero-solo">
+    <div class="hero-eyebrow">Check-in Semanal · Mídia Paga</div>
+    <h1>ATACADÃO<br>POSTO <span>13</span></h1>
+    <div class="hero-sub">Comparativo 24–30 Setembro × 1–7 Outubro · Meta Ads + Google Ads + Flowbiz</div>
+    <div class="hero-period">1 a 7 de outubro de 2026 · 7 dias</div>
+    <div class="hero-pills">
+      <a class="hero-pill" href="#consolidado">Consolidado</a>
+      <a class="hero-pill" href="#google">Google</a>
+      <a class="hero-pill" href="#plano">Reta final 12/10</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-label">Verba de venda</div>
+        <div class="hero-stat-val">R$ <span data-count="3536">0</span></div>
+        <div class="hero-stat-sub">+27,0% vs 24–30/09</div>
+      </div>
+      <div>
+        <div class="hero-stat-label">Receita atribuída</div>
+        <div class="hero-stat-val">R$ <span data-count="14455">0</span></div>
+        <div class="hero-stat-sub">−27,3% · semana anterior atípica</div>
+      </div>
+      <div>
+        <div class="hero-stat-label">ROAS de mídia</div>
+        <div class="hero-stat-val">4,09×</div>
+        <div class="hero-stat-sub">de 7,14× · só campanhas de venda</div>
+      </div>
+      <div>
+        <div class="hero-stat-label">Compras e conversões</div>
+        <div class="hero-stat-val"><span data-count="57">0</span></div>
+        <div class="hero-stat-sub">−5,3% · Meta 15 + Google 41,9</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="consolidado" style="background:var(--bg2)">
+  <div class="section-label reveal">01 — Comparativo consolidado</div>
+  <div class="section-divider reveal"></div>
+  <h2 class="reveal">A SEMANA <span style="color:var(--red)">EM NÚMEROS</span></h2>
+  <p class="lead reveal">A primeira semana de outubro investiu 27,0% mais em campanhas de venda e trouxe 27,3% menos receita atribuída que a última de setembro. O ROAS foi de 7,14× para 4,09×. A queda tem uma explicação concentrada: a semana de comparação teve quatro resultados fora da curva, que sozinhos fizeram quase metade da receita daquele período.</p>
+
+  <div class="cmp-grid">
+    <div class="cmp-card jun reveal reveal-delay-1">
+      <div class="cmp-period">24 a 30 de Setembro</div>
+      <div class="cmp-big">7,14×</div>
+      <div class="cmp-sub">ROAS de venda · receita R$ 19,9k</div>
+      <div class="cmp-rows">
+        <div class="cmp-row"><span class="cmp-row-label">Verba de venda</span><span class="cmp-row-val">R$ 2.784,75</span></div>
+        <div class="cmp-row"><span class="cmp-row-label">Receita atribuída</span><span class="cmp-row-val">R$ 19.893,64</span></div>
+        <div class="cmp-row"><span class="cmp-row-label">Compras e conversões</span><span class="cmp-row-val">60,0</span></div>
+        <div class="cmp-row"><span class="cmp-row-label">CPA médio</span><span class="cmp-row-val">R$ 46,38</span></div>
+        <div class="cmp-row"><span class="cmp-row-label">ROAS Meta · Google</span><span class="cmp-row-val">13,32× · 6,12×</span></div>
+        <div class="cmp-row"><span class="cmp-row-label">Investimento total AP13</span><span class="cmp-row-val">R$ 3.315,04</span></div>
+      </div>
+    </div>
+    <div class="cmp-card jul reveal reveal-delay-2">
+      <div class="cmp-period jul">1 a 7 de Outubro</div>
+      <div class="cmp-big">4,09×</div>
+      <div class="cmp-sub">ROAS de venda · receita R$ 14,5k</div>
+      <div class="cmp-rows">
+        <div class="cmp-row"><span class="cmp-row-label">Verba de venda</span><span class="cmp-row-val">R$ 3.536,45</span></div>
+        <div class="cmp-row"><span class="cmp-row-label">Receita atribuída</span><span class="cmp-row-val">R$ 14.454,97</span></div>
+        <div class="cmp-row"><span class="cmp-row-label">Compras e conversões</span><span class="cmp-row-val">56,9</span></div>
+        <div class="cmp-row"><span class="cmp-row-label">CPA médio</span><span class="cmp-row-val">R$ 62,21</span></div>
+        <div class="cmp-row"><span class="cmp-row-label">ROAS Meta · Google</span><span class="cmp-row-val">3,68× · 4,23×</span></div>
+        <div class="cmp-row"><span class="cmp-row-label">Investimento total AP13</span><span class="cmp-row-val">R$ 4.106,05</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card reveal reveal-delay-1">
+      <div class="metric-label">ROAS de venda</div>
+      <div class="metric-val">4,09×</div>
+      <div class="metric-desc">receita atribuída ÷ verba de venda</div>
+      <div class="delta down">▼ de 7,14×</div>
+    </div>
+    <div class="metric-card reveal reveal-delay-2">
+      <div class="metric-label">Verba de venda</div>
+      <div class="metric-val">R$ 3.536</div>
+      <div class="metric-desc">Meta R$ 897 · Google R$ 2.640</div>
+      <div class="delta down">▲ +27,0%</div>
+    </div>
+    <div class="metric-card reveal reveal-delay-3">
+      <div class="metric-label">Compras e conversões</div>
+      <div class="metric-val">56,9</div>
+      <div class="metric-desc">Meta 15 · Google 41,9</div>
+      <div class="delta down">▼ −5,3%</div>
+    </div>
+    <div class="metric-card reveal reveal-delay-4">
+      <div class="metric-label">CPA médio</div>
+      <div class="metric-val">R$ 62,21</div>
+      <div class="metric-desc">verba de venda ÷ compras</div>
+      <div class="delta down">▲ de R$ 46,38</div>
+    </div>
+  </div>
+
+  <div class="insight-box reveal">
+    🔍 <strong>A semana anterior é que estava fora da curva.</strong> Em 24–30/09, quatro resultados fizeram R$ 9.598 — 48% da receita daquela semana — com apenas R$ 533 de verba: Brinquedos no Meta (seis pedidos a R$ 706 de ticket médio), um único pedido de R$ 1.019 no Reels, e picos de NADIR (32,87×) e Shopping Curva C (22,62×) no Google. Sem esses quatro, aquela semana teria rodado a 4,57×. Os 4,09× desta semana estão perto desse patamar, com o dobro de compras no Meta.
+  </div>
+</section>
+
+<section id="meta" style="background:var(--bg)">
+  <div class="section-label reveal">02 — Meta Ads (Facebook &amp; Instagram)</div>
+  <div class="section-divider reveal"></div>
+  <h2 class="reveal">META <span style="color:var(--red)">ADS</span></h2>
+  <p class="lead reveal">O Meta mais que dobrou a verba de venda e as compras — de 7 para 15 —, mas o ticket médio voltou ao normal: R$ 220 contra R$ 750 na semana anterior. Com isso, o ROAS saiu de 13,32× para 3,68×, praticamente no mesmo nível do fechamento de setembro (3,74×). O catálogo segue pausado; a verba de venda rodou só em Brinquedos e Reels/Estáticos.</p>
+
+  <div class="champ-grid">
+    <div class="champ-card reveal">
+      <div class="champ-rank">01</div>
+      <div class="champ-body">
+        <div class="champ-name">[VENDA] [ABO] [TESTE PÚBLICO] [REELS/ESTÁTICOS]</div>
+        <div class="champ-stats">
+          <div class="champ-stat"><span class="champ-stat-val" style="color:var(--green)">R$ 1,7k</span><span class="champ-stat-label">receita</span></div>
+          <div class="champ-div"></div>
+          <div class="champ-stat"><span class="champ-stat-val">2,71</span><span class="champ-stat-label">roas</span></div>
+          <div class="champ-div"></div>
+          <div class="champ-stat"><span class="champ-stat-val">6</span><span class="champ-stat-label">compras</span></div>
+        </div>
+        <div class="champ-bar-wrap"><div class="champ-bar" style="width:100%"></div></div>
+      </div>
+    </div>
+    <div class="champ-card reveal">
+      <div class="champ-rank">02</div>
+      <div class="champ-body">
+        <div class="champ-name">[VENDA] [BRINQUEDOS] [RJ + LOJAS 5KM] <span class="tag">melhor ROAS · Dia das Crianças</span></div>
+        <div class="champ-stats">
+          <div class="champ-stat"><span class="champ-stat-val" style="color:var(--green)">R$ 1,6k</span><span class="champ-stat-label">receita</span></div>
+          <div class="champ-div"></div>
+          <div class="champ-stat"><span class="champ-stat-val">6,09</span><span class="champ-stat-label">roas</span></div>
+          <div class="champ-div"></div>
+          <div class="champ-stat"><span class="champ-stat-val">9</span><span class="champ-stat-label">compras</span></div>
+        </div>
+        <div class="champ-bar-wrap"><div class="champ-bar" style="width:90%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-wrap reveal">
+    <table class="roi-table">
+      <thead>
+        <tr><th>Campanha de venda</th><th>Investido</th><th>Compras</th><th>ROAS</th><th>Valor conv.</th><th>CPC</th><th>CTR</th><th>ROAS sem. ant.</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>[TESTE PÚBLICO] [REELS/ESTÁTICOS]</strong></td><td class="num">R$ 639,53</td><td class="num">6</td><td class="num">2,71</td><td class="num">R$ 1.732,76</td><td class="num">R$ 1,41</td><td class="num">0,93%</td><td class="num">6,30</td></tr>
+        <tr><td><strong>[BRINQUEDOS] [RJ + LOJAS 5KM]</strong></td><td class="num">R$ 257,24</td><td class="num">9</td><td class="num">6,09</td><td class="num">R$ 1.567,27</td><td class="num">R$ 0,60</td><td class="num">2,41%</td><td class="num">20,42</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td><strong>TOTAL VENDA · 2 campanhas</strong></td><td class="num">R$ 896,77</td><td class="num">15</td><td class="num">3,68</td><td class="num">R$ 3.300,03</td><td class="num">R$ 1,02</td><td class="num">1,33%</td><td class="num">13,32</td></tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="table-wrap reveal">
+    <table class="roi-table">
+      <thead>
+        <tr><th>Tráfego para o Instagram</th><th>Investido</th><th>Visitas ao perfil</th><th>Custo/visita</th><th>Seguidores</th><th>Impressões</th><th>Cliques</th><th>Custo/visita ant.</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>[LOJAS] [IG] [TRÁFEGO] ATACADÃO</strong> <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--yellow);border:1px solid rgba(229,165,10,.3);padding:2px 6px;border-radius:4px;margin-left:4px">TOPO · fora do ROAS</span></td><td class="num">R$ 392,99</td><td class="num">1.917</td><td class="num">R$ 0,21</td><td class="num">514</td><td class="num">73.862</td><td class="num">2.131</td><td class="num">R$ 0,25</td></tr>
+        <tr><td><strong>[LOJAS BRASIL] [TRÁFEGO PARA O IG]</strong> <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--yellow);border:1px solid rgba(229,165,10,.3);padding:2px 6px;border-radius:4px;margin-left:4px">OUTRA MARCA · fora do AP13</span></td><td class="num">R$ 243,07</td><td class="num">1.413</td><td class="num">R$ 0,17</td><td class="num">27</td><td class="num">21.181</td><td class="num">1.484</td><td class="num">R$ 0,25</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td><strong>TOTAL TRÁFEGO AP13 · 1 campanha</strong></td><td class="num">R$ 392,99</td><td class="num">1.917</td><td class="num">R$ 0,21</td><td class="num">514</td><td class="num">73.862</td><td class="num">2.131</td><td class="num">R$ 0,25</td></tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card reveal reveal-delay-1">
+      <div class="metric-label">ROAS Meta (venda)</div>
+      <div class="metric-val">3,68×</div>
+      <div class="metric-desc">R$ 3.300 sobre R$ 897</div>
+      <div class="delta down">▼ de 13,32×</div>
+    </div>
+    <div class="metric-card reveal reveal-delay-2">
+      <div class="metric-label">Compras</div>
+      <div class="metric-val">15</div>
+      <div class="metric-desc">eram 7 na semana anterior</div>
+      <div class="delta up">▲ +114,3%</div>
+    </div>
+    <div class="metric-card reveal reveal-delay-3">
+      <div class="metric-label">Ticket médio</div>
+      <div class="metric-val">R$ 220,00</div>
+      <div class="metric-desc">receita ÷ compras</div>
+      <div class="delta down">▼ de R$ 750,36</div>
+    </div>
+    <div class="metric-card reveal reveal-delay-4">
+      <div class="metric-label">Seguidores via tráfego</div>
+      <div class="metric-val">514</div>
+      <div class="metric-desc">R$ 0,21 por visita ao perfil</div>
+      <div class="delta up">▲ de 265</div>
+    </div>
+  </div>
+
+  <div class="insight-box reveal">
+    🧸 <strong>Brinquedos segue sendo a melhor campanha do Meta na reta final.</strong> 9 compras a 6,09× e CPA de R$ 28,58 — o menor do canal. O Reels/Estáticos recebeu duas vezes e meia a verba de Brinquedos e entregou ROAS menor, de 2,71×. Com o 12/10 no domingo, faz sentido inverter esse peso até o fim de semana. O tráfego para o Instagram dobrou os seguidores (265 → 514) com custo por visita 19% menor.
+  </div>
+</section>
+
+<section id="google" style="background:var(--bg2)">
+  <div class="section-label reveal">03 — Google Ads</div>
+  <div class="section-divider reveal"></div>
+  <h2 class="reveal">GOOGLE <span style="color:var(--red)">ADS</span></h2>
+  <p class="lead reveal">O Google investiu 10,4% mais em e-commerce e trouxe 23,8% menos receita: de 6,12× para 4,23×. Com verbas de R$ 50 a R$ 350 por campanha, o ROAS semanal oscila muito — campanhas que caíram nesta semana tinham subido na anterior, e vice-versa. A leitura confiável é a do canal; por campanha, só onde a tendência se repete.</p>
+
+  <div class="g-grid">
+    <div class="g-card reveal reveal-delay-1">
+      <div class="g-type">Shopping · virada da semana</div>
+      <div class="g-name">[VENDA] [SHOPPING] [CURVA B]</div>
+      <div class="g-roas">8,57</div>
+      <div class="g-roas-label">ROAS · valor conv./custo</div>
+      <div class="g-rows">
+        <div class="g-row"><span>Custo</span><span>R$ 256,11</span></div>
+        <div class="g-row"><span>Valor de conversão</span><span>R$ 2.195,52</span></div>
+        <div class="g-row"><span>Conversões</span><span>3,9</span></div>
+        <div class="g-row"><span>CPA</span><span>R$ 65,00</span></div>
+        <div class="g-row"><span>Cliques</span><span>189</span></div>
+        <div class="g-row"><span>vs semana anterior</span><span>1,52× → 8,57×</span></div>
+      </div>
+    </div>
+    <div class="g-card reveal reveal-delay-2">
+      <div class="g-type">Performance Max · maior verba</div>
+      <div class="g-name">[SHOPPING MERCHANT] DIRETO 03/10</div>
+      <div class="g-roas">3,10</div>
+      <div class="g-roas-label">ROAS · valor conv./custo</div>
+      <div class="g-rows">
+        <div class="g-row"><span>Custo</span><span>R$ 1.243,53</span></div>
+        <div class="g-row"><span>Valor de conversão</span><span>R$ 3.858,53</span></div>
+        <div class="g-row"><span>Conversões</span><span>19,6</span></div>
+        <div class="g-row"><span>CPA</span><span>R$ 63,35</span></div>
+        <div class="g-row"><span>Peso na verba do canal</span><span>47,1%</span></div>
+        <div class="g-row"><span>vs semana anterior</span><span>5,35× → 3,10×</span></div>
+      </div>
+    </div>
+    <div class="g-card reveal reveal-delay-3">
+      <div class="g-type">Shopping · alerta da reta final</div>
+      <div class="g-name">V4 — SHOPPING BRINQUEDO</div>
+      <div class="g-roas low">1,32</div>
+      <div class="g-roas-label">ROAS · valor conv./custo</div>
+      <div class="g-rows">
+        <div class="g-row"><span>Custo</span><span>R$ 199,53</span></div>
+        <div class="g-row"><span>Valor de conversão</span><span>R$ 263,31</span></div>
+        <div class="g-row"><span>Conversões</span><span>1,8</span></div>
+        <div class="g-row"><span>CPA</span><span>R$ 112,73</span></div>
+        <div class="g-row"><span>Cliques</span><span>361</span></div>
+        <div class="g-row"><span>vs semana anterior</span><span>5,25× → 1,32×</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-wrap reveal">
+    <table class="roi-table">
+      <thead>
+        <tr><th>Campanha de e-commerce</th><th>Tipo</th><th>Custo</th><th>Conv.</th><th>ROAS</th><th>Valor conv.</th><th>CPA</th><th>ROAS sem. ant.</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>[SHOPPING MERCHANT] DIRETO 03/10</strong></td><td>PMax</td><td class="num">R$ 1.243,53</td><td class="num">19,6</td><td class="num">3,10</td><td class="num">R$ 3.858,53</td><td class="num">R$ 63,35</td><td class="num">5,35</td></tr>
+        <tr><td><strong>[AP13] 07 SHOPPING ANTIGA</strong></td><td>PMax</td><td class="num">R$ 342,49</td><td class="num">2,1</td><td class="num">2,20</td><td class="num">R$ 752,55</td><td class="num">R$ 160,04</td><td class="num">9,94</td></tr>
+        <tr><td><strong>[VENDA] [SHOPPING] [CURVA B]</strong></td><td>Shopping</td><td class="num">R$ 256,11</td><td class="num">3,9</td><td class="num">8,57</td><td class="num">R$ 2.195,52</td><td class="num">R$ 65,00</td><td class="num">1,52</td></tr>
+        <tr><td><strong>V4 — SHOPPING BRINQUEDO</strong></td><td>Shopping</td><td class="num">R$ 199,53</td><td class="num">1,8</td><td class="num">1,32</td><td class="num">R$ 263,31</td><td class="num">R$ 112,73</td><td class="num">5,25</td></tr>
+        <tr><td><strong>[PESQUISA] CORE 1</strong></td><td>Search</td><td class="num">R$ 191,86</td><td class="num">2,1</td><td class="num">7,63</td><td class="num">R$ 1.464,25</td><td class="num">R$ 90,08</td><td class="num">0,00</td></tr>
+        <tr><td><strong>[VENDA] [SHOPPING] [CURVA A]</strong></td><td>Shopping</td><td class="num">R$ 151,42</td><td class="num">4,7</td><td class="num">6,86</td><td class="num">R$ 1.038,67</td><td class="num">R$ 32,22</td><td class="num">1,97</td></tr>
+        <tr><td><strong>[VENDA] [SEARCH] E-COMMERCE INSTITUCIONAL</strong></td><td>Search</td><td class="num">R$ 138,90</td><td class="num">3,9</td><td class="num">7,78</td><td class="num">R$ 1.080,94</td><td class="num">R$ 35,71</td><td class="num">0,44</td></tr>
+        <tr><td><strong>[VENDA] [SHOPPING] [CURVA C]</strong></td><td>Shopping</td><td class="num">R$ 61,72</td><td class="num">1,5</td><td class="num">0,93</td><td class="num">R$ 57,12</td><td class="num">R$ 41,42</td><td class="num">22,62</td></tr>
+        <tr><td><strong>[VENDA] [SHOPPING] [NADIR] TESTE 01</strong></td><td>Shopping</td><td class="num">R$ 54,12</td><td class="num">2,2</td><td class="num">8,20</td><td class="num">R$ 444,05</td><td class="num">R$ 25,06</td><td class="num">32,87</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td><strong>TOTAL E-COMMERCE · 9 campanhas</strong></td><td>—</td><td class="num">R$ 2.639,68</td><td class="num">41,9</td><td class="num">4,23</td><td class="num">R$ 11.154,94</td><td class="num">R$ 63,08</td><td class="num">6,12</td></tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="table-wrap reveal">
+    <table class="roi-table">
+      <thead>
+        <tr><th>Lojas físicas</th><th>Tipo</th><th>Custo</th><th>Conv. locais</th><th>Custo/conv.</th><th>Impressões</th><th>Cliques</th><th>Custo sem. ant.</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>[PMAX] LOJAS FÍSICAS AP13</strong> <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--yellow);border:1px solid rgba(229,165,10,.3);padding:2px 6px;border-radius:4px;margin-left:4px">FORA DO ROAS</span></td><td>PMax</td><td class="num">R$ 105,31</td><td class="num">383</td><td class="num">R$ 0,27</td><td class="num">107.233</td><td class="num">721</td><td class="num">R$ 100,29</td></tr>
+        <tr><td><strong>[VÍDEO] YOUTUBE LOJAS FÍSICAS</strong> <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--yellow);border:1px solid rgba(229,165,10,.3);padding:2px 6px;border-radius:4px;margin-left:4px">FORA DO ROAS</span></td><td>Vídeo</td><td class="num">R$ 71,30</td><td class="num">0</td><td class="num">—</td><td class="num">14.106</td><td class="num">20</td><td class="num">R$ 66,47</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td><strong>TOTAL LOJAS FÍSICAS</strong></td><td>—</td><td class="num">R$ 176,61</td><td class="num">383</td><td class="num">R$ 0,46</td><td class="num">121.339</td><td class="num">741</td><td class="num">R$ 166,76</td></tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card reveal reveal-delay-1">
+      <div class="metric-label">ROAS Google (e-com)</div>
+      <div class="metric-val">4,23×</div>
+      <div class="metric-desc">R$ 11.155 sobre R$ 2.640</div>
+      <div class="delta down">▼ de 6,12×</div>
+    </div>
+    <div class="metric-card reveal reveal-delay-2">
+      <div class="metric-label">Verba de e-commerce</div>
+      <div class="metric-val">R$ 2.640</div>
+      <div class="metric-desc">eram R$ 2.390</div>
+      <div class="delta down">▲ +10,4%</div>
+    </div>
+    <div class="metric-card reveal reveal-delay-3">
+      <div class="metric-label">CPA</div>
+      <div class="metric-val">R$ 63,08</div>
+      <div class="metric-desc">custo ÷ conversões</div>
+      <div class="delta down">▲ de R$ 45,07</div>
+    </div>
+    <div class="metric-card reveal reveal-delay-4">
+      <div class="metric-label">Conversões em loja</div>
+      <div class="metric-val">383</div>
+      <div class="metric-desc">PMax Lojas Físicas · sem valor</div>
+      <div class="delta down">▼ de 859</div>
+    </div>
+  </div>
+
+  <div class="insight-box reveal">
+    ⚠ <strong>O alerta que não pode esperar é a Shopping Brinquedo.</strong> Saiu de 5,25× para 1,32× a cinco dias do Dia das Crianças, enquanto Brinquedos no Meta segue a 6,09× — o público está comprando, o anúncio do Google é que perdeu tração. Do lado positivo, Curva A, Curva B, Search Institucional e Pesquisa Core 1 subiram juntas para a faixa de 6,9× a 8,6×; PMax Antiga e Merchant Direto caíram. Nenhum desses movimentos ainda se repetiu por duas semanas.
+  </div>
+</section>
+
+<section id="crm" style="background:var(--bg)">
+  <div class="section-label reveal">04 — E-mail, WhatsApp e carrinho abandonado</div>
+  <div class="section-divider reveal"></div>
+  <h2 class="reveal">CRM <span style="color:var(--red)">&amp; DIA DAS CRIANÇAS</span></h2>
+  <p class="lead reveal">A semana marcou o início do calendário de Dia das Crianças, com quatro disparos para segmentos novos — base B2B, compradores do e-commerce e clientes Bronze e Prata. Os envios são recentes e as taxas ainda estão em maturação; mais dois e-mails saem hoje, 08/10, fora deste período. A régua de carrinho recuperou R$ 800,82, com o WhatsApp à frente do e-mail.</p>
+
+  <div class="g-grid">
+    <div class="g-card reveal reveal-delay-1">
+      <div class="g-type">Canal de recuperação · líder</div>
+      <div class="g-name">WHATSAPP API</div>
+      <div class="g-roas">R$ 491</div>
+      <div class="g-roas-label">receita recuperada · 61,3%</div>
+      <div class="g-rows">
+        <div class="g-row"><span>Carrinhos recuperados</span><span>4</span></div>
+        <div class="g-row"><span>Mensagens enviadas</span><span>339</span></div>
+        <div class="g-row"><span>Taxa de abertura</span><span>65,78%</span></div>
+        <div class="g-row"><span>CTOR</span><span>21,97%</span></div>
+        <div class="g-row"><span>Descadastros</span><span>4 · 1,18%</span></div>
+        <div class="g-row"><span>Taxa de recuperação</span><span>1,20%</span></div>
+      </div>
+    </div>
+    <div class="g-card reveal reveal-delay-2">
+      <div class="g-type">Canal de recuperação</div>
+      <div class="g-name">E-MAIL</div>
+      <div class="g-roas">R$ 310</div>
+      <div class="g-roas-label">receita recuperada · 38,7%</div>
+      <div class="g-rows">
+        <div class="g-row"><span>Carrinhos recuperados</span><span>3</span></div>
+        <div class="g-row"><span>E-mails enviados</span><span>1.052</span></div>
+        <div class="g-row"><span>Taxa de abertura</span><span>6,75%</span></div>
+        <div class="g-row"><span>CTOR</span><span>11,27%</span></div>
+        <div class="g-row"><span>Descadastros</span><span>0</span></div>
+        <div class="g-row"><span>Taxa de recuperação</span><span>0,76%</span></div>
+      </div>
+    </div>
+    <div class="g-card reveal reveal-delay-3">
+      <div class="g-type">Potencial não recuperado</div>
+      <div class="g-name">CARRINHOS ABANDONADOS</div>
+      <div class="g-roas low">192</div>
+      <div class="g-roas-label">carrinhos na semana</div>
+      <div class="g-rows">
+        <div class="g-row"><span>Recuperados</span><span>7 · 3,6%</span></div>
+        <div class="g-row"><span>Receita recuperada</span><span>R$ 800,82</span></div>
+        <div class="g-row"><span>Taxa de recuperação</span><span>1,95% da receita</span></div>
+        <div class="g-row"><span>Receita a recuperar</span><span>R$ 40.175,73</span></div>
+        <div class="g-row"><span>Pico da semana</span><span>06/10 · ~R$ 690</span></div>
+        <div class="g-row"><span>WhatsApp Web</span><span>0 acionamentos</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-wrap reveal">
+    <table class="roi-table">
+      <thead>
+        <tr><th>Campanha de e-mail</th><th>Envio</th><th>Enviados</th><th>Aberturas</th><th>Abertura</th><th>Cliques</th><th>CTOR</th><th>Hard bounce</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Dia das Crianças — Cliente Bronze e Prata</strong> <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--yellow);border:1px solid rgba(229,165,10,.3);padding:2px 6px;border-radius:4px;margin-left:4px">EM MATURAÇÃO</span></td><td>07/10</td><td class="num">3.178</td><td class="num">146</td><td class="num">4,59%</td><td class="num">0</td><td class="num">0,00%</td><td class="num">4</td></tr>
+        <tr><td><strong>Reposição dia 12/10 — Base B2B Ativos</strong> <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--yellow);border:1px solid rgba(229,165,10,.3);padding:2px 6px;border-radius:4px;margin-left:4px">EM MATURAÇÃO</span></td><td>06/10</td><td class="num">419</td><td class="num">14</td><td class="num">3,34%</td><td class="num">2</td><td class="num">14,29%</td><td class="num">11</td></tr>
+        <tr><td><strong>Dia das Crianças — Compradores E-comm</strong> <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--yellow);border:1px solid rgba(229,165,10,.3);padding:2px 6px;border-radius:4px;margin-left:4px">EM MATURAÇÃO</span></td><td>05/10</td><td class="num">141</td><td class="num">10</td><td class="num">7,09%</td><td class="num">1</td><td class="num">10,00%</td><td class="num">0</td></tr>
+        <tr><td><strong>Dia das Crianças</strong></td><td>02/10</td><td class="num">1.290</td><td class="num">45</td><td class="num">3,49%</td><td class="num">6</td><td class="num">13,33%</td><td class="num">19</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td><strong>TOTAL · 4 disparos</strong></td><td>—</td><td class="num">5.028</td><td class="num">215</td><td class="num">4,28%</td><td class="num">9</td><td class="num">4,19%</td><td class="num">34</td></tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="insight-box reveal">
+    💬 <strong>Dois sinais a acompanhar antes dos próximos disparos.</strong> O e-mail de 02/10, já com seis dias de envio, está em 3,49% de abertura — as campanhas de setembro ficavam entre 13% e 14%. E a base B2B Ativos teve 2,6% de hard bounce (11 de 419), acima dos 0,7% do total da semana. Os segmentos são novos e a comparação com setembro ainda não é justa, mas a higiene da lista B2B vale ser revista antes do próximo envio. No WhatsApp, a abertura de 65,78% confirma o canal como o mais responsivo da régua.
+  </div>
+</section>
+
+<section id="plano" style="background:var(--bg2)">
+  <div class="section-label reveal">05 — Execução e plano de ação</div>
+  <div class="section-divider reveal"></div>
+  <h2 class="reveal">RETA FINAL <span style="color:var(--red)">DO 12/10</span></h2>
+  <p class="lead reveal">Faltam quatro dias para o Dia das Crianças. A prioridade da semana é concentrar verba onde o público de brinquedo já está comprando e corrigir o que perdeu tração — o resto da conta pede observação, não mudança.</p>
+
+  <div class="two-col">
+    <div class="col-block reveal reveal-delay-1">
+      <div class="col-title"><span class="dot done"></span>O QUE FOI FEITO</div>
+      <ul class="task-list">
+        <li class="task"><span class="ico check">✓</span><span class="txt"><strong>Início do calendário de Dia das Crianças</strong> — quatro disparos para B2B, compradores do e-commerce e clientes Bronze e Prata.<span class="stat novo">novo</span></span></li>
+        <li class="task"><span class="ico check">✓</span><span class="txt"><strong>Search Institucional mantido no ar</strong> — voltou a 7,78× depois de 0,44× na semana anterior.</span></li>
+        <li class="task"><span class="ico check">✓</span><span class="txt"><strong>Brinquedos no Meta com mais verba</strong> — R$ 257 na semana, 9 compras a 6,09×.<span class="stat and">até 12/10</span></span></li>
+        <li class="task"><span class="ico check">✓</span><span class="txt"><strong>Régua de WhatsApp ativa</strong> — 4 carrinhos e R$ 490,92 recuperados.</span></li>
+      </ul>
+    </div>
+    <div class="col-block reveal reveal-delay-2">
+      <div class="col-title"><span class="dot next"></span>O QUE SERÁ FEITO</div>
+      <ul class="task-list">
+        <li class="task"><span class="ico arrow">→</span><span class="txt"><strong>Revisar a Shopping Brinquedo hoje</strong> — produtos, preços e lances; 1,32× a quatro dias da data.<span class="stat novo">novo</span></span></li>
+        <li class="task"><span class="ico arrow">→</span><span class="txt"><strong>Inverter o peso entre Brinquedos e Reels/Estáticos no Meta</strong> até domingo.<span class="stat novo">novo</span></span></li>
+        <li class="task"><span class="ico arrow">→</span><span class="txt"><strong>Destacar a retirada na loja</strong> nos anúncios e mensagens dos últimos dias, quando a entrega já não chega a tempo.<span class="stat dep">dep. cliente</span></span></li>
+        <li class="task"><span class="ico arrow">→</span><span class="txt"><strong>Revisar a lista B2B Ativos</strong> — 2,6% de hard bounce.<span class="stat dep">dep. cliente</span></span></li>
+        <li class="task"><span class="ico arrow">→</span><span class="txt"><strong>Definir o código do cupom pós-12/10</strong> para boas-vindas e reativação.<span class="stat dep">dep. cliente</span></span></li>
+        <li class="task"><span class="ico arrow">→</span><span class="txt"><strong>Teste de reativação do catálogo no Meta</strong> — pendente desde o fechamento de setembro.<span class="stat acc">após 12/10</span></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pilar-grid">
+    <div class="pilar-block reveal">
+      <div class="pilar-header" onclick="togglePilar(this)">
+        <div class="pilar-header-left"><span style="font-size:22px">🧸</span><span class="pilar-block-title">1. Concentrar a reta final em brinquedo</span></div>
+        <div class="pilar-toggle">+</div>
+      </div>
+      <div class="pilar-body"><div class="pilar-body-inner"><ul class="pilar-items">
+        <li>Brinquedos no Meta: <strong>6,09× e CPA de R$ 28,58</strong> — o melhor do canal na semana.</li>
+        <li>Reels/Estáticos recebeu <strong>R$ 640 a 2,71×</strong>: deslocar parte dessa verba para Brinquedos até domingo.</li>
+        <li>Shopping Brinquedo no Google: <strong>5,25× → 1,32×</strong> — revisar feed e lances antes de manter a verba.</li>
+      </ul></div></div>
+    </div>
+    <div class="pilar-block reveal">
+      <div class="pilar-header" onclick="togglePilar(this)">
+        <div class="pilar-header-left"><span style="font-size:22px">📊</span><span class="pilar-block-title">2. Ler o Google pela tendência, não pela semana</span></div>
+        <div class="pilar-toggle">+</div>
+      </div>
+      <div class="pilar-body"><div class="pilar-body-inner"><ul class="pilar-items">
+        <li>Com verbas de R$ 50 a R$ 350, campanhas trocaram de posição de uma semana para outra — Curva C saiu de 22,62× para 0,93×.</li>
+        <li>PMax Antiga (9,94× → 2,20×) e Merchant (5,35× → 3,10×): <strong>manter e reavaliar no próximo check-in</strong>.</li>
+        <li>Curvas A e B, Institucional e Core 1 na faixa de 6,9× a 8,6×: candidatas a mais verba se repetirem na próxima semana.</li>
+      </ul></div></div>
+    </div>
+    <div class="pilar-block reveal">
+      <div class="pilar-header" onclick="togglePilar(this)">
+        <div class="pilar-header-left"><span style="font-size:22px">💬</span><span class="pilar-block-title">3. CRM: deixar maturar e cuidar da base</span></div>
+        <div class="pilar-toggle">+</div>
+      </div>
+      <div class="pilar-body"><div class="pilar-body-inner"><ul class="pilar-items">
+        <li>Três dos quatro disparos têm três dias ou menos: <strong>reler as taxas no próximo check-in</strong>.</li>
+        <li>B2B Ativos com <strong>2,6% de hard bounce</strong> — limpar a lista antes do próximo envio.<span class="dep">dep. cliente</span></li>
+        <li>WhatsApp abre a <strong>65,78%</strong>: priorizar o canal nas mensagens dos últimos dias.</li>
+      </ul></div></div>
+    </div>
+  </div>
+
+  <div class="insight-box reveal">
+    📌 <strong>Até domingo, a pergunta é uma só: a verba está onde o brinquedo vende?</strong> No Meta, sim, mas com pouco peso. No Google, a campanha de brinquedo é justamente a que precisa de ajuste hoje.
+  </div>
+</section>
+
+<section id="fechamento" style="background:var(--bg)">
+  <div class="section-label reveal">06 — Fechamento</div>
+  <div class="section-divider reveal"></div>
+  <h2 class="reveal">ONDE <span style="color:var(--red)">ESTAMOS</span></h2>
+  <p class="lead reveal">A semana fechou abaixo da anterior, mas a anterior foi excepcional. O ROAS de 4,09× está acima do fechamento de setembro, e a reta final do Dia das Crianças tem dois ajustes claros.</p>
+
+  <div class="pos-grid reveal">
+    <div class="pos-col bad">
+      <div class="pos-title" style="color:var(--yellow)">AJUSTAR / OBSERVAR</div>
+      <div class="pos-item">Shopping Brinquedo: 5,25× → 1,32× antes do 12/10</div>
+      <div class="pos-item">PMax Antiga e Merchant em queda na semana</div>
+      <div class="pos-item">E-mail de 02/10 em 3,49% de abertura</div>
+      <div class="pos-item">B2B Ativos com 2,6% de hard bounce</div>
+    </div>
+    <div class="pos-vs">VS</div>
+    <div class="pos-col good">
+      <div class="pos-title" style="color:var(--green)">ESCALAR / MANTER</div>
+      <div class="pos-item">Meta Brinquedos: 9 compras a 6,09×</div>
+      <div class="pos-item">Compras no Meta: 7 → 15</div>
+      <div class="pos-item">Curvas A e B, Institucional e Core 1 acima de 6,8×</div>
+      <div class="pos-item">WhatsApp: 65,78% de abertura, 61% da recuperação</div>
+    </div>
+  </div>
+
+  <div class="visao-box reveal">
+    <div class="visao-text">
+      A primeira semana de outubro rodou a <strong>4,09× de ROAS</strong>, acima dos 3,71× do fechamento de setembro, com o Meta dobrando o número de compras. A comparação com 24–30/09 pesa porque aquela semana teve quatro resultados atípicos. <span class="hl">Até domingo, o foco é corrigir a Shopping Brinquedo e dar mais peso ao Brinquedos do Meta</span>, que é onde o público do Dia das Crianças está comprando.
+    </div>
+  </div>
+</section>
+
+<div class="foot">
+  <p>
+    Atacadão Posto 13 · Check-in Semanal · 1 a 7 de outubro de 2026 (7 dias)<br>
+    Comparativo 24–30 Setembro × 1–7 Outubro · Meta Ads + Google Ads + Flowbiz · V4 BFG &amp; co.<br>
+    ROAS calculado apenas sobre campanhas de venda; tráfego para o Instagram e campanhas de lojas físicas são reportados à parte e não entram no cálculo. As conversões da PMax Lojas Físicas são visitas a loja, sem valor de conversão, e estão fora do CPA. A campanha de tráfego Lojas Brasil aparece para referência e não compõe nenhum total do AP13. Dados do Meta extraídos via API; Google exportado na mesma data para as duas semanas. Em janelas de 7 dias, o ROAS por campanha oscila muito com verbas pequenas e pedidos isolados de ticket alto. Campanhas de e-mail com menos de uma semana de envio ainda estão acumulando aberturas e cliques; os dois disparos de 08/10 ficam fora do período. CRM sem semana de comparação. Sem dados de faturamento nesta edição.
+  </p>
+</div>
+
+<script>
+// REVEAL
+const allReveals=document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale');
+const revealObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target);}});},{threshold:0.05,rootMargin:'0px 0px -40px 0px'});
+allReveals.forEach(r=>{if(r.getBoundingClientRect().top<window.innerHeight)r.classList.add('visible');else revealObs.observe(r);});
+
+// COUNTERS
+const counters=document.querySelectorAll('[data-count]');
+const countObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){const el=e.target;const target=parseInt(el.dataset.count);const duration=1200;const start=performance.now();const tick=(now)=>{const elapsed=now-start;const progress=Math.min(elapsed/duration,1);const eased=1-Math.pow(1-progress,3);el.textContent=Math.round(eased*target).toLocaleString('pt-BR');if(progress<1)requestAnimationFrame(tick);};requestAnimationFrame(tick);countObs.unobserve(el);}});},{threshold:0.5});
+counters.forEach(c=>countObs.observe(c));
+
+// FUNNEL BARS
+const funnelBars=document.querySelectorAll('.funnel-bar[data-w],.crv-bar[data-w]');
+const funnelObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.width=e.target.dataset.w+'%';funnelObs.unobserve(e.target);}});},{threshold:0.4});
+funnelBars.forEach(b=>funnelObs.observe(b));
+
+// ACCORDION
+function togglePilar(header){const block=header.closest('.pilar-block');const isOpen=block.classList.contains('open');block.closest('.pilar-grid').querySelectorAll('.pilar-block').forEach(b=>b.classList.remove('open'));if(!isOpen)block.classList.add('open');}
+const pilarGrids=document.querySelectorAll('.pilar-grid');
+const autoOpenObserver=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){const first=e.target.querySelector('.pilar-block');if(first)setTimeout(()=>first.classList.add('open'),400);autoOpenObserver.unobserve(e.target);}});},{threshold:0.3});
+pilarGrids.forEach(g=>autoOpenObserver.observe(g));
+
+// NAV + PROGRESS + BTT
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.nav-links a');
+const mainNav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-200)current=s.getAttribute('id');});
+  navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+current);});
+  mainNav.classList.toggle('scrolled',window.scrollY>100);
+  const winH=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('scrollProgress').style.width=(window.scrollY/winH*100)+'%';
+  document.getElementById('btt').classList.toggle('show',window.scrollY>600);
+},{passive:true});
+
+// PARTICLES
+const particlesEl=document.getElementById('particles');
+for(let i=0;i<20;i++){const p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.animationDuration=(6+Math.random()*8)+'s';p.style.animationDelay=Math.random()*6+'s';p.style.width=p.style.height=(2+Math.random()*4)+'px';particlesEl.appendChild(p);}
+
+// EXPORT PDF
+window.exportarPDF=async function(){
+  const btn=document.getElementById('pdfBtn');btn.disabled=true;
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));
+  document.querySelectorAll('[data-count]').forEach(el=>{const target=el.getAttribute('data-count');if(target)el.textContent=parseInt(target).toLocaleString('pt-BR');});
+  if(document.fonts&&document.fonts.ready){try{await document.fonts.ready;}catch(e){}}
+  await new Promise(r=>setTimeout(r,200));
+  window.print();btn.disabled=false;
+};
+</script>
+</body>
+</html>
