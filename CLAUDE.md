@@ -3,6 +3,28 @@
 Projeto de gestão, análise e implementação do **Cockpit**: sistema para centralizar a gestão
 **estratégica, comercial e administrativa** da unidade BFG&Co da V4 Company.
 
+## 🔖 EM ANDAMENTO — check-in do AP13 de 15/10/2026 (deck HTML para o cliente)
+
+**O Claude Code assumiu a construção do check-in de mídia** (antes era um chat do claude.ai).
+Skill em `.claude/skills/check-in-midia/` · regras do AP13 + série histórica em
+`clientes/atacadao-posto-13/checkin/regras.md` (**ler inteiro antes**) · deck anterior (referência de
+formato) em `clientes/atacadao-posto-13/checkin/ap13-checkin-semanal-01a07-out2026.html`.
+- **Escopo aprovado:** **01–14/10 × 01–14/09**, formato resumido (Capa · Consolidado · Meta · Google ·
+  CRM · ⭐ **Black Friday** · Plano · Fechamento). Seção BF: meta realista (R$ 47 mil na semana de
+  23/11), calendário (sinal até ~5/11, criativos ~12/11, congelamento seg 16/11), ofertas a testar com
+  o dado da JET (71% dos pedidos < R$ 200 etc.) e as 4 perguntas (margem por categoria, kits, estoque
+  de brinquedo, PRIMEIRACOMPRA acumula?)
+- **Aprovado:** ROAS das plataformas como sempre + **linha de "venda paga (JET)" no consolidado**;
+  na BF, uma frase de que a medição está sendo corrigida. Sem detalhar os 12% não pagos
+- **Google já puxado (API, 15/10):** e-commerce 01–14/10 = R$ 5.360 · 77,8 conv · R$ 22.322 · **4,16×**
+  · ticket R$ 287 | 01–14/09 = R$ 3.974 · 76,9 · R$ 13.595 · 3,42× · ticket R$ 177. Setembro tem
+  Geração de Demanda (R$ 629, 0,64×), Shopping 06/05 e Search Core, hoje pausadas. **Shopping Brinquedo:
+  R$ 408 sem conversão em set, R$ 356 a 0,74× em out, PAUSADA.** Lojas físicas: R$ 355 / 1.370 visitas
+  (out) × R$ 368 / 1.565 (set). Refazer a consulta na construção (a conversão retroage)
+- **Falta:** Meta (conector não carregou após a compactação; nem aparece no `/mcp`) · Flowbiz
+  01–14/10 e 01–14/09 (prints) · export da JET de 10–14/10 · "o que foi feito" no período
+- Depois do check-in: voltar ao template de planejamento de projetos (estrutura APROVADA 15/10) → BF
+
 ## 🔖 Onde paramos — 15/10/2026
 
 **⭐ Projeção do Q4 feita (rascunho, aguarda revisão):** método no núcleo `compartilhado/projecao/ecommerce.md`
