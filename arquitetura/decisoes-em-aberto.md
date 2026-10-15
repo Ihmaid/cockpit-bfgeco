@@ -231,9 +231,15 @@ padrão de mercado conta no navegador, antes da confirmação. No Brasil, PIX e 
 - (C) importação offline da venda paga;
 - (D) duas conversões na transição.
 
-**Antes de decidir:**
-- **Esdras:** o `Purchase` do servidor no Meta (JEX PIXEL) sai na criação ou na aprovação? A JET
-  avisa quando o pedido muda de status (webhook)?
+**Antes de decidir** (15/10: a execução do tracking passou do Esdras para **Gabriel + Claude**):
+- ~~O `Purchase` do servidor no Meta sai na criação ou na aprovação?~~ ⭐ **Indício forte (15/10):**
+  o código público do site mostra que o envio "de servidor" ao Meta é **disparado pelo navegador**
+  (`/api/sendEventMeta` da JET). Logo, ele nasce na página, ou seja, na criação do pedido
+- **Ler a configuração inteira:** export do contêiner do GTM, que a JET injeta se estiver ativado no
+  painel, mais a tela de integrações do painel da JET (pixel, conversão do Google Ads, GTM)
+- A JET avisa quando o pedido muda de status (webhook)? Sem documentação pública; perguntar à JET
+- ⚠️ Hipótese a testar: a página do PIX acompanha o pagamento e mostra "pago"? Se sim, dá para
+  disparar a compra do PIX no navegador **só depois do pagamento**, sem servidor
 - O dataset **"CONVERSÃO OFFILINE"** (Meta, criado em 14/07, nunca usado): quem criou e por que parou?
 
 **Consequência:** é pré-requisito de escala no método (`metodo.md` §3 e repertório §1.5). É também

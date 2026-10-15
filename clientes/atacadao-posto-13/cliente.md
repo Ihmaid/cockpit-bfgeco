@@ -15,6 +15,10 @@ fee_mensal: 4200   # confirmado pelo usuário em 27/09/2026
 budget_midia_mensal: 18000   # confirmado pelo usuário em 28/09/2026 (substitui os 20k do Growth Pack e os ~13k do Ekyte)
 budget_google_ads: 12000     # divisão de referência; o GT tem autonomia para realocar entre canais dentro do total
 budget_meta_ads: 6000
+budget_black_friday: 18000   # 15/10: a BF não tem verba extra; segue nos R$ 18 mil/mês
+margem_contribuicao: 0.20    # 15/10: PREMISSA conservadora do usuário, "não tenho esse número fidedigno". A planilha do Growth Pack dizia 36% e 30%
+referencia_sazonal_2025: "BF 2025 NÃO é referência (faturamento fraco, era Wake, sem export). Melhor mês de 2025 = outubro (Dia das Crianças), ⚠️ ~R$ 70 mil a confirmar"   # 15/10
+site: "atacadaoposto13.com.br"   # og:url declara atacadaopostotreze.com.br
 google_ads_customer_id: "6295738385"
 meta_ads_account: "212245853"   # "Grupo Atacadão Posto 13", BM do cliente; validado pelo conector em 28/09 (docs/24)
 ga4_property_id: "363402252"   # "Atacadão Posto Treze – GA4"; validado por scripts/ga4.py em 28/09 (docs/25)
@@ -29,7 +33,8 @@ ekyte_workspace_id: 91023
 modelo_metricas: ecommerce   # → compartilhado/arvores-metricas/ecommerce.yaml
 google_ads_compra_categoria: PURCHASE   # só a "GA4 (web) purchase" tem essa categoria; "Compras Site" é DEFAULT e fica fora
 meta_objetivo_ecommerce: OUTCOME_SALES  # as campanhas OUTCOME_TRAFFIC levam à loja física/Instagram e não entram no ROAS do e-commerce
-responsaveis: { trafego: "Breno Ferreira", tech: "Esdras Wesley", email: "Lucas Brandão", account: "Gabriel Ihmaid", designer: "Pedro", coordenador: "Lucas Bastos", copy: "Gabriel Ihmaid (com IA)" }
+rastreamento: "nativo da JET (painel: pixel Meta + envio ao servidor disparado pelo navegador, conversão Google Ads por gtag) + GTM injetado pela JET se ativado no painel"   # 15/10, lido no código público do site. Correção do tracking: Gabriel + Claude executam (não mais o Esdras)
+responsaveis: { trafego: "Breno Ferreira", tech: "Esdras Wesley", tracking: "Gabriel Ihmaid (com Claude)", email: "Lucas Brandão", account: "Gabriel Ihmaid", designer: "Pedro", coordenador: "Lucas Bastos", copy: "Gabriel Ihmaid (com IA)" }
 campos_manuais:
   - { fonte: jet, o_que: "pedidos, compras e receita real", origem: "export de pedidos da JET → metricas/bruto/relatorio-pedidos-jet/ → scripts/jet.py", responsavel: "Gabriel ou GT", cadencia_dias: 7, quando: "segunda, antes da sprint" }
 atualizado_em: 2026-10-13

@@ -7,3 +7,4 @@
 - [Transcrição da sprint no Drive](transcricao-sprint-no-drive.md) — pasta do squad no Fúria, doc do Gemini de ~70 mil caracteres, filtrar pelo cliente
 - [Objetivo: a semana na frente](objetivo-semana-na-frente.md) — no domingo ver seg–sex dele e do time, com estágio e atraso; agentes são o meio; 1º teste real = Black Friday do AP13
 - [Horas são referência, não teto](horas-referencia-nao-teto.md) — 8–10 h/semana por cliente é régua de rentabilidade; passar é legítimo, dizer quanto e por quê
+- [Não lembrar pendência dispensada](nao-lembrar-pendencia-dispensada.md) — se ele disse "esquece, eu te chamo" (ex.: clone), parar de listar

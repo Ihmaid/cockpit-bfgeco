@@ -15,7 +15,7 @@ Projeto de gestão, análise e implementação do **Cockpit**: sistema para cent
   volume baixo + ticket oscilando + **pedido inválido de ticket alto** (24/08: 12,5 → 6,7 válido).
   NADIR 7,2 no Google ≈ 3,7 válido ≈ PMAX principal 3,9. Meta Brinquedos 7,4 = 9% válido. **Escala
   bloqueada pelo sinal.** Pista dos 78 sem par: pedido lançado pelo painel admin (`painel1.plataformaneo`)
-- **Próximo:** usuário revisa método + diagnóstico → R2/R4 com o Esdras → registro de testes (R7) →
+- **Próximo:** usuário revisa método + diagnóstico → tracking (GTM + painel da JET; Gabriel + Claude) → registro de testes (R7) →
   repertório (PMax × Shopping) → estrutura da BF
 
 > ▶️ **ABRINDO UM CHAT NOVO? Faça nesta ordem:**
@@ -30,10 +30,11 @@ Projeto de gestão, análise e implementação do **Cockpit**: sistema para cent
 > 4. Prazo duro: **plano da Black Friday até 25/10**. Trajeto em `arquitetura/16` §5
 >
 > **D22 (14/10, explorar no futuro):** sinal de VENDA PAGA para as plataformas (`arquitetura/decisoes-em-aberto.md`).
-> **Pendências em aberto:** clone no outro computador (passos: renomear a pasta antiga, `git clone
-> https://github.com/Ihmaid/cockpit-bfgeco.git Cockpit`, copiar de volta `.env` e `metricas/bruto/`,
-> importar `docs/migracao/memoria/`) · Esdras corrigir o `purchase` do GA4 (só pago) e explicar os
-> 78 "sem par" · confirmar que o repositório no GitHub está **Private**.
+> **15/10:** ✅ repositório no GitHub **confirmado privado**. ⛔ Clone no outro computador: **não
+> lembrar**; o usuário chama quando precisar. ⭐ **O tracking (purchase só pago, 78 sem par, pixel
+> antigo) saiu do Esdras: Gabriel + Claude executam.** Próximo passo dele: export do contêiner do
+> GTM + tela de integrações do painel da JET. Premissas da projeção no `cliente.md`: margem 20%,
+> verba BF R$ 18 mil, BF 2025 não é referência (⚠️ outubro/2025 ~R$ 70 mil a confirmar).
 > **Ferramenta nova:** `scripts/reconcilia_ga4_jet.py --ini --fim` refaz o cruzamento GA4 × JET.
 > Rodar depois da correção do Esdras: a linha "NAO pago" tem de ir a ~0.
 
