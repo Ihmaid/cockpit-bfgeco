@@ -33,6 +33,8 @@ except ImportError:
 RAIZ = Path(__file__).resolve().parent.parent
 ESTATICO = Path(__file__).resolve().parent / "static"
 CLIENTES = RAIZ / "clientes"
+sys.path.insert(0, str(RAIZ / "scripts"))
+import projecao as PJ  # noqa: E402  (o mesmo cálculo do scripts/projecao.py, sem cópia)
 
 ORDEM_CICLO = ["exposicao", "atencao", "interesse", "qualificacao",
                "compromisso", "decisao", "retencao"]
@@ -208,6 +210,51 @@ def dias(iso) -> int | None:
         return None
 
 
+def real_jet(base: Path) -> dict:
+    """Venda válida por dia, do metricas/manual.csv (gravado por scripts/jet.py). Só receita e compras."""
+    import csv
+    dias_ = {}
+    arq = base / "metricas" / "manual.csv"
+    if not arq.exists():
+        return dias_
+    with arq.open(encoding="utf-8", newline="") as f:
+        for r in csv.DictReader(f):
+            d = dias_.setdefault(r["dia"], {"receita": 0.0, "compras": 0.0})
+            if r["campo"] in ("receita", "compras"):
+                d[r["campo"]] += float(r["valor"] or 0)
+    return dias_
+
+
+def carregar_projecao(base: Path):
+    """A projeção mais nova de planos/projecao-*.md, calculada pelo scripts/projecao.py, com o real
+    da JET ao lado: por semana (para a régua da segunda) e no mês até o último dia lançado."""
+    pasta = base / "planos"
+    arqs = sorted(pasta.glob("projecao-*.md")) if pasta.is_dir() else []
+    if not arqs:
+        return None
+    p, texto = PJ.ler_parametros(str(arqs[-1]))
+    r = PJ.resumo(p)
+
+    from datetime import timedelta
+    dias_ = real_jet(base)
+    semanas, meses = {}, {}
+    for d, v in dias_.items():
+        dd = date.fromisoformat(d)
+        seg = (dd - timedelta(days=dd.weekday())).isoformat()
+        s = semanas.setdefault(seg, {"receita": 0.0, "compras": 0.0, "dias": 0})
+        s["receita"] += v["receita"]; s["compras"] += v["compras"]; s["dias"] += 1
+        m = meses.setdefault(d[:7], {"receita": 0.0, "ate": d})
+        m["receita"] += v["receita"]; m["ate"] = max(m["ate"], d)
+
+    leitura = ""
+    mm = re.search(r"^## Leitura.*?$(.*?)(?=^## |\Z)", texto, re.S | re.M)
+    if mm:
+        leitura = mm.group(1).strip()
+    return {"arquivo": arqs[-1].name, "status": p.get("status"), "periodo": p.get("periodo"),
+            "gerado_em": str(p.get("gerado_em") or ""), "base": p.get("base"), "eventos": p.get("eventos"),
+            "resumo": r, "real_semanas": semanas, "real_meses": meses, "leitura": leitura}
+
+
 def carregar(slug: str) -> dict:
     base = CLIENTES / slug
     if not base.is_dir():
@@ -269,7 +316,7 @@ def carregar(slug: str) -> dict:
 
     return {"cliente": fm_cli, "plano": plano, "ciclos": ciclos, "eventos": eventos,
             "demandas": demandas, "pendencias": pendencias, "reunioes": reunioes,
-            "momentos": momentos, "contexto": contexto,
+            "momentos": momentos, "contexto": contexto, "projecao": carregar_projecao(base),
             "hoje": date.today().isoformat(), "ordem_ciclo": ORDEM_CICLO,
             "rotulo_etapa": ROTULO_ETAPA}
 

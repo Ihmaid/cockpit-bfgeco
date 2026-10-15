@@ -678,9 +678,138 @@ function vContexto(host){
 }
 
 /* ================================================================
+   PROJEÇÃO — o cálculo é o do scripts/projecao.py; aqui só se mostra.
+   A coluna "real" é o que transforma projeção em régua: toda segunda,
+   depois do jet.py, a semana fechada aparece ao lado do projetado.
+   ================================================================ */
+const R$ = v => "R$ " + Math.round(v).toLocaleString("pt-BR");
+const PCT = (v, c = 0) => (v * 100).toLocaleString("pt-BR",
+  {minimumFractionDigits:c, maximumFractionDigits:c}) + "%";
+const TIPO_SEMANA = {normal:"normal", pre_bf:"pré-BF", bf:"Black Friday", cyber:"Cyber",
+                     natal:"Natal", semana_natal:"semana do Natal", ano_novo:"virada"};
+const FMT_ALAV = {num: v => Math.round(v).toLocaleString("pt-BR"), pct2: v => PCT(v, 2),
+                  pct: v => PCT(v), brl: R$};
+
+/* desvio do real sobre o projetado: dentro de ±10% é "no ritmo" */
+function desvio(real, proj){
+  const d = real / proj - 1;
+  const cls = d >= -0.10 ? "ok" : (d >= -0.25 ? "warn" : "crit");
+  return [`${d >= 0 ? "+" : ""}${PCT(d)}`, cls];
+}
+
+function vProjecao(host){
+  host.textContent = "";
+  const P = E.projecao;
+  if(!P){ host.innerHTML = `<p class="vazio">Nenhuma projeção em planos/projecao-*.md.</p>`; return; }
+  const R = P.resumo;
+
+  if(P.status === "rascunho"){
+    const a = document.createElement("div"); a.className = "alerta aviso";
+    a.innerHTML = `<b>Rascunho.</b> Os multiplicadores de evento são premissa até a BF de 2026 ser medida.`;
+    host.append(a);
+  }
+
+  // --- mês a mês ---
+  const b1 = bloco("Mês a mês", `realista · faixa pessimista–otimista · desejo ${R$(R.desejo)}`,
+    `<button class="btn sec sm" id="pjLeitura">Leitura e premissas</button>`);
+  const g = document.createElement("div"); g.className = "grid g3";
+  R.meses.filter(m => m.fracao >= 0.5).forEach(m => {
+    const max = Math.max(m.desejo, m.otimista) * 1.04, w = v => Math.min(100, v / max * 100);
+    const falta = m.desejo - m.realista, real = P.real_meses[m.mes];
+    const c = document.createElement("div"); c.className = "card pad pj-mes";
+    c.innerHTML = `
+      <span class="lbl">${esc(m.rotulo)}</span>
+      <div class="pj-val mono">${R$(m.realista)}</div>
+      <div class="pj-faixa mono">${R$(m.pessimista)} – ${R$(m.otimista)}</div>
+      <div class="pj-bar" title="faixa clara = pessimista–otimista · barra = realista · traço = desejo">
+        <span class="faixa" style="left:${w(m.pessimista)}%;width:${w(m.otimista) - w(m.pessimista)}%"></span>
+        <span class="proj" style="width:${w(m.realista)}%"></span>
+        <i class="desejo" style="left:${w(m.desejo)}%"></i></div>
+      <div class="pj-rod">
+        <span class="chip ${falta > 0 ? "warn" : "ok"}">${falta > 0
+          ? `faltam ${R$(falta)} (${PCT(falta / m.desejo)})` : "no desejo ou acima"}</span>
+        ${real ? `<span class="mono pj-real">real até ${br(real.ate)}: <b>${R$(real.receita)}</b></span>` : ""}
+      </div>`;
+    g.append(c);
+  });
+  b1.append(g); host.append(b1);
+  b1.querySelector("#pjLeitura").addEventListener("click", drProjecao);
+
+  // --- semana a semana ---
+  const b2 = bloco("Semana a semana", "projetado (realista) × real da JET, receita válida");
+  const t = document.createElement("div"); t.className = "rows pj-sem";
+  const maxS = Math.max(...R.semanas.map(s => s.otimista)) * 1.04, ws = v => v / maxS * 100;
+  t.innerHTML = `<div class="pj-l pj-h"><span class="lbl">Semana</span><span class="lbl">Tipo</span>
+    <span class="lbl pj-col-bar">Faixa</span><span class="lbl">Projetado</span><span class="lbl">Real</span>
+    <span class="lbl">Desvio</span></div>`;
+  R.semanas.forEach(s => {
+    const rs = P.real_semanas[s.semana];
+    const proj = rs ? s.realista * Math.min(rs.dias, 7) / 7 : s.realista;
+    const dv = rs ? desvio(rs.receita, proj) : null;
+    const l = document.createElement("div"); l.className = "pj-l";
+    l.innerHTML = `
+      <span class="mono">${br(s.semana)}</span>
+      <span><span class="chip ${s.tipo === "bf" ? "crit" : (s.tipo === "normal" ? "ghost" : "")}">${
+        esc(TIPO_SEMANA[s.tipo] || s.tipo)}</span></span>
+      <span class="pj-col-bar"><span class="pj-bar sm">
+        <span class="faixa" style="left:${ws(s.pessimista)}%;width:${ws(s.otimista) - ws(s.pessimista)}%"></span>
+        <span class="proj" style="width:${ws(s.realista)}%"></span></span></span>
+      <span class="mono">${R$(s.realista)}</span>
+      <span class="mono">${rs ? R$(rs.receita) + (rs.dias < 7 ? ` <small>(${rs.dias}d)</small>` : "") : "—"}</span>
+      <span>${dv ? `<span class="chip ${dv[1]}">${dv[0]}</span>` : ""}</span>`;
+    t.append(l);
+  });
+  b2.append(t); host.append(b2);
+
+  // --- alavancas e equilíbrio ---
+  const b3 = bloco("O que leva ao desejo", `um mês normal hoje: ${R$(R.mes_normal)} · cada linha muda só um nó`);
+  const g3 = document.createElement("div"); g3.className = "grid g2";
+  const ca = document.createElement("div"); ca.className = "card pad";
+  ca.innerHTML = `<div class="dr-md"><table><thead><tr><th>Nó da cascata</th><th>Hoje</th><th>Precisaria</th></tr></thead><tbody>${
+    R.alavancas.map(a => `<tr><td>${esc(a.no)}</td><td class="mono">${FMT_ALAV[a.fmt](a.hoje)}</td><td class="mono">${
+      a.impossivel ? '<span class="chip crit">impossível sozinha</span>' : FMT_ALAV[a.fmt](a.precisa)}</td></tr>`).join("")
+    }</tbody></table>${R.aprovacao_90 ? `<p>Aprovação a 90% (PIX/boleto não pagos), sozinha: <strong>+${
+      R$(R.aprovacao_90)}/mês</strong>.</p>` : ""}</div>`;
+  const ce = document.createElement("div"); ce.className = "card pad";
+  ce.innerHTML = `
+    <dl class="kv">
+      <dt>Equilíbrio</dt><dd class="mono">${R$(R.equilibrio)}/mês <span class="chip warn">margem ${
+        PCT(R.margem)} · premissa</span></dd>
+      <dt>Custos</dt><dd class="mono">mídia ${R$(R.midia)} + fee ${R$(R.fee)}</dd>
+      ${R.meses.filter(m => m.fracao >= 0.5).map(m => `<dt>${esc(m.rotulo)}</dt><dd class="mono">${
+        R$(m.resultado_realista)} <span class="chip ${m.resultado_realista >= 0 ? "ok" : "crit"}">${
+        m.resultado_realista >= 0 ? "paga" : "não paga"}</span></dd>`).join("")}
+    </dl>
+    <p class="pj-nota">Se a margem fosse ${R.sensibilidade.map(x => `${PCT(x.margem)} → ${R$(x.equilibrio)}`).join(" · ")}.</p>`;
+  g3.append(ca, ce); b3.append(g3); host.append(b3);
+}
+
+function drProjecao(){
+  const P = E.projecao, B = P.base || {}, EV = P.eventos || {};
+  const cen = ["pessimista", "realista", "otimista"];
+  const linhaBase = (rot, k, f) => `<tr><td>${rot}</td>${cen.map(c => `<td class="mono">${f((B[k] || {})[c])}</td>`).join("")}</tr>`;
+  abrir("Projeção", `${P.periodo || ""}`, `
+    <div class="dr-sec"><h3>Leitura</h3><div class="dr-md">${md(P.leitura)}</div></div>
+    <div class="dr-sec"><h3>Base semanal</h3><div class="dr-md"><table>
+      <thead><tr><th></th>${cen.map(c => `<th>${c}</th>`).join("")}</tr></thead><tbody>
+      ${linhaBase("Sessões/semana", "sessoes_semana", v => Math.round(v).toLocaleString("pt-BR"))}
+      ${linhaBase("Conversão", "conversao", v => PCT(v, 2))}
+      ${linhaBase("Ticket", "ticket", R$)}
+      </tbody></table></div></div>
+    <div class="dr-sec"><h3>Multiplicadores de receita por tipo de semana</h3>
+      <div class="dr-md"><p>Volume × ticket. Pessimista = a BF 2025 do próprio AP13; realista e otimista = mercado.</p>
+      <table><thead><tr><th>Tipo</th>${cen.map(c => `<th>${c}</th>`).join("")}</tr></thead><tbody>${
+        Object.entries(EV).map(([k, v]) => `<tr><td>${esc(TIPO_SEMANA[k] || k)}</td>${cen.map(c =>
+          `<td class="mono">${(v[c][0] * v[c][1]).toLocaleString("pt-BR", {maximumFractionDigits:2})}×</td>`).join("")}</tr>`).join("")
+      }</tbody></table></div></div>
+    <div class="dr-sec"><p class="lbl">planos/${esc(P.arquivo)} · método em compartilhado/projecao/ecommerce.md ·
+      recalcular: scripts/projecao.py</p></div>`);
+}
+
+/* ================================================================
    navegação e render
    ================================================================ */
-const VIEWS = {visao:vVisao, ciclos:vCiclos, eventos:vEventos,
+const VIEWS = {visao:vVisao, projecao:vProjecao, ciclos:vCiclos, eventos:vEventos,
                entregas:vEntregas, pauta:vPauta, contexto:vContexto};
 
 function irPara(v){
@@ -689,6 +818,7 @@ function irPara(v){
   $$("#menu button").forEach(b => b.classList.toggle("on", b.dataset.v === v));
   $$(".views section").forEach(s => s.hidden = s.dataset.view !== v);
   VIEWS[v]($(`.views section[data-view="${v}"]`));
+  try{ history.replaceState(null, "", `#${v}`); }catch(e){}
   window.scrollTo(0, 0);
 }
 
@@ -760,6 +890,7 @@ try{ const t = localStorage.getItem("tema");
 /* ícones do menu (SVG inline como máscara) */
 const ICONES = {
   visao:"M3 12h4l3-8 4 16 3-8h4",
+  projecao:"M4 20h16M7 17v-5m5 5V7m5 10v-8",
   ciclos:"M21 12a9 9 0 11-3-6.7M21 3v6h-6",
   eventos:"M3 9h18M7 3v4m10-4v4M4 5h16v16H4z",
   entregas:"M4 7h16v13H4zM9 7V4h6v3M9 13h6",
@@ -773,8 +904,9 @@ $$("#menu i").forEach(i => {
   i.style.webkitMaskImage = i.style.maskImage = `url("data:image/svg+xml,${svg}")`;
 });
 
-/* boot */
+/* boot — `#projecao` no endereço abre direto na seção */
 (async () => {
+  if(VIEWS[location.hash.slice(1)]) VIEW = location.hash.slice(1);
   try{
     const clientes = await (await fetch("/api/clientes")).json();
     const sel = $("#selCliente");

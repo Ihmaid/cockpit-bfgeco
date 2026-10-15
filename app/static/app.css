@@ -179,6 +179,27 @@ button{font-family:inherit}
 .tl-hoje::after{content:"hoje";position:absolute;top:-13px;left:-10px;font-size:9.5px;
   font-weight:600;color:var(--accent);font-family:"IBM Plex Mono",monospace}
 
+/* -------- projeção -------- */
+.pj-mes{display:flex;flex-direction:column;gap:2px}
+.pj-val{font-size:22px;font-weight:600;color:var(--ink);margin-top:4px}
+.pj-faixa{font-size:12px;color:var(--ink-3)}
+.pj-bar{position:relative;display:block;height:12px;background:var(--surface-2);border-radius:6px;margin:12px 0 10px}
+.pj-bar.sm{height:9px;margin:0}
+.pj-bar .faixa{position:absolute;top:0;bottom:0;background:var(--accent-2);
+  box-shadow:inset 0 0 0 1px var(--line-2);border-radius:6px}
+.pj-bar .proj{position:absolute;left:0;top:3px;bottom:3px;background:var(--accent);border-radius:3px}
+.pj-bar.sm .proj{top:2px;bottom:2px}
+.pj-bar .desejo{position:absolute;top:-5px;width:2px;height:22px;background:var(--ink-2)}
+.pj-rod{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pj-real{font-size:12px;color:var(--ink-3)} .pj-real b{color:var(--ink)}
+.pj-l{display:grid;grid-template-columns:52px 124px minmax(90px,1fr) 96px 112px 64px;gap:12px;
+  align-items:center;padding:9px 14px;border-top:1px solid var(--line);font-size:13px}
+.pj-l:first-child{border-top:0}
+.pj-l small{color:var(--ink-3)}
+.pj-h{background:var(--surface-2)}
+@media(max-width:760px){.pj-l{grid-template-columns:48px 1fr 88px 96px 56px}.pj-col-bar{display:none}}
+.pj-nota{font-size:12px;color:var(--ink-3);margin:12px 0 0}
+
 /* ---------------- drawer ---------------- */
 .scrim{position:fixed;inset:0;background:rgba(9,14,19,.44);z-index:30;
   animation:fade .16s ease-out}
@@ -271,6 +292,8 @@ input[type=text].mono{font-family:"IBM Plex Mono",monospace}
 .alerta{background:var(--crit-bg);border-left:3px solid var(--crit);padding:11px 14px;
   border-radius:0 5px 5px 0;font-size:13px;margin-bottom:14px;color:var(--ink-2)}
 .alerta b{color:var(--crit)}
+.alerta.aviso{background:var(--warn-bg);border-left-color:var(--warn)}
+.alerta.aviso b{color:var(--warn)}
 
 .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:60;
   background:var(--ink);color:var(--ground);padding:10px 18px;border-radius:22px;

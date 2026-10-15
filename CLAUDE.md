@@ -12,6 +12,10 @@ válida** (desejo é +48%, não 3×) · realista out 110k / nov 121k / dez 105k 
 critério de saída da trava (1,3%)** · aprovação 80→90% (PIX/boleto) = +R$ 13 mil/mês · margem 20% →
 equilíbrio R$ 111 mil (margem real = pergunta ao Paulo) · na BF o que pesa é o ticket. **Próximo:** usuário
 revisa a projeção → plano Q4 revisado + plano da BF (até 25/10) → tarefas no Ekyte.
+✅ *15/10 (tarde):* projeção **aprovada por ora** (estrutura + multiplicadores; Gabriel tenta o histórico da
+Wake) e **no app local, seção "Projeção"** (`#projecao`): mês a mês, **semana a semana projetado × real da
+JET** (régua da segunda), alavancas e equilíbrio. O app importa `scripts/projecao.py` (`resumo()`), sem
+cópia do cálculo. Flowbiz: já recupera carrinho, **não recupera pedido não pago** (Gabriel vai ver).
 
 ## 🔖 Onde paramos — 14/10/2026 (tarde)
 

@@ -4,7 +4,7 @@ cliente: atacadao-posto-13
 modelo: ecommerce            # → compartilhado/projecao/ecommerce.md
 periodo: 2026-10-12 a 2027-01-03
 gerado_em: 2026-10-15
-status: rascunho             # aguarda revisão do Gabriel
+status: rascunho             # 15/10: estrutura e multiplicadores aprovados por ora; vira 'aprovada' quando o plano da BF fechar
 
 desejo_mensal: 150000        # "desejo do Paulo", não projeção (Q40, 10/10)
 midia_mensal: 18000          # inclusive na BF, sem verba extra (15/10)
@@ -132,7 +132,8 @@ Sensibilidade do equilíbrio à margem: 15% → R$ 148.000 · 20% → R$ 111.000
 4. **Aprovação é a alavanca barata.** Hoje 80% das compras feitas viram venda (setembro). Levar a
    90%, recuperando PIX e boleto não pagos (por exemplo, régua de lembrete na Flowbiz), soma **~R$ 13
    mil/mês** sem um real a mais de mídia. ⚠️ Viabilidade a confirmar. Toca a dor registrada do
-   Paulo: a Flowbiz subutilizada.
+   Paulo: a Flowbiz subutilizada. *15/10:* a Flowbiz já tem um workflow grande de recuperação de
+   **carrinho**, mas não de **pedido não pago**. O Gabriel vai ver o que é possível.
 5. **Com margem de 20%, a operação digital empata.** O equilíbrio (mídia + fee) é ~R$ 111 mil/mês,
    e o realista oscila em torno dele. ⚠️ A margem é premissa conservadora. Com 30% o equilíbrio cai
    para R$ 74 mil. **A margem real é pergunta para o Paulo:** sem ela não dá para dizer se a operação
@@ -141,6 +142,9 @@ Sensibilidade do equilíbrio à margem: 15% → R$ 148.000 · 20% → R$ 111.000
    compras sobem mais de 2×. Em 2025 o ticket caiu à metade (desconto em item barato) e a receita
    quase não subiu. **A estratégia de oferta (mix e ticket) pesa mais que a verba**, e entra no plano
    da BF. E é na BF que o sinal contaminado pesa mais (pico de PIX; D22).
+
+**Revisão do usuário (15/10):** estrutura e método aprovados; **multiplicadores aprovados por ora**.
+O Gabriel vai tentar puxar o histórico da Wake; se vier, recalibra a BF e o Natal.
 
 **Limites:**
 - Os multiplicadores de evento do realista e do otimista são **premissa** (mercado e desenho de
