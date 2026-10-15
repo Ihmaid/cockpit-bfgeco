@@ -3,7 +3,14 @@
 Projeto de gestão, análise e implementação do **Cockpit**: sistema para centralizar a gestão
 **estratégica, comercial e administrativa** da unidade BFG&Co da V4 Company.
 
-## 🔖 EM ANDAMENTO — check-in do AP13 de 15/10/2026 (deck HTML para o cliente)
+## ✅ 15/10: deck do check-in CONSTRUÍDO — `clientes/atacadao-posto-13/checkin/ap13-checkin-quinzena-01a14-out2026.html`
+8 seções (com ⭐ Black Friday: 3 cenários, dados da JET, as 5 ofertas, 4 perguntas, calendário). Flowbiz
+sem comparação (decisão do Gabriel). JET de 10–14/10 ingerida. Série histórica atualizada em `regras.md`.
+⚠️ O `li` dos pilares é flex: texto com `<strong>` precisa de um `<span>` envolvendo o item, senão quebra
+em colunas (o deck de 01–07/10 tem esse defeito). **Próximo:** respostas do check-in → template de
+planejamento de projetos → plano da BF até 25/10 → Ekyte.
+
+## 🔖 (histórico) check-in do AP13 de 15/10/2026 (deck HTML para o cliente)
 
 **O Claude Code assumiu a construção do check-in de mídia** (antes era um chat do claude.ai).
 Skill em `.claude/skills/check-in-midia/` · regras do AP13 + série histórica em
@@ -21,7 +28,12 @@ formato) em `clientes/atacadao-posto-13/checkin/ap13-checkin-semanal-01a07-out20
   Geração de Demanda (R$ 629, 0,64×), Shopping 06/05 e Search Core, hoje pausadas. **Shopping Brinquedo:
   R$ 408 sem conversão em set, R$ 356 a 0,74× em out, PAUSADA.** Lojas físicas: R$ 355 / 1.370 visitas
   (out) × R$ 368 / 1.565 (set). Refazer a consulta na construção (a conversão retroage)
-- **Falta:** Meta (conector não carregou após a compactação; nem aparece no `/mcp`) · Flowbiz
+- **Meta puxado (conector, 15/10):** venda 01–14/10 = R$ 1.720 · 27 compras · R$ 6.976 · 4,06× | 01–14/09 =
+  R$ 4.281 · 90 · R$ 11.786 · 2,75×. **Catálogo desligado 01–12/10, reativado 13/10** (R$ 60, 6 compras);
+  Brinquedos pausada 13/10 (7,41× no período); Reels caiu 2,99 → 1,92×. Consolidado venda: R$ 7.080 ·
+  R$ 29.298 · **4,14×** · 104,8 conv (set: R$ 8.255 · R$ 25.381 · 3,07× · 166,9). Google refeito: igual.
+  JET só até 09/10 (01–09/10 R$ 36.197 / 110 × 01–09/09 R$ 25.290 / 116). Script: scratchpad `calc.py`
+- **Falta:** Flowbiz
   01–14/10 e 01–14/09 (prints) · export da JET de 10–14/10 · "o que foi feito" no período
 - Depois do check-in: voltar ao template de planejamento de projetos (estrutura APROVADA 15/10) → BF
 

@@ -239,6 +239,11 @@ Valores de campanhas de venda AP13 (Meta venda + Google e-commerce, Geração de
 | Setembro (fechado) | R$ 14.904,83 | R$ 55.330,37 | 3,71× | 290,0 | R$ 51,40 | 3,74× | 3,70× |
 | 24–30/09 | R$ 2.784,75 | R$ 19.893,64 | 7,14× | 60,0 | R$ 46,38 | 13,32× | 6,12× |
 | 01–07/10 | R$ 3.536,45 | R$ 14.454,97 | 4,09× | 56,9 | R$ 62,21 | 3,68× | 4,23× |
+| 01–14/09 (puxado 15/10) | R$ 8.255,15 | R$ 25.381,24 | 3,07× | 166,9 | R$ 49,47 | 2,75× | 3,42× |
+| 01–14/10 | R$ 7.080,00 | R$ 29.297,65 | 4,14× | 104,8 | R$ 67,56 | 4,06× | 4,16× |
+
+Venda paga (JET, a partir do deck de 01–14/10): 01–14/09 R$ 38.079,95 / 178 vendas / ticket R$ 214; 01–14/10 R$ 45.117,82 / 149 / ticket R$ 303. Investimento total AP13: 01–14/09 R$ 9.402,93; 01–14/10 R$ 8.220,87.
+Flowbiz 01–14/10 (sem comparação, decisão do Gabriel): 7 disparos, 11.315 envios, abertura 8,73%, CTOR 2,53%, 79 hard bounces (B2B Inativos 22/330 = 6,7%); last click R$ 1.941,73 (10 pedidos, ROI 4,04, investimento R$ 480,20); influenciada R$ 121.032,51 (122 pedidos, ROI 252,05, recompra 44,20%); carrinho: 337 abandonados, 11 recuperados, R$ 1.872,70 (WhatsApp API R$ 1.528,09 · e-mail R$ 344,61), R$ 65.890,59 a recuperar.
 
 GA4 (Receita total, base sessão): agosto R$ 78.850,41 / 376 pedidos / ticket R$ 209,71; setembro R$ 128.702,64 / 460 pedidos / ticket R$ 279,79. 17–31/08 R$ 45.409,34; 01–15/09 R$ 55.106,33.
 

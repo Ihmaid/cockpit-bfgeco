@@ -313,6 +313,10 @@ Selos: `stat dep` (azul, depende de terceiro), `stat novo` (vermelho), `stat acc
 
 3 a 4 itens por pilar. Cada um começa pelo dado e termina na ação.
 
+⚠️ O `li` é flex: texto solto + `<strong>` viram colunas separadas. Envolva o texto do item num
+único `<span>` e deixe só o `<span class="dep">` fora dele:
+`<li><span>Texto com <strong>número</strong>.</span><span class="dep">dep. cliente</span></li>`
+
 ## pos-grid — ajustar × escalar
 
 ```html
