@@ -23,8 +23,13 @@ Google; pós-pago = geração de lead, Meta → comercial da Score). Critério p
   **`clientes/score-positivo/` criado**: `cliente.md` com 2 motores, stakeholders, verba observada pela API
   (Google R$ 5,8 mil + Meta R$ 3,4 mil/30 dias; o Ekyte diz R$ 2 mil), regras do check-in, decisões,
   identidade e projeto CENPROT trazidos do repositório antigo (agora `ARQUIVADO.md` lá). Trava por motor
-  (adotada por mim, a confirmar). ▶️ **Próximo:** árvore `geracao-lead.yaml` (pós-pago) e `autosservico`
-  com coorte (pré-pago). Pendente do Gabriel: fee, LinkedIn, quem manda o XLSX, se o LeadFinder dá leitura
+  (adotada por mim, a confirmar).
+- ✅ *20/10 (noite, 2):* ⭐ **pedido novo de sistema: PLANO DE MÍDIA FIXO E AUDITÁVEL** (`docs/20` §9) —
+  verba planejada por canal, gasto real no mês pela API, toda mudança registrada (mudança sem registro =
+  gargalo). Score: sem plano; referência = gasto de set/26 ~R$ 10 mil (Google 4,7 · Meta 3,6 · LinkedIn 1,8).
+  Time corrigido (tráfego = **Thiago Senna**, social = Daiane, tech = Esdras). **Nenhuma trava confirmada**
+  nos dois motores ("precisa analisar"). XLSX = Ana Carolina. Fee segue aberto.
+  ▶️ **Próximo proposto: o plano de mídia auditável** (antes das árvores; `arquitetura/17` §5)
 
 ## 🔖 Onde paramos — 20/10/2026 (manhã): as três ações do Gabriel andaram
 

@@ -165,6 +165,31 @@ mesmas para qualquer projeto**. O usuário:
 
 ---
 
+## 9 ⭐ Plano de mídia fixo e auditável (verba planejada × gasto real)
+
+**Origem:** 20/10/2026, ao montar a Score Positivo como 2º cliente. Ninguém sabia a verba: o Ekyte
+dizia R$ 2 mil e a API mostrou ~R$ 10 mil/mês. O usuário (`arquitetura/dump/2026-10-20-17`):
+
+> *"ter um local no sistema onde a gente coloque o plano de mídia fixo e ele seja auditável [...] eu
+> vou definir a Score vai ter 10 mil de verba. Cinco para Google, cinco para Meta. E aí, enquanto está
+> correndo o mês, eu vou poder acompanhar como que está o gasto comparado ao que foi estipulado. E aí,
+> toda mudança que for feita é obrigatório ser retratada ali no sistema. [...] Isso acontece muito na unidade."*
+
+**Requisitos:**
+- **Plano por cliente e mês:** verba total e por canal (e, se quiser, por motor de receita). Um arquivo
+  no repositório do cliente, editável pelo app
+- **Planejado × real enquanto o mês corre:** gasto do Google e do Meta pela API (já temos as duas),
+  canais sem API (LinkedIn) como lançamento manual; ritmo (pacing) = gasto ÷ verba proporcional aos dias
+- **Toda mudança registrada, obrigatoriamente:** quem, quando, de quanto para quanto e por quê, append-only
+  (mesmo padrão dos `momentos/`). Mudança sem registro = **gasto fora do plano**, e isso vira gargalo no
+  radar e desvio na pauta de segunda
+- Genérico desde o início: serve aos 2 clientes de teste e depois à carteira inteira
+
+⭐ É peça de sistema barata (as fontes de gasto já estão ligadas) e resolve uma dor da unidade inteira,
+não de um cliente. Proposta de prioridade em `arquitetura/17` §5.
+
+---
+
 ## Corrigido em 11/09/2026 — não é mais backlog
 
 Levantado pelo usuário na primeira rodada de uso e **já resolvido**:

@@ -84,9 +84,27 @@ vai para o time. Diagnóstico operacional (por que o ROAS é 0,4, por que o pós
 **Adotado por mim, a confirmar: uma trava por motor** (cada motor tem `trava.hipotese`). Decorre da S7,
 em que a resposta veio por motor; o Gabriel não decidiu isso explicitamente.
 
-## 5. Ordem proposta depois das respostas
+## 4.2 Correções e o pedido novo (20/10, `dump/2026-10-20-17-plano-de-midia-e-score.md`)
 
-1. Estrutura do `cliente.md` com `motores[]` (validar com você) → aplicar à Score e ao AP13
-2. `geracao-lead.yaml` e a variante `autosservico` → a pauta de segunda passa a rodar para a Score
-3. Template de planejamento de projetos (genérico; reaproveita a skill da Score)
-4. Visão "semana na frente" da carteira pelo Ekyte
+- ⭐ **Pedido de sistema: plano de mídia fixo e auditável** — verba planejada por canal, gasto real
+  acompanhado no mês, toda mudança registrada. "Isso acontece muito na unidade." → `docs/20` §9
+- Verba da Score: não há plano. Referência = **gasto de set/2026**: Google R$ 4.662 · Meta R$ 3.570 ·
+  LinkedIn ~R$ 1.800 (R$ 60/dia) → ~R$ 10 mil. ⚠️ Li "sobre o Fi, vamos considerar o mês passado" como
+  verba (a frase fala de gasto no Google e no Meta). O **fee segue em aberto**
+- Time: **tráfego = Thiago Senna** (não o Breno), **social media = Daiane**, **tech = Esdras**. A Score
+  também contrata social media
+- **Trava: nenhuma confirmada nos dois motores.** "Precisa analisar, estudar o cenário. A trava determina
+  o plano de ação." As falas da S7 ficam como inclinação, não hipótese
+- XLSX do pré-pago: **Ana Carolina**. LeadFinder: CRM "doméstico", travado; leitura talvez pelo portal;
+  contato direto com os fundadores pode destravar
+
+## 5. Ordem proposta (revista em 20/10)
+
+1. ✅ `motores[]` configurável → aplicado à Score e ao AP13
+2. ⭐ **Plano de mídia auditável** (`docs/20` §9). Proposto como próximo: genérico, as fontes de gasto já
+   estão ligadas, não depende de terceiro, serve aos dois clientes já
+3. `geracao-lead.yaml` e a variante `autosservico` → a pauta de segunda passa a rodar para a Score.
+   Em paralelo, pedir à Ana Carolina as faturas de 12 meses e ver o acesso ao LeadFinder. É a análise
+   que acha a trava de cada motor (o sistema funcionando, não aprofundamento manual)
+4. Template de planejamento de projetos (genérico; reaproveita a skill da Score)
+5. Visão "semana na frente" da carteira pelo Ekyte
