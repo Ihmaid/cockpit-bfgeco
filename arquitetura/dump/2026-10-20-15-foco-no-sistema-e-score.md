@@ -1,0 +1,14 @@
+# Dump — 20/10/2026 — bloco 15: foco no sistema e a Score Positivo como 2º cliente
+
+> Fala literal do usuário, por voz. **Não editar.** Primeiro trecho: o ponto de atenção sobre a
+> profundidade no AP13. Segundo: a escolha da Score Positivo e o contexto do cliente.
+
+---
+
+## O ponto de atenção
+
+Pode seguir com a questão aí da recalibração, mas eu quero pedir um ponto de atenção para a gente voltar a trabalhar na estrutura do sistema. E a gente está trabalhando muito especificamente por atacadão Post-3. A gente está organizando atacadão. Mas eu quero colocar mais foco no sistema para que ele me permita organizar os outros clientes. Então, será que faz sentido a gente ficar aprofundando tanto assim no atacadão? Vale a pena a gente analisar isso.
+
+## A Score Positivo
+
+Vamos com a score positivo. Nela a gente trabalha em duas frentes. Só para te dar um pequeno contexto, a score positivo é uma datatech de crédito. Então ela entrega relatório de crédito basicamente. Relatório de CPF, CNPJ, score, negativação, protesto, enfim. Um monte de serviço ali na área de crédito. A score tem o pré-pago e o pós-pago. No pré-pago, vai ser uma contratação automática. Então, a pessoa entra no site da score, faz uma recarga de um saldo lá, o saldo mínimo é R$29,90, e aí ela tem direito a contratar as consultas. No pré-pago. E aí o pré-pago tem um número limitado de consultas, né? E a score tem outros produtos além das próprias consultas que ela trabalha na modalidade pós-pago. E aí é um contrato que quando a gente está falando de consulta, o contrato ali vai ser um valor de gasto mínimo, né? Então se a pessoa faz contrato de R$500, ela tem que gastar no mínimo R$500. Só que isso geralmente acontece que os clientes gastam mais do que o contrato mínimo. E tem outros serviços, como por exemplo, localização de veículos. Então não é uma consulta básica, né? Você utiliza um serviço de localização de veículo ali, né? Histórico de veículo. Então, pensando em geração de lead, a gente vai estar olhando mais para o setor de pós-pago. Porque o pré-pago é uma compra mais automática. Tanto que a gente também trabalha com traqueamento via Google Ads, etc. Mas para o pós-pago a gente consegue trabalhar um pouco mais com geração de leads. Principalmente ali no meta, onde a gente trabalha mais a geração de lead, no Google a gente trabalha mais a venda automática. Inclusive, até questionei aqui o time porque que a gente não trabalha a geração de leads no Google. Mas enfim, no geral seria isso. Para o pós-pago, nós temos ali os leads, né? Então, geralmente a gente tem um acompanhamento ali do pipeline, um acompanhamento do comercial, a gente tem contato frequente com o time comercial ali da Score. E no pré-pago, a gente sofre hoje com ROAS baixíssimo, que a gente não consegue levantar. A gente sofre com ROAS de 0,4. Então, a estratégia da Score vai ser voltada ali tanto para otimizar a venda pós-pago, e tanto para otimizar a venda pré-pago.

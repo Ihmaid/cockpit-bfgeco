@@ -3,7 +3,23 @@
 Projeto de gestão, análise e implementação do **Cockpit**: sistema para centralizar a gestão
 **estratégica, comercial e administrativa** da unidade BFG&Co da V4 Company.
 
-## 🔖 Onde paramos — 20/10/2026: as três ações do Gabriel andaram
+## 🔖⭐ 20/10/2026 (tarde): VIRADA — foco no sistema; Score Positivo é o 2º cliente
+
+O Gabriel apontou que estávamos fundo demais no AP13 (~15 de 20 commits desde 10/10 eram do cliente)
+e quer o sistema organizando a carteira. Decidido: **AP13 congela** no que já está em andamento (rotina
+de segunda, token do Meta, perguntas à JET; tracking vira execução do time com a JET). **Score Positivo
+entra agora** para tornar o núcleo genérico: dois motores no mesmo cliente (pré-pago = autosserviço,
+Google; pós-pago = geração de lead, Meta → comercial da Score). Critério para qualquer trabalho:
+*"vira peça do sistema que serve ao 3º cliente?"*
+- Dump literal: `arquitetura/dump/2026-10-20-15-foco-no-sistema-e-score.md`
+- ⭐ **Proposta + perguntas S1–S7 em `arquitetura/17-score-segundo-cliente.md`, AGUARDANDO O GABRIEL.**
+  Núcleo: `cliente.md` com `motores[]`, árvore `geracao-lead.yaml`, e-commerce → `autosservico` com
+  recompra/coorte (hipótese: o ROAS 0,4 do pré-pago mede só o período; recompra = 66% da receita)
+- O repositório antigo da Score (`V4 Company/Clientes/Score Positivo/score-positivo/`, parado em 22/09)
+  já responde muito: regras de ROAS pactuadas, série dos check-ins 5–6, 8 temas em aberto
+- Ordem depois: `motores[]` → árvore de lead → pauta da Score → template de projetos → semana na frente
+
+## 🔖 Onde paramos — 20/10/2026 (manhã): as três ações do Gabriel andaram
 
 - **Meta:** token gerado na BM "MCC", ⏳ **aguardando aprovação de outro admin**. Depois: `.env`
   (`META_ACCESS_TOKEN`) → validar sem imprimir → leitura do Meta no `metricas.py`
