@@ -55,3 +55,6 @@ desktop.ini
 # URLs de webhook do Cockpit (sem autenticação; CLAUDE.md: não publicar)
 # ============================================================
 docs/referencia/webhooks_clientes.csv
+
+# Transcrição/ata de reunião com cliente: fica local (pode citar cliente final da Score)
+**/insumos/*Anotações do Gemini*

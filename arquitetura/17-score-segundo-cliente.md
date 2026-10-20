@@ -68,6 +68,22 @@ vai para o time. Diagnóstico operacional (por que o ROAS é 0,4, por que o pós
 - **S7. Trava:** sua hipótese hoje, por motor. O repositório diz "pós-pago: trava comercial, não de
   aquisição". E o pré-pago: aquisição cara, ou valor mal medido?
 
+## 4.1 Respostas (20/10, `dump/2026-10-20-16-respostas-score.md`)
+
+| | Resposta | O que virou |
+|---|---|---|
+| Motores | **Não podem ser fixos**: o AP13 também tem loja física e marketplace. Controle nosso | `motores[]` é lista editável com `status`: `ativo` · `monitorado` · `fora`. Aplicado à Score (2 ativos) e ao AP13 (e-commerce ativo, lojas monitorado, marketplace fora) |
+| S1 | LeadFinder é o CRM da Score | `crm: leadfinder`; ⚠️ falta saber se dá para ler |
+| S2 | Mônia (CEO), Carolina (head comercial), Ana Carolina (assistente da Mônia), Anderson (CISO), Léo (sócio técnico, pouco contato). Comercial → Carolina ou Mônia; técnico → Anderson | `stakeholders[]` |
+| S3 | Faturas de 12 meses: sim | habilita a coorte do pré-pago |
+| S4 | Check-in **semanal**; sprint do Fúria com todos os clientes | `rituais[]`; ⚠️ o repositório dizia quinzenal |
+| S5 | Mesmo time (Gabriel, Lucas, Breno, Pedro). Fee e verba: não lembra. 10–12 h, demanda muito variável | verba observada pela API: Google R$ 5.782 + Meta R$ 3.361 em 30 dias (Ekyte diz R$ 2.000). ⚠️ O Ekyte tem Daiane, Thiago Senna e Esdras com tarefas na Score |
+| S6 | Trazer para o Cockpit: sim | feito; repositório antigo com `ARQUIVADO.md` |
+| S7 | Pré-pago: talvez não atinjamos o público certo (só CNPJ, Serasa domina) — a explorar. Pós-pago: sem trava de conversão; a restrição é demanda | registradas como hipótese por motor. ⚠️ Diverge do check-in 6 ("trava comercial", zero contrato com 212 conversas) — a árvore de lead decide |
+
+**Adotado por mim, a confirmar: uma trava por motor** (cada motor tem `trava.hipotese`). Decorre da S7,
+em que a resposta veio por motor; o Gabriel não decidiu isso explicitamente.
+
 ## 5. Ordem proposta depois das respostas
 
 1. Estrutura do `cliente.md` com `motores[]` (validar com você) → aplicar à Score e ao AP13

@@ -18,6 +18,13 @@ Google; pós-pago = geração de lead, Meta → comercial da Score). Critério p
 - O repositório antigo da Score (`V4 Company/Clientes/Score Positivo/score-positivo/`, parado em 22/09)
   já responde muito: regras de ROAS pactuadas, série dos check-ins 5–6, 8 temas em aberto
 - Ordem depois: `motores[]` → árvore de lead → pauta da Score → template de projetos → semana na frente
+- ✅ *20/10 (noite):* respostas S1–S7 (`dump/2026-10-20-16`, tabela em `arquitetura/17` §4.1). **Motores são
+  lista CONFIGURÁVEL** com `status` ativo/monitorado/fora (o AP13 tem lojas e marketplace).
+  **`clientes/score-positivo/` criado**: `cliente.md` com 2 motores, stakeholders, verba observada pela API
+  (Google R$ 5,8 mil + Meta R$ 3,4 mil/30 dias; o Ekyte diz R$ 2 mil), regras do check-in, decisões,
+  identidade e projeto CENPROT trazidos do repositório antigo (agora `ARQUIVADO.md` lá). Trava por motor
+  (adotada por mim, a confirmar). ▶️ **Próximo:** árvore `geracao-lead.yaml` (pós-pago) e `autosservico`
+  com coorte (pré-pago). Pendente do Gabriel: fee, LinkedIn, quem manda o XLSX, se o LeadFinder dá leitura
 
 ## 🔖 Onde paramos — 20/10/2026 (manhã): as três ações do Gabriel andaram
 

@@ -35,6 +35,12 @@ google_ads_compra_categoria: PURCHASE   # só a "GA4 (web) purchase" tem essa ca
 meta_objetivo_ecommerce: OUTCOME_SALES  # as campanhas OUTCOME_TRAFFIC levam à loja física/Instagram e não entram no ROAS do e-commerce
 rastreamento: "nativo da JET (painel: pixel Meta + envio ao servidor disparado pelo navegador, conversão Google Ads por gtag) + GTM injetado pela JET se ativado no painel"   # 15/10, lido no código público do site. Correção do tracking: Gabriel + Claude executam (não mais o Esdras)
 responsaveis: { trafego: "Breno Ferreira", tech: "Esdras Wesley", tracking: "Gabriel Ihmaid (com Claude)", email: "Lucas Brandão", account: "Gabriel Ihmaid", designer: "Pedro", coordenador: "Lucas Bastos", copy: "Gabriel Ihmaid (com IA)" }
+# ⭐ MOTORES DE RECEITA (20/10) — lista configurável (ver clientes/score-positivo/cliente.md). Os campos
+# acima (modelo_metricas, fonte_metrica_conversao, campos_manuais) são do motor e-commerce, até o núcleo migrar
+motores:
+  - { id: ecommerce, nome: "E-commerce (JET)", natureza: autosservico, status: ativo, canais: [google_ads, meta_ads, email], arvore: ecommerce }
+  - { id: lojas-fisicas, nome: "~15 lojas físicas", natureza: varejo_local, status: monitorado, canais: [google_ads], nota: "PMax Lojas Físicas mede visita à loja; a venda da loja não chega ao sistema" }
+  - { id: marketplace, nome: "Marketplace", natureza: marketplace, status: fora, nota: "excluído do export da JET; não acompanhamos" }
 campos_manuais:
   - { fonte: jet, o_que: "pedidos, compras e receita real", origem: "export de pedidos da JET → metricas/bruto/relatorio-pedidos-jet/ → scripts/jet.py", responsavel: "Gabriel ou GT", cadencia_dias: 7, quando: "segunda, antes da sprint" }
 atualizado_em: 2026-10-13
