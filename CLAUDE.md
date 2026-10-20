@@ -18,6 +18,20 @@ AP13 é **banco de teste do sistema**, não pauta de execução.
   para todos** (`docs/24`, seção de 18/10). Token no `.env`, nunca em conversa
 - Em fila: **template de planejamento de projetos** (`docs/20` §8, estrutura aprovada 15/10)
 
+> ▶️ **ABRINDO UM CHAT NOVO (depois de 18/10)?** `git pull`, depois esta ordem proposta (o Gabriel
+> ainda não confirmou qual começa; perguntar). As três primeiras são ações curtas DELE, em paralelo;
+> enquanto isso o Claude escreve o template:
+>
+> | # | Gabriel faz | Claude faz em seguida | Ganho para o sistema |
+> |---|---|---|---|
+> | 1 | Token do Meta na BM "MCC" da unidade: `docs/24` passos 2–6, só `ads_read`, direto no `.env`. Conferir se é **admin** e se a conta `212245853` aparece em "Atribuir ativos" | Validar sem imprimir o token e ligar a leitura do Meta no `scripts/metricas.py` (o `meta_cache.py` vira plano B) | A pauta de segunda deixa de depender do conector, que cai após /compact |
+> | 2 | Export da JET **nov–dez/2025** em `metricas/bruto/relatorio-pedidos-jet/` | Recalibrar BF e Natal em `projecao-2026-Q4.md` + app (`#projecao`) com venda paga | Multiplicadores de evento viram dado, não premissa do GA4 |
+> | 3 | Export do contêiner do **GTM** (Admin › Exportar contêiner, JSON) + print das integrações do painel da JET | Diagnosticar o purchase: só pago, 78 sem par, pixel antigo, duplicadas | Sinal de lance = venda válida; pré-requisito para o agente de tráfego escalar. ⚠️ Prazo dito ao cliente: medição corrigida **~05/11** |
+> | 4 | — | **Template de planejamento de projetos** (`docs/20` §8; BF como 1ª instância → cronograma → Ekyte) | Liga plano de 3 meses à semana na frente |
+>
+> ⛔ Não puxar execução da BF (oferta, CRM, criativo, cobrança do checklist) sem pedido. O registro do
+> check-in de 15/10 + checklist enviado está em `reunioes/2026-10-15-checkin.md`.
+
 ## ✅ 15/10: deck do check-in CONSTRUÍDO — `clientes/atacadao-posto-13/checkin/ap13-checkin-quinzena-01a14-out2026.html`
 8 seções (com ⭐ Black Friday: 3 cenários, dados da JET, as 5 ofertas, 4 perguntas, calendário). Flowbiz
 sem comparação (decisão do Gabriel). JET de 10–14/10 ingerida. Série histórica atualizada em `regras.md`.
