@@ -21,7 +21,8 @@ base:
 aprovacao_atual: 0.80        # set/2026: 369 compras válidas ÷ 462 pré-pedidos
 
 # Multiplicadores por tipo de semana: [volume, ticket]
-# Pessimista = padrão da BF 2025 do próprio AP13 (GA4, era Wake): compras 2,6× e ticket ~0,46× → receita ~1,2×
+# Pessimista = padrão da BF 2025 do próprio AP13 (GA4): compras 2,6× e ticket ~0,46× → receita ~1,2×
+#   ⚠️ 18/10: a BF 2025 já era JET. Refazer com os pedidos pagos da JET (o GA4 superconta ~20–25%)
 # Realista/otimista = mercado: BF é até 3× um dia comum; no dia da BF 2025 os pedidos subiram 28% e o
 #   ticket caiu 12,8% sobre 2024 (Confi Neotrust). ⚠️ Pré-BF, Natal e virada: premissas a partir do
 #   desenho de 2025 (conversão caiu nas semanas antes da BF; Natal ~ semanas normais; queda depois do dia 20)
@@ -145,6 +146,8 @@ Sensibilidade do equilíbrio à margem: 15% → R$ 148.000 · 20% → R$ 111.000
 
 **Revisão do usuário (15/10):** estrutura e método aprovados; **multiplicadores aprovados por ora**.
 O Gabriel vai tentar puxar o histórico da Wake; se vier, recalibra a BF e o Natal.
+⚠️ *18/10:* não é Wake. Na BF 2025 o site já era a JET, e o Gabriel consegue exportar. Com o export de
+nov–dez/2025, os multiplicadores de BF e Natal deixam de ser premissa (GA4) e passam a ser dado.
 
 **Limites:**
 - Os multiplicadores de evento do realista e do otimista são **premissa** (mercado e desenho de

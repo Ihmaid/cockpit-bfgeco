@@ -54,6 +54,16 @@ bateram ao centavo com a conta nos 4 recortes. Quando o token sair, a leitura po
 - Decisão pendente (portão de escala): seguir **um token por BM de cliente** ou montar **na BM da
   BFG&Co**, com as contas dos clientes compartilhadas como parceiras (um token para todos)
 
+## ⭐ 18/10/2026: o Gabriel tem acesso à BM "MCC" da unidade
+
+Ele tem acesso ao portfólio da **BFG&Co que agrupa a maior parte das contas dos clientes, incluindo
+o AP13**. Isso resolve a decisão pendente acima a favor de **um token para todos**: o usuário de
+sistema é criado nessa BM e as contas dos clientes são atribuídas a ele (passo 3). O app e o
+usuário de sistema criados na BM do AP13 em 27/09 ficam **sem uso** (não apagar sem ver se servem a
+algo; ⚠️ a aprovação pendente por lá deixa de importar).
+⚠️ Confirmar na tela: (1) se ele é **admin** dessa BM (sem admin não cria usuário de sistema);
+(2) se a conta `212245853` aparece em **Atribuir ativos** (se é parceira, o bloqueio estaria aí).
+
 ## Por que token, se o conector do claude.ai já lê o Meta?
 
 | | Conector (MCP do claude.ai) | Token de usuário de sistema |

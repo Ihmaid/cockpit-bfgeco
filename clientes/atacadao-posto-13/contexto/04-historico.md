@@ -38,7 +38,8 @@ atualizado_em: 2026-10-10
   deveriam. ⚠️ Contraponto em número: a receita via Flowbiz foi de R$ 916 (ago, 01–26) para
   R$ 12.031 (set, 01–26), pela UTM gravada no pedido da JET — há melhora para mostrar a ele
 - **R$ 150 mil/mês é desejo dele**, não projeção. O plano carrega os dois números: desejo e projeção
-- Os dados da Black Friday de 2025 na Wake **não estão mais acessíveis**. Para a BF 2025, só Google e Meta
+- ~~Os dados da Black Friday de 2025 na Wake **não estão mais acessíveis**. Para a BF 2025, só Google e Meta~~
+  ⚠️ *Corrigido em 18/10 (Gabriel):* na BF 2025 o site **já era a JET**, e os pedidos podem ser exportados
 
 ## Por que esta seção importa mais que as outras
 

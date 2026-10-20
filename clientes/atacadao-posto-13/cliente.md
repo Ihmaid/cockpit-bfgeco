@@ -17,12 +17,12 @@ budget_google_ads: 12000     # divisão de referência; o GT tem autonomia para 
 budget_meta_ads: 6000
 budget_black_friday: 18000   # 15/10: a BF não tem verba extra; segue nos R$ 18 mil/mês
 margem_contribuicao: 0.20    # 15/10: PREMISSA conservadora do usuário, "não tenho esse número fidedigno". A planilha do Growth Pack dizia 36% e 30%
-referencia_sazonal_2025: "BF 2025 NÃO é referência (faturamento fraco, era Wake, sem export). Melhor mês de 2025 = outubro (Dia das Crianças), ⚠️ ~R$ 70 mil a confirmar"   # 15/10
+referencia_sazonal_2025: "BF 2025 já era JET: pedidos exportáveis (Gabriel, 18/10), recalibrar a BF com eles. Melhor mês de 2025 = outubro (Dia das Crianças), ⚠️ ~R$ 70 mil a confirmar"   # 15/10; corrigido 18/10
 site: "atacadaoposto13.com.br"   # og:url declara atacadaopostotreze.com.br
 google_ads_customer_id: "6295738385"
 meta_ads_account: "212245853"   # "Grupo Atacadão Posto 13", BM do cliente; validado pelo conector em 28/09 (docs/24)
 ga4_property_id: "363402252"   # "Atacadão Posto Treze – GA4"; validado por scripts/ga4.py em 28/09 (docs/25)
-plataforma_ecommerce: jet   # era Wake até 2025; a BF 2025 da Wake não é mais exportável (13/10)
+plataforma_ecommerce: jet   # era Wake antes; ⚠️ 18/10: na BF 2025 já era JET (a informação de 13/10 estava errada). Data da migração a confirmar
 fonte_metrica_conversao: "jet ÷ ga4"   # 28/09: compras da JET (scripts/jet.py) ÷ sessões do GA4. Wake não foi preciso
 eventos_ga4_confiaveis: [sessions]   # 13/10: purchase saiu — conta pedido não pago e duplicado (arquitetura/16 §8.1), serve só de tendência · begin_checkout quebrado desde ~09–30/08; add_to_cart suspeito (docs/25)
 stakeholder_principal: Paulo   # avalia por resultado; dores em contexto/04

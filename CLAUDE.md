@@ -3,12 +3,32 @@
 Projeto de gestão, análise e implementação do **Cockpit**: sistema para centralizar a gestão
 **estratégica, comercial e administrativa** da unidade BFG&Co da V4 Company.
 
+## 🔖 Onde paramos — 18/10/2026: de volta ao SISTEMA
+
+⛔ **O Gabriel não atua no operacional do AP13 agora** (18/10). O checklist da BF já foi ao grupo
+(texto em `reunioes/2026-10-15-checkin.md`); a execução da BF é do cliente + time. Daqui em diante, o
+AP13 é **banco de teste do sistema**, não pauta de execução.
+**Três travas do sistema caíram (18/10):**
+- **GTM do AP13: com acesso.** Próximo: export do contêiner (JSON) + tela de integrações do painel
+  da JET → leitura do purchase (só pago, 78 sem par, pixel antigo). API do GTM segue para o próximo ciclo
+- **BF 2025 já era JET**, não Wake (a informação de 13/10 estava errada). Ele consegue exportar
+  nov–dez/2025 → recalibra BF e Natal da projeção com dado (hoje é padrão do GA4). Corrigido em
+  `cliente.md`, `contexto/04`, `projecao-2026-Q4.md` e no registro do check-in
+- **Meta: acesso à BM "MCC" da unidade**, que tem a maioria dos clientes, AP13 incluso → **um token
+  para todos** (`docs/24`, seção de 18/10). Token no `.env`, nunca em conversa
+- Em fila: **template de planejamento de projetos** (`docs/20` §8, estrutura aprovada 15/10)
+
 ## ✅ 15/10: deck do check-in CONSTRUÍDO — `clientes/atacadao-posto-13/checkin/ap13-checkin-quinzena-01a14-out2026.html`
 8 seções (com ⭐ Black Friday: 3 cenários, dados da JET, as 5 ofertas, 4 perguntas, calendário). Flowbiz
 sem comparação (decisão do Gabriel). JET de 10–14/10 ingerida. Série histórica atualizada em `regras.md`.
 ⚠️ O `li` dos pilares é flex: texto com `<strong>` precisa de um `<span>` envolvendo o item, senão quebra
 em colunas (o deck de 01–07/10 tem esse defeito). **Próximo:** respostas do check-in → template de
 planejamento de projetos → plano da BF até 25/10 → Ekyte.
+✅ *Check-in realizado (15/10, tarde)*, registro em `clientes/atacadao-posto-13/reunioes/2026-10-15-checkin.md`.
+Decidido: **progressivo** e **brinquedo como presente** na BF; Cresce Vendas = WhatsApp + app. **Em aberto:**
+lista de produtos BF (Matheus, **26/10**), orçamento (Paulo viajando), kits (Raquel), margem, estoque de
+brinquedo, PRIMEIRACOMPRA. ⚠️ Corrigir com o cliente: "R$ 23,8 mil em 2025" é o cenário pessimista, não
+venda real; nov realista = R$ 121,5 mil, não 130. Gabriel prometeu **checklist executável da BF no grupo**.
 
 ## 🔖 (histórico) check-in do AP13 de 15/10/2026 (deck HTML para o cliente)
 

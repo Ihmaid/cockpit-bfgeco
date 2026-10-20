@@ -3,8 +3,10 @@
 - [Premissas de trabalho](premissas-de-trabalho-bfgco.md) — melhoria contínua sobre perfeição, nunca padronizar em cima de um cliente só, sazonalidade obrigatória no quarter, e a trava do cliente é hipótese (confirmá-la é saída do sistema, não entrada)
 - [Tese do sistema da BFG&Co](tese-do-sistema-bfgco.md) — apêndice de ritual, não destino; o produto é clareza sobre a rotina que falta; e nunca conectar fonte de dado antes de existir a pergunta
 - [Pauta com roteiro](pauta-com-roteiro.md) — toda pauta de ritual abre com 6–8 perguntas em ordem, com dono e seção dos números
-- [Foco no AP13 antes da carteira](foco-ap13-antes-da-carteira.md) — até o portão de escala, só o que faz o Atacadão funcionar; nada de outros clientes, nem cadastro no Ekyte
+- [Foco no AP13 antes da carteira](foco-ap13-antes-da-carteira.md) — até o portão de escala, só AP13; e no AP13, o sistema, não o operacional (reforçado 18/10)
 - [Transcrição da sprint no Drive](transcricao-sprint-no-drive.md) — pasta do squad no Fúria, doc do Gemini de ~70 mil caracteres, filtrar pelo cliente
 - [Objetivo: a semana na frente](objetivo-semana-na-frente.md) — no domingo ver seg–sex dele e do time, com estágio e atraso; agentes são o meio; 1º teste real = Black Friday do AP13
 - [Horas são referência, não teto](horas-referencia-nao-teto.md) — 8–10 h/semana por cliente é régua de rentabilidade; passar é legítimo, dizer quanto e por quê
 - [Não lembrar pendência dispensada](nao-lembrar-pendencia-dispensada.md) — se ele disse "esquece, eu te chamo" (ex.: clone), parar de listar
+- [Conectores do claude.ai somem](conectores-claudeai-somem-apos-compactar.md) — Meta/Drive podem não carregar (sobretudo após /compact); conferir antes, onde paramos + chat novo, token é a saída
+- [Check-in de mídia feito aqui](checkin-de-midia-feito-no-cockpit.md) — desde 15/10 o deck do cliente sai da skill do projeto; material de referência enviado é digerido e apagado
