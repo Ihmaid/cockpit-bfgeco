@@ -13,9 +13,13 @@ Projeto de gestão, análise e implementação do **Cockpit**: sistema para cent
   ou data da migração Wake → JET? Perguntar
 - **GTM lido** → `clientes/atacadao-posto-13/diagnosticos/tracking-2026-10-20.md`. ⭐ O `purchase` sai do
   navegador na **criação do pedido**: os 12% não pagos são estruturais, **GTM sozinho não corrige**.
-  Pixel do Meta não está no GTM (nativo da JET, tela não aparece no painel comum). v45 (21/08, sem nome)
-  coincide com a quebra do `begin_checkout`. Caminhos A/B/C no diagnóstico, **para decidir**.
-  Pendências do Gabriel: export da **v44** e as **5 perguntas à JET**
+  Pixel do Meta não está no GTM (nativo da JET, tela não aparece no painel comum). Caminhos A/B/C no
+  diagnóstico, **para decidir**. Pendência do Gabriel: as **5 perguntas à JET**
+- ⭐⭐ **CORREÇÃO (diff v44 × v46): o `begin_checkout` NÃO quebrou em agosto, esteve INFLADO de 20/07 a
+  ~24/08** por 3 tags de pageview ("Claude - Fix funil GA4", 22/07) que contavam toda visita ao carrinho
+  como início de checkout. Sem elas, ~10% begin_checkout ÷ add_to_cart, o mesmo nível de jun–jul. Tudo o
+  que diz "quebrado desde agosto" (Gargalo 0, ciclo-02, docs/25, glossário, plano Q4) está superado
+  por isto; a métrica da trava (sessão → compra) não muda
 - Guia de export do GTM para leigo: `docs/27`
 
 ## 🔖 19/10/2026: produtos mais vendidos do AP13 (pedido avulso do Gabriel)
@@ -243,7 +247,8 @@ perguntas, roteiro de kick-off).
   **critério de saída ≥ 1,3%** (aprovado). `pdca/ciclo-02.md` fechado em 28/09
 - **Verba R$ 18 mil/mês** (12 Google + 6 Meta), com autonomia do GT para realocar entre canais. **Fee R$ 4.200**
 - **O GA4 superconta ~20–25% frente à JET.** Valor sai da JET. O GA4 serve para sessões e tendência
-- **A tag `begin_checkout` do GA4 está quebrada desde ~09–30/08** (tarefa do Esdras). `add_to_cart` suspeito
+- ~~**A tag `begin_checkout` do GA4 está quebrada desde ~09–30/08**~~ ⚠️ *Corrigido em 20/10: estava
+  inflada 20/07–~24/08, não quebrada (`diagnosticos/tracking-2026-10-20.md`).* `add_to_cart` suspeito
 - Regras de fonte: Google, compra = categoria `PURCHASE`, e só a "GA4 (web) purchase" tem essa
   categoria · Meta, ROAS do e-commerce = só `OUTCOME_SALES` · compras de canais diferentes não se somam
 

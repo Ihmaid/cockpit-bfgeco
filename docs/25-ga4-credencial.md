@@ -17,7 +17,9 @@ funcionaram na primeira tentativa, com a Data API e a Admin API ativas.
 - ⭐ **O primeiro uso já corrigiu uma conclusão da pauta.** O funil por canal (Google e Meta) sugeria
   uma queda de conversão no site desde 13/09. O site inteiro mostrou que ela **não existe**. Ver a
   pauta de 28/09, §2.3 e §3.1
-- ⛔ **Eventos não confiáveis no AP13:** `begin_checkout` (quebrado desde ~09–30/08) e, provavelmente,
+- ⚠️ *Corrigido em 20/10:* o `begin_checkout` não quebrou; esteve **inflado de 20/07 a ~24/08** por tag
+  de pageview no GTM (`clientes/atacadao-posto-13/diagnosticos/tracking-2026-10-20.md`, item 3)
+- ⛔ **Eventos não confiáveis no AP13:** ~~`begin_checkout` (quebrado desde ~09–30/08)~~ e, provavelmente,
   `add_to_cart` (50–60% das sessões). Os confiáveis são sessões, `purchase` e transações
 
 ## A pergunta que justifica a conexão (tese 2)

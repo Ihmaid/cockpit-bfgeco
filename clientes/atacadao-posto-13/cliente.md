@@ -24,7 +24,7 @@ meta_ads_account: "212245853"   # "Grupo Atacadão Posto 13", BM do cliente; val
 ga4_property_id: "363402252"   # "Atacadão Posto Treze – GA4"; validado por scripts/ga4.py em 28/09 (docs/25)
 plataforma_ecommerce: jet   # era Wake antes; ⚠️ 18/10: na BF 2025 já era JET (a informação de 13/10 estava errada). Data da migração a confirmar
 fonte_metrica_conversao: "jet ÷ ga4"   # 28/09: compras da JET (scripts/jet.py) ÷ sessões do GA4. Wake não foi preciso
-eventos_ga4_confiaveis: [sessions]   # 13/10: purchase saiu — conta pedido não pago e duplicado (arquitetura/16 §8.1), serve só de tendência · begin_checkout quebrado desde ~09–30/08; add_to_cart suspeito (docs/25)
+eventos_ga4_confiaveis: [sessions]   # 13/10: purchase saiu — conta pedido não pago e duplicado (arquitetura/16 §8.1), serve só de tendência · begin_checkout: NÃO quebrou, esteve inflado 20/07–~24/08 por tag de pageview; a série nativa (jun–jul e set–out) é consistente, ⚠️ exatidão não provada (diagnosticos/tracking-2026-10-20 item 3) · add_to_cart suspeito (docs/25)
 stakeholder_principal: Paulo   # avalia por resultado; dores em contexto/04
 capacidade_horas_semana: 10   # 8–10 h/semana do TIME INTEIRO no AP13 (13/10). REFERÊNCIA de rentabilidade, não teto (14/10): semana de evento pede mais
 canal_interno: "GChat — Fúria da Noite"

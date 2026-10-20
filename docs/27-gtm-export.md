@@ -31,7 +31,9 @@ mandar para o Claude.
 ## 3. Print da aba Versões
 
 Aba **Versões**: a lista mostra cada versão publicada, **quando** e **por quem**. Um print basta.
-Serve para datar mudanças de tag contra os sintomas (no AP13: `begin_checkout` quebrou ~21/08).
+Serve para datar mudanças de tag contra os sintomas. No AP13 foi assim que se descobriu que a
+"quebra" do `begin_checkout` em ~21/08 era o fim de uma contagem dupla (diff v44 × v46).
+**Dica:** exportar também a versão **anterior** à suspeita (Versões › N › ⋮ › Exportar) e comparar.
 Se a aba **Espaço de trabalho** mostrar "Alterações no espaço de trabalho: N" com N > 0, anotar o N
 (há mudança feita e não publicada).
 
