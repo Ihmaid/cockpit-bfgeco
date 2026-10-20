@@ -3,6 +3,21 @@
 Projeto de gestão, análise e implementação do **Cockpit**: sistema para centralizar a gestão
 **estratégica, comercial e administrativa** da unidade BFG&Co da V4 Company.
 
+## 🔖 Onde paramos — 20/10/2026: as três ações do Gabriel andaram
+
+- **Meta:** token gerado na BM "MCC", ⏳ **aguardando aprovação de outro admin**. Depois: `.env`
+  (`META_ACCESS_TOKEN`) → validar sem imprimir → leitura do Meta no `metricas.py`
+- **JET 29/09/2025–15/10/2026** em `metricas/bruto/relatorio-pedidos-jet/` (2 arquivos, 4.801 pedidos,
+  série contínua; nov/25 = 450, dez/25 = 423). ▶️ **Próximo meu:** recalibrar BF e Natal em
+  `projecao-2026-Q4.md` + app com venda paga. ⚠️ O 1º pedido é de 29/09/2025: limite do filtro de 1 ano
+  ou data da migração Wake → JET? Perguntar
+- **GTM lido** → `clientes/atacadao-posto-13/diagnosticos/tracking-2026-10-20.md`. ⭐ O `purchase` sai do
+  navegador na **criação do pedido**: os 12% não pagos são estruturais, **GTM sozinho não corrige**.
+  Pixel do Meta não está no GTM (nativo da JET, tela não aparece no painel comum). v45 (21/08, sem nome)
+  coincide com a quebra do `begin_checkout`. Caminhos A/B/C no diagnóstico, **para decidir**.
+  Pendências do Gabriel: export da **v44** e as **5 perguntas à JET**
+- Guia de export do GTM para leigo: `docs/27`
+
 ## 🔖 19/10/2026: produtos mais vendidos do AP13 (pedido avulso do Gabriel)
 
 Ferramenta nova: **`scripts/top_produtos.py <export.csv>`**. Só venda válida, junta unidade + caixa
