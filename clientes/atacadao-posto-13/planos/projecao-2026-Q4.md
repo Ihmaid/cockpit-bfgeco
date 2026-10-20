@@ -3,7 +3,7 @@ tipo: projecao
 cliente: atacadao-posto-13
 modelo: ecommerce            # → compartilhado/projecao/ecommerce.md
 periodo: 2026-10-12 a 2027-01-03
-gerado_em: 2026-10-15
+gerado_em: 2026-10-20
 status: rascunho             # 15/10: estrutura e multiplicadores aprovados por ora; vira 'aprovada' quando o plano da BF fechar
 
 desejo_mensal: 150000        # "desejo do Paulo", não projeção (Q40, 10/10)
@@ -21,19 +21,23 @@ base:
 aprovacao_atual: 0.80        # set/2026: 369 compras válidas ÷ 462 pré-pedidos
 
 # Multiplicadores por tipo de semana: [volume, ticket]
-# Pessimista = padrão da BF 2025 do próprio AP13 (GA4): compras 2,6× e ticket ~0,46× → receita ~1,2×
-#   ⚠️ 18/10: a BF 2025 já era JET. Refazer com os pedidos pagos da JET (o GA4 superconta ~20–25%)
-# Realista/otimista = mercado: BF é até 3× um dia comum; no dia da BF 2025 os pedidos subiram 28% e o
-#   ticket caiu 12,8% sobre 2024 (Confi Neotrust). ⚠️ Pré-BF, Natal e virada: premissas a partir do
-#   desenho de 2025 (conversão caiu nas semanas antes da BF; Natal ~ semanas normais; queda depois do dia 20)
+# 20/10 — RECALIBRADO COM A JET (venda válida B2C, out/2025–jan/2026; export 29/09/25–15/10/26).
+#   Realista = o padrão do próprio AP13 em 2025, contra uma base que cresce de out/25 (56 compras/sem,
+#   ticket R$ 222) a jan/26 (68, R$ 256), interpolada semana a semana, para não contar tendência como
+#   evento. B2B fica fora (pedidos de R$ 10–25 mil distorcem semana isolada).
+#   Pessimista = 2025 com volume −15%. Otimista = 2025 com volume +10% e, na BF e na Cyber, ticket +15%
+#   (o desconto progressivo pelo carrinho, decidido em 15/10, existe para segurar o ticket). Essas duas
+#   regras são PREMISSA; o realista é dado.
+# Antes (15/10): pessimista vinha do GA4 (BF 2,6× e ticket 0,46× → receita 1,2×). Na venda válida a BF
+#   2025 foi 2,86× e 0,68× → 1,96×: o GA4 exagerava a queda do ticket.
 eventos:
   normal:       { pessimista: [1.00, 1.00], realista: [1.00, 1.00], otimista: [1.00, 1.00] }
-  pre_bf:       { pessimista: [0.90, 0.95], realista: [1.00, 0.95], otimista: [1.05, 1.00] }
-  bf:           { pessimista: [2.60, 0.46], realista: [2.30, 0.87], otimista: [2.80, 0.95] }
-  cyber:        { pessimista: [1.30, 0.77], realista: [1.40, 0.93], otimista: [1.50, 1.00] }
-  natal:        { pessimista: [1.20, 0.75], realista: [1.20, 0.96], otimista: [1.25, 1.04] }
-  semana_natal: { pessimista: [0.80, 0.75], realista: [0.80, 0.88], otimista: [0.85, 0.94] }
-  ano_novo:     { pessimista: [0.60, 0.83], realista: [0.65, 0.92], otimista: [0.70, 1.00] }
+  pre_bf:       { pessimista: [0.82, 1.13], realista: [0.96, 1.13], otimista: [1.06, 1.13] }
+  bf:           { pessimista: [2.43, 0.68], realista: [2.86, 0.68], otimista: [3.15, 0.78] }
+  cyber:        { pessimista: [1.32, 0.83], realista: [1.55, 0.83], otimista: [1.71, 0.95] }
+  natal:        { pessimista: [1.14, 0.98], realista: [1.34, 0.98], otimista: [1.47, 0.98] }
+  semana_natal: { pessimista: [0.71, 0.80], realista: [0.84, 0.80], otimista: [0.92, 0.80] }
+  ano_novo:     { pessimista: [0.60, 0.67], realista: [0.71, 0.67], otimista: [0.78, 0.67] }
 
 # Semanas (segunda-feira → tipo). BF = sex 27/11; Cyber Monday = 30/11; Natal = 25/12
 semanas:
@@ -53,7 +57,7 @@ semanas:
 
 # Real já fechado no período (JET), somado ao mês
 real:
-  2026-10: { de: 2026-10-01, ate: 2026-10-09, receita: 36197, compras: 110 }
+  2026-10: { de: 2026-10-01, ate: 2026-10-15, receita: 52986, compras: 164 }   # 20/10, export até 15/10
 ---
 
 # Projeção Q4/2026 — Atacadão Posto 13
@@ -63,16 +67,16 @@ real:
 > O bloco abaixo é gerado pelo script; não editar à mão.
 
 <!-- projecao:inicio -->
-*Gerado por `scripts/projecao.py` em 2026-10-15.*
+*Gerado por `scripts/projecao.py` em 2026-10-20.*
 
 ### Por mês
 
 | Mês | Pessimista | Realista | Otimista | Desejo | Falta (realista) |
 |---|---|---|---|---|---|
-| out/26 (inclui real até 09/10) | R$ 98.708 | **R$ 109.903** | R$ 124.448 | R$ 150.000 | R$ 40.097 (27%) |
-| nov/26 | R$ 80.492 | **R$ 121.478** | R$ 173.173 | R$ 150.000 | R$ 28.522 (19%) |
-| dez/26 | R$ 70.462 | **R$ 104.730** | R$ 142.779 | R$ 150.000 | R$ 45.270 (30%) |
-| jan/27 (parcial: 3 dias) | R$ 4.245 | **R$ 6.010** | R$ 8.424 | R$ 14.516 | R$ 8.506 (59%) |
+| out/26 (inclui real até 15/10) | R$ 98.449 | **R$ 106.591** | R$ 117.169 | R$ 150.000 | R$ 43.409 (29%) |
+| nov/26 | R$ 94.111 | **R$ 129.592** | R$ 180.423 | R$ 150.000 | R$ 20.408 (14%) |
+| dez/26 | R$ 78.987 | **R$ 109.590** | R$ 149.056 | R$ 150.000 | R$ 40.410 (27%) |
+| jan/27 (parcial: 3 dias) | R$ 3.427 | **R$ 4.781** | R$ 6.289 | R$ 14.516 | R$ 9.735 (67%) |
 
 ### Por semana (receita válida)
 
@@ -82,15 +86,15 @@ real:
 | 12/10 | normal | R$ 19.890 | R$ 23.452 | R$ 28.080 | 85 |
 | 19/10 | normal | R$ 19.890 | R$ 23.452 | R$ 28.080 | 85 |
 | 26/10 | normal | R$ 19.890 | R$ 23.452 | R$ 28.080 | 85 |
-| 02/11 | pre_bf | R$ 17.006 | R$ 22.279 | R$ 29.484 | 85 |
-| 09/11 | pre_bf | R$ 17.006 | R$ 22.279 | R$ 29.484 | 85 |
-| 16/11 | pre_bf | R$ 17.006 | R$ 22.279 | R$ 29.484 | 85 |
-| 23/11 | bf | R$ 23.788 | R$ 46.927 | R$ 74.693 | 196 |
-| 30/11 | cyber | R$ 19.910 | R$ 30.535 | R$ 42.120 | 119 |
-| 07/12 | natal | R$ 17.901 | R$ 27.017 | R$ 36.504 | 102 |
-| 14/12 | natal | R$ 17.901 | R$ 27.017 | R$ 36.504 | 102 |
-| 21/12 | semana_natal | R$ 11.934 | R$ 16.510 | R$ 22.436 | 68 |
-| 28/12 | ano_novo | R$ 9.905 | R$ 14.024 | R$ 19.656 | 55 |
+| 02/11 | pre_bf | R$ 18.430 | R$ 25.441 | R$ 33.634 | 82 |
+| 09/11 | pre_bf | R$ 18.430 | R$ 25.441 | R$ 33.634 | 82 |
+| 16/11 | pre_bf | R$ 18.430 | R$ 25.441 | R$ 33.634 | 82 |
+| 23/11 | bf | R$ 32.866 | R$ 45.609 | R$ 68.993 | 244 |
+| 30/11 | cyber | R$ 21.791 | R$ 30.171 | R$ 45.616 | 132 |
+| 07/12 | natal | R$ 22.221 | R$ 30.797 | R$ 40.452 | 114 |
+| 14/12 | natal | R$ 22.221 | R$ 30.797 | R$ 40.452 | 114 |
+| 21/12 | semana_natal | R$ 11.298 | R$ 15.760 | R$ 20.667 | 72 |
+| 28/12 | ano_novo | R$ 7.996 | R$ 11.156 | R$ 14.675 | 61 |
 
 ### Alavancas: o que leva um mês normal (realista, R$ 101.625) ao desejo (R$ 150.000)
 
@@ -111,10 +115,10 @@ Com margem de 20%, a receita válida que paga mídia (R$ 18.000) + fee (R$ 4.200
 
 | Mês | Resultado (realista) = receita × margem − mídia − fee |
 |---|---|
-| out/26 | R$ -219 |
-| nov/26 | R$ 2.096 |
-| dez/26 | R$ -1.254 |
-| jan/27 (parcial) | R$ -946 |
+| out/26 | R$ -882 |
+| nov/26 | R$ 3.718 |
+| dez/26 | R$ -282 |
+| jan/27 (parcial) | R$ -1.192 |
 
 Sensibilidade do equilíbrio à margem: 15% → R$ 148.000 · 20% → R$ 111.000 · 25% → R$ 88.800 · 30% → R$ 74.000
 <!-- projecao:fim -->
@@ -148,6 +152,18 @@ Sensibilidade do equilíbrio à margem: 15% → R$ 148.000 · 20% → R$ 111.000
 O Gabriel vai tentar puxar o histórico da Wake; se vier, recalibra a BF e o Natal.
 ⚠️ *18/10:* não é Wake. Na BF 2025 o site já era a JET, e o Gabriel consegue exportar. Com o export de
 nov–dez/2025, os multiplicadores de BF e Natal deixam de ser premissa (GA4) e passam a ser dado.
+
+**✅ Recalibração de 20/10 (JET, venda válida, out/25–jan/26):**
+- **A meta da BF não muda:** realista da semana de 23/11 = **R$ 45,6 mil** (era R$ 46,9 mil). O caminho
+  muda: mais pedidos (2,9×) com ticket menor (0,68×), em vez de 2,3× com 0,87×
+- ⭐ **O "repetir 2025" deixou de ser R$ 23,8 mil.** Era o GA4 exagerando a queda do ticket (0,46×). Com
+  venda válida, 2025 repetido sobre a base de hoje **é** o realista. Ou seja: a meta da BF = fazer de novo,
+  proporcionalmente, o que o AP13 fez em 2025. Isso fecha a correção prometida ao cliente (check-in de 15/10)
+- **Novembro realista sobe para R$ 129,6 mil** (era R$ 121,5 mil) e **dezembro para R$ 109,6 mil**: o
+  Natal de 2025 foi mais forte do que a premissa (1,34× o volume, já descontada a tendência)
+- O desejo de R$ 150 mil continua fora do realista em todos os meses; só o otimista de novembro passa
+- ⚠️ Não controlado: a verba de mídia de nov–dez/2025 (se houve verba extra, o padrão de 2025 está
+  inflado para 2026, que não tem). Google e Meta têm esse dado; puxar só se a meta for questionada
 
 **Limites:**
 - Os multiplicadores de evento do realista e do otimista são **premissa** (mercado e desenho de
