@@ -3,6 +3,23 @@
 Projeto de gestão, análise e implementação do **Cockpit**: sistema para centralizar a gestão
 **estratégica, comercial e administrativa** da unidade BFG&Co da V4 Company.
 
+## 🔖 19/10/2026: produtos mais vendidos do AP13 (pedido avulso do Gabriel)
+
+Ferramenta nova: **`scripts/top_produtos.py <export.csv>`**. Só venda válida, junta unidade + caixa
+do mesmo item e ranqueia por **nº de pedidos** (receita e unidades são distorcidas por 1–2 compras
+grandes de PJ). Exports lidos (em `Downloads/`, ⚠️ ainda não movidos para `metricas/bruto/`):
+- **04–17/10** (`relatorio_pedido_1.792.409.956.210.csv`): 179 de 214 pedidos válidos, R$ 51,1 mil em
+  produto. **Top 4:** Copo Americano 190ml (8 ped.) · Xícara Café 95ml RR (7) · Taça de Água Buffet
+  300ml (7) · Copo Olé Dose 60ml (6; empatado com Caneca Tulipa 250ml). Na receita mandam compras
+  avulsas: Taça Frankfurt (buffet, R$ 5 mil) e Xícara Chá 195ml (2 × 250 un., venda assistida)
+- **06–19/09** (`relatorio_pedido_1.792.409.679.276.csv`): 208 de 262 válidos, R$ 42,6 mil. Top 4: Copo
+  Americano 190ml (8) · Taça Vinho Buffet 260ml (6) · Xícara Chá Branca 170ml (5) · Trator LA Toys (4)
+- **Leitura:** cauda longa (nenhum item passa de 8 pedidos/quinzena); o que recorre é vidro e
+  porcelana barata de mesa (copo, xícara, taça). Copo Americano 190ml lidera as duas quinzenas.
+  Brinquedo saiu do topo depois do Dia das Crianças. Insumo para a lista de produtos da BF (Matheus, 26/10)
+- ⚠️ **Possível pedido duplicado:** 2 × 150 Xícara Café 95ml, mesmo cliente PJ (Marília/SP), 2 min de
+  diferença, 16/10, ambos aprovados. Entra na pauta das duplicadas do tracking
+
 ## 🔖 Onde paramos — 18/10/2026: de volta ao SISTEMA
 
 ⛔ **O Gabriel não atua no operacional do AP13 agora** (18/10). O checklist da BF já foi ao grupo
@@ -646,6 +663,8 @@ as capacidades do produto, não a realidade da unidade.
   leitura (OAuth do usuário, mesmo projeto do Google Ads) · `scripts/gerar-adc-ga4.py` + `scripts/ga4.py`
 - [docs/26-migracao-de-maquina.md](docs/26-migracao-de-maquina.md) — 🖥️ **troca de computador (07/10)**:
   o que não vai com as pastas (memória, credenciais do Google, MCP), como restaurar e como validar
+- [docs/27-gtm-export.md](docs/27-gtm-export.md) — GTM para leigo: exportar o contêiner (JSON), print
+  de versões e das integrações da plataforma; salvar em `metricas/bruto/gtm/` (fora do git)
 - [docs/22-n8n-da-unidade.md](docs/22-n8n-da-unidade.md) — ⭐⭐ **INVENTÁRIO DO n8n PRÓPRIO**:
   101 workflows, o `Ekyte Automático` que já faz a Fase 4d, e o GA4 do AP13 que toca o Gargalo 0
 - [scripts/n8n.py](scripts/n8n.py) — inventário do n8n da unidade. Só lê, nunca ativa nem executa

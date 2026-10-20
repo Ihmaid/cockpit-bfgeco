@@ -103,6 +103,14 @@ depois, no portão de escala) › permissão **só "Visualizar desempenho"**.
 aparece para atribuir. Se não aparecer, o compartilhamento de parceiro é o bloqueio.
 
 **4. Atribuir o app ao usuário.** Em **Contas › Apps**, adicionar o usuário de sistema ao app do passo 1.
+⛔ *20/10, na BM "MCC":* pular este passo dá, no passo 5, **"Nenhuma permissão disponível — atribua
+uma função do app ao usuário do sistema"**. Correção: usuário de sistema › **Atribuir ativos** ›
+**Apps** › o app › função de desenvolvimento ("Desenvolver app"; se não bastar, controle total).
+⚠️ O app precisa **pertencer a esta BM**: o app criado em 27/09 é da BM do AP13 e não aparece aqui
+(um app pertence a um portfólio só). Nesse caso, criar um app novo vinculado à BM da unidade, com o
+caso de uso de anúncios (Marketing API), senão `ads_read` não aparece na lista.
+⏳ *20/10:* token gerado na BM "MCC" e **aguardando aprovação de outro admin** (mesma regra da BM do
+AP13 em 27/09: a BM exige um segundo admin para gerar token). Depois de aprovado, passo 6 e 7.
 
 **5. Gerar o token.**
 Usuários do sistema › `bfgco-leitura` › **Gerar novo token** › escolher o app › expiração
