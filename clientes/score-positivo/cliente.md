@@ -80,6 +80,7 @@ diferentes para maturidades diferentes).
 
 ## Índice
 
+- `reunioes/` — pautas e registros, por tipo: `sprint/`, `checkin/`
 - `checkin/regras.md` — regras de ROAS pactuadas com o cliente, série dos check-ins 5–6, 8 temas em aberto
 - `contexto/identidade-da-marca.md` — marca e voz · `decisoes.md` — decisões (append-only), preço vigente
 - `projetos/cenprot-janela-crawler/` — projeto de set/26 (plano, backlog, CSV do Ekyte)

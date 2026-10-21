@@ -80,7 +80,7 @@ Se dispararem, o `ciclo-02` ganha fonte automática.
 
 ### 6. ⭐ Primeiro recorte real (24/09): três regras para o script
 
-Montado à mão para a pauta de teste (`clientes/atacadao-posto-13/reunioes/2026-09-28-sprint.md`),
+Montado à mão para a pauta de teste (`clientes/atacadao-posto-13/reunioes/sprint/2026-09-28-sprint.md`),
 com a Google Ads API:
 
 - ⛔ **"Conversões" do Google mistura compra com visita à loja e rota até a loja.** Em setembro, até
@@ -232,7 +232,7 @@ O script não trava quando falta algo. Ele **mostra a lacuna** na pauta (premiss
 | Resultado real | `scripts/jet.py` | export da JET → `metricas/manual.csv` (agregado, sem dado pessoal) |
 | Acompanhamento | `scripts/metricas.py` | Google Ads (API v25) + GA4 + cache do Meta + manual → 4 recortes com variação |
 | Meta sem token | `scripts/meta_cache.py` | retorno do conector → `serie/meta_ads.csv` (executor Claude, P2) |
-| Pauta | `scripts/pauta.py` | Ekyte + métricas + régua → `reunioes/<data>-sprint.md`, com o roteiro em **rascunho** |
+| Pauta | `scripts/pauta.py` | Ekyte + métricas + régua → `reunioes/sprint/<data>-sprint.md`, com o roteiro em **rascunho** |
 
 **Rotina de segunda, antes da sprint:**
 ```

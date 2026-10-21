@@ -196,7 +196,7 @@ clientes/<slug>/
   pdca/ciclo-NN.md                    hipótese com métrica de interesse
   demandas/AAAA-MM-DD-<slug>.md       trabalho fora do plano
   pendencias/<slug>.md                aguardando terceiro (em geral o cliente)
-  reunioes/AAAA-MM-DD-<tipo>.md       pauta gerada, notas, decisões
+  reunioes/<tipo>/AAAA-MM-DD-<tipo>.md  pauta gerada, notas, decisões (tipo = sprint | checkin | ...)
 templates/
   projeto-<slug>.md                   template de subida de projeto
 ```

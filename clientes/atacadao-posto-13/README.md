@@ -13,7 +13,7 @@
 | `pdca/` | ciclos — hipótese com métrica de interesse e SLA | semanas |
 | `demandas/` | trabalho **fora** do plano (eventos, pedidos) | semanas |
 | `pendencias/` | aguardando terceiro, quase sempre o cliente | até resolver |
-| `reunioes/` | **pauta gerada**, notas e decisões | evento |
+| `reunioes/` | **pauta gerada**, notas e decisões, uma subpasta por tipo (`sprint/`, `checkin/`) | evento |
 | `momentos/` | append-only e datado — a trajetória | permanente |
 | `diagnosticos/` | V4MOS (extração manual) ou diagnóstico próprio | quarter |
 | `revisoes/` | revisão de fim de quarter | quarter |
@@ -24,7 +24,7 @@
 - **Ciclos abertos:** `ciclo-02` (30/09) · `ciclo-03` (17/10) · `ciclo-04` (19/10)
 - **Demanda em curso:** Dia das Crianças — janela abre **21/09**
 - **Pendência escalada:** CRM / medição do comercial
-- **Próxima pauta gerada:** [reunioes/2026-09-17-checkin15.md](reunioes/2026-09-17-checkin15.md)
+- **Próxima pauta gerada:** [reunioes/checkin/2026-09-17-checkin15.md](reunioes/checkin/2026-09-17-checkin15.md)
 
 ## Regra de uso
 

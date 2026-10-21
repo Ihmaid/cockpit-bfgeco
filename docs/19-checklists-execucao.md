@@ -38,7 +38,7 @@
 
 ### Provar a pauta
 
-- [x] ✅ 🤖 `reunioes/2026-09-17-checkin15.md` gerado — **7 seções** (entrou *Sazonalidade à vista*)
+- [x] ✅ 🤖 `reunioes/checkin/2026-09-17-checkin15.md` gerado — **7 seções** (entrou *Sazonalidade à vista*)
 - [x] ⛔ 👤 **Check-in de 17/09 NÃO foi conduzido pela pauta — formato REPROVADO** (registrado em
       23/09). Palavras do usuário: *"A gente não utilizou. E o exemplo que eu gerei, eu não gostei."*
       Pelo critério abaixo, o portão **não foi aprovado**. A pauta era orientada a métrica e plano;

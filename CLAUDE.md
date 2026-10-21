@@ -7,9 +7,9 @@ Projeto de gestão, análise e implementação do **Cockpit**: sistema para cent
 
 O Gabriel antecipou o teste: reunião em **21/10 com o Breno** (GT do AP13; não é o GT da Score, ajuda no
 teste) para validar os modelos. Pautas geradas em 20/10 à noite:
-- **AP13:** `clientes/atacadao-posto-13/reunioes/2026-10-21-sprint.md` — **dados até 15/10** (último dia da JET).
+- **AP13:** `clientes/atacadao-posto-13/reunioes/sprint/2026-10-21-sprint.md` — **dados até 15/10** (último dia da JET).
   JET reprocessada (`jet.py`, export até 15/10) e Meta do AP13 atualizado pelo conector (28/09–18/10)
-- **Score:** `clientes/score-positivo/reunioes/2026-10-21-sprint.md` — dados até 17/10 (faturas até 14/10, alinhadas)
+- **Score:** `clientes/score-positivo/reunioes/sprint/2026-10-21-sprint.md` — dados até 17/10 (faturas até 14/10, alinhadas)
 - ⛔ **Lição do teste:** gerada até 17/10, a pauta do AP13 dizia "receita −50% na semana" e "trava abaixo do
   baseline"; até 15/10 (sem dias sem JET) é **+21% no mês e trava em 0,89% (22% do caminho)**. O `pauta.py`
   antigo NÃO alinha cobertura → até o AP13 migrar para `motores.py`, **gerar o AP13 com `--ate` = último dia da JET**
@@ -131,7 +131,7 @@ grandes de PJ). Exports lidos (em `Downloads/`, ⚠️ ainda não movidos para `
 ## 🔖 Onde paramos — 18/10/2026: de volta ao SISTEMA
 
 ⛔ **O Gabriel não atua no operacional do AP13 agora** (18/10). O checklist da BF já foi ao grupo
-(texto em `reunioes/2026-10-15-checkin.md`); a execução da BF é do cliente + time. Daqui em diante, o
+(texto em `reunioes/checkin/2026-10-15-checkin.md`); a execução da BF é do cliente + time. Daqui em diante, o
 AP13 é **banco de teste do sistema**, não pauta de execução.
 **Três travas do sistema caíram (18/10):**
 - **GTM do AP13: com acesso.** Próximo: export do contêiner (JSON) + tela de integrações do painel
@@ -155,7 +155,7 @@ AP13 é **banco de teste do sistema**, não pauta de execução.
 > | 4 | — | **Template de planejamento de projetos** (`docs/20` §8; BF como 1ª instância → cronograma → Ekyte) | Liga plano de 3 meses à semana na frente |
 >
 > ⛔ Não puxar execução da BF (oferta, CRM, criativo, cobrança do checklist) sem pedido. O registro do
-> check-in de 15/10 + checklist enviado está em `reunioes/2026-10-15-checkin.md`.
+> check-in de 15/10 + checklist enviado está em `reunioes/checkin/2026-10-15-checkin.md`.
 
 ## ✅ 15/10: deck do check-in CONSTRUÍDO — `clientes/atacadao-posto-13/checkin/ap13-checkin-quinzena-01a14-out2026.html`
 8 seções (com ⭐ Black Friday: 3 cenários, dados da JET, as 5 ofertas, 4 perguntas, calendário). Flowbiz
@@ -163,7 +163,7 @@ sem comparação (decisão do Gabriel). JET de 10–14/10 ingerida. Série hist�
 ⚠️ O `li` dos pilares é flex: texto com `<strong>` precisa de um `<span>` envolvendo o item, senão quebra
 em colunas (o deck de 01–07/10 tem esse defeito). **Próximo:** respostas do check-in → template de
 planejamento de projetos → plano da BF até 25/10 → Ekyte.
-✅ *Check-in realizado (15/10, tarde)*, registro em `clientes/atacadao-posto-13/reunioes/2026-10-15-checkin.md`.
+✅ *Check-in realizado (15/10, tarde)*, registro em `clientes/atacadao-posto-13/reunioes/checkin/2026-10-15-checkin.md`.
 Decidido: **progressivo** e **brinquedo como presente** na BF; Cresce Vendas = WhatsApp + app. **Em aberto:**
 lista de produtos BF (Matheus, **26/10**), orçamento (Paulo viajando), kits (Raquel), margem, estoque de
 brinquedo, PRIMEIRACOMPRA. ⚠️ Corrigir com o cliente: "R$ 23,8 mil em 2025" é o cenário pessimista, não
@@ -318,12 +318,12 @@ e aí eu analiso ponto a ponto e valido"*. Os 7 pontos a validar, na ordem:
 `ecommerce.yaml`) · 4. definição única no núcleo · 5. novo indicador "receita real ÷ investimento" ·
 6. rotina de segunda · 7. o que o `cliente.md` declara.
 Base de comparação: `clientes/atacadao-posto-13/metricas/teste-regressao/2026-09-28-sprint-gerada.md`
-(gerada pelo script) × `reunioes/2026-09-28-sprint.md` (manual, usada na sprint). Os números batem.
+(gerada pelo script) × `reunioes/sprint/2026-09-28-sprint.md` (manual, usada na sprint). Os números batem.
 **Depois da validação:** fechar a Fase A e seguir para a Fase B (registro de testes D14, árvore de
 perguntas, roteiro de kick-off).
 
 **O que existe e roda** (rotina em `arquitetura/14`, seção "O que foi construído"):
-- `scripts/pauta.py`: Ekyte + métricas + régua → `reunioes/<data>-sprint.md`, no formato aprovado
+- `scripts/pauta.py`: Ekyte + métricas + régua → `reunioes/sprint/<data>-sprint.md`, no formato aprovado
   pelo usuário (roteiro + desvios no corpo, tabelas em anexo, resultado real no topo, canais embaixo,
   recorte: penúltima semana · última · mês · mês anterior até o mesmo dia + variação)
 - `scripts/metricas.py`: Google Ads (REST **v25**), GA4, cache do Meta e JET, numa definição única em
@@ -377,7 +377,7 @@ provado sem interlocutor.
 - `clientes/atacadao-posto-13/cliente.md` · `planos/2026-Q4.md` (**vigente**)
 - `pdca/ciclo-01.md` (histórico convertido) + `ciclo-02`, `03`, `04` (atacam a trava)
 - `demandas/2026-09-10-evento-dia-das-criancas.md` · `pendencias/registro-venda-assistida.md`
-- `momentos/2026-09.md` · **`reunioes/2026-09-17-checkin15.md` — a pauta gerada**
+- `momentos/2026-09.md` · **`reunioes/checkin/2026-09-17-checkin15.md` — a pauta gerada**
 - `templates/projeto-evento-sazonal.md`
 - `contexto/00..09.md` movidos para dentro da estrutura da spec
 
@@ -435,7 +435,7 @@ timeline em dark, demanda vinculada nao clicavel) e **6 itens de futuro registra
 dailys, check-ins e sprints, nao so de campo estruturado.
 
 **Próximo passo humano:** conduzir o check-in de **17/09** por
-`reunioes/2026-09-17-checkin15.md` e preencher a seção *Avaliação do formato* — é o portão da fase.
+`reunioes/checkin/2026-09-17-checkin15.md` e preencher a seção *Avaliação do formato* — é o portão da fase.
 
 ### ⭐ Premissa 3 (definida em 10/09/2026): eventos do período são invariante do plano
 
@@ -742,7 +742,7 @@ as capacidades do produto, não a realidade da unidade.
 - [docs/11-cunha-de-adocao.md](docs/11-cunha-de-adocao.md) — **a cunha: trocar o PowerPoint do check-in pelo Cockpit**
 - [clientes/atacadao-posto-13/](clientes/atacadao-posto-13/) — ⭐ **PILOTO VIVO**: `cliente.md`,
   `planos/2026-Q4.md` (vigente, trava `decisao`), 4 ciclos PDCA, demanda sazonal, pendência,
-  momento e **a pauta gerada** em `reunioes/2026-09-17-checkin15.md`. `contexto/00..09.md` é o estável
+  momento e **a pauta gerada** em `reunioes/checkin/2026-09-17-checkin15.md`. `contexto/00..09.md` é o estável
 - [templates/projeto-evento-sazonal.md](templates/projeto-evento-sazonal.md) — lead time por evento e a
   **regra de não escalar mídia sobre trava aberta**
 - [app/server.py](app/server.py) — ⭐ **APLICAÇÃO LOCAL**: SaaS que lê e **grava** nos `.md`.
@@ -752,7 +752,7 @@ as capacidades do produto, não a realidade da unidade.
   edita; `NN-*.md` é análise. ⚠️ **Arquitetura NÃO fechada — não executar nada dela**.
   Em 24/09: 7 blocos + 3 rodadas de respostas; ⭐ **consolidação em `13-consolidacao.md` APROVADA
   pelo usuário (D2, D5, D6, D7) — Fase A liberada.** 1º teste: pauta da sprint de 28/09, só Atacadão
-  (`clientes/atacadao-posto-13/reunioes/2026-09-28-sprint.md`). ⭐⭐ **Gargalo 0 muda de natureza:** os
+  (`clientes/atacadao-posto-13/reunioes/sprint/2026-09-28-sprint.md`). ⭐⭐ **Gargalo 0 muda de natureza:** os
   eventos de checkout EXISTEM no GA4 (importados no Google Ads), mas o `begin_checkout` quebrou em
   ~21/08: carrinho→checkout caiu de 39% para 10%, com o carrinho→compra estável. Passou de "não
   medimos" para "medimos errado desde agosto". ⛔ "Conversões" do Google mistura compra com visita à

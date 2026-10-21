@@ -8,7 +8,7 @@ Pauta da sprint de segunda para cliente com MOTORES DE RECEITA (20/10/2026, arqu
 Formato aprovado pelo Gabriel em 20/10: UMA pauta por cliente, UM BLOCO POR MOTOR ativo; na abertura, o
 plano de mídia (ritmo por canal + auditoria). Motor `monitorado` = uma linha; `fora` = não aparece.
 Reaproveita do pauta.py (AP13, congelado): Ekyte, roteiro em rascunho, régua de variação.
-Só lê das fontes. Grava clientes/<slug>/reunioes/<data>-sprint.md e não sobrescreve sem --forcar.
+Só lê das fontes. Grava clientes/<slug>/reunioes/sprint/<data>-sprint.md e não sobrescreve sem --forcar.
 """
 import argparse, datetime as dt, importlib.util, io, os, sys
 
@@ -270,7 +270,7 @@ def main():
     base, cli, resultados = MO.calcular(a.cliente, ate, atualizar=not a.sem_atualizar)
     ek, ek_erro = P.ekyte(cli, data_reuniao)
     texto, n = montar(cli, base, resultados, ek, ek_erro, data_reuniao, ate, agora)
-    saida = a.saida or os.path.join("clientes", a.cliente, "reunioes", "%s-sprint.md" % data_reuniao)
+    saida = a.saida or os.path.join("clientes", a.cliente, "reunioes", "sprint", "%s-sprint.md" % data_reuniao)
     saida = saida if os.path.isabs(saida) else os.path.join(RAIZ, saida)
     if os.path.exists(saida) and not a.forcar:
         sys.exit("Já existe %s. Use --forcar ou --saida." % os.path.relpath(saida, RAIZ))

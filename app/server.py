@@ -284,10 +284,14 @@ def carregar(slug: str) -> dict:
     demandas, pendencias, reunioes = [], [], []
     for pasta, alvo in (("demandas", demandas), ("pendencias", pendencias), ("reunioes", reunioes)):
         d = base / pasta
-        for p in sorted(d.glob("*.md")) if d.is_dir() else []:
+        # reunioes/ separa por tipo (sprint/, checkin/...); as outras pastas são planas
+        arquivos = d.rglob("*.md") if pasta == "reunioes" else d.glob("*.md")
+        for p in sorted(arquivos) if d.is_dir() else []:
             fm, corpo, _ = ler_md(p)
-            item = {**fm, "_arquivo": p.name, "_slug": p.stem, "corpo": corpo}
+            rel = p.relative_to(d).as_posix()
+            item = {**fm, "_arquivo": rel, "_slug": rel[:-3], "corpo": corpo}
             if pasta == "reunioes":
+                item.setdefault("tipo_reuniao", p.parent.name if p.parent != d else None)
                 item["notas"] = secao(corpo, "Notas da reunião")
                 item["decisoes"] = secao(corpo, "Decisões")
             alvo.append(item)

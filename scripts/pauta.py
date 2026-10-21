@@ -333,7 +333,7 @@ def main():
     ap.add_argument("--cliente", required=True)
     ap.add_argument("--data", help="data da reunião AAAA-MM-DD (padrão: a próxima segunda, ou hoje se for segunda)")
     ap.add_argument("--ate", help="último dia de dado (padrão: o sábado anterior à reunião)")
-    ap.add_argument("--saida", help="arquivo de saída (padrão: clientes/<slug>/reunioes/<data>-sprint.md)")
+    ap.add_argument("--saida", help="arquivo de saída (padrão: clientes/<slug>/reunioes/sprint/<data>-sprint.md)")
     ap.add_argument("--sem-atualizar", action="store_true", help="usa o cache, sem chamar as APIs")
     ap.add_argument("--forcar", action="store_true", help="sobrescreve a saída se existir")
     a = ap.parse_args()
@@ -346,7 +346,7 @@ def main():
     ek, ek_erro = ekyte(res["cliente"], data_reuniao)
     texto, ds, lac = montar(res, ek, ek_erro, data_reuniao, agora)
 
-    saida = a.saida or os.path.join("clientes", a.cliente, "reunioes", "%s-sprint.md" % data_reuniao)
+    saida = a.saida or os.path.join("clientes", a.cliente, "reunioes", "sprint", "%s-sprint.md" % data_reuniao)
     saida = saida if os.path.isabs(saida) else os.path.join(RAIZ, saida)
     if os.path.exists(saida) and not a.forcar:
         sys.exit("Já existe %s. Use --forcar para sobrescrever ou --saida para outro arquivo." % os.path.relpath(saida, RAIZ))

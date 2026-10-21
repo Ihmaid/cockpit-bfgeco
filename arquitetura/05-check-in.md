@@ -95,7 +95,7 @@ Mais o MCP do Google Ads, validado em 10/09.
 | skill global `check-in-midia` | claude.ai | gera deck HTML; não usada nos repos |
 | skills `check-in-<cliente>` | repos do Atacadão e do Score | nenhum check-in saiu |
 | `Check-in E-commerce - Google Slides Automation` | n8n da unidade | inativo desde mar/2026 |
-| pauta gerada | `Cockpit/clientes/atacadao-posto-13/reunioes/2026-09-17-checkin15.md` | *Avaliação do formato* em branco |
+| pauta gerada | `Cockpit/clientes/atacadao-posto-13/reunioes/checkin/2026-09-17-checkin15.md` | *Avaliação do formato* em branco |
 
 ⚠️ As skills de check-in dos repos guardam **série histórica e temas em aberto dentro do
 `SKILL.md`**. Regra de cálculo é regra e pode ficar na skill. Série e temas em aberto são **dado

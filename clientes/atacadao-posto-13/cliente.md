@@ -73,5 +73,5 @@ stakeholder 10/10).
 - `pdca/` — ciclos abertos e fechados
 - `demandas/` — trabalho fora do plano
 - `pendencias/` — aguardando o cliente
-- `reunioes/` — pautas geradas, notas e decisões
+- `reunioes/` — pautas geradas, notas e decisões, separadas por tipo: `sprint/`, `checkin/`
 - `momentos/` — append-only, datado

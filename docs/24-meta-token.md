@@ -10,7 +10,7 @@
 ## ✅ Conector do Meta VALIDADO em 28/09/2026
 
 Leitura real, só de consulta, usada na pauta da sprint de 28/09
-(`clientes/atacadao-posto-13/reunioes/2026-09-28-sprint.md`, §2.2 e §3.1).
+(`clientes/atacadao-posto-13/reunioes/sprint/2026-09-28-sprint.md`, §2.2 e §3.1).
 
 - **Conta do AP13: `212245853`**, "Grupo Atacadão Posto 13", na **BM do próprio cliente**. Moeda BRL,
   consulta liberada

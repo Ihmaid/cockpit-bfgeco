@@ -32,7 +32,7 @@ falta é **o caminho de volta**. A cola são dois arquivos por reunião, um de i
 
 - **Pauta** = o que o sistema sabe antes da reunião (já existe para o AP13: `scripts/pauta.py`)
 - **Registro** = o que a reunião decidiu. Hoje vai para notas soltas; passa a ser um arquivo com formato
-  fixo em `clientes/<c>/reunioes/`, **igual para sprint e check-in**. Quem preenche: o Claude, a partir
+  fixo em `clientes/<c>/reunioes/<tipo>/` (`sprint/`, `checkin/`; separado por tipo em 21/10), **igual para sprint e check-in**. Quem preenche: o Claude, a partir
   da transcrição, e o Gabriel aprova (executor trocável, P2)
 - Do registro saem três coisas: **tarefa → Ekyte**, **mudança → Base** (ex.: verba nova entra no
   registro do plano de mídia; trava confirmada entra no `cliente.md`), **aberto → próxima pauta**
