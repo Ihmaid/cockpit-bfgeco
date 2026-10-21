@@ -3,6 +3,19 @@
 Projeto de gestão, análise e implementação do **Cockpit**: sistema para centralizar a gestão
 **estratégica, comercial e administrativa** da unidade BFG&Co da V4 Company.
 
+## 🔖⭐ 20/10/2026 (fim do dia): A COLA DO SISTEMA — `arquitetura/18-a-cola-do-sistema.md`
+
+O Gabriel pediu para conectar os pontos (`dump/2026-10-20-20`): como sprint e check-in alimentam o
+cliente, viram tarefa e planejamento; transcrição automática pelo Workspace; interface para a sprint.
+Resposta: **a cola = PAUTA (ida, gerada) → reunião → REGISTRO (volta: decisões, tarefas, mudanças,
+aberto) → Ekyte + Base + próxima pauta.** Sequência: ▶️ **(1) pauta da Score por motor (aprovada: blocos
+separados)** → (2) formato do registro, teste na sprint de 27/10 → (3) modo sprint no app, alvo 03/11 →
+(4) transcrição por Drive + Agenda (a Agenda também mede ritual que não aconteceu) → (5) tarefas por CSV
+do Ekyte → (6) template de projetos + plano da Score → (7) semana na frente.
+**Aguardando 3 decisões dele (§4):** reabrir automação de entrada · Ekyte por CSV ou MCP · qual conta Google.
+Respostas da pauta (`dump/2026-10-20-19`): resumo do comercial traz oportunidades/contratos/VCM; XLSX do
+pré-pago vem sob demanda (ele pede no check-in semanal); uma pauta por cliente, um bloco por motor.
+
 ## 🔖⭐ 20/10/2026 (tarde): VIRADA — foco no sistema; Score Positivo é o 2º cliente
 
 O Gabriel apontou que estávamos fundo demais no AP13 (~15 de 20 commits desde 10/10 eram do cliente)
