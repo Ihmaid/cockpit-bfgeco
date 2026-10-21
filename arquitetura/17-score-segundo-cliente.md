@@ -98,6 +98,35 @@ em que a resposta veio por motor; o Gabriel não decidiu isso explicitamente.
 - XLSX do pré-pago: **Ana Carolina**. LeadFinder: CRM "doméstico", travado; leitura talvez pelo portal;
   contato direto com os fundadores pode destravar
 
+## 4.3 Proposta: a pauta de segunda para um cliente de dois motores (aguarda validação)
+
+**Regra:** só com o que já chega toda semana para o check-in. Nenhum dado novo pedido ao cliente.
+
+**1. Uma árvore por natureza de motor, não por cliente.** O `cliente.md` aponta a árvore em cada motor
+(`motores[].arvore`). O AP13 continua no `ecommerce.yaml` sem mudança (congelado); o motor e-commerce dele
+migra quando descongelar.
+
+| | `geracao-lead.yaml` (pós-pago) | `autosservico.yaml` (pré-pago) |
+|---|---|---|
+| Investimento | Meta + LinkedIn, **só das campanhas do motor**: o plano de mídia já liga campanha → tipo → motor | Google (a conta inteira é pré-pago) |
+| Topo | leads (formulário), conversas (WhatsApp), cliques | cliques, conversões e valor do Google |
+| Resultado (manual) | do resumo do comercial: **oportunidades novas, contratos assinados, VCM contratado** | do XLSX de faturas: **faturas e receita, separadas em nova venda e recompra**, clientes únicos |
+| Derivadas | custo por lead · lead → contrato · custo por contrato · **VCM ÷ investimento do motor** (generaliza o "ROAS Meta [Mensagem]" pactuado) | ROAS real · **ROAS de aquisição** (só nova venda ÷ investimento) · cobertura de atribuição (valor do Google ÷ receita real) · ticket · % recompra |
+| Lacuna registrada | consumo acima do VCM não tem fonte | coorte (recompra de quem a mídia trouxe) fica para quando houver histórico, sem pedir agora |
+
+**2. Entrada manual vira arquivo agregado, sem dado pessoal** (o mesmo padrão da JET):
+- XLSX de faturas → `metricas/bruto/` (fora do git) → script → `metricas/manual-pre-pago.csv` (por dia)
+- Resumo do comercial → uma linha por semana em `metricas/manual-pos-pago.csv` (semana, oportunidades,
+  contratos, VCM), digitada pelo Gabriel ou por mim a partir do texto da Carolina
+
+**3. A pauta ganha uma seção por motor ativo:** resultado real no topo de cada motor, canais embaixo,
+roteiro e desvios por motor; na abertura, o plano de mídia (ritmo por canal + auditoria). Motor
+`monitorado` aparece só como linha de número; `fora` não aparece.
+
+**Perguntas:** (a) o resumo do comercial consegue trazer toda semana esses três números (oportunidades,
+contratos, VCM)? (b) o XLSX do pré-pago chega toda semana? (c) pauta única por cliente, com uma seção por
+motor: ok?
+
 ## 5. Ordem proposta (revista em 20/10)
 
 1. ✅ `motores[]` configurável → aplicado à Score e ao AP13
