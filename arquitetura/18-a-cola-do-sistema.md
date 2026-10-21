@@ -44,8 +44,8 @@ falta é **o caminho de volta**. A cola são dois arquivos por reunião, um de i
 | # | Pedido | O que já existe | O que falta | Quando |
 |---|---|---|---|---|
 | 1 | Análise recorrente | pauta do AP13 (e-commerce) | ✅ **feito em 20/10**: `scripts/pauta_motores.py` | ✅ |
-| 2 | ▶️ Cola: sprint/check-in alimentam o cliente | laço desenhado (`13` §4); notas e decisões no app | **formato do registro** + a próxima pauta ler o que ficou aberto | logo depois de 1; 1º teste na sprint de **27/10** |
-| 3 | Interface para a sprint | app local: seletor de cliente, aba "Check-in" grava notas e decisões | **modo sprint**: lista dos clientes na ordem da reunião; por cliente, desvios, plano de mídia, tarefas abertas/vencidas, o que ficou do último registro, e campos para registrar | depois de 2; alvo: sprint de **03/11** |
+| 2 | ▶️ Cola: sprint/check-in alimentam o cliente | laço desenhado (`13` §4); notas e decisões no app | **formato do registro** + a próxima pauta ler o que ficou aberto | logo depois de 1; 1º teste na sprint de **26/10** |
+| 3 | Interface para a sprint | app local: seletor de cliente, aba "Check-in" grava notas e decisões | **modo sprint**: lista dos clientes na ordem da reunião; por cliente, desvios, plano de mídia, tarefas abertas/vencidas, o que ficou do último registro, e campos para registrar | depois de 2; alvo: sprint de **02/11** |
 | 4 | Transcrição automática (Workspace) | o Meet já grava no Drive; o Claude lê pelo conector do Drive | script com **Drive + Agenda** (§3) | depois de 2 (o registro define o que extrair) |
 | 5 | Desdobrar em tarefas | Ekyte lido pela API; a skill antiga da Score gera **CSV de importação do Ekyte** | ponte por CSV agora; escrita direta (MCP) depois | junto com 2 (CSV); MCP é decisão sua (§4) |
 | 6 | Planejamento completo do cliente | plano Q4 do AP13; projeção; `docs/20` §8 | **template de projetos** + plano trimestral da Score | depois de 3 |

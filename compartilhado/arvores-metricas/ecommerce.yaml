@@ -97,5 +97,7 @@ desvios:
   trava:           # taxa_sessao_compra do mês × baseline e critério de saída do plano vigente
     campo: taxa_sessao_compra
   medicao:         # regras de medição quebrada
-    - { se: "add_payment_info > begin_checkout", texto: "begin_checkout subcontando: o evento de checkout do GA4 está quebrado", dono: tech }
-    - { se: "fator_ga4 > 1.10 or fator_ga4 < 0.9", texto: "o GA4 está contando pedido não pago: é esse sinal que o lance do Google usa (arquitetura/16 §8.1)", dono: tech }   # 13/10: 1,2× deixou de ser "normal"; era o defeito
+    # 20/10: saiu a regra "add_payment_info > begin_checkout = begin_checkout quebrado". O begin_checkout NÃO quebrou
+    #        (estava inflado 20/07–~24/08; diagnosticos/tracking-2026-10-20.md item 3) e o add_payment_info nativo da JET
+    #        dispara mais de uma vez por checkout. A regra gerava pergunta falsa na pauta
+    - { se: "fator_ga4 > 1.10 or fator_ga4 < 0.9", texto: "o GA4 está contando pedido não pago: é esse sinal que o lance do Google usa (arquitetura/16 §8.1)", dono: tracking }   # 20/10: tracking = Gabriel + Claude (era Esdras)   # 13/10: 1,2× deixou de ser "normal"; era o defeito

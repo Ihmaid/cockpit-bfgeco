@@ -3,6 +3,22 @@
 Projeto de gestão, análise e implementação do **Cockpit**: sistema para centralizar a gestão
 **estratégica, comercial e administrativa** da unidade BFG&Co da V4 Company.
 
+## 🔖⭐ 21/10/2026: TESTE DAS PAUTAS COM O BRENO (antes da sprint de 26/10)
+
+O Gabriel antecipou o teste: reunião em **21/10 com o Breno** (GT do AP13; não é o GT da Score, ajuda no
+teste) para validar os modelos. Pautas geradas em 20/10 à noite:
+- **AP13:** `clientes/atacadao-posto-13/reunioes/2026-10-21-sprint.md` — **dados até 15/10** (último dia da JET).
+  JET reprocessada (`jet.py`, export até 15/10) e Meta do AP13 atualizado pelo conector (28/09–18/10)
+- **Score:** `clientes/score-positivo/reunioes/2026-10-21-sprint.md` — dados até 17/10 (faturas até 14/10, alinhadas)
+- ⛔ **Lição do teste:** gerada até 17/10, a pauta do AP13 dizia "receita −50% na semana" e "trava abaixo do
+  baseline"; até 15/10 (sem dias sem JET) é **+21% no mês e trava em 0,89% (22% do caminho)**. O `pauta.py`
+  antigo NÃO alinha cobertura → até o AP13 migrar para `motores.py`, **gerar o AP13 com `--ate` = último dia da JET**
+- Régua do `ecommerce.yaml`: saiu a regra "begin_checkout subcontando" (falsa desde o achado de 20/10); a de
+  medição do GA4 agora aponta `tracking` (Gabriel + Claude)
+- Meta do AP13: **gasto diário dobrou a partir de 16/10** (~R$ 200 → ~R$ 450; 4 campanhas novas: RMKT, morno,
+  prospecção por segmentos, B2B). Pauta para o Breno
+- ⚠️ A próxima sprint é **segunda, 26/10** (não 27)
+
 ## 🔖⭐ 20/10/2026 (noite): PASSO 1 DA COLA FEITO — pauta por motor de receita
 
 ✅ **`scripts/pauta_motores.py --cliente score-positivo`** gera a pauta da sprint com **um bloco por motor**
@@ -32,7 +48,7 @@ O Gabriel pediu para conectar os pontos (`dump/2026-10-20-20`): como sprint e ch
 cliente, viram tarefa e planejamento; transcrição automática pelo Workspace; interface para a sprint.
 Resposta: **a cola = PAUTA (ida, gerada) → reunião → REGISTRO (volta: decisões, tarefas, mudanças,
 aberto) → Ekyte + Base + próxima pauta.** Sequência: ▶️ **(1) pauta da Score por motor (aprovada: blocos
-separados)** → (2) formato do registro, teste na sprint de 27/10 → (3) modo sprint no app, alvo 03/11 →
+separados)** → (2) formato do registro, teste na sprint de 26/10 → (3) modo sprint no app, alvo 02/11 →
 (4) transcrição por Drive + Agenda (a Agenda também mede ritual que não aconteceu) → (5) tarefas por CSV
 do Ekyte → (6) template de projetos + plano da Score → (7) semana na frente.
 **✅ Decidido (20/10, §4.1):** automação de entrada REABERTA · Ekyte por CSV neste ciclo (próximo ciclo = momento só do Ekyte: modelos de tarefa + API) · conta Google = `gabriel.ihmaid@v4company.com`.
