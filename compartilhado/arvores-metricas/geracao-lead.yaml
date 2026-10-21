@@ -1,0 +1,59 @@
+# Árvore de métricas — motor GERAÇÃO DE LEAD (a mídia gera o contato; quem fecha é o comercial)
+#
+# Nasce com o 2º cliente (Score Positivo, pós-pago: contrato de gasto mínimo), em 20/10/2026
+# (arquitetura/17 §4.3). Serve depois a AMC, Sicher, Bloco D, Pezão Net (arquitetura/12: a carteira é
+# majoritariamente de lead). Aplica-se a um MOTOR: `motores[].arvore: geracao-lead`.
+#
+# O elo que só existe aqui: o RESULTADO vem do comercial do cliente, por texto ou planilha, com atraso
+# em relação ao lead. Por isso as taxas de conversão do período são aproximação (lead de uma semana fecha
+# na outra); a coorte fica para quando houver histórico.
+
+modelo: geracao-lead
+versao: 1
+
+fontes:
+  comercial:
+    tipo: manual
+    arquivo: manual-pos-pago.csv
+    gerado_por: "Gabriel ou Claude, a partir do resumo semanal do comercial do cliente (uma linha por dia com evento)"
+    campos: [oportunidades, contratos, vcm]
+    regra: "vcm = valor contratado mínimo (o gasto mínimo do contrato); consumo acima do VCM não tem fonte (lacuna declarada)"
+  meta_ads:
+    tipo: meta_campanhas
+    campos: [investimento_meta, impressoes_meta, cliques_meta, leads_meta]
+    lacuna: "conversas de WhatsApp (campanhas de mensagem) não são lidas: leads só conta formulário/LP. Na Score, set/26 até 16/09 era WhatsApp → leads e CPL de setembro não são comparáveis"
+    regra: "só as campanhas cujo tipo, no plano de mídia do mês, aponta `motor` para este motor. Brand/tráfego e LinkedIn ficam fora (regra pactuada: topo de funil não entra no ROAS)"
+
+nomes:
+  oportunidades: "Oportunidades (comercial)"
+  contratos: "Contratos assinados (comercial)"
+  vcm: "VCM contratado (comercial)"
+  investimento_meta: "Investimento Meta (campanhas de lead)"
+  impressoes_meta: "Impressões Meta"
+  cliques_meta: "Cliques no link Meta"
+  leads_meta: "Leads Meta"
+
+derivadas:
+  investimento:        { formula: "investimento_meta",                      formato: brl, nome: "Investimento do motor (campanhas de lead)" }
+  leads:               { formula: "leads_meta",                             formato: num, nome: "Leads" }
+  cpl:                 { formula: "investimento / leads",                   formato: brl, nome: "Custo por lead" }
+  lead_oportunidade:   { formula: "oportunidades / leads",                  formato: pct, nome: "Lead → oportunidade", nota: "aproximação: o lead de uma semana pode virar oportunidade na outra" }
+  oportunidade_contrato: { formula: "contratos / oportunidades",            formato: pct, nome: "Oportunidade → contrato" }
+  custo_por_contrato:  { formula: "investimento / contratos",               formato: brl, nome: "Custo por contrato" }
+  vcm_por_investimento: { formula: "vcm / investimento",                    formato: x,   nome: "VCM ÷ investimento", nota: "generaliza o 'ROAS Meta [Mensagem]' pactuado com a Score" }
+  vcm_medio:           { formula: "vcm / contratos",                        formato: brl, nome: "VCM médio por contrato" }
+  ctr_meta:            { formula: "cliques_meta / impressoes_meta",         formato: pct, nome: "CTR Meta" }
+  cpm_meta:            { formula: "investimento_meta / impressoes_meta * 1000", formato: brl, nome: "CPM Meta" }
+
+pauta:
+  resultado: [leads, oportunidades, contratos, vcm, investimento, cpl, custo_por_contrato, vcm_por_investimento]
+  canais:
+    meta: [investimento_meta, impressoes_meta, cliques_meta, ctr_meta, cpm_meta, leads_meta, cpl]
+
+desvios:
+  variacao:
+    - { campo: leads,          limiar: 0.25, dono: trafego }
+    - { campo: cpl,            limiar: 0.25, dono: trafego }
+    - { campo: oportunidades,  limiar: 0.30, dono: account }
+    - { campo: contratos,      limiar: 0.30, dono: account }
+    - { campo: investimento,   limiar: 0.25, dono: trafego }

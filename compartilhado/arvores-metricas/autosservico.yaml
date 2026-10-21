@@ -1,0 +1,69 @@
+# Árvore de métricas — motor AUTOSSERVIÇO (o cliente compra sozinho, sem vendedor)
+#
+# Nasce com o 2º cliente (Score Positivo, pré-pago: recarga no site), em 20/10/2026 (arquitetura/17 §4.3).
+# Aplica-se a um MOTOR, não ao cliente: o cliente.md aponta `motores[].arvore: autosservico`.
+# O AP13 (e-commerce) continua no ecommerce.yaml até descongelar; a convergência das duas é depois.
+#
+# ⚠️ Não padronizar num cliente só (premissa 2): nomes de produto e regras de classificação ficam no
+#    cliente.md / regras do check-in; aqui só o contrato de campos e as fórmulas.
+
+modelo: autosservico
+versao: 1
+
+# ------------------------------------------------------------------ fontes
+# tipo google_ads: a conta inteira do cliente alimenta este motor (se um dia a conta servir a dois
+#   motores, o filtro sai do plano de mídia, como no meta_campanhas)
+# tipo manual: arquivo agregado por dia, sem dado pessoal, gerado de um export (scripts/faturas.py)
+fontes:
+  vendas:
+    tipo: manual
+    arquivo: manual-pre-pago.csv
+    gerado_por: scripts/faturas.py
+    campos: [faturas, receita, faturas_novas, receita_nova, faturas_recompra, receita_recompra]
+    regra: "nova venda = data de cadastro igual à data da compra; o resto é recompra (regra pactuada com o cliente, checkin/regras.md §3.2)"
+  google_ads:
+    tipo: google_ads
+    campos: [investimento_google, impressoes_google, cliques_google, compras_google, receita_google]
+    regra: "compra = categoria declarada no cliente.md (padrão PURCHASE; Score = '[CADS] - Compra')"
+    provisorio_dias: 7
+
+# nomes dos campos base (os das derivadas ficam nas derivadas)
+nomes:
+  faturas: "Vendas (faturas)"
+  receita: "Receita real"
+  faturas_novas: "Vendas a clientes novos"
+  receita_nova: "Receita de clientes novos"
+  faturas_recompra: "Recompras"
+  receita_recompra: "Receita de recompra"
+  investimento_google: "Investimento Google"
+  impressoes_google: "Impressões Google"
+  cliques_google: "Cliques Google"
+  compras_google: "Compras Google (plataforma)"
+  receita_google: "Valor Google (plataforma)"
+
+derivadas:
+  investimento:          { formula: "investimento_google",                       formato: brl, nome: "Investimento do motor" }
+  roas_real:             { formula: "receita / investimento",                    formato: x,   nome: "ROAS real (receita ÷ investimento)", nota: "receita do export ÷ investimento DO MOTOR. ⚠️ Na Score, o ROAS real pactuado no check-in usa Meta + Google de venda no denominador (checkin/regras.md §3.3); a pauta interna usa o do motor" }
+  roas_aquisicao:        { formula: "receita_nova / investimento",               formato: x,   nome: "ROAS de aquisição (só nova venda)", nota: "o que a mídia trouxe de cliente novo no período" }
+  ticket:                { formula: "receita / faturas",                         formato: brl, nome: "Ticket médio" }
+  pct_recompra:          { formula: "receita_recompra / receita",                formato: pct, nome: "% da receita em recompra" }
+  custo_por_venda_nova:  { formula: "investimento / faturas_novas",              formato: brl, nome: "Custo por cliente novo" }
+  cobertura_atribuicao:  { formula: "receita_google / receita",                  formato: pct, nome: "Cobertura de atribuição (Google ÷ real)", nota: "queda = tag ou recompra direta (regras do check-in, tema 3)" }
+  roas_google:           { formula: "receita_google / investimento_google",      formato: x,   nome: "ROAS Google (plataforma)" }
+  cpa_google:            { formula: "investimento_google / compras_google",      formato: brl, nome: "Custo por compra Google (plataforma)" }
+  ctr_google:            { formula: "cliques_google / impressoes_google",        formato: pct, nome: "CTR Google" }
+  cpc_google:            { formula: "investimento_google / cliques_google",      formato: brl, nome: "CPC Google" }
+
+pauta:
+  resultado: [receita, faturas, receita_nova, faturas_novas, receita_recompra, ticket, investimento, roas_real, roas_aquisicao]
+  canais:
+    google: [investimento_google, cliques_google, ctr_google, cpc_google, compras_google, receita_google, roas_google, cpa_google, cobertura_atribuicao]
+
+desvios:
+  variacao:
+    - { campo: receita,         limiar: 0.20, dono: account }
+    - { campo: receita_nova,    limiar: 0.25, dono: trafego }
+    - { campo: faturas_novas,   limiar: 0.25, dono: trafego }
+    - { campo: investimento,    limiar: 0.25, dono: trafego }
+    - { campo: roas_real,       limiar: 0.25, dono: trafego }
+    - { campo: cobertura_atribuicao, limiar: 0.25, dono: tech }

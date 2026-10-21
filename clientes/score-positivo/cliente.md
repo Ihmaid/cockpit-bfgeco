@@ -32,6 +32,7 @@ motores:
     nome: "Pré-pago: recarga no site (mín. R$ 29,90) para consultas"
     natureza: autosservico
     status: ativo
+    arvore: autosservico            # compartilhado/arvores-metricas/autosservico.yaml
     canais: [google_ads]
     venda: "fatura de recarga; nova venda = cadastro no dia da compra, o resto é recompra (regra pactuada)"
     fonte_venda: { tipo: manual, o_que: "XLSX de faturas", quem_envia: "Ana Carolina", cadencia_dias: 7, historico: "12 meses disponíveis (20/10)" }
@@ -41,10 +42,12 @@ motores:
     nome: "Pós-pago: contrato com gasto mínimo (consultas, localização e histórico de veículo, CENPROT)"
     natureza: geracao_lead
     status: ativo
+    arvore: geracao-lead            # compartilhado/arvores-metricas/geracao-lead.yaml
     canais: [meta_ads, linkedin]
     venda: "contrato assinado; valor = VCM (gasto mínimo), e o cliente costuma gastar acima"
     fonte_venda: { tipo: manual, o_que: "resumo do comercial (Carolina)", sistema: leadfinder, cadencia_dias: 7 }
     trava: { hipotese: null, confianca: aberta, inclinacao: "talvez demanda (conversão alta, o lead chega com necessidade específica)", nota: "NÃO confirmado: \"precisa analisar, estudar o cenário\"; a trava determina o plano de ação (20/10)" }
+    quebras_de_serie: [{ data: 2026-09-16, motivo: "até 16/09 o pós-pago rodava por WhatsApp (conversas, que a árvore não lê); daí em diante, formulário nativo e LP (leads)" }]
     nota: "⚠️ diverge do repositório antigo (check-in 6): 212 conversas + 7 leads e zero contrato entre 09 e 16/09, 'trava comercial'. A árvore de lead decide"
 
 stakeholders:

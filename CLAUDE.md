@@ -3,6 +3,29 @@
 Projeto de gestão, análise e implementação do **Cockpit**: sistema para centralizar a gestão
 **estratégica, comercial e administrativa** da unidade BFG&Co da V4 Company.
 
+## 🔖⭐ 20/10/2026 (noite): PASSO 1 DA COLA FEITO — pauta por motor de receita
+
+✅ **`scripts/pauta_motores.py --cliente score-positivo`** gera a pauta da sprint com **um bloco por motor**
+(aprovado) e o **plano de mídia na abertura**. Teste: `clientes/score-positivo/metricas/teste-regressao/2026-10-20-sprint-teste.md`.
+Peças novas, genéricas (o AP13 segue no caminho antigo, congelado):
+- Árvores `compartilhado/arvores-metricas/autosservico.yaml` (pré-pago) e `geracao-lead.yaml` (pós-pago);
+  `cliente.md` → `motores[].arvore`. Cada árvore declara fontes (`manual` · `google_ads` · `meta_campanhas`)
+- `scripts/motores.py` (cálculo): **alinha as fontes aos dias cobertos** pelo export manual (sem isso, 3 dias de
+  receita ÷ 7 de investimento = ROAS falso) · `scripts/faturas.py` (XLSX do pré-pago → `manual-pre-pago.csv`, sem PII)
+- Regras novas da pauta: **quebra de série** declarada no motor (`quebras_de_serie`: Score pós-pago 16/09,
+  WhatsApp → formulário) e **comparação suspensa com < 75% dos dias** — as duas aparecem na pauta com o motivo
+- Cache do Meta por campanha/dia: `clientes/<c>/metricas/serie/meta_campanhas.csv` (o Claude grava pelo conector;
+  o `plano_midia.py` lê o mesmo). Campanha → motor sai do **plano de mídia** (tipo → `motor`)
+- ⚠️ ROAS real **do motor** (só Google no pré-pago) ≠ ROAS real **pactuado no check-in** (Meta + Google). Pauta interna
+  usa o do motor; o deck do cliente segue a regra pactuada
+- **Rotina da Score na segunda:** XLSX que o Gabriel pede no check-in → `metricas/bruto/faturas-pre-pago/` →
+  `faturas.py` · resumo da Carolina → o Claude lança em `metricas/manual-pos-pago.csv` (dia, oportunidades/contratos/vcm)
+  · o Claude atualiza `meta_campanhas.csv` pelo conector · `pauta_motores.py`
+- Achados da 1ª pauta: Google a 127% do ritmo · **faturas só até 14/10, comercial nunca lançado** · Google também
+  registra 81 envios de formulário (conversão secundária) — conversa com a pergunta "por que não lead no Google?"
+- ▶️ **Próximo: passo 2 = formato do REGISTRO** (decisões, tarefas, mudanças, aberto) + a pauta ler o que ficou
+  aberto; teste na sprint de **27/10** (AP13 + Score)
+
 ## 🔖⭐ 20/10/2026 (fim do dia): A COLA DO SISTEMA — `arquitetura/18-a-cola-do-sistema.md`
 
 O Gabriel pediu para conectar os pontos (`dump/2026-10-20-20`): como sprint e check-in alimentam o
@@ -745,6 +768,9 @@ as capacidades do produto, não a realidade da unidade.
   + Meta + JET); [scripts/jet.py](scripts/jet.py) (JET → `manual.csv`); [scripts/ga4.py](scripts/ga4.py);
   [scripts/meta_cache.py](scripts/meta_cache.py) (conector → cache); definição em
   [compartilhado/arvores-metricas/ecommerce.yaml](compartilhado/arvores-metricas/ecommerce.yaml). Rotina em `arquitetura/14`
+- [scripts/pauta_motores.py](scripts/pauta_motores.py) — ⭐ **PAUTA POR MOTOR** (20/10): um bloco por motor ativo + plano de
+  mídia na abertura; [scripts/motores.py](scripts/motores.py) faz o cálculo (árvore por natureza, fontes declaradas, alinhamento
+  de cobertura); [scripts/faturas.py](scripts/faturas.py) agrega o XLSX do pré-pago. Árvores: `autosservico.yaml`, `geracao-lead.yaml`
 - [scripts/plano_midia.py](scripts/plano_midia.py) — ⭐ **PLANO DE MÍDIA AUDITÁVEL** (20/10): verba planejada ×
   gasto real por canal → tipo de campanha → campanha, ritmo do mês e auditoria do registro de mudanças. Só lê
 - [scripts/reconcilia_ga4_jet.py](scripts/reconcilia_ga4_jet.py) — **reconciliação GA4 × JET** (10/10): o que é cada "compra" que o Google Ads recebe. Só lê, só agregados

@@ -13,7 +13,7 @@ Lê clientes/<slug>/midia/plano-<AAAA-MM>.md (front matter) e reescreve só o bl
 Auditoria: a verba atual de cada item tem de bater com o último `para` do registro de `mudancas`.
 Pedido do Gabriel em 20/10/2026 (docs/20 §9). Só lê as plataformas; nunca altera campanha.
 """
-import argparse, calendar, collections, datetime as dt, importlib.util, io, json, os, re, sys, urllib.error, urllib.request
+import argparse, calendar, collections, csv, datetime as dt, importlib.util, io, json, os, re, sys, urllib.error, urllib.request
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -81,7 +81,19 @@ def gasto_google(cli, ini, fim):
     return [{"nome": n, "status": s, "gasto": g} for n, (g, s) in soma.items()], fim
 
 
-def gasto_conector(base, canal, mes):
+def gasto_conector(base, canal, mes, ate=None):
+    # 1º: o cache diário por campanha (metricas/serie/meta_campanhas.csv), o mesmo que a pauta por motor usa
+    serie = os.path.join(base, "metricas", "serie", "meta_campanhas.csv")
+    if canal == "meta_ads" and os.path.exists(serie):
+        soma, ultimo = collections.defaultdict(float), None
+        with io.open(serie, encoding="utf-8", newline="") as f:
+            for r in csv.DictReader(f):
+                d = dt.date.fromisoformat(r["dia"])
+                if r["dia"][:7] == mes and (ate is None or d <= ate):
+                    soma[r["campanha"]] += float(r["gasto"] or 0)
+                    ultimo = max(ultimo or d, d)
+        if ultimo:
+            return [{"nome": n, "status": "", "gasto": g} for n, g in soma.items() if g > 0], ultimo
     arq = os.path.join(base, "midia", "real", "%s-%s.json" % (canal.split("_")[0], mes))
     if not os.path.exists(arq):
         raise RuntimeError("sem cache do conector em %s (o Claude grava a partir do conector)" % os.path.relpath(arq, RAIZ))
@@ -139,7 +151,7 @@ def calcular(p, base, cli, ate):
             if c.get("fonte") == "api" and canal == "google_ads":
                 camp, item["ate"] = gasto_google(cli, ini, ate)
             elif c.get("fonte") == "conector":
-                camp, item["ate"] = gasto_conector(base, canal, p["mes"])
+                camp, item["ate"] = gasto_conector(base, canal, p["mes"], ate)
             elif c.get("fonte") == "manual":
                 lanc = sorted(c.get("real_informado") or [], key=lambda x: str(x["ate"]))
                 camp = []
@@ -203,10 +215,10 @@ def render(p, r):
         out += ["<details><summary><b>%s</b> · real %s de %s</summary>" % (c["nome"], brl(c["real"]), brl(c["verba"])), "",
                 "| Tipo | Motor | Verba | Real | Campanhas |", "|---|---|---|---|---|"]
         for g in c["grupos"]:
-            nomes = "<br>".join("%s %s (%s)" % ("●" if x["status"] in ("ENABLED", "ACTIVE") else "○", x["nome"], brl(x["gasto"]))
+            nomes = "<br>".join("%s %s (%s)" % ("●" if x["status"] in ("ENABLED", "ACTIVE") else ("○" if x["status"] else "·"), x["nome"], brl(x["gasto"]))
                                 for x in g["campanhas"]) or "—"
             out.append("| %s | %s | %s | %s | %s |" % (g["nome"], g.get("motor") or "—", brl(g["verba"]), brl(g["real"]), nomes))
-        out += ["", "● ativa hoje · ○ pausada", "", "</details>", ""]
+        out += ["", "● ativa hoje · ○ pausada · · sem status no cache", "", "</details>", ""]
 
     out += ["### Auditoria", ""]
     achados = list(r["auditoria"])

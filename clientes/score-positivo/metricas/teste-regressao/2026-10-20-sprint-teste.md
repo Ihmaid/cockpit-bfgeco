@@ -1,0 +1,236 @@
+---
+tipo: reuniao
+cliente: score-positivo
+subtipo: sprint_growth_planning
+data: 2026-10-20
+pauta_gerada_em: 2026-10-20T23:12
+gerada_por: script   # scripts/pauta_motores.py — o roteiro é RASCUNHO, revisar antes da reunião
+motores: [pre-pago, pos-pago]
+dados_ate: 2026-10-18
+status: pauta_gerada
+transcricao: null
+---
+
+# Sprint Growth + Planning — Score Positivo · 20/10
+
+> Gerada por `scripts/pauta_motores.py` em 20/10 23:12, com dados até **18/10**. Um bloco por motor de receita.
+> O **roteiro é rascunho**: revisar as perguntas antes da reunião.
+
+## Leitura em 30 segundos
+
+1. **Plano de mídia:** R$ 5.463 gastos de R$ 10.000 no mês · 🔴 fora do ritmo: Google Ads
+2. **Pré-pago** (mês): Receita real R$ 1.802 · Vendas (faturas) 38 · Receita de clientes novos R$ 926 · Vendas a clientes novos 26
+3. **Pós-pago** (mês): Leads 87 · Oportunidades (comercial) — · Contratos assinados (comercial) — · VCM contratado (comercial) —
+4. **Ekyte:** 4 vencidas, 4 empurradas, 7 vencem nesta semana
+
+## 🎯 Roteiro da conversa — RASCUNHO
+
+| # | Pergunta | Para quem | Base |
+|---|---|---|---|
+| 1 | **3 vencida(s) no Ekyte:** *POSTAGEM SEMANAL: INSTAGRAM + FACEBOOK* (12/10); *Mudança de Cadeira* (16/10); *LINHA EDITORIAL - MÊS 3* (19/10). **Nova data ou encerrar?** | Daiane Bitencourt | Execução |
+| 2 | **1 vencida(s) no Ekyte:** *Auditoria SEO* (19/10). **Nova data ou encerrar?** | Esdras Wesley | Execução |
+| 3 | **Google Ads a 127% do ritmo:** fecha o mês em R$ 5.984 para R$ 4.700 planejados. **Foi decisão? Registrar no plano ou corrigir?** | Thiago Senna | §0 |
+| 4 | **Vendas (pre-pago):** dado só até 14/10. **Quem traz e quando?** | Gabriel Ihmaid | §1 |
+| 5 | **Comercial (pos-pago):** nenhum dado lançado ainda. **Quem traz e quando?** | Gabriel Ihmaid | §2 |
+| 6 | Custo por lead caiu 43% na semana (R$ 24,10 → R$ 13,79). **O que explica?** | Thiago Senna | §2 |
+| 7 | Investimento do motor (campanhas de lead) caiu 29% na semana (R$ 820 → R$ 579). **O que explica?** | Thiago Senna | §2 |
+| 8 | **Fechamento:** o que vira tarefa, com dono e prazo? O que muda no plano de mídia? | todos | Registro |
+
+---
+
+## 0 · Plano de mídia (os motores juntos)
+
+`fonte: midia/plano-2026-10.md · scripts/plano_midia.py`
+
+*Gerado por `scripts/plano_midia.py` em 2026-10-20. Gasto até 18/10 (dia 18 de 31).*
+
+### Planejado × real
+
+| Canal | Verba do mês | Esperado até a data | Real | Ritmo | Projeção no fim do mês | |
+|---|---|---|---|---|---|---|
+| Google Ads | R$ 4.700 | R$ 2.729 | R$ 3.475 | 127% | R$ 5.984 | 🔴 |
+| Meta Ads | R$ 3.500 | R$ 2.032 | R$ 1.988 | 98% | R$ 3.424 | 🟢 |
+| LinkedIn Ads ⚠️ sem lançamento | R$ 1.800 | R$ 1.045 | — | — | — | ⚪ |
+| **Total** | **R$ 10.000** | R$ 5.806 | **R$ 5.463** | 94% | | |
+
+Ritmo = real ÷ verba proporcional aos dias corridos. 🟢 90–110% · 🟡 75–125% · 🔴 fora disso.
+Canal com dado até outra data é comparado com o esperado até a data dele.
+
+### Por tipo de campanha
+
+<details><summary><b>Google Ads</b> · real R$ 3.475 de R$ 4.700</summary>
+
+| Tipo | Motor | Verba | Real | Campanhas |
+|---|---|---|---|---|
+| PMax pré-pago | pre-pago | — | R$ 1.625 | ● V4 - Venda - Pmax - Pré Pago - Aberto CPA (R$ 547)<br>○ V4 - Venda - Pmax - Pré Pago - Aberto CPA #2 (R$ 263)<br>○ V4 - Venda - Pmax - Pré Pago - Nova LP - NET - Aberto CPA (R$ 224)<br>○ V4 - Venda - Pmax - Pré Pago #2 (R$ 188)<br>○ V4 - Venda - Pmax - Pré Pago - NV LP - NET (R$ 185)<br>○ V4 - Venda - Pmax - Pré Pago - NV LP (R$ 163)<br>○ V4 - Venda - Pmax - Pré Pago - Nova LP - Aberto CPA (R$ 56) |
+| Search pré-pago | pre-pago | — | R$ 1.850 | ● [ANDERSON] [SEARCH] PRÉ-PAGO - CONTROLE (R$ 840)<br>● V4 - Search - Pré pago - Site - DESCOBERTA CNPJ (R$ 275)<br>● V4 - Search - Pré pago - Nova LP .Net (R$ 274)<br>● V4 - Search - Pré pago - Site - ANÁLISE DE CRÉDITO (R$ 204)<br>○ V4 - Search - Pré pago - Site - SCORE CNPJ (R$ 150)<br>○ V4 - Search - Pré pago - Site - RISCO / RESTRIÇÃO (R$ 106) |
+| Geração de demanda | pre-pago | — | R$ 0 | — |
+
+● ativa hoje · ○ pausada · · sem status no cache
+
+</details>
+
+<details><summary><b>Meta Ads</b> · real R$ 1.988 de R$ 3.500</summary>
+
+| Tipo | Motor | Verba | Real | Campanhas |
+|---|---|---|---|---|
+| Formulário nativo (lead) | pos-pago | — | R$ 1.528 | · [V4] [LEAD] [FORMULARIO NATIVO] (R$ 1.528) |
+| Landing page (lead) | pos-pago | — | R$ 256 | · V4 - LEADS - LP CENPROT (R$ 256) |
+| Brand (tráfego / visita ao perfil) | — | — | R$ 204 | · [V4] [TRAFEGO] [AQUISIÇÃO] [VISITA AO PERFIL] (R$ 204) |
+| WhatsApp (conversa) | pos-pago | — | R$ 0 | — |
+
+● ativa hoje · ○ pausada · · sem status no cache
+
+</details>
+
+### Auditoria
+
+- **Google Ads fora do ritmo:** 127% do esperado; no ritmo atual fecha o mês em R$ 5.984 contra R$ 4.700 planejados
+
+---
+
+## 1 · Pré-pago: recarga no site (mín. R$ 29,90) para consultas
+
+`árvore: autosservico · canais: google_ads`
+
+**Trava:** não definida. Inclinação do Gabriel: *talvez não atinjamos o público certo (só CNPJ; Serasa domina)*
+
+### Resultado
+
+| | 05/10–11/10 | **12/10–18/10 ⚠️** | Out 01–18 ⚠️ | Set 01–18 ⚠️ | Var. mês |
+|---|---|---|---|---|---|
+| Receita real | R$ 891 | **R$ 582** | R$ 1.802 | R$ 2.026 | -11% |
+| Vendas (faturas) | 19 | **12** | 38 | 39 | -3% |
+| Receita de clientes novos | R$ 463 | **R$ 284** | R$ 926 | R$ 801 | +16% |
+| Vendas a clientes novos | 13 | **7** | 26 | 21 | +24% |
+| Receita de recompra | R$ 428 | **R$ 299** | R$ 876 | R$ 1.224 | -28% |
+| Ticket médio | R$ 46,88 | **R$ 48,52** | R$ 47,43 | R$ 51,94 | -9% |
+| Investimento do motor | R$ 1.635 | **R$ 538** | R$ 3.056 | R$ 2.313 | +32% |
+| ROAS real (receita ÷ investimento) | 0,54 | **1,08** | 0,59 | 0,88 | -33% |
+| ROAS de aquisição (só nova venda) | 0,28 | **0,53** | 0,30 | 0,35 | -13% |
+
+⚠️ 12/10–18/10: só **3 de 7 dias** têm dado de venda; todas as linhas usam esses 3 dias
+⚠️ Out 01–18: só **14 de 18 dias** têm dado de venda; todas as linhas usam esses 14 dias
+⚠️ Set 01–18: só **15 de 18 dias** têm dado de venda; todas as linhas usam esses 15 dias
+
+### Desvios (régua do `autosservico.yaml`)
+
+⏸️ Comparação **da semana** suspensa: 12/10–18/10 tem dado de venda em só 3 de 7 dias
+
+| Desvio | Para quem |
+|---|---|
+| ROAS real (receita ÷ investimento) caiu 33% no mês (0,88 → 0,59) | Thiago Senna |
+| Investimento do motor subiu 32% no mês (R$ 2.313 → R$ 3.056) | Thiago Senna |
+
+<details><summary><b>Canal: google</b></summary>
+
+| | 05/10–11/10 | **12/10–18/10 ⚠️** | Out 01–18 ⚠️ | Set 01–18 ⚠️ | Var. mês |
+|---|---|---|---|---|---|
+| Investimento Google | R$ 1.635 | **R$ 538** | R$ 3.056 | R$ 2.313 | +32% |
+| Cliques Google | 256 | **149** | 672 | 457 | +47% |
+| CTR Google | 4,63% | **6,58%** | 4,52% | 4,91% | -8% |
+| CPC Google | R$ 6,39 | **R$ 3,61** | R$ 4,55 | R$ 5,06 | -10% |
+| Compras Google (plataforma) | 13 | **4** | 23 | 26 | -13% |
+| Valor Google (plataforma) | R$ 395 | **R$ 167** | R$ 732 | R$ 831 | -12% |
+| ROAS Google (plataforma) | 0,24 | **0,31** | 0,24 | 0,36 | -33% |
+| Custo por compra Google (plataforma) | R$ 126 | **R$ 134** | R$ 135 | R$ 88,97 | +51% |
+| Cobertura de atribuição (Google ÷ real) | 44,31% | **28,63%** | 40,61% | 41,03% | -1% |
+
+</details>
+
+ℹ️ ROAS ~0,4 (real, só a receita do período). Recompra = 66% da receita no check-in 6 → medir por coorte é pergunta aberta (arquitetura/17 §2.3)
+
+---
+
+## 2 · Pós-pago: contrato com gasto mínimo (consultas, localização e histórico de veículo, CENPROT)
+
+`árvore: geracao-lead · canais: meta_ads, linkedin`
+
+**Trava:** não definida. Inclinação do Gabriel: *talvez demanda (conversão alta, o lead chega com necessidade específica)*
+
+### Resultado
+
+| | 05/10–11/10 ⚠️ | **12/10–18/10 ⚠️** | Out 01–18 ⚠️ | Set 01–18 ⚠️ | Var. mês |
+|---|---|---|---|---|---|
+| Leads | 34 | **42** | 87 | 10 | +770% |
+| Oportunidades (comercial) | — | **—** | — | — | — |
+| Contratos assinados (comercial) | — | **—** | — | — | — |
+| VCM contratado (comercial) | — | **—** | — | — | — |
+| Investimento do motor (campanhas de lead) | R$ 820 | **R$ 579** | R$ 1.784 | R$ 1.928 | -7% |
+| Custo por lead | R$ 24,10 | **R$ 13,79** | R$ 20,51 | R$ 193 | -89% |
+| Custo por contrato | — | **—** | — | — | — |
+| VCM ÷ investimento | — | **—** | — | — | — |
+
+⚠️ 05/10–11/10: **comercial** sem dado no período (linhas em branco)
+⚠️ 12/10–18/10: **comercial** sem dado no período (linhas em branco)
+⚠️ Out 01–18: **comercial** sem dado no período (linhas em branco)
+⚠️ Set 01–18: **comercial** sem dado no período (linhas em branco)
+
+### Desvios (régua do `geracao-lead.yaml`)
+
+⏸️ Comparação **do mês** suspensa: quebra de série em 16/09 (até 16/09 o pós-pago rodava por WhatsApp (conversas, que a árvore não lê); daí em diante, formulário nativo e LP (leads))
+
+| Desvio | Para quem |
+|---|---|
+| Custo por lead caiu 43% na semana (R$ 24,10 → R$ 13,79) | Thiago Senna |
+| Investimento do motor (campanhas de lead) caiu 29% na semana (R$ 820 → R$ 579) | Thiago Senna |
+
+<details><summary><b>Canal: meta</b></summary>
+
+| | 05/10–11/10 ⚠️ | **12/10–18/10 ⚠️** | Out 01–18 ⚠️ | Set 01–18 ⚠️ | Var. mês |
+|---|---|---|---|---|---|
+| Investimento Meta (campanhas de lead) | R$ 820 | **R$ 579** | R$ 1.784 | R$ 1.928 | -7% |
+| Impressões Meta | 24.017 | **15.045** | 51.716 | 69.168 | -25% |
+| Cliques no link Meta | 302 | **192** | 619 | 705 | -12% |
+| CTR Meta | 1,26% | **1,28%** | 1,20% | 1,02% | +17% |
+| CPM Meta | R$ 34,12 | **R$ 38,49** | R$ 34,50 | R$ 27,87 | +24% |
+| Leads Meta | 34 | **42** | 87 | 10 | +770% |
+| Custo por lead | R$ 24,10 | **R$ 13,79** | R$ 20,51 | R$ 193 | -89% |
+
+</details>
+
+ℹ️ ⚠️ diverge do repositório antigo (check-in 6): 212 conversas + 7 leads e zero contrato entre 09 e 16/09, 'trava comercial'. A árvore de lead decide
+
+---
+
+## Execução — Ekyte
+
+`fonte: Ekyte API · workspace 78750`
+
+| Situação | Tarefa | Responsável | Prazo |
+|---|---|---|---|
+| ⛔ vencida | POSTAGEM SEMANAL: INSTAGRAM + FACEBOOK | Daiane Bitencourt | 12/10 |
+| ⛔ vencida | Mudança de Cadeira | Daiane Bitencourt | 16/10 |
+| ⛔ vencida + ↪ empurrada | LINHA EDITORIAL - MÊS 3 | Daiane Bitencourt | 09/10 → 19/10 |
+| ⛔ vencida | Auditoria SEO | Esdras Wesley | 19/10 |
+| vence esta semana | Atualizar Linha Editorial | Daiane Bitencourt | 20/10 |
+| vence esta semana | POSTAGEM ARTIGO  BLOG | Daiane Bitencourt | 21/10 |
+| ↪ empurrada + vence esta semana | Construção E-mails CMS | Gabriel Ihmaid | 17/09 → 21/10 |
+| vence esta semana | CHECKPOINT 2 - fechar o ciclo de um mes | Gabriel Ihmaid | 21/10 |
+| vence esta semana | Definir Linha Editorial de Blog | Daiane Bitencourt | 21/10 |
+| vence esta semana | Construir Check-in | Gabriel Ihmaid | 23/10 |
+| vence esta semana | POSTAGEM SEMANAL: INSTAGRAM + FACEBOOK | Daiane Bitencourt | 26/10 |
+| ↪ empurrada | SELO META | Lucas Bastos | 23/02 → 27/10 |
+| ↪ empurrada | Disparar E-mail | Gabriel Ihmaid | 19/10 → 13/11 |
+
+Tarefas ativas: 23.
+
+---
+
+## Lacunas
+
+| Motor | Falta | Por quê | O que destrava |
+|---|---|---|---|
+| pre-pago | vendas | dado só até 14/10; a pauta vai até 18/10 | metricas/manual-pre-pago.csv (scripts/faturas.py) |
+| pos-pago | comercial | sem nenhum dado | lançar: metricas/manual-pos-pago.csv (Gabriel ou Claude, a partir do resumo semanal do comercial do cliente (uma linha por dia com evento)) |
+| pos-pago | (declarada na árvore) | conversas de WhatsApp (campanhas de mensagem) não são lidas: leads só conta formulário/LP. Na Score, set/26 até 16/09 era WhatsApp → leads e CPL de setembro não são comparáveis | — |
+
+---
+
+## Registro (preencher na reunião)
+
+> ⚠️ O formato fixo do registro (decisões, tarefas, mudanças, o que fica aberto) é o próximo passo (`arquitetura/18`).
+
+| Decisão / tarefa | Motor | Responsável | Prazo | Vai para o Ekyte? |
+|---|---|---|---|---|
+| | | | | |
