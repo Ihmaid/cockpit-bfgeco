@@ -12,7 +12,7 @@ aberto) → Ekyte + Base + próxima pauta.** Sequência: ▶️ **(1) pauta da S
 separados)** → (2) formato do registro, teste na sprint de 27/10 → (3) modo sprint no app, alvo 03/11 →
 (4) transcrição por Drive + Agenda (a Agenda também mede ritual que não aconteceu) → (5) tarefas por CSV
 do Ekyte → (6) template de projetos + plano da Score → (7) semana na frente.
-**Aguardando 3 decisões dele (§4):** reabrir automação de entrada · Ekyte por CSV ou MCP · qual conta Google.
+**✅ Decidido (20/10, §4.1):** automação de entrada REABERTA · Ekyte por CSV neste ciclo (próximo ciclo = momento só do Ekyte: modelos de tarefa + API) · conta Google = `gabriel.ihmaid@v4company.com`.
 Respostas da pauta (`dump/2026-10-20-19`): resumo do comercial traz oportunidades/contratos/VCM; XLSX do
 pré-pago vem sob demanda (ele pede no check-in semanal); uma pauta por cliente, um bloco por motor.
 

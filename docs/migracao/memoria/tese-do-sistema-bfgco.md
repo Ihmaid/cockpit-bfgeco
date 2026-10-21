@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 43fe9812-9dba-4632-acba-8de1ead2a0f9
-  modified: 2026-09-14T12:12:07.195Z
+  modified: 2026-10-21T02:05:52.415Z
 ---
 
 Definida por Gabriel em 14/09/2026, ao rever o projeto depois de eu abrir a API do Ekyte e o
@@ -30,6 +30,10 @@ não tinha objetivo nenhum, pois **o gargalo era a análise**, e ninguém sabia 
 Quando eu propuser integrar algo, a primeira pergunta é qual análise isso destrava — se não
 houver resposta clara, não conectar. Vale também para propor automação: ele adiou n8n e GA4
 explicitamente ("não vamos misturar"), e automação é etapa posterior.
+**Atualização 20/10/2026:** ele **reabriu a automação de ENTRADA** (transcrição de sprint e check-in pelo
+Drive + Agenda, conta `gabriel.ihmaid@v4company.com`, só leitura), porque a pergunta já existe: o registro
+da reunião define o que extrair (`arquitetura/18`). Escrita no Ekyte segue por planilha neste ciclo; a API
+de escrita fica para um ciclo dedicado ao Ekyte.
 
 **3. Por que este vai funcionar: é apêndice de ritual, não destino.** *"Vou aplicar ele como um
 apêndice aos rituais. Ele só não vai funcionar se eu sair da unidade, ou eu vou sair porque ele

@@ -64,7 +64,15 @@ falta é **o caminho de volta**. A cola são dois arquivos por reunião, um de i
   estar ligada no Meet (resumo do Gemini não é fonte, só o literal); e a conta que organiza as reuniões
   precisa ser a que autoriza (em set/26 o conector do Drive parecia logado em outra conta)
 
-## 4. Decisões que são suas
+## 4.1 ✅ Decididas pelo Gabriel (20/10)
+
+1. **Automação reaberta.** A transcrição recebida sozinha (Drive + Agenda) está liberada; a tese 5
+   ("automação depois") deixa de valer para a **entrada** de dados
+2. **Ekyte por planilha (CSV de importação) neste ciclo.** O **próximo ciclo terá um momento só para o
+   Ekyte**: configurar os novos modelos de tarefa e a API (escrita) corretamente
+3. **Conta Google: `gabriel.ihmaid@v4company.com`** — é a que autoriza Drive e Agenda (só leitura)
+
+## 4. Decisões que eram suas (registro da pergunta)
 
 1. **Reabrir a automação.** Em 14/09 ficou decidido "automação depois, não misturar" (tese 5). Receber a
    transcrição sozinho é automação de **entrada**, só leitura. Proponho tratar como exceção, depois do
