@@ -1,0 +1,12 @@
+{
+  "fonte": "conector Meta Ads (claude.ai), ads_get_ad_entities level=campaign, amount_spent > 0",
+  "conta": "484366202785720",
+  "de": "2026-10-01",
+  "ate": "2026-10-19",
+  "gravado_em": "2026-10-20",
+  "campanhas": [
+    {"id": "120248150692140534", "nome": "[V4] [LEAD] [FORMULARIO NATIVO]", "status": "ACTIVE", "gasto": 1585.05},
+    {"id": "120248406426520534", "nome": "V4 - LEADS - LP CENPROT", "status": "ACTIVE", "gasto": 272.86},
+    {"id": "120226462777120534", "nome": "[V4] [TRAFEGO] [AQUISIÇÃO] [VISITA AO PERFIL]", "status": "ACTIVE", "gasto": 211.65}
+  ]
+}

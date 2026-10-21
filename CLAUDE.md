@@ -30,6 +30,15 @@ Google; pós-pago = geração de lead, Meta → comercial da Score). Critério p
   Time corrigido (tráfego = **Thiago Senna**, social = Daiane, tech = Esdras). **Nenhuma trava confirmada**
   nos dois motores ("precisa analisar"). XLSX = Ana Carolina. Fee segue aberto.
   ▶️ **Próximo proposto: o plano de mídia auditável** (antes das árvores; `arquitetura/17` §5)
+- ✅ *20/10 (noite, 3):* **PLANO DE MÍDIA AUDITÁVEL — MVP construído** (`scripts/plano_midia.py`,
+  `clientes/score-positivo/midia/plano-2026-10.md`; `dump/2026-10-20-18`). Total R$ 10 mil aprovado; divisão
+  por canal (Google 4,7 · Meta 3,5 · LinkedIn 1,8) é proposta minha; verba por tipo de campanha em aberto.
+  1º achado: **Google a 126% do ritmo** (fecha o mês em ~R$ 5,9 mil); campanha "[ANDERSON] Search Controle"
+  = R$ 871 (24% do Google no mês). ⭐ O Gabriel perguntou **"não estamos aprofundando demais na Score?"**:
+  retirei o pedido das faturas de 12 meses e de integração com o LeadFinder (eram análise para achar a
+  trava = profundidade). Regra: **pedir dado novo ao cliente = parar e perguntar.** O que falta da Score
+  para o sistema: a pauta de segunda rodando para um cliente de lead **só com o que já chega toda semana**
+  para o check-in. Depois: template de projetos → semana na frente
 
 ## 🔖 Onde paramos — 20/10/2026 (manhã): as três ações do Gabriel andaram
 
@@ -723,6 +732,8 @@ as capacidades do produto, não a realidade da unidade.
   + Meta + JET); [scripts/jet.py](scripts/jet.py) (JET → `manual.csv`); [scripts/ga4.py](scripts/ga4.py);
   [scripts/meta_cache.py](scripts/meta_cache.py) (conector → cache); definição em
   [compartilhado/arvores-metricas/ecommerce.yaml](compartilhado/arvores-metricas/ecommerce.yaml). Rotina em `arquitetura/14`
+- [scripts/plano_midia.py](scripts/plano_midia.py) — ⭐ **PLANO DE MÍDIA AUDITÁVEL** (20/10): verba planejada ×
+  gasto real por canal → tipo de campanha → campanha, ritmo do mês e auditoria do registro de mudanças. Só lê
 - [scripts/reconcilia_ga4_jet.py](scripts/reconcilia_ga4_jet.py) — **reconciliação GA4 × JET** (10/10): o que é cada "compra" que o Google Ads recebe. Só lê, só agregados
 - [scripts/radar.py](scripts/radar.py) — ⭐ **radar da carteira**: lê o front matter dos `.md` e
   imprime o Ciclo de Receita, a razão dentro/fora do plano e os **gargalos por severidade**.

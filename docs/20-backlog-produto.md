@@ -188,6 +188,16 @@ dizia R$ 2 mil e a API mostrou ~R$ 10 mil/mês. O usuário (`arquitetura/dump/20
 ⭐ É peça de sistema barata (as fontes de gasto já estão ligadas) e resolve uma dor da unidade inteira,
 não de um cliente. Proposta de prioridade em `arquitetura/17` §5.
 
+**✅ MVP construído em 20/10** (pedido adicional do mesmo dia: subdivisão por **tipo de campanha**, em
+"toggle", ex.: Meta = brand · formulário · landing page):
+- `clientes/<c>/midia/plano-AAAA-MM.md` — front matter: verba total → canais → grupos (tipo de campanha,
+  com `regra` regex sobre o nome e `motor` de receita) → `mudancas[]` append-only
+- `scripts/plano_midia.py --cliente <c>` — gasto real por campanha (Google pela API; Meta pelo cache do
+  conector em `midia/real/`, até o token da BM; LinkedIn por lançamento manual), ritmo e projeção do mês,
+  campanhas agrupadas por tipo em `<details>`, e **auditoria**: verba sem registro, verba mudada sem
+  registro, soma dos canais ≠ total, campanha sem tipo, canal fora do ritmo
+- 1ª instância: Score, out/26. **Falta:** tela no app, alerta na pauta de segunda, Meta pelo token
+
 ---
 
 ## Corrigido em 11/09/2026 — não é mais backlog
