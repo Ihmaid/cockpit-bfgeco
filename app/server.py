@@ -21,9 +21,9 @@ import sys
 import unicodedata
 import webbrowser
 from datetime import date
-from http.server import HTTPServer, SimpleHTTPRequestHandler
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse
 
 try:
     import yaml
@@ -35,6 +35,7 @@ ESTATICO = Path(__file__).resolve().parent / "static"
 CLIENTES = RAIZ / "clientes"
 sys.path.insert(0, str(RAIZ / "scripts"))
 import projecao as PJ  # noqa: E402  (o mesmo cálculo do scripts/projecao.py, sem cópia)
+import sprint as SP    # noqa: E402  (modo sprint: arquitetura/19)
 
 ORDEM_CICLO = ["exposicao", "atencao", "interesse", "qualificacao",
                "compromisso", "decisao", "retencao"]
@@ -529,8 +530,27 @@ class Handler(SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(corpo)
 
+    def _corpo(self):
+        n = int(self.headers.get("Content-Length") or 0)
+        return json.loads(self.rfile.read(n) or b"{}")
+
     def do_GET(self):
-        rota = urlparse(self.path).path
+        url = urlparse(self.path)
+        rota = url.path
+        if rota == "/api/sprint":
+            return self._json({"carteira": SP.carteira(), "data": SP.proxima_sprint().isoformat()})
+        if rota.startswith("/api/sprint/"):
+            slug = rota.split("/api/sprint/", 1)[1].strip("/")
+            if not re.fullmatch(r"[a-z0-9-]+", slug):
+                return self._json({"erro": "slug inválido"}, 400)
+            q = {k: v[0] for k, v in parse_qs(url.query).items()}
+            periodo = q.get("periodo") if q.get("periodo") in ("dia", "semana", "mes") else "semana"
+            data = q.get("data") if re.fullmatch(r"\d{4}-\d{2}-\d{2}", q.get("data", "")) else None
+            try:
+                return self._json(SP.tela(slug, periodo, data=data))
+            except Exception as erro:  # a tela de um cliente quebrado não derruba o carrossel
+                return self._json({"cliente": {"slug": slug, "nome": slug}, "configurado": False,
+                                   "faltas": ["erro ao montar a tela: %s" % str(erro)[:200]]})
         if rota == "/api/clientes":
             return self._json(sorted(p.name for p in CLIENTES.iterdir()
                                      if p.is_dir() and (p / "cliente.md").exists()))
@@ -546,6 +566,18 @@ class Handler(SimpleHTTPRequestHandler):
 
     def do_POST(self):
         rota = urlparse(self.path).path
+        m = re.fullmatch(r"/api/sprint/([a-z0-9-]+)/(atualizar|registro)", rota)
+        if m:
+            slug, acao = m.groups()
+            try:
+                if acao == "atualizar":
+                    return self._json({"ok": True, "relatorio": SP.atualizar(slug)})
+                dados = self._corpo()
+                if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(dados.get("data", ""))):
+                    raise ValueError("data inválida")
+                return self._json({"ok": True, "arquivo": SP.gravar_registro(slug, dados["data"], dados)})
+            except (ValueError, KeyError, OSError, RuntimeError) as erro:
+                return self._json({"ok": False, "erro": str(erro)[:300]}, 400)
         if not rota.startswith("/api/salvar/"):
             return self._json({"erro": "rota desconhecida"}, 404)
         slug = rota.split("/api/salvar/", 1)[1].strip("/")
@@ -568,7 +600,8 @@ def main():
         sys.exit(f"pasta não encontrada: {ESTATICO}")
 
     url = f"http://127.0.0.1:{args.porta}"
-    srv = HTTPServer(("127.0.0.1", args.porta), Handler)
+    # Threading: a tela da sprint leva alguns segundos; um cliente lento não trava o carrossel
+    srv = ThreadingHTTPServer(("127.0.0.1", args.porta), Handler)
     print(f"\n  Plano vivo em {url}")
     print(f"  Lendo e gravando em {CLIENTES}")
     print("  Ctrl+C para parar.\n")

@@ -1,0 +1,530 @@
+{
+ "atualizado_em": "2026-10-22T07:56",
+ "campanhas": [
+  {
+   "id": "19828889247",
+   "name": "[V][SALE][SEARCH][CONSULTA CPF/CNPJ (RESTRITIVA)]]",
+   "status": "PAUSED",
+   "start_date": "2023-03-18",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "19867596221",
+   "name": "[V][SALE][SEARCH][CONSULTA CADASTRAL CPF/CNPJ]",
+   "status": "PAUSED",
+   "start_date": "2023-03-23",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "19868315710",
+   "name": "[⚫️] [V4] [11/11] - [SEARCH] - [SCORE DE CRÉDITO - CPF/CNPJ]",
+   "status": "PAUSED",
+   "start_date": "2023-03-23",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "20338443772",
+   "name": "Sales-Performance Max-1 - Pré-pago [SITE] - BR",
+   "status": "PAUSED",
+   "start_date": "2023-07-03",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "20727120885",
+   "name": "Teste Campanha [V][SALE][SEARCH][SCORE DE CRÉDITO - CPF/CNPJ] #2",
+   "status": "PAUSED",
+   "start_date": "2023-10-31",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "20888412121",
+   "name": "RP-CasaAds",
+   "status": "PAUSED",
+   "start_date": "2023-12-21",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "20981315207",
+   "name": "PM - Institucional",
+   "status": "PAUSED",
+   "start_date": "2024-01-29",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "21617321941",
+   "name": "[v4] Sales - search",
+   "status": "PAUSED",
+   "start_date": "2024-08-21",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "21636285083",
+   "name": "[V4] PMAX - Venda",
+   "status": "PAUSED",
+   "start_date": "2024-08-26",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "21640068394",
+   "name": "[V4] Search - Venda",
+   "status": "PAUSED",
+   "start_date": "2024-08-26",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "21769473482",
+   "name": "[V4] [VENDA] - 01/10 - novas palavras",
+   "status": "PAUSED",
+   "start_date": "2024-10-01",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "21779488787",
+   "name": "[V4] [SEARCH] - 04/10",
+   "status": "PAUSED",
+   "start_date": "2024-10-04",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "21813938639",
+   "name": "[V4] [SEARCH] [INSTITUCIONAL]- 15/10",
+   "status": "PAUSED",
+   "start_date": "2024-10-15",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "21829462026",
+   "name": "[V4] [VENDA] [PMAX] [LP] - 22/10",
+   "status": "PAUSED",
+   "start_date": "2024-10-22",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "21870918443",
+   "name": "[🟠] [V4] [SEARCH] [INSTITUCIONAL] - POS PAGO - Estados [LP]",
+   "status": "PAUSED",
+   "start_date": "2024-11-02",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "21870951539",
+   "name": "[🟠] [V4] [PMAX] [02/11] - POS PAGO",
+   "status": "PAUSED",
+   "start_date": "2024-11-02",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "21872715482",
+   "name": "[🟠] [V4] [PMAX] [02/11] - POS PAGO OFC [LP]",
+   "status": "PAUSED",
+   "start_date": "2024-11-03",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "21874782130",
+   "name": "[⚫️] [V4] [SEARCH] [INSTITUCIONAL] -  BLACK FRIDAY",
+   "status": "PAUSED",
+   "start_date": "2024-11-02",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "21879223877",
+   "name": "[⚫️] [V4] [PMAX] [05/11] - BLACK FRIDAY",
+   "status": "PAUSED",
+   "start_date": "2024-11-05",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "21914537937",
+   "name": "🔴[V4] PMAX - Venda [IGUAL AGOSTO]",
+   "status": "PAUSED",
+   "start_date": "2024-11-18",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "21920770040",
+   "name": "[🔴] [V4] [PMAX] Pré pago [SITE] - SP",
+   "status": "PAUSED",
+   "start_date": "2024-11-18",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "22010061028",
+   "name": "[V4] [PMAX] [CADASTRO] [SITE SIGNUP]",
+   "status": "PAUSED",
+   "start_date": "2024-12-09",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "22146100727",
+   "name": "[V4] [Venda] [PMAX] [Pré - pago]",
+   "status": "PAUSED",
+   "start_date": "2025-01-20",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "22154776491",
+   "name": "[V4] TS [VENDA] [SEARCH] - PRÉ PAGO - DESKTOP/CELULAR",
+   "status": "PAUSED",
+   "start_date": "2025-01-24",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "22336223200",
+   "name": "[V4] [TRAFEGO] [GERAÇAO DE DEMANDA] [AQUISIÇÃO]",
+   "status": "PAUSED",
+   "start_date": "2025-03-12",
+   "advertising_channel_type": "DEMAND_GEN"
+  },
+  {
+   "id": "23078915230",
+   "name": "[V4] [VENDA] [SEARCH] [PC] [PRODUTOS TESTE] 01/10",
+   "status": "PAUSED",
+   "start_date": "2025-10-01",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "23170746689",
+   "name": "Sales-Performance Max-1 - Pré-pago [SITE] - BR  - MAX CONV",
+   "status": "PAUSED",
+   "start_date": "2025-10-22",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "23245551119",
+   "name": "[V4] [SEARCH] [BLACK POS PAGO]",
+   "status": "PAUSED",
+   "start_date": "2025-11-09",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "23252700945",
+   "name": "[V4] [PMAX] [POS PAG] BLACK - LP",
+   "status": "PAUSED",
+   "start_date": "2025-11-12",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "23270060317",
+   "name": "[V4] [VENDA] [SEARCH] INSTITUCIONAL",
+   "status": "PAUSED",
+   "start_date": "2025-11-14",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "23340974592",
+   "name": "[V4] [SEARCH] [BLACK POS PAGO] #2",
+   "status": "PAUSED",
+   "start_date": "2025-12-09",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "23341355034",
+   "name": "[V4] [SEARCH] [BLACK POS PAGO] #3",
+   "status": "PAUSED",
+   "start_date": "2025-12-09",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "23341643736",
+   "name": "🟢 [V4] [LEAD] [PMAX] [POS PAGO]",
+   "status": "PAUSED",
+   "start_date": "2025-12-09",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "23350589269",
+   "name": "[V4] [PMAX] [POS PAG] BLACK - LP #2",
+   "status": "PAUSED",
+   "start_date": "2025-12-09",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "23353793937",
+   "name": "[V4] [LEAD] [PMAX] [POS PAGO] TESTE PARA VER SE VAI MARCAR",
+   "status": "PAUSED",
+   "start_date": "2025-12-12",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "23442146283",
+   "name": "[V4] [VENDA] [SEARCH] INSTITUCIONAL - 10/01 ajustada",
+   "status": "PAUSED",
+   "start_date": "2026-01-10",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "23488143050",
+   "name": "[V4] [VENDA] [SEARCH] INSTITUCIONAL - 22/01 - teste",
+   "status": "PAUSED",
+   "start_date": "2026-01-22",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "23560146618",
+   "name": "TESTE - VALIDAR SE O LINK ESTA FUNCIONANDO",
+   "status": "PAUSED",
+   "start_date": "2026-02-14",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "23568881663",
+   "name": "TESTE - VALIDADO",
+   "status": "PAUSED",
+   "start_date": "2026-02-16",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "23569599118",
+   "name": "Sales-Performance Max-1 - Pré-pago [SITE] - BR #2",
+   "status": "PAUSED",
+   "start_date": "2026-02-14",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "23577210171",
+   "name": "TESTE VALIDANDO PMAX",
+   "status": "PAUSED",
+   "start_date": "2026-02-19",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "23578432932",
+   "name": "teste Website traffic-Search-31",
+   "status": "PAUSED",
+   "start_date": "2026-02-20",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "23584358877",
+   "name": "Teste Sales-Search-32",
+   "status": "PAUSED",
+   "start_date": "2026-02-22",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "23690226186",
+   "name": "[V4] [VENDA] [PMAX] - NOVO",
+   "status": "PAUSED",
+   "start_date": "2026-03-26",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "23690481965",
+   "name": "Sales-Performance Max-1 - Pré-pago [SITE] - BR #3",
+   "status": "PAUSED",
+   "start_date": "2026-03-25",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "23695119746",
+   "name": "Sales-Performance Max-1 - Pré-pago [SITE] - BR #4",
+   "status": "PAUSED",
+   "start_date": "2026-03-26",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "23749866701",
+   "name": "[V4] [VENDA] [PMAX] [NOVO TESTE DE PUBLICO]",
+   "status": "PAUSED",
+   "start_date": "2026-04-13",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "24067781490",
+   "name": "V4 - TS - Geração de demanda – Pré Pago",
+   "status": "PAUSED",
+   "start_date": "2026-07-27",
+   "advertising_channel_type": "DEMAND_GEN"
+  },
+  {
+   "id": "24072621539",
+   "name": "[V4] TS [VENDA] [PMAX] [NOVO TESTE DE PUBLICO] #2",
+   "status": "PAUSED",
+   "start_date": "2026-07-27",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "24073162481",
+   "name": "[V4] TS [VENDA] [SEARCH] - PRÉ PAGO - DESKTOP/CELULAR #2",
+   "status": "PAUSED",
+   "start_date": "2026-07-27",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "24102764538",
+   "name": "[V4] [VENDA] [PMAX] [NOVO TESTE DE PUBLICO] #2",
+   "status": "PAUSED",
+   "start_date": "2026-08-06",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "24102771519",
+   "name": "[🔴] [V4] [PMAX] Pré pago [SITE] - SP #3",
+   "status": "PAUSED",
+   "start_date": "2026-08-05",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "24108356636",
+   "name": "V4 - Venda - Search - Pré Pago - Ampla",
+   "status": "PAUSED",
+   "start_date": "2026-08-05",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "24108422852",
+   "name": "V4 - Venda - Search - Pré Pago - Frase",
+   "status": "PAUSED",
+   "start_date": "2026-08-05",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "24113426305",
+   "name": "V4 - Venda - Search - Pré Pago - Exata",
+   "status": "PAUSED",
+   "start_date": "2026-08-05",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "24113440708",
+   "name": "V4 - Venda - Pmax - Pré Pago - ROAS 3",
+   "status": "PAUSED",
+   "start_date": "2026-08-06",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "24131727540",
+   "name": "V4 - Venda - Pmax - Pré Pago #2",
+   "status": "PAUSED",
+   "start_date": "2026-08-14",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "24164272241",
+   "name": "V4 - Venda - Pmax - Pré Pago #3",
+   "status": "PAUSED",
+   "start_date": "2026-08-21",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "24207868947",
+   "name": "V4 - Venda - Pmax - Pré Pago - ROAS 3 - Nova LP",
+   "status": "PAUSED",
+   "start_date": "2026-09-03",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "24207876198",
+   "name": "V4 - Venda - Pmax - Pré Pago - Nova LP",
+   "status": "PAUSED",
+   "start_date": "2026-09-03",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "24234405061",
+   "name": "V4 - Venda - Pmax - Pré Pago - Nova LP.",
+   "status": "PAUSED",
+   "start_date": "2026-09-08",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "24242309903",
+   "name": "V4 - Venda - Pmax - Pré Pago - Compradores",
+   "status": "PAUSED",
+   "start_date": "2026-09-11",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "24276251274",
+   "name": "[ANDERSON] [SEARCH] PRÉ-PAGO - CONTROLE",
+   "status": "ENABLED",
+   "start_date": "2026-09-23",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "24276908049",
+   "name": "V4 - Venda - Pmax - Pré Pago - NV LP",
+   "status": "PAUSED",
+   "start_date": "2026-09-23",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "24277938944",
+   "name": "V4 - Venda - Pmax - Pré Pago - Nova LP - Aberto CPA",
+   "status": "PAUSED",
+   "start_date": "2026-09-22",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "24277939352",
+   "name": "V4 - Venda - Pmax - Pré Pago - Aberto CPA",
+   "status": "ENABLED",
+   "start_date": "2026-09-22",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "24277939394",
+   "name": "V4 - Venda - Pmax - Pré Pago - Aberto CPA #2",
+   "status": "PAUSED",
+   "start_date": "2026-09-22",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "24308785347",
+   "name": "V4 - Venda - Pmax - Pré Pago - NV LP - NET",
+   "status": "PAUSED",
+   "start_date": "2026-10-02",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "24308785350",
+   "name": "V4 - Venda - Pmax - Pré Pago - Nova LP - NET - Aberto CPA",
+   "status": "PAUSED",
+   "start_date": "2026-10-02",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "24317857626",
+   "name": "V4 - Search - Pré pago - Nova LP .Net",
+   "status": "ENABLED",
+   "start_date": "2026-10-05",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "24317921994",
+   "name": "V4 - Search - Pré pago - Site - ANÁLISE DE CRÉDITO",
+   "status": "ENABLED",
+   "start_date": "2026-10-05",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "24317928885",
+   "name": "V4 - Search - Pré pago - Site - DESCOBERTA CNPJ",
+   "status": "ENABLED",
+   "start_date": "2026-10-05",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "24323211002",
+   "name": "V4 - Search - Pré pago - Site - SCORE CNPJ",
+   "status": "PAUSED",
+   "start_date": "2026-10-05",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "24329067982",
+   "name": "V4 - Search - Pré pago",
+   "status": "PAUSED",
+   "start_date": "2026-10-05",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "24329147419",
+   "name": "V4 - Search - Pré pago - Site - RISCO / RESTRIÇÃO",
+   "status": "PAUSED",
+   "start_date": "2026-10-05",
+   "advertising_channel_type": "SEARCH"
+  }
+ ]
+}

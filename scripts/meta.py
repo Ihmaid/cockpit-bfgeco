@@ -8,7 +8,7 @@ Substitui o conector do claude.ai como fonte do cache, que continua sendo o mesm
     uv run --with pyyaml python scripts/meta.py --cliente score-positivo --ini 2026-10-01 --fim 2026-10-21
 
 Grava em clientes/<slug>/metricas/serie/:
-  meta_campanhas.csv          dia × campanha: gasto, impressões, cliques, leads, compras, valor (troca só os dias pedidos)
+  meta_campanhas.csv          dia × campanha: gasto, impressões, cliques no link, leads, compras, valor (troca só os dias pedidos)
   meta_campanhas_status.json  status, objetivo e datas de cada campanha (para o resumo de campanhas da sprint)
 O token vem do .env (META_ACCESS_TOKEN), vai no cabeçalho e nunca é impresso. Só lê; nunca altera campanha.
 """
@@ -85,9 +85,9 @@ def baixar(slug, ini, fim):
     linhas = get("act_%s/insights" % conta, {
         "level": "campaign", "time_increment": 1, "limit": 500,
         "time_range": json.dumps({"since": ini.isoformat(), "until": fim.isoformat()}),
-        "fields": "campaign_id,campaign_name,spend,impressions,clicks,actions,action_values"})
+        "fields": "campaign_id,campaign_name,spend,impressions,inline_link_clicks,actions,action_values"})
     novas = [{"dia": x["date_start"], "campanha_id": x["campaign_id"], "campanha": x["campaign_name"],
-              "gasto": x.get("spend", "0"), "impressoes": x.get("impressions", "0"), "cliques": x.get("clicks", "0"),
+              "gasto": x.get("spend", "0"), "impressoes": x.get("impressions", "0"), "cliques": x.get("inline_link_clicks", "0"),
               "leads": "%g" % acao(x.get("actions"), ACAO_LEAD), "compras": "%g" % acao(x.get("actions"), ACAO_COMPRA),
               "valor_compras": "%.2f" % acao(x.get("action_values"), ACAO_COMPRA)} for x in linhas]
 

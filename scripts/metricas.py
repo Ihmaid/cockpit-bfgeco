@@ -137,7 +137,8 @@ def oauth_token(caminho_adc):
     return tok
 
 
-def buscar_google_ads(cli, ini, fim):
+def google_ads_consulta(cli):
+    """Devolve consulta(gaql) → linhas, autenticada para a conta do cliente (só leitura)."""
     e = env()
     faltam = [k for k in ("GOOGLE_ADS_DEVELOPER_TOKEN", "GOOGLE_ADS_LOGIN_CUSTOMER_ID", "GOOGLE_APPLICATION_CREDENTIALS") if not e.get(k)]
     if faltam:
@@ -145,7 +146,6 @@ def buscar_google_ads(cli, ini, fim):
     SEGREDOS.append(e["GOOGLE_ADS_DEVELOPER_TOKEN"])
     tok = oauth_token(e["GOOGLE_APPLICATION_CREDENTIALS"])
     conta = re.sub(r"\D", "", str(cli.get("google_ads_customer_id") or ""))
-    categoria = cli.get("google_ads_compra_categoria") or "PURCHASE"
     cab = {"Authorization": "Bearer " + tok, "developer-token": e["GOOGLE_ADS_DEVELOPER_TOKEN"],
            "login-customer-id": re.sub(r"\D", "", e["GOOGLE_ADS_LOGIN_CUSTOMER_ID"]),   # a API recusa hífens
            "Content-Type": "application/json"}
@@ -167,6 +167,12 @@ def buscar_google_ads(cli, ini, fim):
             pagina = resp.get("nextPageToken")
             if not pagina:
                 return linhas
+    return consulta
+
+
+def buscar_google_ads(cli, ini, fim):
+    consulta = google_ads_consulta(cli)
+    categoria = cli.get("google_ads_compra_categoria") or "PURCHASE"
 
     per = "segments.date BETWEEN '%s' AND '%s'" % (ini, fim)
     novos = collections.defaultdict(dict)

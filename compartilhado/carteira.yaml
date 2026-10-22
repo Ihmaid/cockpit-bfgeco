@@ -1,0 +1,20 @@
+# Carteira do squad Fúria da Noite: quem entra no carrossel do modo sprint (arquitetura/19).
+# Ordem do carrossel: alfabética pelo nome (Gabriel, 22/10). Fonte da lista: Gabriel, 24/09 (CLAUDE.md,
+# "carteira real do Fúria"); o campo `active` do Ekyte está desatualizado e não serve.
+#
+# Cliente com pasta em clientes/<slug>/ lê tudo do cliente.md. Os demais entram mostrando o que falta.
+# Contas abaixo: achadas pelo NOME nas listas da API (Meta, 22/10; Google, docs/08). ⚠️ A confirmar antes
+# de ligar qualquer fonte: nenhuma fonte entra antes de existir a pergunta que ela responde (tese 2).
+
+squad: furia-da-noite
+clientes:
+  - { slug: amc-construcoes,     nome: "AMC Construções",     status: ativo }
+  - { slug: atacadao-posto-13,   nome: "Atacadão Posto 13",   status: ativo }
+  - { slug: bloco-d,             nome: "Bloco D",             status: migrando,  meta_ads_account: "526393238766199" }
+  - { slug: casa-das-artes,      nome: "Casa das Artes",      status: ativo,     meta_ads_account: "602941791730233", nota: "há duas contas no Meta com o nome (602941791730233 e 249914200117044)" }
+  - { slug: gruta-do-sobradinho, nome: "Gruta do Sobradinho", status: ativo,     meta_ads_account: "978078189454326", google_ads_customer_id: "6637381425" }
+  - { slug: la-plata,            nome: "La Plata",            status: ativo,     meta_ads_account: "1753520931539759", google_ads_customer_id: "4418983754", nota: "quatro contas no Meta (Jóias, For Men, Catálogo, Revendedoras)" }
+  - { slug: padoca-do-bem,       nome: "Padoca do Bem",       status: ativo,     meta_ads_account: "664480921017207", google_ads_customer_id: "3157428639" }
+  - { slug: pezao-net,           nome: "Pezão Net",           status: migrando,  meta_ads_account: "892211587002747" }
+  - { slug: score-positivo,      nome: "Score Positivo",      status: ativo }
+  - { slug: sicher-imobiliaria,  nome: "Sicher Imobiliária",  status: iniciando }

@@ -1,0 +1,45 @@
+# Padrão de UTM da unidade — PROPOSTA do Claude (22/10/2026), para o Gabriel e o Breno corrigirem.
+# Pedido: sprint de teste de 21/10 ("qualquer link tem que ter UTM"; venda assistida e e-mail não têm).
+# Vale para todos os clientes: o mesmo nome em todo lugar, senão o GA4 não agrupa e a comparação some.
+# O gerador do app (arquitetura/19 §3, alvo 02/11) só monta link com os valores desta lista.
+#
+# Regras de escrita: minúsculas, sem acento, palavras separadas por hífen, sem espaço.
+# ⚠️ GA4: o agrupamento padrão de canais (Paid Social, Email, Organic Social…) depende de source e medium.
+#    Os valores abaixo foram escolhidos para cair no canal certo sem configuração; os marcados com
+#    "sem canal padrão" caem em "Unassigned" até criarmos um grupo de canais personalizado no GA4.
+
+utm_source:          # ONDE o link foi posto
+  fb: "Facebook (anúncio). No Meta, usar o parâmetro dinâmico {{site_source_name}} (vira fb, ig, msg, an)"
+  ig: "Instagram (anúncio pelo parâmetro dinâmico, ou orgânico: bio, stories, post)"
+  google: "Google. ⚠️ No Google Ads NÃO pôr UTM manual: a marcação automática (gclid) já leva tudo"
+  linkedin: "LinkedIn (anúncio ou orgânico)"
+  flowbiz: "e-mail disparado pela Flow Biz"
+  rd: "e-mail disparado pela RD Station"
+  whatsapp: "link enviado por WhatsApp (venda assistida, lista, grupo)"
+  loja-fisica: "QR code ou material impresso na loja"
+  parceiro: "site ou perfil de parceiro (usar utm_content para dizer qual)"
+
+utm_medium:          # QUE TIPO de tráfego
+  paid-social: "anúncio em rede social (Meta, LinkedIn) → GA4: Paid Social"
+  email: "e-mail → GA4: Email"
+  social: "rede social orgânica → GA4: Organic Social"
+  venda-assistida: "link mandado pelo vendedor ao cliente (sem canal padrão)"
+  qr: "QR code (sem canal padrão)"
+  referral: "parceiro → GA4: Referral"
+
+utm_campaign:        # QUAL ação
+  formato: "aaaa-mm-<acao>"          # ex.: 2026-11-black-friday, 2026-10-recompra-30-dias
+  anuncio_meta: "{{campaign.name}}"  # no Meta, o nome da campanha entra sozinho
+
+utm_content:         # QUAL peça ou posição (opcional, mas é o que liga ao catálogo de criativos)
+  anuncio_meta: "{{ad.name}}"        # o nome do anúncio leva o código do criativo (ex.: CR023)
+  email: "<id-do-email>-<posicao>"   # ex.: bf-01-banner-topo, bf-01-botao-1
+  venda_assistida: "<vendedor>"      # ex.: raquel (quem mandou o link)
+
+utm_term:            # opcional
+  anuncio_meta: "{{adset.name}}"     # o conjunto de anúncios (público)
+
+modelos:
+  meta: "utm_source={{site_source_name}}&utm_medium=paid-social&utm_campaign={{campaign.name}}&utm_content={{ad.name}}&utm_term={{adset.name}}"
+  email: "utm_source=flowbiz&utm_medium=email&utm_campaign=2026-11-black-friday&utm_content=bf-01-banner-topo"
+  venda_assistida: "utm_source=whatsapp&utm_medium=venda-assistida&utm_campaign=2026-11-black-friday&utm_content=raquel"

@@ -1,0 +1,600 @@
+{
+ "atualizado_em": "2026-10-22T07:57",
+ "campanhas": [
+  {
+   "id": "152604284",
+   "name": "Campanha Volta às Aulas",
+   "status": "PAUSED",
+   "start_date": "2014-01-25",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "170876924",
+   "name": "Campanha Dia das Mães",
+   "status": "PAUSED",
+   "start_date": "2014-04-24",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "181152164",
+   "name": "Campanha Copa do Mundo",
+   "status": "PAUSED",
+   "start_date": "2014-06-04",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "200880884",
+   "name": "Dia das Crianças 2020",
+   "status": "PAUSED",
+   "start_date": "2014-09-06",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "215353004",
+   "name": "Campanha Natal 2020",
+   "status": "PAUSED",
+   "start_date": "2014-11-19",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "248496524",
+   "name": "Dia das Mães 2021",
+   "status": "PAUSED",
+   "start_date": "2015-04-10",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "847579634",
+   "name": "Atacadão Posto 13 (Região Posto 13 e Barra) - Localização da página segmentada para pesquisa",
+   "status": "PAUSED",
+   "start_date": "2017-06-06",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "906562529",
+   "name": "[AP13] TrafegoSite - Cliques - Estado RJ (Antiga) - 21/03/2025 - ANTIGA",
+   "status": "PAUSED",
+   "start_date": "2017-08-10",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "1597965003",
+   "name": "Campanha Black Friday",
+   "status": "PAUSED",
+   "start_date": "2018-10-17",
+   "advertising_channel_type": "DISPLAY"
+  },
+  {
+   "id": "1651894019",
+   "name": "Atacadão Posto 13 (Rio e Baixada) - CPA",
+   "status": "PAUSED",
+   "start_date": "2018-12-09",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "1709371618",
+   "name": "Vendas Posto Treze 2020",
+   "status": "PAUSED",
+   "start_date": "2019-02-15",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "1712832469",
+   "name": "Instalar aplicativo",
+   "status": "PAUSED",
+   "start_date": "2019-02-20",
+   "advertising_channel_type": "MULTI_CHANNEL"
+  },
+  {
+   "id": "1755587659",
+   "name": "Campanha dinâmica",
+   "status": "PAUSED",
+   "start_date": "2019-04-02",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "2031795254",
+   "name": "Atacadão Posto 13 palavras chaves  (Rio e Baixada)",
+   "status": "PAUSED",
+   "start_date": "2019-06-14",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "2084491082",
+   "name": "Display",
+   "status": "PAUSED",
+   "start_date": "2019-08-01",
+   "advertising_channel_type": "DISPLAY"
+  },
+  {
+   "id": "6538078468",
+   "name": "Dia das Crianças 2019",
+   "status": "PAUSED",
+   "start_date": "2019-09-24",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "7640996304",
+   "name": "Black Friday 2020",
+   "status": "PAUSED",
+   "start_date": "2019-10-28",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "8526142732",
+   "name": "Natal 2019",
+   "status": "PAUSED",
+   "start_date": "2019-12-11",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "12428940939",
+   "name": "Semana da Mulher",
+   "status": "PAUSED",
+   "start_date": "2021-02-26",
+   "advertising_channel_type": "DISPLAY"
+  },
+  {
+   "id": "13576891334",
+   "name": "Display #2",
+   "status": "PAUSED",
+   "start_date": "2021-06-19",
+   "advertising_channel_type": "DISPLAY"
+  },
+  {
+   "id": "13576893788",
+   "name": "Wi3c-RedePesqCozinha",
+   "status": "PAUSED",
+   "start_date": "2021-06-18",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "13791423990",
+   "name": "Loja São Gonçalo",
+   "status": "PAUSED",
+   "start_date": "2021-07-05",
+   "advertising_channel_type": "SMART"
+  },
+  {
+   "id": "13979181351",
+   "name": "TrafegoSite - Cliques - Estado RJ",
+   "status": "PAUSED",
+   "start_date": "2021-07-21",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "14042527626",
+   "name": "[DiaPais]ReconhecimentoMarca",
+   "status": "PAUSED",
+   "start_date": "2021-07-26",
+   "advertising_channel_type": "DISPLAY"
+  },
+  {
+   "id": "14054934635",
+   "name": "[Wi3c]Reconhecimento-Display",
+   "status": "PAUSED",
+   "start_date": "2021-07-27",
+   "advertising_channel_type": "DISPLAY"
+  },
+  {
+   "id": "15370668185",
+   "name": "[ATP13/SJM] VisitaLoja",
+   "status": "PAUSED",
+   "start_date": "2021-11-24",
+   "advertising_channel_type": "SMART"
+  },
+  {
+   "id": "17899636311",
+   "name": "Vídeo - Shopping NovaIguacu – 2022-07",
+   "status": "PAUSED",
+   "start_date": "2022-07-30",
+   "advertising_channel_type": "VIDEO"
+  },
+  {
+   "id": "20031483316",
+   "name": "[V4] [PMAX] [RJ] [E-COMMERCE] - ANTIGA",
+   "status": "PAUSED",
+   "start_date": "2023-04-24",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "20864971101",
+   "name": "01 - Shopping - Performance Max RJ - NADIR",
+   "status": "PAUSED",
+   "start_date": "2023-12-16",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "20871438923",
+   "name": "[AP13] 02 - Shopping - Performance Max CIDADE SP - ANTIGA",
+   "status": "PAUSED",
+   "start_date": "2023-12-16",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "20882144865",
+   "name": "03 - Shopping - Performance Max - NADIR RIO E BAIXADA",
+   "status": "PAUSED",
+   "start_date": "2023-12-22",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "20882972541",
+   "name": "01 - Shopping - Performance Max ESTADO RJ #2",
+   "status": "PAUSED",
+   "start_date": "2023-12-22",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "20892580309",
+   "name": "Sales-Search-RJ - PAUSADO 24/03/2025",
+   "status": "PAUSED",
+   "start_date": "2023-12-22",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "20899740185",
+   "name": "04 - Shopping - Performance Max - TOP500 RIO E BAIXADA - PAUSADO 21/03/2025",
+   "status": "PAUSED",
+   "start_date": "2023-12-27",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "20921573757",
+   "name": "01 - Shopping - Performance Max ESTADO RJ PAPELARIA",
+   "status": "PAUSED",
+   "start_date": "2024-01-08",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "20927406453",
+   "name": "06 - Shopping - Performance Max - BRINQUEDOS RIO E BAIXADA",
+   "status": "PAUSED",
+   "start_date": "2024-01-10",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "20930169794",
+   "name": "05 - Shopping - Performance Max - PAPELARIA RIO E BAIXADA",
+   "status": "PAUSED",
+   "start_date": "2024-01-09",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "20936338764",
+   "name": "[AP13] Sales-Search-RJ - Visitas as Lojas - ANTIGA",
+   "status": "PAUSED",
+   "start_date": "2024-01-13",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "20942896982",
+   "name": "02 - Shopping - Performance Max CIDADE SP #2",
+   "status": "PAUSED",
+   "start_date": "2024-01-13",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "20946259642",
+   "name": "03 - Shopping - Performance Max CIDADE BH E JUIZ DE FORA",
+   "status": "PAUSED",
+   "start_date": "2024-01-13",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "20946607651",
+   "name": "[AP13] 07 - Shopping - ANTIGA - PMAX",
+   "status": "ENABLED",
+   "start_date": "2024-01-13",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "21114128790",
+   "name": "UNIDADE SÃO JOÃO DE ME...",
+   "status": "PAUSED",
+   "start_date": "2024-03-21",
+   "advertising_channel_type": "VIDEO"
+  },
+  {
+   "id": "21624050281",
+   "name": "10 - Shopping - Performance Max - BRINQUEDOS RIO E BAIXADA",
+   "status": "PAUSED",
+   "start_date": "2024-08-22",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "21882851435",
+   "name": "Natal - 2024",
+   "status": "PAUSED",
+   "start_date": "2024-11-06",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "22101504635",
+   "name": "16 - Shopping Performance Max - Papelaria Rio e Baixada - Volta as aulas 2025",
+   "status": "PAUSED",
+   "start_date": "2025-01-07",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "22260442278",
+   "name": "[V4] [VIDEO] [RECONHECIMENTO] [NOVA LOJA]",
+   "status": "PAUSED",
+   "start_date": "2025-02-20",
+   "advertising_channel_type": "VIDEO"
+  },
+  {
+   "id": "22340534117",
+   "name": "[V4] [VENDA] [SEARCH] [ECOMMERCE] [INSTITUCIONAL]",
+   "status": "ENABLED",
+   "start_date": "2025-03-14",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "22347378408",
+   "name": "[V4] [VENDA][PMAX] [ECOMMERCE] - B2C",
+   "status": "PAUSED",
+   "start_date": "2025-03-18",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "22357862610",
+   "name": "[V4] [SMART] [GMN] [VISITAS A LOJA] [LOJAS AP13]",
+   "status": "PAUSED",
+   "start_date": "2025-03-21",
+   "advertising_channel_type": "SMART"
+  },
+  {
+   "id": "22361375509",
+   "name": "[V4] [VISITAS A LOJA] [PMAX] [LOJAS AP13]",
+   "status": "PAUSED",
+   "start_date": "2025-03-19",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "22474516464",
+   "name": "[V4] [LOJAS BRASIL] [GMN]",
+   "status": "PAUSED",
+   "start_date": "2025-04-24",
+   "advertising_channel_type": "SMART"
+  },
+  {
+   "id": "22494893949",
+   "name": "[V4] [VENDA] [SEARCH] CORE - TESTE",
+   "status": "PAUSED",
+   "start_date": "2025-04-30",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "22530265423",
+   "name": "[V4] [VENDA] [SEARCH] [CORE] [TESTE MARCA]",
+   "status": "PAUSED",
+   "start_date": "2025-05-07",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "22639233784",
+   "name": "[V4] [VENDA][PMAX] - B2B",
+   "status": "PAUSED",
+   "start_date": "2025-06-03",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "22738196874",
+   "name": "[V4] [🔴] [PMAX] [LOJAS FISICAS] [AP13]",
+   "status": "ENABLED",
+   "start_date": "2025-07-02",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "22992328479",
+   "name": "[V4] [SEARCH] [FRASE] [08/09]",
+   "status": "PAUSED",
+   "start_date": "2025-09-08",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "22992373575",
+   "name": "[SHOPPING MERCHANT] - DIRETO",
+   "status": "PAUSED",
+   "start_date": "2025-09-08",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "22998609092",
+   "name": "[V4] [VENDA][PMAX] [ECOMMERCE] - B2C - NOVOS CLIENTES",
+   "status": "PAUSED",
+   "start_date": "2025-09-08",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "23022359187",
+   "name": "[V4] [SHOPPING] [NADIR]",
+   "status": "PAUSED",
+   "start_date": "2025-09-17",
+   "advertising_channel_type": "SHOPPING"
+  },
+  {
+   "id": "23028593753",
+   "name": "[V4] [SHOPPING] [CANECA]",
+   "status": "PAUSED",
+   "start_date": "2025-09-17",
+   "advertising_channel_type": "SHOPPING"
+  },
+  {
+   "id": "23032649938",
+   "name": "[V4] [SHOPPING] [TALHER]",
+   "status": "PAUSED",
+   "start_date": "2025-09-17",
+   "advertising_channel_type": "SHOPPING"
+  },
+  {
+   "id": "23033065564",
+   "name": "[V4] [🔴]  [VIDEO] [YOUTUBE] [LOJAS FÍSICAS]",
+   "status": "ENABLED",
+   "start_date": "2025-09-17",
+   "advertising_channel_type": "VIDEO"
+  },
+  {
+   "id": "23059016573",
+   "name": "[V4] [SHOPPING] [BRINQUEDO]",
+   "status": "PAUSED",
+   "start_date": "2025-09-26",
+   "advertising_channel_type": "SHOPPING"
+  },
+  {
+   "id": "23074772151",
+   "name": "[V4] [SHOPPING MERCHANT] - DIRETO - 03/10",
+   "status": "ENABLED",
+   "start_date": "2025-10-03",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "23079643183",
+   "name": "[V4] [SHOPPING] [BRINQUEDOS] - 01/10",
+   "status": "PAUSED",
+   "start_date": "2025-10-01",
+   "advertising_channel_type": "SHOPPING"
+  },
+  {
+   "id": "23139135993",
+   "name": "[V4] [VENDA] [SHOPPING] [SP] [TODOS OS PRODUTOS]",
+   "status": "PAUSED",
+   "start_date": "2025-10-16",
+   "advertising_channel_type": "SHOPPING"
+  },
+  {
+   "id": "23141357439",
+   "name": "[V4] [PMAX] [SP] [E-COMMERCE] [ECOMERCE]",
+   "status": "PAUSED",
+   "start_date": "2025-10-17",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "23600111684",
+   "name": "[V4] [SHOPPING MERCHANT] - DIRETO - NOVA",
+   "status": "PAUSED",
+   "start_date": "2026-02-25",
+   "advertising_channel_type": "PERFORMANCE_MAX"
+  },
+  {
+   "id": "23620492924",
+   "name": "V4 - Shopping - Vendas",
+   "status": "PAUSED",
+   "start_date": "2026-03-02",
+   "advertising_channel_type": "SHOPPING"
+  },
+  {
+   "id": "23824663913",
+   "name": "[V4] [VENDA] [SHOPPING] [06/05]",
+   "status": "PAUSED",
+   "start_date": "2026-05-06",
+   "advertising_channel_type": "SHOPPING"
+  },
+  {
+   "id": "23886320856",
+   "name": "[V4] [VENDA] [SHOPPING] [NADIR] [TESTE 01]🔥",
+   "status": "ENABLED",
+   "start_date": "2026-05-29",
+   "advertising_channel_type": "SHOPPING"
+  },
+  {
+   "id": "23886555987",
+   "name": "[V4] [VENDA] [SHOPPING] [KIT] [TESTE 01] 🔥",
+   "status": "PAUSED",
+   "start_date": "2026-05-29",
+   "advertising_channel_type": "SHOPPING"
+  },
+  {
+   "id": "23896027333",
+   "name": "[V4] [VENDA] [SHOPPING] [BAR E RESTAURANTE] [TESTE 01] 🔥",
+   "status": "PAUSED",
+   "start_date": "2026-05-29",
+   "advertising_channel_type": "SHOPPING"
+  },
+  {
+   "id": "23896043656",
+   "name": "[V4] [VENDA] [SHOPPING] [CURVA A] [TESTE 01] 🔥",
+   "status": "PAUSED",
+   "start_date": "2026-05-29",
+   "advertising_channel_type": "SHOPPING"
+  },
+  {
+   "id": "24178550399",
+   "name": "[V4] [SEARCH] [CORE]",
+   "status": "PAUSED",
+   "start_date": "2026-08-25",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "24191608533",
+   "name": "[V4] [SEARCH] [CORE] #2",
+   "status": "PAUSED",
+   "start_date": "2026-08-31",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "24210287430",
+   "name": "[V4] [PESQUISA] [CORE] 1",
+   "status": "ENABLED",
+   "start_date": "2026-09-04",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "24222207298",
+   "name": "V4 - SHOPPING - BRINQUEDO",
+   "status": "PAUSED",
+   "start_date": "2026-09-04",
+   "advertising_channel_type": "SHOPPING"
+  },
+  {
+   "id": "24227363031",
+   "name": "[V4] - GERAÇÃO DE DEMANDA",
+   "status": "PAUSED",
+   "start_date": "2026-09-09",
+   "advertising_channel_type": "DEMAND_GEN"
+  },
+  {
+   "id": "24257139987",
+   "name": "[V4] [VENDA] [SHOPPING] [CURVA A]",
+   "status": "PAUSED",
+   "start_date": "2026-09-17",
+   "advertising_channel_type": "SHOPPING"
+  },
+  {
+   "id": "24262571645",
+   "name": "[V4] [VENDA] [SHOPPING] [CURVA C]",
+   "status": "PAUSED",
+   "start_date": "2026-09-17",
+   "advertising_channel_type": "SHOPPING"
+  },
+  {
+   "id": "24268186981",
+   "name": "[V4] [VENDA] [SHOPPING] [CURVA B]",
+   "status": "ENABLED",
+   "start_date": "2026-09-17",
+   "advertising_channel_type": "SHOPPING"
+  },
+  {
+   "id": "24358475681",
+   "name": "[V4] [SEARCH] [B2B] [ATACADO]",
+   "status": "ENABLED",
+   "start_date": "2026-10-15",
+   "advertising_channel_type": "SEARCH"
+  },
+  {
+   "id": "24358476410",
+   "name": "[V4] [SHOPPING] [MOBILE] [VAREJO]",
+   "status": "ENABLED",
+   "start_date": "2026-10-15",
+   "advertising_channel_type": "SHOPPING"
+  },
+  {
+   "id": "24364474924",
+   "name": "[V4] [SHOPPING] [DESKTOP] [VOLUME]",
+   "status": "ENABLED",
+   "start_date": "2026-10-15",
+   "advertising_channel_type": "SHOPPING"
+  }
+ ]
+}

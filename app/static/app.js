@@ -807,15 +807,235 @@ function drProjecao(){
 }
 
 /* ================================================================
+   MODO SPRINT (arquitetura/19): carrossel de clientes, fora da camada de
+   cliente. Um cliente por tela, blocos recolhíveis, período escolhido no topo.
+   Os números vêm do scripts/sprint.py; o registro grava no .md da reunião.
+   ================================================================ */
+const SP = {carteira:null, data:null, idx:0, periodo:"semana", cache:{}, sujo:false};
+const PERIODOS = [["dia","Diário"],["semana","Semanal"],["mes","Mensal"]];
+const SECOES = [["decisoes","Decisões","O que ficou decidido, uma por linha"],
+                ["tarefas","Tarefas","- [ ] o quê · dono · prazo"],
+                ["mudancas","Mudanças","verba, campanha, motor, trava, plano"],
+                ["aberto","Aberto","o que volta na próxima sprint"]];
+const R2 = v => v == null ? "—" : (Math.abs(v) >= 100 ? R$(v)
+  : "R$ " + v.toLocaleString("pt-BR", {minimumFractionDigits:2, maximumFractionDigits:2}));
+const N0 = v => v == null ? "—" : Math.round(v).toLocaleString("pt-BR");
+const PCTv = v => v == null ? "—" : (v * 100).toLocaleString("pt-BR", {maximumFractionDigits:0}) + "%";
+const FAROL = {"🟢":"ok", "🟡":"warn", "🔴":"crit"};
+
+function sairSprintOk(){
+  if(!SP.sujo) return true;
+  if(!confirm("O registro deste cliente não foi gravado. Sair mesmo assim?")) return false;
+  SP.sujo = false; return true;
+}
+
+async function vSprint(host){
+  if(!SP.carteira){
+    host.innerHTML = `<p class="vazio">Carregando a carteira…</p>`;
+    try{ const j = await (await fetch("/api/sprint")).json(); SP.carteira = j.carteira; SP.data = j.data; }
+    catch(err){ host.innerHTML = `<p class="vazio">Erro: ${esc(err.message)}</p>`; return; }
+    try{ const p = localStorage.getItem("sprintPeriodo"); if(p) SP.periodo = p; }catch(e){}
+  }
+  const n = SP.carteira.length, c = SP.carteira[SP.idx];
+  host.innerHTML = `
+    <div class="sp-top">
+      <div class="sp-nav">
+        <button class="icon" id="spAnt" aria-label="Cliente anterior">‹</button>
+        <select id="spSel" aria-label="Cliente">${SP.carteira.map((x, i) =>
+          `<option value="${i}" ${i === SP.idx ? "selected" : ""}>${esc(x.nome)}${x.configurado ? "" : " (sem tela)"}</option>`).join("")}</select>
+        <span class="mono sp-pos">${SP.idx + 1}/${n}</span>
+        <button class="icon" id="spProx" aria-label="Próximo cliente">›</button>
+      </div>
+      <div class="sp-seg" role="group" aria-label="Período">${PERIODOS.map(([k, r]) =>
+        `<button data-p="${k}" class="${k === SP.periodo ? "on" : ""}">${r}</button>`).join("")}</div>
+      <span class="lbl sp-data">sprint de ${br(SP.data)}</span>
+      <button class="btn sec sm" id="spAtualizar" title="Busca Google, GA4 e Meta nas APIs e grava os caches">Atualizar dados</button>
+    </div>
+    <div id="spCorpo"><p class="vazio">Carregando ${esc(c.nome)}…</p></div>`;
+  const ir = i => { if(!sairSprintOk()) return; SP.idx = (i + n) % n; vSprint(host); };
+  $("#spAnt").onclick = () => ir(SP.idx - 1);
+  $("#spProx").onclick = () => ir(SP.idx + 1);
+  $("#spSel").onchange = e => ir(+e.target.value);
+  $$(".sp-seg button").forEach(b => b.onclick = () => {
+    SP.periodo = b.dataset.p; try{ localStorage.setItem("sprintPeriodo", SP.periodo); }catch(e){}
+    vSprint(host); });
+  $("#spAtualizar").disabled = !c.configurado;
+  $("#spAtualizar").onclick = async () => {
+    const b = $("#spAtualizar"); b.disabled = true; b.textContent = "Buscando nas APIs…";
+    try{
+      const j = await (await fetch(`/api/sprint/${c.slug}/atualizar`, {method:"POST"})).json();
+      if(!j.ok) throw new Error(j.erro);
+      SP.cache = {}; toast("Dados atualizados");
+      await vSprint(host);
+      abrir("Atualizar dados", c.nome, `<div class="dr-md"><ul>${j.relatorio.map(l => `<li>${esc(l)}</li>`).join("")}</ul></div>`);
+    }catch(err){ toast(`Não atualizou: ${err.message}`, true); b.disabled = false; b.textContent = "Atualizar dados"; }
+  };
+  const chave = `${c.slug}|${SP.periodo}`;
+  try{
+    const t = SP.cache[chave] || (SP.cache[chave] = await (await fetch(
+      `/api/sprint/${c.slug}?periodo=${SP.periodo}&data=${SP.data}`)).json());
+    if(SP.carteira[SP.idx] !== c || VIEW !== "sprint") return;   // já passou para outro cliente
+    spTela($("#spCorpo"), t);
+  }catch(err){ $("#spCorpo").innerHTML = `<p class="vazio">Erro: ${esc(err.message)}</p>`; }
+}
+
+function spBloco(id, titulo, resumo, html, aberto){
+  let st = null; try{ st = localStorage.getItem("sp_" + id); }catch(e){}
+  const open = st == null ? aberto : st === "1";
+  return `<details class="sp-bloco card" data-b="${id}" ${open ? "open" : ""}>
+    <summary><h2>${esc(titulo)}</h2><span class="sp-res">${resumo || ""}</span></summary>
+    <div class="sp-in">${html}</div></details>`;
+}
+
+function spTela(host, t){
+  if(!t.configurado){
+    host.innerHTML = `<div class="card pad sp-vazio">
+      <h2>${esc(t.cliente.nome)}</h2>
+      <p class="lbl">${esc(t.cliente.status || "")} · ainda sem tela no sistema</p>
+      <p>Falta:</p><ul>${(t.faltas || []).map(f => `<li>${inl(f)}</li>`).join("")}</ul>
+      ${t.cliente.nota ? `<p class="sp-nota">${inl(t.cliente.nota)}</p>` : ""}
+      <p class="sp-nota">A rotina que não acontece fica visível aqui (tese 1). Para ganhar tela: o
+      <code>cliente.md</code> com os motores de receita e as contas; o Claude monta com você.</p></div>`;
+    return;
+  }
+  const m_ = t.midia;
+  const ritmo = m_.canais.filter(c => c.farol).map(c =>
+    `<span class="chip ${FAROL[c.farol] || ""}">${esc(c.nome)} ${PCTv(c.ritmo)}</span>`).join(" ");
+  host.innerHTML =
+    spBloco("resumo", "Resumo", ritmo, spResumo(t), true) +
+    spBloco("numeros", "Números", `<span class="lbl">${esc({dia:"diário", semana:"semanal", mes:"mensal"}[t.periodo])} · mídia até ${br(t.ate)}</span>`,
+            t.motores.map(spMotor).join("") || `<p class="vazio">Nenhum motor ativo com árvore de métricas.</p>`, true) +
+    spBloco("midia", "Campanhas e plano de mídia", m_.plano ? `<span class="lbl">verba ${R$(m_.verba_total)} · dia ${m_.dia} de ${m_.dias_mes}</span>`
+            : `<span class="chip warn">sem plano de mídia</span>`, spMidia(m_), true) +
+    spBloco("criativos", "Criativos", `<span class="lbl">chega em 02/11</span>`,
+            `<p class="sp-nota">Os criativos que estão rodando, com miniatura, dias no ar, gasto, CTR, CPA e etapa do
+             teste. Depende do catálogo: código no nome do anúncio, posto pelo gestor de tráfego, com a imagem
+             (<code>arquitetura/19</code> §3).</p>`, false) +
+    spBloco("registro", "Registro da sprint", t.registro ? `<span class="chip ok">gravado</span>` : `<span class="lbl">${br(t.data)}</span>`,
+            spRegistro(t), true);
+  $$(".sp-bloco").forEach(d => d.addEventListener("toggle", () => {
+    try{ localStorage.setItem("sp_" + d.dataset.b, d.open ? "1" : "0"); }catch(e){} }));
+  $$(".sp-reg textarea").forEach(a => a.addEventListener("input", () => { SP.sujo = true; }));
+  const bt = $("#spGravar");
+  if(bt) bt.onclick = async () => {
+    const dados = {data:t.data};
+    SECOES.forEach(([k]) => dados[k] = $(`#spr_${k}`).value);
+    try{
+      const j = await (await fetch(`/api/sprint/${t.cliente.slug}/registro`, {method:"POST",
+        headers:{"Content-Type":"application/json"}, body:JSON.stringify(dados)})).json();
+      if(!j.ok) throw new Error(j.erro);
+      SP.sujo = false; SP.cache = {}; toast(`gravado em ${j.arquivo}`);
+    }catch(err){ toast(`Não gravou: ${err.message}`, true); }
+  };
+  const ant = $("#spAntVer");
+  if(ant) ant.onclick = () => abrir(`Sprint de ${br(t.anterior.data)}`, "Registro", `<div class="dr-md">${md(ant.dataset.md)}</div>`);
+}
+
+function spResumo(t){
+  const motores = t.motores.map(m => {
+    const tr = m.trava || {};
+    return `<li><b>${esc(m.nome)}</b> <span class="chip ghost">${esc(m.arvore)}</span>
+      ${tr.hipotese ? `<span class="chip">trava: ${esc(tr.hipotese)}</span>`
+        : (tr.inclinacao ? `<span class="sp-nota">trava não confirmada; inclinação: ${inl(tr.inclinacao)}</span>` : "")}</li>`;
+  }).join("") + t.outros_motores.map(m =>
+    `<li class="sp-mut">${esc(m.nome)} <span class="chip ghost">${esc(m.status)}</span></li>`).join("");
+  const a = t.anterior;
+  let ant = `<p class="sp-nota">Nenhum registro de sprint anterior.</p>`;
+  if(a){
+    const partes = a.livre ? [["Registro", a.livre]]
+      : SECOES.filter(([k]) => a[k] && a[k] !== "—").map(([k, r]) => [r, a[k]]);
+    const aberto = a.aberto && a.aberto !== "—" ? a.aberto : null;
+    const texto = partes.map(([r, x]) => `### ${r}\n\n${x}`).join("\n\n");
+    ant = `<div class="sp-ant"><span class="lbl">da sprint de ${br(a.data)}</span>
+      ${aberto ? `<div class="dr-md">${md(aberto)}</div>` : ""}
+      <button class="lnk sp-lnk" id="spAntVer" data-md="${esc(texto)}">ver o registro de ${br(a.data)} ›</button></div>`;
+  }
+  const faltas = t.faltas.length ? `<div class="alerta aviso"><b>Falta no sistema:</b> ${t.faltas.map(esc).join(" · ")}</div>` : "";
+  const erros = t.erros.length ? `<div class="alerta"><b>Erro:</b> ${t.erros.map(esc).join(" · ")}</div>` : "";
+  return `${erros}${faltas}<div class="grid g2"><div><span class="lbl">motores de receita</span><ul class="sp-lista">${motores}</ul></div>
+    <div><span class="lbl">o que ficou aberto</span>${ant}</div></div>`;
+}
+
+function spTabela(periodos, linhas, cobertura){
+  const cab = `<tr><th></th>${periodos.map((p, i) => `<th class="${i === 0 ? "cur" : ""}">${esc(p)}</th>`).join("")}<th>var.</th></tr>`;
+  const cob = (cobertura || []).some(Boolean) ? `<tr class="sp-cob"><td>cobertura</td>${cobertura.map(c =>
+    `<td>${c ? `<span title="${esc(c)}">⚠️</span>` : ""}</td>`).join("")}<td></td></tr>` : "";
+  const corpo = linhas.map(l => `<tr class="${l.sinal ? "sinal" : ""}">
+    <td title="${esc(l.nota || "")}">${esc(l.nome)}${l.venda_parcial ? ` <span class="sp-ast" title="depende da venda, que não cobre o período inteiro: sem variação">*</span>` : ""}</td>
+    ${l.valores.map((v, i) => `<td class="mono ${i === 0 ? "cur" : ""}">${esc(v)}</td>`).join("")}
+    <td class="mono var ${l.var == null ? "" : (l.var > 0 ? "up" : (l.var < 0 ? "dn" : ""))}">${l.var == null ? "—" : (l.var > 0 ? "+" : "") + l.var + "%"}</td></tr>`).join("");
+  return `<div class="sp-tab"><table>${cab}${cob}${corpo}</table></div>`;
+}
+
+const NOME_CANAL = {google:"Google Ads", meta:"Meta Ads", jet_por_origem:"Venda por origem (JET)"};
+function spMotor(m){
+  const ateRes = m.periodos[0] !== m.periodos_canais[0]
+    ? `<span class="chip warn" title="o resultado para no último dia com dado de venda; os canais vão até ontem">resultado até ${br(m.ate_resultado)}</span>` : "";
+  const fontes = m.fontes.map(f => `<span class="chip ${f.erro ? "crit" : "ghost"}" title="${esc(f.erro || f.detalhe || "")}">${esc(f.nome)} ${f.ate ? "até " + br(f.ate) : "sem dado"}</span>`).join(" ");
+  const canais = m.canais.map(c => `<details class="sp-sub"><summary>${esc(NOME_CANAL[c.canal] || c.canal)}</summary>
+    ${spTabela(m.periodos_canais, c.linhas)}</details>`).join("");
+  const lac = m.lacunas.length ? `<p class="sp-nota">Lacuna declarada: ${m.lacunas.map(inl).join(" · ")}</p>` : "";
+  return `<div class="sp-motor"><div class="sp-mhd"><h3>${esc(m.nome)}</h3>${ateRes}<span class="sp-fontes">${fontes}</span></div>
+    ${spTabela(m.periodos, m.resultado, m.cobertura)}${canais}${lac}</div>`;
+}
+
+function spMidia(m_){
+  if(!m_.canais.length) return `<p class="vazio">Nenhuma conta de mídia declarada no cliente.md.</p>`;
+  const canais = m_.canais.map(c => {
+    const cab = `<div class="sp-chd"><b>${esc(c.nome)}</b>
+      <span class="mono">${c.real == null ? "—" : R$(c.real)}${c.verba ? ` de ${R$(c.verba)}` : ""}</span>
+      ${c.farol ? `<span class="chip ${FAROL[c.farol]}">ritmo ${PCTv(c.ritmo)} · fecha o mês em ${R$(c.projecao)}</span>` : ""}
+      ${c.sem_dado ? `<span class="chip warn">sem dado por campanha</span>` : ""}
+      ${c.dados_ate ? `<span class="lbl">até ${br(c.dados_ate)}</span>` : ""}</div>`;
+    const grupos = c.grupos.map(g => {
+      const linhas = g.campanhas.map(x => `<tr>
+        <td><span class="st ${x.ativa ? "ok" : (x.ativa === false ? "off" : "")}" title="${x.ativa ? "ativa" : (x.ativa === false ? "pausada" : "sem status")}"></span></td>
+        <td class="sp-cn"><span title="${esc(x.nome)}">${esc(x.nome)}</span>${x.sinais.map(s => ` <span class="chip ${s.startsWith("nova") ? "ok" : "ghost"}">${esc(s)}</span>`).join("")}</td>
+        <td class="mono">${x.dias_no_ar ?? "—"}</td><td class="mono">${R$(x.gasto_7d)}</td><td class="mono">${R$(x.gasto_mes)}</td>
+        <td class="mono">${N0(x.resultado)} <small>${esc(x.resultado_nome)}</small></td><td class="mono">${R2(x.custo_resultado)}</td>
+        <td class="mono">${x.roas ? x.roas.toLocaleString("pt-BR", {maximumFractionDigits:2}) : "—"}</td></tr>`).join("");
+      return `<tr class="sp-g ${g.fora_do_plano ? "fora" : ""}"><td colspan="8"><b>${esc(g.nome)}</b>
+        ${g.motor ? `<span class="chip ghost">${esc(g.motor)}</span>` : ""}
+        <span class="mono">${R$(g.real)}${g.verba ? ` de ${R$(g.verba)}` : ""}</span>
+        ${g.fora_do_plano ? `<span class="chip crit">fora do plano</span>` : ""}</td></tr>${linhas}`;
+    }).join("");
+    return cab + (grupos ? `<div class="sp-tab"><table class="sp-camp"><tr><th></th><th>campanha</th><th>dias no ar</th>
+      <th>gasto 7 dias</th><th>gasto no mês</th><th>resultado no mês</th><th>custo/result.</th><th>ROAS</th></tr>${grupos}</table></div>` : "");
+  }).join("");
+  const aud = m_.auditoria.length ? `<div class="alerta aviso"><b>Auditoria do plano:</b><ul>${m_.auditoria.map(a => `<li>${inl(a)}</li>`).join("")}</ul></div>` : "";
+  return aud + canais;
+}
+
+function spRegistro(t){
+  const r = t.registro || {};
+  if(r.livre) return `<div class="alerta aviso"><b>Registro em formato livre</b> (anterior ao modo sprint): edite no arquivo.</div>
+    <div class="dr-md">${md(r.livre)}</div>`;
+  return `<div class="sp-reg grid g2">${SECOES.map(([k, rot, ph]) => `<div class="campo">
+      <label class="lbl" for="spr_${k}">${rot}</label>
+      <textarea id="spr_${k}" placeholder="${esc(ph)}">${esc(r[k] && r[k] !== "—" ? r[k] : "")}</textarea></div>`).join("")}</div>
+    <div class="acoes"><button class="btn" id="spGravar">Gravar registro</button>
+      <span class="lbl">grava em reunioes/sprint/${esc(t.data)}-sprint.md</span></div>`;
+}
+
+document.addEventListener("keydown", e => {
+  if(VIEW !== "sprint" || e.altKey || e.ctrlKey || e.metaKey) return;
+  if(/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName || "")) return;
+  if(e.key === "ArrowRight") $("#spProx")?.click();
+  if(e.key === "ArrowLeft") $("#spAnt")?.click();
+});
+
+/* ================================================================
    navegação e render
    ================================================================ */
 const VIEWS = {visao:vVisao, projecao:vProjecao, ciclos:vCiclos, eventos:vEventos,
-               entregas:vEntregas, pauta:vPauta, contexto:vContexto};
+               entregas:vEntregas, pauta:vPauta, contexto:vContexto, sprint:vSprint};
 
 function irPara(v){
   if(!VIEWS[v]) return;
+  if(VIEW === "sprint" && v !== "sprint" && !sairSprintOk()) return;
   VIEW = v;
-  $$("#menu button").forEach(b => b.classList.toggle("on", b.dataset.v === v));
+  $$(".menu button").forEach(b => b.classList.toggle("on", b.dataset.v === v));
+  $(".top").hidden = v === "sprint";     // a sprint é fora da camada de cliente: tem o próprio topo
   $$(".views section").forEach(s => s.hidden = s.dataset.view !== v);
   VIEWS[v]($(`.views section[data-view="${v}"]`));
   try{ history.replaceState(null, "", `#${v}`); }catch(e){}
@@ -844,7 +1064,7 @@ function abrirDemanda(slug){
   if(d){ drDemanda(d); return; }
   toast(`Não há demandas/${slug}.md — o vínculo aponta para um arquivo que não existe.`, true);
 }
-$$("#menu button").forEach(b => b.addEventListener("click", () => irPara(b.dataset.v)));
+$$(".menu button").forEach(b => b.addEventListener("click", () => irPara(b.dataset.v)));
 
 function render(){
   const p = E.plano, g = E.gargalos || [];
@@ -895,9 +1115,10 @@ const ICONES = {
   eventos:"M3 9h18M7 3v4m10-4v4M4 5h16v16H4z",
   entregas:"M4 7h16v13H4zM9 7V4h6v3M9 13h6",
   pauta:"M5 3h11l4 4v14H5zM9 12h7M9 16h5",
+  sprint:"M4 6h16M4 12h16M4 18h10M18 16l3 2-3 2",
   contexto:"M6 3h9l4 4v14H6zM13 3v5h5"
 };
-$$("#menu i").forEach(i => {
+$$(".menu i").forEach(i => {
   const d = ICONES[i.dataset.i]; if(!d) return;
   const svg = encodeURIComponent(
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg>`);

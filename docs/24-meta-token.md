@@ -125,6 +125,15 @@ META_ACCESS_TOKEN=...
 **7. Validar.** O Claude faz uma chamada de leitura, os insights do Atacadão na última semana,
 sem imprimir o token.
 
+## ✅ 22/10: token aprovado e validado
+
+`uv run --with pyyaml python scripts/meta.py --validar` → usuário `bfgeco-leitura`, **39 contas visíveis**.
+Score (`484366202785720`) bate com o conector: gasto e leads iguais em set e out (cliques = cliques no link).
+⛔ **A conta do AP13 (`212245853`) NÃO aparece**: ela é da BM do AP13, não da "MCC". Falta o passo 3 para ela:
+na BM "MCC", usuário de sistema › Atribuir ativos › Contas de anúncios › AP13 (se a conta estiver compartilhada
+com a "MCC" como parceira) — ou a BM do AP13 compartilhar a conta com a "MCC" primeiro. Até lá o AP13 segue no
+cache do conector (`serie/meta_ads.csv`, só conta inteira, até 18/10).
+
 ## Depois
 
 - Cada cliente novo: só o passo 3 (atribuir a conta). O token é o mesmo

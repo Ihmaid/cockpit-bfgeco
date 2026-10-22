@@ -2,7 +2,7 @@
 
 > 22/10/2026. Origem: `dump/2026-10-22-21-teste-da-pauta-e-modo-sprint.md` + transcrição do Gemini da reunião
 > "Teste Sprint" (21/10, Gabriel + Breno). Substitui a pauta em `.md` como interface da sprint
-> (`arquitetura/18`, passo 3 antecipado). ⚠️ Proposta de estrutura, aguarda o Gabriel.
+> (`arquitetura/18`, passo 3 antecipado). ✅ Estrutura respondida em 22/10 (§5); **v1 construída em 22/10** (§6).
 
 ## 1. Validação do teste (21/10)
 
@@ -96,9 +96,29 @@ blocos recolhíveis**, sem rolagem longa:
 | até **02/11** | ④ criativos (miniaturas pela API + catálogo com código) e o gerador de UTM |
 | ciclo 2 | Verificação contra o plano, depois que o sistema ajudar a montar os planos |
 
-## 5. Perguntas para o Gabriel
+## 5. ✅ Respostas do Gabriel (22/10)
 
-1. **Ordem do carrossel:** a ordem da sprint do Fúria (qual?) ou alfabética?
-2. **Clientes sem dado no sistema** entram no carrossel mostrando o que falta, ou só AP13 e Score por ora?
-3. **Código do criativo no nome do anúncio** (`CR023`): o time topa essa convenção? Quem nomeia (designer ou GT)?
-4. **Lista controlada de UTM:** você e o Breno definem, ou eu proponho uma e vocês corrigem?
+1. **Ordem do carrossel: alfabética** (`compartilhado/carteira.yaml`)
+2. **Clientes sem dado entram**, mostrando o que falta
+3. **Código do criativo no nome do anúncio: aceito, desde que o catálogo tenha a imagem também.** Quem nomeia:
+   **o gestor de tráfego**. → o catálogo exige imagem por criativo (não só a miniatura da API)
+4. **UTM: o Claude propõe, eles corrigem** → proposta em `compartilhado/utm/padrao.yaml`
+
+## 6. v1 construída (22/10)
+
+- **App:** item **"Sprint"** na barra lateral, fora do menu do cliente. Carrossel alfabético (‹ › ou setas do
+  teclado), seletor Diário / Semanal / Mensal, botão **Atualizar dados** (busca nas APIs e grava os caches)
+- **Blocos recolhíveis** (o app lembra quais ficam abertos): Resumo (motores, ritmo do plano, falta no sistema, o
+  que ficou aberto na sprint anterior) · Números por motor (sinal na linha que passou do limiar da árvore; canais
+  recolhidos) · Campanhas e plano de mídia (tipo → campanha: status, dias no ar, nova, pausada há X dias, gasto
+  7 dias e mês, resultado, custo, ROAS, fora do plano) · Criativos (lugar reservado, 02/11) · Registro (4 campos,
+  grava em `reunioes/sprint/<data>-sprint.md`)
+- **Regra do teste de 21/10, agora no código:** o resultado do motor para no **último dia com venda** (JET,
+  faturas); os canais vão até ontem. Linha de canal que depende de venda (receita JET por UTM, ROAS JET) sai
+  marcada com `*` e sem variação quando o período não tem venda completa
+- **Peças:** `scripts/sprint.py` (dados da tela; também roda no terminal), `scripts/meta.py` (Meta pela API),
+  `metricas.google_ads_consulta` (Google por campanha → `serie/google_campanhas.csv`), `motores.py` com
+  recortes livres e as fontes do e-commerce (o AP13 passou a calcular pelo motor genérico; números batem com o
+  `pauta.py`)
+- **Falta para 26/10:** AP13 sem Meta por campanha (a conta `212245853` não está atribuída ao usuário de sistema
+  da BM "MCC") e sem plano de mídia; Score sem dado do comercial e faturas só até 14/10

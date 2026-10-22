@@ -1,0 +1,233 @@
+{
+ "atualizado_em": "2026-10-22T07:56",
+ "conta": "484366202785720",
+ "campanhas": [
+  {
+   "id": "120248406426520534",
+   "name": "V4 - LEADS - LP CENPROT",
+   "status": "ACTIVE",
+   "effective_status": "ACTIVE",
+   "objective": "OUTCOME_LEADS",
+   "created_time": "2026-10-06T16:48:26-0300",
+   "start_time": "2026-10-06T16:48:27-0300"
+  },
+  {
+   "id": "120248150692140534",
+   "name": "[V4] [LEAD] [FORMULARIO NATIVO]",
+   "status": "ACTIVE",
+   "effective_status": "ACTIVE",
+   "objective": "OUTCOME_LEADS",
+   "created_time": "2026-09-16T12:41:27-0300",
+   "start_time": "2026-09-16T12:41:28-0300"
+  },
+  {
+   "id": "120243748746760534",
+   "name": "[V4][MENSAGEM] [WHATSAPP] ofc",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "OUTCOME_ENGAGEMENT",
+   "created_time": "2026-05-18T09:14:21-0300",
+   "start_time": "2026-05-18T09:14:23-0300"
+  },
+  {
+   "id": "120243650545420534",
+   "name": "[V4][MENSAGEM] [WHATSAPP]",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "OUTCOME_ENGAGEMENT",
+   "created_time": "2026-05-17T19:06:28-0300",
+   "start_time": "2026-05-17T19:06:30-0300"
+  },
+  {
+   "id": "120243571496990534",
+   "name": "trafego - visitas ao perfil - 10 dias — Cópia",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "OUTCOME_TRAFFIC",
+   "created_time": "2026-05-15T11:57:11-0300",
+   "start_time": "2026-05-15T11:59:31-0300",
+   "stop_time": "2026-05-25T11:55:00-0300"
+  },
+  {
+   "id": "120243571248980534",
+   "name": "trafego - visitas ao perfil - 10 dias - PAUSAR DIA 25",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "OUTCOME_TRAFFIC",
+   "created_time": "2026-05-15T11:53:13-0300",
+   "start_time": "2026-05-15T11:53:14-0300"
+  },
+  {
+   "id": "120230461952180534",
+   "name": "[V4] [VENDA] [PROMO TESTE]",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "OUTCOME_SALES",
+   "created_time": "2025-09-15T18:09:42-0300",
+   "start_time": "2025-09-15T18:09:43-0300"
+  },
+  {
+   "id": "120226462777120534",
+   "name": "[V4] [TRAFEGO] [AQUISIÇÃ] [VISITA AO PERFIL]",
+   "status": "ACTIVE",
+   "effective_status": "ACTIVE",
+   "objective": "OUTCOME_TRAFFIC",
+   "created_time": "2025-07-08T09:26:03-0300",
+   "start_time": "2025-07-08T09:26:03-0300"
+  },
+  {
+   "id": "120226404683290534",
+   "name": "[V4] [TRAFEGO] [AQUISIÇÃ] [VISITA AO PERFIL]",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "OUTCOME_TRAFFIC",
+   "created_time": "2025-07-07T09:39:14-0300",
+   "start_time": "2025-07-07T09:39:15-0300"
+  },
+  {
+   "id": "120216407583540534",
+   "name": "[V4] [TRAFEGO] [AQUISIÇÃ] [SITE]",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "OUTCOME_TRAFFIC",
+   "created_time": "2025-03-12T14:52:28-0300",
+   "start_time": "2025-03-12T14:52:29-0300"
+  },
+  {
+   "id": "120211827956030534",
+   "name": "[🔴] [V4] [Venda] [Pré pago] - 27/11",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "OUTCOME_SALES",
+   "created_time": "2024-11-26T21:01:33-0300",
+   "start_time": "2024-11-26T21:01:33-0300"
+  },
+  {
+   "id": "120210928121170534",
+   "name": "[V4] [ENGAJAMENTO] [INSTAGRAM] - 18/10",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "OUTCOME_ENGAGEMENT",
+   "created_time": "2024-10-18T17:22:38-0300",
+   "start_time": "2024-10-18T17:22:39-0300"
+  },
+  {
+   "id": "120209689054960534",
+   "name": "[v4] [VENDA] pre pago",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "OUTCOME_SALES",
+   "created_time": "2024-08-22T17:11:40-0300",
+   "start_time": "2024-08-22T17:11:41-0300"
+  },
+  {
+   "id": "120209503253030534",
+   "name": "[V4] [FORMULARIO NATIVO] [FAST TRAFIC] 2.0 ofc",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "OUTCOME_LEADS",
+   "created_time": "2024-08-14T12:51:31-0300",
+   "start_time": "2024-08-14T12:51:31-0300"
+  },
+  {
+   "id": "120209401383730534",
+   "name": "[V4] [FORMULARIO NATIVO] [FAST TRAFIC]",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "OUTCOME_LEADS",
+   "created_time": "2024-08-09T16:38:39-0300",
+   "start_time": "2024-08-09T16:38:40-0300"
+  },
+  {
+   "id": "23851526813160533",
+   "name": "[CADASTRO]ATIVA",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "OUTCOME_LEADS",
+   "created_time": "2022-10-24T20:03:07-0300",
+   "start_time": "2022-10-24T20:03:07-0300"
+  },
+  {
+   "id": "23851521886070533",
+   "name": "[CADASTROS INSTANTÂNEOS][20$][ Campanha",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "OUTCOME_LEADS",
+   "created_time": "2022-10-24T08:35:04-0300",
+   "start_time": "2022-10-24T08:35:04-0300"
+  },
+  {
+   "id": "23851379333220533",
+   "name": "[TRAF LP LED2B]",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "OUTCOME_TRAFFIC",
+   "created_time": "2022-10-09T22:28:05-0300",
+   "start_time": "2022-10-09T22:28:05-0300"
+  },
+  {
+   "id": "23851354214050533",
+   "name": "[ENGJ] [POSTS PRONTOS]",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "OUTCOME_ENGAGEMENT",
+   "created_time": "2022-10-06T16:37:59-0300",
+   "start_time": "2022-10-06T16:38:00-0300",
+   "daily_budget": "600"
+  },
+  {
+   "id": "23850998553560533",
+   "name": "[ENG][MSG WPP]",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "OUTCOME_ENGAGEMENT",
+   "created_time": "2022-09-04T23:56:22-0300",
+   "start_time": "2022-09-04T23:56:23-0300"
+  },
+  {
+   "id": "23850729977490533",
+   "name": "[ENGJ 2 VV]  - NEW PUBLIC",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "OUTCOME_ENGAGEMENT",
+   "created_time": "2022-08-03T10:57:53-0300",
+   "start_time": "2022-08-03T10:57:54-0300"
+  },
+  {
+   "id": "23850588376460533",
+   "name": "[ENGJ VV][10% DESCONTO 3 P M]",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "OUTCOME_ENGAGEMENT",
+   "created_time": "2022-07-15T12:48:33-0300",
+   "start_time": "2022-07-15T12:48:33-0300"
+  },
+  {
+   "id": "23850525929210533",
+   "name": "[ENGJ]",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "POST_ENGAGEMENT",
+   "created_time": "2022-07-06T21:20:42-0300",
+   "start_time": "2022-07-07T06:05:11-0300"
+  },
+  {
+   "id": "23850466548280533",
+   "name": "[MSG][MELHORE ANALISE]",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "MESSAGES",
+   "created_time": "2022-06-29T21:24:41-0300",
+   "start_time": "2022-06-29T21:24:41-0300"
+  },
+  {
+   "id": "23850426415380533",
+   "name": "[ALCANCE][AQUECIMENTO CONTA]",
+   "status": "PAUSED",
+   "effective_status": "PAUSED",
+   "objective": "REACH",
+   "created_time": "2022-06-22T21:34:16-0300",
+   "start_time": "2022-06-22T21:34:17-0300"
+  }
+ ]
+}

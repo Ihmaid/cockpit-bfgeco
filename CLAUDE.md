@@ -3,6 +3,24 @@
 Projeto de gestão, análise e implementação do **Cockpit**: sistema para centralizar a gestão
 **estratégica, comercial e administrativa** da unidade BFG&Co da V4 Company.
 
+## 🔖⭐ 22/10/2026 (tarde): MODO SPRINT v1 NO APP — pronto para a sprint de 26/10
+
+`uv run --with pyyaml python app/server.py` → item **Sprint** na barra lateral (ou `http://127.0.0.1:8770/#sprint`).
+Carrossel alfabético dos 10 clientes do Fúria (`compartilhado/carteira.yaml`; 8 sem tela mostram o que falta),
+seletor diário/semanal/mensal, botão "Atualizar dados" (APIs → caches), blocos: resumo · números por motor ·
+campanhas + plano de mídia · criativos (02/11) · registro (grava em `reunioes/sprint/<data>-sprint.md`).
+Detalhe em `arquitetura/19` §5–§6. Código: `scripts/sprint.py` (dados) + `app/static/app.js` (`vSprint`).
+- Respostas do Gabriel: ordem **alfabética** · clientes sem dado **entram** · código do criativo no nome do anúncio
+  **aceito com imagem obrigatória no catálogo**, quem nomeia = **gestor de tráfego** · UTM: **Claude propõe**
+  (`compartilhado/utm/padrao.yaml`, aguarda correção do Gabriel e do Breno)
+- **Meta pela API funcionando** (`scripts/meta.py`; Score bate com o conector). ⛔ **A conta do AP13 não está na
+  BM "MCC"**: o Gabriel precisa atribuí-la ao usuário de sistema (`docs/24`, seção de 22/10)
+- O AP13 agora calcula pelo `motores.py` (fontes `api`/`api_ou_conector`); o resultado para no último dia com
+  venda e os canais vão até ontem (regra do teste de 21/10, no código)
+- **Antes de 26/10:** export da JET · XLSX de faturas da Score · resumo do comercial da Score · "Atualizar dados"
+  em cada cliente · plano de mídia do AP13 (não existe)
+- **Próximo (02/11):** catálogo de criativos (código + imagem) e gerador de UTM
+
 ## 🔖⭐ 22/10/2026: PAUTA EM DOC REPROVADA → MODO SPRINT NO APP (`arquitetura/19-modo-sprint.md`)
 
 O Gabriel testou as duas pautas com o Breno em 21/10 e **reprovou o formato documento**: dado difícil de achar
@@ -804,6 +822,7 @@ as capacidades do produto, não a realidade da unidade.
 - [scripts/pauta_motores.py](scripts/pauta_motores.py) — ⭐ **PAUTA POR MOTOR** (20/10): um bloco por motor ativo + plano de
   mídia na abertura; [scripts/motores.py](scripts/motores.py) faz o cálculo (árvore por natureza, fontes declaradas, alinhamento
   de cobertura); [scripts/faturas.py](scripts/faturas.py) agrega o XLSX do pré-pago. Árvores: `autosservico.yaml`, `geracao-lead.yaml`
+- [scripts/sprint.py](scripts/sprint.py) — ⭐⭐ **MODO SPRINT** (22/10): dados do carrossel do app (números por motor e período, campanhas + plano, registro); [scripts/meta.py](scripts/meta.py) lê o Meta pela API (token da BM "MCC")
 - [scripts/plano_midia.py](scripts/plano_midia.py) — ⭐ **PLANO DE MÍDIA AUDITÁVEL** (20/10): verba planejada ×
   gasto real por canal → tipo de campanha → campanha, ritmo do mês e auditoria do registro de mudanças. Só lê
 - [scripts/reconcilia_ga4_jet.py](scripts/reconcilia_ga4_jet.py) — **reconciliação GA4 × JET** (10/10): o que é cada "compra" que o Google Ads recebe. Só lê, só agregados

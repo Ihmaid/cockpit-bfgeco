@@ -9,10 +9,13 @@ Tipos de fonte suportados (campo `tipo` na árvore):
   manual          metricas/<arquivo> (dia,campo,valor,origem). Linhas `_coberto` marcam os dias que o export
                   cobre: dia coberto sem venda vale zero; dia fora da cobertura é lacuna (não zero)
   google_ads      a conta inteira do cliente (metricas.buscar_google_ads), cache em metricas/serie/google_ads.csv
-  meta_campanhas  metricas/serie/meta_campanhas.csv (gravado pelo Claude a partir do conector, até o token da BM),
+  api, api_ou_conector
+                  cache dia,campo,valor em metricas/<arquivo> (a árvore do e-commerce: ga4, google_ads, meta_ads);
+                  google_ads e ga4 se atualizam pela API, o resto só é lido
+  meta_campanhas  metricas/serie/meta_campanhas.csv (scripts/meta.py, pela API; antes, o conector),
                   filtrado pelas campanhas cujo tipo, no plano de mídia, aponta `motor` para este motor
 
-O AP13 (e-commerce) segue no caminho antigo (metricas.py + pauta.py), congelado. Só lê as fontes.
+Recortes: os da pauta (metricas.recortes) ou livres (`rs`), como os do modo sprint (scripts/sprint.py). Só lê as fontes.
 """
 import argparse, collections, csv, datetime as dt, glob, importlib.util, io, os, re, sys
 
@@ -93,9 +96,10 @@ def soma_fonte(dados, ini, fim, dias=None):
     return tot
 
 
-def calcular_motor(base, cli, motor, ate, atualizar=True, log=print):
+def calcular_motor(base, cli, motor, ate, atualizar=True, log=print, rs=None, alinhar=True):
+    """`alinhar=False` soma cada fonte nos dias que ela tem: serve às tabelas de canal, que não cruzam fontes."""
     arv = yaml.safe_load(io.open(os.path.join(RAIZ, "compartilhado", "arvores-metricas", motor["arvore"] + ".yaml"), encoding="utf-8"))
-    rs = M.recortes(ate)
+    rs = rs or M.recortes(ate)
     janela_ini = min(r["ini"] for r in rs)
     fontes = {}
     for nome, fdef in (arv.get("fontes") or {}).items():
@@ -106,23 +110,25 @@ def calcular_motor(base, cli, motor, ate, atualizar=True, log=print):
             f["dados"], f["cobertos"] = ler_manual(caminho)
             f["ate"] = max(f["cobertos"]) if f["cobertos"] else None
             f["detalhe"] = "metricas/%s (%s)" % (fdef["arquivo"], fdef.get("gerado_por", "manual"))
-        elif tipo == "google_ads":
-            caminho = os.path.join(base, "metricas", "serie", "google_ads.csv")
+        elif tipo in ("google_ads", "api", "api_ou_conector"):
+            caminho = os.path.join(base, "metricas", fdef.get("arquivo") or "serie/google_ads.csv")
             dados = M.ler_serie(caminho)
-            f["detalhe"] = "API, cache em metricas/serie/google_ads.csv"
-            if atualizar:
+            busca = {"google_ads": M.buscar_google_ads, "ga4": M.buscar_ga4}.get("google_ads" if tipo == "google_ads" else nome)
+            f["detalhe"] = "cache em metricas/%s" % (fdef.get("arquivo") or "serie/google_ads.csv")
+            if atualizar and busca:
                 try:
-                    M.gravar_serie(caminho, dados, janela_ini, ate, M.buscar_google_ads(cli, janela_ini, ate))
+                    M.gravar_serie(caminho, dados, janela_ini, ate, busca(cli, janela_ini, ate))
                     dados = M.ler_serie(caminho)
                     f["detalhe"] = "API, atualizado agora"
                 except RuntimeError as e:
                     f["erro"] = M.limpa(e)[:200]
-                    log("⚠️ google_ads: %s" % f["erro"])
+                    log("⚠️ %s: %s" % (nome, f["erro"]))
             f["dados"], f["ate"] = dados, (max(dados) if dados else None)
-            f["cobertos"] = {d for d in dados}
+            # cache contínuo (conector) vale até a última data; o de API, nos dias que tem
+            f["cobertos"] = None if tipo == "api_ou_conector" else {d for d in dados}
         elif tipo == "meta_campanhas":
             f["dados"], f["ate"], f["campanhas"] = ler_meta_campanhas(base, motor["id"])
-            f["detalhe"] = "cache do conector em metricas/serie/meta_campanhas.csv; campanhas do motor pelo plano de mídia"
+            f["detalhe"] = "metricas/serie/meta_campanhas.csv (scripts/meta.py); campanhas do motor pelo plano de mídia"
             f["cobertos"] = None   # cobertura = até a data do cache
         else:
             f["erro"] = "tipo de fonte '%s' não suportado" % tipo
@@ -141,7 +147,7 @@ def calcular_motor(base, cli, motor, ate, atualizar=True, log=print):
             cob[nome] = n / dias
         # Alinhamento: se uma fonte MANUAL cobre só parte do recorte (export até o dia 14, recorte até o 18),
         # todas as fontes somam só os dias que ela cobre. Sem isso, receita de 3 dias ÷ investimento de 7 = ROAS falso.
-        parciais = [f["cobertos"] for nome, f in fontes.items() if f["tipo"] == "manual" and 0 < cob[nome] < 1]
+        parciais = [f["cobertos"] for nome, f in fontes.items() if alinhar and f["tipo"] == "manual" and 0 < cob[nome] < 1]
         dias_al = set.intersection(*[{d for d in c if r["ini"] <= d <= r["fim"]} for c in parciais]) if parciais else None
         alinhado[r["id"]] = (len(dias_al), dias) if dias_al is not None else None
         for nome, f in fontes.items():
