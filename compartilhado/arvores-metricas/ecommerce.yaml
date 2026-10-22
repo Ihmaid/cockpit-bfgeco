@@ -52,12 +52,16 @@ derivadas:
   roas_google:           { formula: "receita_google / investimento_google",      formato: x,   nome: "ROAS Google (plataforma)" }
   roas_real_google:      { formula: "receita_utm_google / investimento_google",  formato: x,   nome: "ROAS Google (JET, último toque)" }
   cpa_google:            { formula: "investimento_google / compras_google",      formato: brl, nome: "Custo por compra Google" }
+  ticket_google:         { formula: "receita_google / compras_google",           formato: brl, nome: "Ticket médio Google (plataforma)" }
+  ticket_utm_google:     { formula: "receita_utm_google / pedidos_utm_google",   formato: brl, nome: "Ticket médio Google (JET, último toque)" }
   ctr_google:            { formula: "cliques_google / impressoes_google",        formato: pct, nome: "CTR Google" }
   cpc_google:            { formula: "investimento_google / cliques_google",      formato: brl, nome: "CPC Google" }
   cpm_google:            { formula: "investimento_google / impressoes_google * 1000", formato: brl, nome: "CPM Google" }
   roas_meta_venda:       { formula: "receita_meta_venda / investimento_meta_venda", formato: x, nome: "ROAS Meta, campanhas de venda (plataforma)" }
   roas_real_meta:        { formula: "receita_utm_meta / investimento_meta",      formato: x,   nome: "ROAS Meta (JET, último toque)" }
   cpa_meta_venda:        { formula: "investimento_meta_venda / compras_meta_venda", formato: brl, nome: "Custo por compra Meta (venda)" }
+  ticket_meta_venda:     { formula: "receita_meta_venda / compras_meta_venda",   formato: brl, nome: "Ticket médio Meta, campanhas de venda (plataforma)" }
+  ticket_utm_meta:       { formula: "receita_utm_meta / pedidos_utm_meta",       formato: brl, nome: "Ticket médio Meta (JET, último toque)" }
   ctr_meta:              { formula: "cliques_meta / impressoes_meta",            formato: pct, nome: "CTR Meta (link)" }
   cpc_meta:              { formula: "investimento_meta / cliques_meta",          formato: brl, nome: "CPC Meta (link)" }
   cpm_meta:              { formula: "investimento_meta / impressoes_meta * 1000", formato: brl, nome: "CPM Meta" }
@@ -71,8 +75,8 @@ derivadas:
 pauta:
   resultado_real: [receita, compras, ticket, sessoes, taxa_sessao_compra, investimento_total, mer]
   canais:
-    google: [investimento_google, cliques_google, ctr_google, cpc_google, cpm_google, compras_google, receita_google, roas_google, cpa_google, receita_utm_google, roas_real_google]
-    meta:   [investimento_meta, cliques_meta, ctr_meta, cpc_meta, cpm_meta, investimento_meta_venda, compras_meta_venda, receita_meta_venda, roas_meta_venda, cpa_meta_venda, receita_utm_meta, roas_real_meta]
+    google: [investimento_google, cliques_google, ctr_google, cpc_google, cpm_google, compras_google, receita_google, ticket_google, roas_google, cpa_google, receita_utm_google, ticket_utm_google, roas_real_google]
+    meta:   [investimento_meta, cliques_meta, ctr_meta, cpc_meta, cpm_meta, investimento_meta_venda, compras_meta_venda, receita_meta_venda, ticket_meta_venda, roas_meta_venda, cpa_meta_venda, receita_utm_meta, ticket_utm_meta, roas_real_meta]
     jet_por_origem: [receita_utm_google, receita_utm_meta, receita_utm_flowbiz, receita_utm_sem_utm, receita_utm_outros, receita_pj, receita_b2b]
   funil_ga4: [sessoes, add_to_cart, begin_checkout, add_payment_info, purchase_ga4, carrinho_checkout_ga4, pagamento_por_checkout_ga4, receita_ga4, fator_ga4]
 

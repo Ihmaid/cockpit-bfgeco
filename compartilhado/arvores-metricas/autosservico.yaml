@@ -51,13 +51,14 @@ derivadas:
   cobertura_atribuicao:  { formula: "receita_google / receita",                  formato: pct, nome: "Cobertura de atribuição (Google ÷ real)", nota: "queda = tag ou recompra direta (regras do check-in, tema 3)" }
   roas_google:           { formula: "receita_google / investimento_google",      formato: x,   nome: "ROAS Google (plataforma)" }
   cpa_google:            { formula: "investimento_google / compras_google",      formato: brl, nome: "Custo por compra Google (plataforma)" }
+  ticket_google:         { formula: "receita_google / compras_google",           formato: brl, nome: "Ticket médio Google (plataforma)" }
   ctr_google:            { formula: "cliques_google / impressoes_google",        formato: pct, nome: "CTR Google" }
   cpc_google:            { formula: "investimento_google / cliques_google",      formato: brl, nome: "CPC Google" }
 
 pauta:
   resultado: [receita, faturas, receita_nova, faturas_novas, receita_recompra, ticket, investimento, roas_real, roas_aquisicao]
   canais:
-    google: [investimento_google, cliques_google, ctr_google, cpc_google, compras_google, receita_google, roas_google, cpa_google, cobertura_atribuicao]
+    google: [investimento_google, cliques_google, ctr_google, cpc_google, compras_google, receita_google, ticket_google, roas_google, cpa_google, cobertura_atribuicao]
 
 desvios:
   variacao:

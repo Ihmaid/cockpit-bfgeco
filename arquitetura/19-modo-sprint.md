@@ -122,3 +122,21 @@ blocos recolhíveis**, sem rolagem longa:
   `pauta.py`)
 - **Falta para 26/10:** AP13 sem Meta por campanha (a conta `212245853` não está atribuída ao usuário de sistema
   da BM "MCC") e sem plano de mídia; Score sem dado do comercial e faturas só até 14/10
+
+## 7. Ajustes da 1ª olhada do Gabriel (22/10, noite)
+
+- **Colunas em ordem crescente** (mais antigo à esquerda) e **as mesmas para todas as fontes**, até ontem. A venda
+  que parou antes (JET até 15/10) aparece nas mesmas colunas: vazia no dia sem export, **esmaecida e marcada
+  "parcial"** na semana ou no mês incompleto, sempre sem variação
+- **Diário com 30 dias** e rolagem lateral (abre no dia mais recente; nome da linha e variação ficam presos)
+- **Ticket médio por plataforma**: Google e Meta, pela plataforma e pela JET (último toque)
+- **Tipos de campanha padrão** para cliente sem plano de mídia (`compartilhado/midia/tipos-de-campanha.yaml`):
+  Google por tipo de canal (lojas físicas, marca, Shopping, PMax, Search, vídeo, display), Meta por objetivo.
+  Com plano, valem os tipos do plano. É também o ponto de partida do plano de um cliente novo
+- **Registro vira guia, não formulário**: ninguém digita na sprint. O bloco "O que sair decidido" lista o que a
+  tela pede para decidir (só fato: ritmo fora, campanha fora do plano ou nova, venda faltando, aberto da última
+  sprint) e as quatro partes de toda sprint. **Depois da reunião o Gabriel manda a transcrição; o Claude extrai e
+  grava** em `reunioes/sprint/<data>-sprint.md`, e o registro aparece no bloco
+- **Design no padrão V4** (o mesmo da skill de check-in): preto, vermelho `#e01b24`, Bebas Neue nos títulos, DM Sans
+  no texto, DM Mono em rótulo e número. Escuro é o padrão; o claro fica no "Alternar tema". Vale para o app todo
+- Seletor de cliente com contraste corrigido (fundo e cor explícitos, inclusive na lista aberta)

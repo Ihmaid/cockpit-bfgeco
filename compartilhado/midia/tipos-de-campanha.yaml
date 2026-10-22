@@ -1,0 +1,28 @@
+# Tipos de campanha PADRÃO, por canal: como o modo sprint agrupa as campanhas de um cliente que ainda não
+# tem plano de mídia (Gabriel, 22/10: "uma divisão que seja padrão para todas as sprints"). Com plano de mídia,
+# valem os grupos do plano; este arquivo é também o ponto de partida para escrever o plano de um cliente novo.
+#
+# Cada campanha entra no 1º tipo que casar. Critérios (todos os que estiverem no tipo precisam casar):
+#   regra     regex no nome da campanha, sem diferenciar maiúsculas
+#   tipo      tipo de canal do Google Ads (advertising_channel_type: SEARCH, SHOPPING, PERFORMANCE_MAX, VIDEO…)
+#   objetivo  objetivo da campanha no Meta (OUTCOME_SALES, OUTCOME_LEADS…)
+#   motor     motor de receita do tipo; sem ele, o motor ativo do cliente que usa o canal (se houver um só)
+# A ordem importa: o mais específico vem antes (marca antes de search; lojas físicas antes de pmax).
+
+google_ads:
+  - { id: lojas-fisicas, nome: "Lojas físicas (visita à loja)", regra: "loja.?f[ií]sica|lojas\\b|local", motor: lojas-fisicas }
+  - { id: marca,     nome: "Search de marca / institucional", tipo: SEARCH, regra: "institucion|marca|brand" }
+  - { id: shopping,  nome: "Shopping",                        tipo: SHOPPING }
+  - { id: pmax,      nome: "Performance Max",                 tipo: PERFORMANCE_MAX }
+  - { id: search,    nome: "Search",                          tipo: SEARCH }
+  - { id: video,     nome: "Vídeo / YouTube / Demand Gen",    tipo: "VIDEO|DEMAND_GEN|DISCOVERY" }
+  - { id: display,   nome: "Display",                         tipo: DISPLAY }
+
+meta_ads:
+  - { id: catalogo,  nome: "Venda · catálogo",                objetivo: OUTCOME_SALES, regra: "cat[aá]logo|catalog|dpa|advantage\\+? shopping" }
+  - { id: venda,     nome: "Venda",                           objetivo: OUTCOME_SALES }
+  - { id: lead,      nome: "Lead (formulário / LP)",          objetivo: OUTCOME_LEADS }
+  - { id: mensagem,  nome: "Mensagem / WhatsApp",             regra: "whats|mensage|direct" }
+  - { id: trafego,   nome: "Tráfego",                         objetivo: OUTCOME_TRAFFIC }
+  - { id: marca,     nome: "Marca / alcance",                 objetivo: "OUTCOME_AWARENESS" }
+  - { id: engajamento, nome: "Engajamento",                   objetivo: OUTCOME_ENGAGEMENT }

@@ -10,3 +10,4 @@
 - [Não lembrar pendência dispensada](nao-lembrar-pendencia-dispensada.md) — se ele disse "esquece, eu te chamo" (ex.: clone), parar de listar
 - [Conectores do claude.ai somem](conectores-claudeai-somem-apos-compactar.md) — Meta/Drive podem não carregar (sobretudo após /compact); conferir antes, onde paramos + chat novo, token é a saída
 - [Check-in de mídia feito aqui](checkin-de-midia-feito-no-cockpit.md) — desde 15/10 o deck do cliente sai da skill do projeto; material de referência enviado é digerido e apagado
+- [Design V4 no app](design-v4-no-app.md) — telas do sistema no padrão do check-in: preto, vermelho #e01b24, Bebas Neue, DM Sans, DM Mono

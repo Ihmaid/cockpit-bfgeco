@@ -20,6 +20,11 @@ Detalhe em `arquitetura/19` §5–§6. Código: `scripts/sprint.py` (dados) + `a
 - **Antes de 26/10:** export da JET · XLSX de faturas da Score · resumo do comercial da Score · "Atualizar dados"
   em cada cliente · plano de mídia do AP13 (não existe)
 - **Próximo (02/11):** catálogo de criativos (código + imagem) e gerador de UTM
+- ✅ *22/10 (noite):* ajustes do Gabriel (`arquitetura/19` §7): colunas crescentes e iguais para todas as fontes
+  (venda parcial marcada) · diário de 30 dias com rolagem · ticket por plataforma · **tipos de campanha padrão**
+  (`compartilhado/midia/tipos-de-campanha.yaml`) · registro virou **guia**: ⭐ **depois da sprint ele manda a
+  transcrição e o Claude extrai e grava o registro** · ⭐ **app inteiro no design V4** (preto, vermelho, Bebas Neue,
+  DM Sans, DM Mono; o mesmo do check-in)
 
 ## 🔖⭐ 22/10/2026: PAUTA EM DOC REPROVADA → MODO SPRINT NO APP (`arquitetura/19-modo-sprint.md`)
 

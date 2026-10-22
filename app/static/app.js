@@ -813,10 +813,10 @@ function drProjecao(){
    ================================================================ */
 const SP = {carteira:null, data:null, idx:0, periodo:"semana", cache:{}, sujo:false};
 const PERIODOS = [["dia","Diário"],["semana","Semanal"],["mes","Mensal"]];
-const SECOES = [["decisoes","Decisões","O que ficou decidido, uma por linha"],
-                ["tarefas","Tarefas","- [ ] o quê · dono · prazo"],
-                ["mudancas","Mudanças","verba, campanha, motor, trava, plano"],
-                ["aberto","Aberto","o que volta na próxima sprint"]];
+const SECOES = [["decisoes","Decisões","o que muda a partir de agora: oferta, estrutura, teste, prioridade"],
+                ["tarefas","Tarefas","quem faz o quê, até quando (vira tarefa no Ekyte)"],
+                ["mudancas","Mudanças","verba, campanha, plano de mídia, motor ou trava (entra no registro do plano)"],
+                ["aberto","Aberto","o que não se resolveu e volta na próxima sprint"]];
 const R2 = v => v == null ? "—" : (Math.abs(v) >= 100 ? R$(v)
   : "R$ " + v.toLocaleString("pt-BR", {minimumFractionDigits:2, maximumFractionDigits:2}));
 const N0 = v => v == null ? "—" : Math.round(v).toLocaleString("pt-BR");
@@ -911,22 +911,14 @@ function spTela(host, t){
             `<p class="sp-nota">Os criativos que estão rodando, com miniatura, dias no ar, gasto, CTR, CPA e etapa do
              teste. Depende do catálogo: código no nome do anúncio, posto pelo gestor de tráfego, com a imagem
              (<code>arquitetura/19</code> §3).</p>`, false) +
-    spBloco("registro", "Registro da sprint", t.registro ? `<span class="chip ok">gravado</span>` : `<span class="lbl">${br(t.data)}</span>`,
-            spRegistro(t), true);
+    spBloco("registro", "O que sair decidido", t.registro ? `<span class="chip ok">registro gravado</span>`
+            : `<span class="lbl">${t.a_definir.length} ponto(s) · sprint de ${br(t.data)}</span>`, spRegistro(t), true);
   $$(".sp-bloco").forEach(d => d.addEventListener("toggle", () => {
     try{ localStorage.setItem("sp_" + d.dataset.b, d.open ? "1" : "0"); }catch(e){} }));
-  $$(".sp-reg textarea").forEach(a => a.addEventListener("input", () => { SP.sujo = true; }));
-  const bt = $("#spGravar");
-  if(bt) bt.onclick = async () => {
-    const dados = {data:t.data};
-    SECOES.forEach(([k]) => dados[k] = $(`#spr_${k}`).value);
-    try{
-      const j = await (await fetch(`/api/sprint/${t.cliente.slug}/registro`, {method:"POST",
-        headers:{"Content-Type":"application/json"}, body:JSON.stringify(dados)})).json();
-      if(!j.ok) throw new Error(j.erro);
-      SP.sujo = false; SP.cache = {}; toast(`gravado em ${j.arquivo}`);
-    }catch(err){ toast(`Não gravou: ${err.message}`, true); }
-  };
+  // tabelas longas (30 dias) abrem já no fim: o mais recente fica à direita
+  $$(".sp-tab").forEach(el => el.scrollLeft = el.scrollWidth);
+  $$(".sp-sub").forEach(d => d.addEventListener("toggle", () =>
+    d.querySelectorAll(".sp-tab").forEach(el => el.scrollLeft = el.scrollWidth)));
   const ant = $("#spAntVer");
   if(ant) ant.onclick = () => abrir(`Sprint de ${br(t.anterior.data)}`, "Registro", `<div class="dr-md">${md(ant.dataset.md)}</div>`);
 }
@@ -956,26 +948,28 @@ function spResumo(t){
     <div><span class="lbl">o que ficou aberto</span>${ant}</div></div>`;
 }
 
+/* Mais antigo à esquerda, mais recente à direita; a 1ª coluna fica presa na rolagem lateral.
+   Célula com venda incompleta (o export manual parou antes) vai esmaecida, com o motivo no título. */
 function spTabela(periodos, linhas, cobertura){
-  const cab = `<tr><th></th>${periodos.map((p, i) => `<th class="${i === 0 ? "cur" : ""}">${esc(p)}</th>`).join("")}<th>var.</th></tr>`;
-  const cob = (cobertura || []).some(Boolean) ? `<tr class="sp-cob"><td>cobertura</td>${cobertura.map(c =>
-    `<td>${c ? `<span title="${esc(c)}">⚠️</span>` : ""}</td>`).join("")}<td></td></tr>` : "";
+  const ult = periodos.length - 1;
+  const cab = `<tr><th></th>${periodos.map((p, i) => `<th class="${i === ult ? "cur" : ""}">${esc(p)}</th>`).join("")}<th class="var">var.</th></tr>`;
+  const cob = (cobertura || []).some(Boolean) ? `<tr class="sp-cob"><td>venda</td>${cobertura.map((c, i) =>
+    `<td class="${i === ult ? "cur" : ""}">${c ? `<span title="${esc(c)}">${c.startsWith("sem") ? "sem venda" : "parcial"}</span>` : ""}</td>`).join("")}<td class="var"></td></tr>` : "";
   const corpo = linhas.map(l => `<tr class="${l.sinal ? "sinal" : ""}">
-    <td title="${esc(l.nota || "")}">${esc(l.nome)}${l.venda_parcial ? ` <span class="sp-ast" title="depende da venda, que não cobre o período inteiro: sem variação">*</span>` : ""}</td>
-    ${l.valores.map((v, i) => `<td class="mono ${i === 0 ? "cur" : ""}">${esc(v)}</td>`).join("")}
+    <td title="${esc(l.nota || "")}">${esc(l.nome)}</td>
+    ${l.valores.map((v, i) => `<td class="mono ${i === ult ? "cur" : ""} ${l.parciais[i] ? "parc" : ""}"${l.parciais[i]
+      ? ` title="a venda não cobre o período inteiro: valor parcial, sem variação"` : ""}>${esc(v)}</td>`).join("")}
     <td class="mono var ${l.var == null ? "" : (l.var > 0 ? "up" : (l.var < 0 ? "dn" : ""))}">${l.var == null ? "—" : (l.var > 0 ? "+" : "") + l.var + "%"}</td></tr>`).join("");
   return `<div class="sp-tab"><table>${cab}${cob}${corpo}</table></div>`;
 }
 
 const NOME_CANAL = {google:"Google Ads", meta:"Meta Ads", jet_por_origem:"Venda por origem (JET)"};
 function spMotor(m){
-  const ateRes = m.periodos[0] !== m.periodos_canais[0]
-    ? `<span class="chip warn" title="o resultado para no último dia com dado de venda; os canais vão até ontem">resultado até ${br(m.ate_resultado)}</span>` : "";
-  const fontes = m.fontes.map(f => `<span class="chip ${f.erro ? "crit" : "ghost"}" title="${esc(f.erro || f.detalhe || "")}">${esc(f.nome)} ${f.ate ? "até " + br(f.ate) : "sem dado"}</span>`).join(" ");
+  const fontes = m.fontes.map(f => `<span class="chip ${f.erro ? "crit" : (f.venda ? "warn" : "ghost")}" title="${esc(f.erro || f.detalhe || "")}">${esc(f.nome)} ${f.ate ? "até " + br(f.ate) : "sem dado"}</span>`).join(" ");
   const canais = m.canais.map(c => `<details class="sp-sub"><summary>${esc(NOME_CANAL[c.canal] || c.canal)}</summary>
-    ${spTabela(m.periodos_canais, c.linhas)}</details>`).join("");
+    ${spTabela(m.periodos, c.linhas)}</details>`).join("");
   const lac = m.lacunas.length ? `<p class="sp-nota">Lacuna declarada: ${m.lacunas.map(inl).join(" · ")}</p>` : "";
-  return `<div class="sp-motor"><div class="sp-mhd"><h3>${esc(m.nome)}</h3>${ateRes}<span class="sp-fontes">${fontes}</span></div>
+  return `<div class="sp-motor"><div class="sp-mhd"><h3>${esc(m.nome)}</h3><span class="sp-fontes">${fontes}</span></div>
     ${spTabela(m.periodos, m.resultado, m.cobertura)}${canais}${lac}</div>`;
 }
 
@@ -1006,15 +1000,25 @@ function spMidia(m_){
   return aud + canais;
 }
 
+/* Guia, não formulário (Gabriel, 22/10): ninguém digita na sprint. Depois da reunião ele manda a
+   transcrição inteira; o Claude extrai as quatro partes e grava no .md da reunião. */
 function spRegistro(t){
-  const r = t.registro || {};
-  if(r.livre) return `<div class="alerta aviso"><b>Registro em formato livre</b> (anterior ao modo sprint): edite no arquivo.</div>
-    <div class="dr-md">${md(r.livre)}</div>`;
-  return `<div class="sp-reg grid g2">${SECOES.map(([k, rot, ph]) => `<div class="campo">
-      <label class="lbl" for="spr_${k}">${rot}</label>
-      <textarea id="spr_${k}" placeholder="${esc(ph)}">${esc(r[k] && r[k] !== "—" ? r[k] : "")}</textarea></div>`).join("")}</div>
-    <div class="acoes"><button class="btn" id="spGravar">Gravar registro</button>
-      <span class="lbl">grava em reunioes/sprint/${esc(t.data)}-sprint.md</span></div>`;
+  const r = t.registro;
+  if(r){
+    const corpo = r.livre ? r.livre : SECOES.map(([k, rot]) => `### ${rot}\n\n${r[k] || "—"}`).join("\n\n");
+    return `<p class="sp-nota">Registro extraído da transcrição, gravado em <code>reunioes/sprint/${esc(t.data)}-sprint.md</code>.</p>
+      <div class="dr-md">${md(corpo)}</div>`;
+  }
+  const pontos = t.a_definir.length ? `<ul class="sp-pontos">${t.a_definir.map(p =>
+    `<li><span class="chip ghost">${esc((SECOES.find(s => s[0] === p.tipo) || [, p.tipo])[1])}</span>${inl(p.texto)}</li>`).join("")}</ul>`
+    : `<p class="sp-nota">Nada desta tela pede decisão. Os quatro itens abaixo valem do mesmo jeito.</p>`;
+  return `<div class="grid g2">
+    <div><span class="lbl">o que esta tela pede para decidir</span>${pontos}</div>
+    <div><span class="lbl">o que precisa sair de toda sprint</span><dl class="sp-guia">${SECOES.map(([k, rot, desc]) =>
+      `<dt>${rot}</dt><dd>${esc(desc)}</dd>`).join("")}</dl></div></div>
+    <p class="sp-nota sp-fluxo">Não precisa digitar nada aqui. Depois da sprint, mande a transcrição inteira: o Claude separa
+    decisões, tarefas, mudanças e o que ficou aberto, grava em <code>reunioes/sprint/${esc(t.data)}-sprint.md</code> e o
+    registro aparece neste bloco. O que ficar aberto volta no Resumo da próxima sprint.</p>`;
 }
 
 document.addEventListener("keydown", e => {
@@ -1099,8 +1103,7 @@ function render(){
 /* tema */
 $("#btnTema").addEventListener("click", () => {
   const atual = document.documentElement.getAttribute("data-theme");
-  const escuro = atual ? atual === "dark"
-    : matchMedia("(prefers-color-scheme: dark)").matches;
+  const escuro = atual ? atual === "dark" : true;     // o padrão V4 é o escuro
   document.documentElement.setAttribute("data-theme", escuro ? "light" : "dark");
   try{ localStorage.setItem("tema", escuro ? "light" : "dark"); }catch(e){}
 });

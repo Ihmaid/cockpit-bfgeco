@@ -29,6 +29,8 @@ M, PM, META = MO.M, _mod("plano_midia"), _mod("meta")
 import yaml  # noqa: E402
 
 DIAS_SEMANA = ["seg", "ter", "qua", "qui", "sex", "sáb", "dom"]
+DIAS_DIARIO = 30       # visão diária: 30 dias, com rolagem lateral (Gabriel, 22/10)
+SEMANAS = 8
 NOVA_DIAS = 7          # campanha que começou há menos que isso aparece como "nova"
 JANELA_ATUALIZAR = 120  # dias buscados nas APIs pelo botão "atualizar"
 SECOES_REGISTRO = [("decisoes", "Decisões"), ("tarefas", "Tarefas"), ("mudancas", "Mudanças"), ("aberto", "Aberto")]
@@ -68,31 +70,32 @@ def faltas(c, cli, base):
 # ------------------------------------------------------------------ períodos
 
 def periodos(tipo, ate):
-    """Mais recente primeiro. A variação é sempre a 1ª coluna contra a 2ª."""
+    """Mais antigo à esquerda, mais recente à direita (Gabriel, 22/10). A variação é sempre a última
+    coluna contra a penúltima. Todas as fontes usam as mesmas colunas, até `ate` (ontem)."""
     f = lambda d: d.strftime("%d/%m")
     if tipo == "dia":
         return [{"id": d.isoformat(), "rotulo": "%s %s" % (DIAS_SEMANA[d.weekday()], f(d)), "ini": d, "fim": d}
-                for d in (ate - dt.timedelta(days=i) for i in range(7))]
+                for d in (ate - dt.timedelta(days=i) for i in range(DIAS_DIARIO - 1, -1, -1))]
     if tipo == "semana":   # blocos de 7 dias terminando em `ate`: sempre completos e comparáveis
         out = []
-        for i in range(6):
+        for i in range(SEMANAS - 1, -1, -1):
             fim = ate - dt.timedelta(days=7 * i)
             ini = fim - dt.timedelta(days=6)
             out.append({"id": "s%d" % i, "rotulo": "%s–%s" % (f(ini), f(fim)), "ini": ini, "fim": fim})
         return out
-    # mês: mês até `ate`, o anterior até o mesmo dia, e dois meses fechados
+    # mês: dois meses fechados, o mês anterior até o mesmo dia, e o mês até `ate`
     mes_ini = ate.replace(day=1)
     ant_fim_real = mes_ini - dt.timedelta(days=1)
     ant_ini = ant_fim_real.replace(day=1)
     ant_fim = ant_ini.replace(day=min(ate.day, ant_fim_real.day))
-    out = [{"id": "mes", "rotulo": "%s 1–%d" % (M.MESES[ate.month], ate.day), "ini": mes_ini, "fim": ate},
-           {"id": "mes_ant", "rotulo": "%s 1–%d" % (M.MESES[ant_ini.month], ant_fim.day), "ini": ant_ini, "fim": ant_fim}]
-    fim = ant_fim_real
+    fechados, fim = [], ant_fim_real
     for _ in range(2):
         ini = fim.replace(day=1)
-        out.append({"id": ini.strftime("%Y-%m"), "rotulo": "%s (mês)" % M.MESES[ini.month], "ini": ini, "fim": fim})
+        fechados.insert(0, {"id": ini.strftime("%Y-%m"), "rotulo": "%s (mês)" % M.MESES[ini.month], "ini": ini, "fim": fim})
         fim = ini - dt.timedelta(days=1)
-    return out
+    return fechados + [
+        {"id": "mes_ant", "rotulo": "%s 1–%d" % (M.MESES[ant_ini.month], ant_fim.day), "ini": ant_ini, "fim": ant_fim},
+        {"id": "mes", "rotulo": "%s 1–%d" % (M.MESES[ate.month], ate.day), "ini": mes_ini, "fim": ate}]
 
 
 # ------------------------------------------------------------------ números por motor
@@ -113,60 +116,65 @@ def dependem_de_venda(arv):
     return dep
 
 
-def linhas(res, campos, sinais=None, venda=None):
-    """`venda` = o cálculo alinhado aos dias com venda: as linhas que dependem dela saem dele, marcadas,
-    e sem variação quando um dos dois períodos comparados não tem venda completa."""
+def parcial(venda, rid):
+    """Período em que a venda (export manual) não cobre todos os dias."""
+    return bool(venda["alinhado"].get(rid)) or min(
+        [x for n, x in venda["cobertura"][rid].items() if venda["fontes"][n]["tipo"] == "manual"] or [1]) < 1
+
+
+def linhas(res, venda, campos, sinais=None):
+    """Mesmas colunas para todas as fontes. As linhas que dependem da venda saem do cálculo alinhado aos dias
+    com venda (`venda`): no período sem venda completa a célula é marcada e a linha fica sem variação."""
     arv, rs = res["arvore"], res["recortes"]
     limiares = {d["campo"]: d["limiar"] for d in (arv.get("desvios") or {}).get("variacao") or []}
-    dep = dependem_de_venda(arv) if venda else set()
+    dep = dependem_de_venda(arv)
     out = []
     for c in campos:
         fonte = venda if c in dep else res
         fm = M.formato_de(c, arv)
         vals = [fonte["valores"][r["id"]].get(c) for r in rs]
-        parcial = c in dep and any(fonte["alinhado"].get(r["id"]) or min(fonte["cobertura"][r["id"]].values() or [1]) < 1
-                                   for r in rs[:2])
-        var = None if parcial else (M.variacao(vals[0], vals[1]) if len(vals) > 1 else None)
+        parciais = [c in dep and parcial(venda, r["id"]) for r in rs]
+        var = None if any(parciais[-2:]) or len(vals) < 2 else M.variacao(vals[-1], vals[-2])
         sinal = sinais and c in limiares and var is not None and abs(var) > limiares[c]
-        out.append({"campo": c, "nome": nome(c, arv), "valores": [M.fmt(v, fm) for v in vals],
-                    "var": None if var is None else round(var * 100), "sinal": bool(sinal), "venda_parcial": parcial,
+        out.append({"campo": c, "nome": nome(c, arv), "valores": [M.fmt(v, fm) for v in vals], "parciais": parciais,
+                    "var": None if var is None else round(var * 100), "sinal": bool(sinal),
                     "nota": ((arv.get("derivadas") or {}).get(c) or {}).get("nota")})
     return out
 
 
-def cobertura(res):
-    """Por período: a nota de cobertura da venda (alinhamento) ou de fonte sem dado."""
+def cobertura(venda):
+    """Por período: quantos dias a venda cobre, quando não cobre todos."""
     out = []
-    for r in res["recortes"]:
-        notas = []
-        al = res["alinhado"].get(r["id"])
+    for r in venda["recortes"]:
+        dias = (r["fim"] - r["ini"]).days + 1
+        al = venda["alinhado"].get(r["id"])
+        manuais = {n: x for n, x in venda["cobertura"][r["id"]].items() if venda["fontes"][n]["tipo"] == "manual"}
         if al:
-            notas.append("venda cobre %d de %d dias; o resultado usa só esses dias" % al)
-        for n, x in res["cobertura"][r["id"]].items():
-            if x == 0:
-                notas.append("%s sem dado" % n)
-        out.append("; ".join(notas))
+            out.append("venda em %d de %d dias: as linhas de venda usam só esses dias" % al)
+        elif manuais and min(manuais.values()) == 0:
+            out.append("sem dado de venda (%s)" % ", ".join(n for n, x in manuais.items() if x == 0))
+        elif manuais and min(manuais.values()) < 1:
+            out.append("venda em %d de %d dias" % (round(min(manuais.values()) * dias), dias))
+        else:
+            out.append("")
     return out
 
 
 def numeros(base, cli, motor, tipo, ate):
-    """Canais até `ate` (ontem). O resultado para no último dia com venda (export manual): senão o período
-    atual soma menos dias que o anterior e a variação mente (lição do teste de 21/10)."""
+    """Todas as linhas com as mesmas colunas, até `ate` (ontem). A venda (export manual) costuma parar antes:
+    as células sem venda completa ficam marcadas e sem variação (lição do teste de 21/10)."""
     sem_log = lambda *_: None
-    canais_res = MO.calcular_motor(base, cli, motor, ate, atualizar=False, rs=periodos(tipo, ate), alinhar=False, log=sem_log)
-    canais_venda = MO.calcular_motor(base, cli, motor, ate, atualizar=False, rs=periodos(tipo, ate), log=sem_log)
-    ates_venda = [f["ate"] for f in canais_res["fontes"].values() if f["tipo"] == "manual" and f.get("ate")]
-    ate_res = min([ate] + ates_venda)
-    res = MO.calcular_motor(base, cli, motor, ate_res, atualizar=False, rs=periodos(tipo, ate_res), log=sem_log)
+    rs = periodos(tipo, ate)
+    res = MO.calcular_motor(base, cli, motor, ate, atualizar=False, rs=rs, alinhar=False, log=sem_log)
+    venda = MO.calcular_motor(base, cli, motor, ate, atualizar=False, rs=rs, log=sem_log)
     pauta = res["arvore"].get("pauta") or {}
     sinais = tipo != "dia"     # no diário a variação é ruído: sem sinal
-    canais = [{"canal": k, "linhas": linhas(canais_res, v, sinais, venda=canais_venda)} for k, v in (pauta.get("canais") or {}).items()]
+    canais = [{"canal": k, "linhas": linhas(res, venda, v, sinais)} for k, v in (pauta.get("canais") or {}).items()]
     fontes = [{"nome": n, "ate": f["ate"].isoformat() if f.get("ate") else None, "detalhe": f.get("detalhe"),
-               "erro": f.get("erro")} for n, f in res["fontes"].items()]
+               "erro": f.get("erro"), "venda": f["tipo"] == "manual"} for n, f in res["fontes"].items()]
     return {"id": motor["id"], "nome": motor["nome"], "arvore": motor["arvore"], "trava": motor.get("trava"),
-            "ate_resultado": ate_res.isoformat(), "periodos": [r["rotulo"] for r in res["recortes"]],
-            "periodos_canais": [r["rotulo"] for r in canais_res["recortes"]], "cobertura": cobertura(res),
-            "resultado": linhas(res, pauta.get("resultado") or pauta.get("resultado_real") or [], sinais),
+            "periodos": [r["rotulo"] for r in rs], "cobertura": cobertura(venda),
+            "resultado": linhas(res, venda, pauta.get("resultado") or pauta.get("resultado_real") or [], sinais),
             "canais": canais, "fontes": fontes,
             "lacunas": [f.get("lacuna") for f in (res["arvore"].get("fontes") or {}).values() if f.get("lacuna")]}
 
@@ -238,6 +246,28 @@ def resumo_campanhas(base, canal, ate):
     return {"campanhas": sorted(out, key=lambda c: -c["gasto_mes"]), "ate": ultimo.isoformat() if ultimo else None}
 
 
+def tipos_padrao(canal):
+    caminho = os.path.join(RAIZ, "compartilhado", "midia", "tipos-de-campanha.yaml")
+    return (yaml.safe_load(io.open(caminho, encoding="utf-8")) or {}).get(canal) or []
+
+
+def agrupar_padrao(campanhas, tipos):
+    """1º tipo em que todos os critérios presentes casam: regra (nome), tipo/objetivo (o que a API diz)."""
+    por = collections.defaultdict(list)
+    for c in campanhas:
+        alvo = "_sem_grupo"
+        for t in tipos:
+            if t.get("regra") and not re.search(t["regra"], c["nome"], re.I):
+                continue
+            crit = t.get("tipo") or t.get("objetivo")
+            if crit and not re.fullmatch(crit, c.get("objetivo") or ""):
+                continue
+            alvo = t["id"]
+            break
+        por[alvo].append(c)
+    return por
+
+
 def midia(base, cli, ate):
     """Plano de mídia do mês (verba, ritmo, auditoria) + campanhas por canal → tipo. Sem plano: só por canal."""
     caminho = os.path.join(base, "midia", "plano-%s.md" % ate.strftime("%Y-%m"))
@@ -255,14 +285,24 @@ def midia(base, cli, ate):
         if rc:
             item["real"] = sum(c["gasto_mes"] for c in rc["campanhas"])
             cs = [{**c, "gasto": c["gasto_mes"]} for c in rc["campanhas"]]
-            grupos = cp.get("grupos") or []
-            por = PM.agrupar(cs, grupos)
-            for g in grupos + [{"id": "_sem_grupo", "nome": "fora do plano" if p else "campanhas", "verba": None}]:
+            if cp.get("grupos"):         # com plano: os tipos do plano
+                grupos, por = cp["grupos"], PM.agrupar(cs, cp["grupos"])
+                resto = {"id": "_sem_grupo", "nome": "fora do plano", "verba": None}
+            else:                        # sem plano: os tipos padrão da unidade
+                ativos = [m["id"] for m in cli.get("motores") or [] if m.get("status") == "ativo" and canal in (m.get("canais") or [])]
+                grupos = [{**t, "motor": t.get("motor") or (ativos[0] if len(ativos) == 1 else None)} for t in tipos_padrao(canal)]
+                por = agrupar_padrao(cs, grupos)
+                resto = {"id": "_sem_grupo", "nome": "outros", "verba": None}
+            item["tipos_padrao"] = not cp.get("grupos")
+            for g in grupos + [resto]:
                 lista = por.get(g["id"], [])
-                if lista or g["id"] != "_sem_grupo":
+                if lista:
                     item["grupos"].append({"nome": g["nome"], "motor": g.get("motor"), "verba": g.get("verba"),
                                            "real": sum(c["gasto_mes"] for c in lista), "campanhas": lista,
                                            "fora_do_plano": bool(p) and g["id"] == "_sem_grupo"})
+                elif cp.get("grupos") and g["id"] != "_sem_grupo":
+                    item["grupos"].append({"nome": g["nome"], "motor": g.get("motor"), "verba": g.get("verba"),
+                                           "real": 0, "campanhas": [], "fora_do_plano": False})
         elif cp.get("fonte") == "manual":
             lanc = sorted(cp.get("real_informado") or [], key=lambda x: str(x["ate"]))
             item["real"] = float(lanc[-1]["valor"]) if lanc else None
@@ -355,11 +395,40 @@ def tela(slug, periodo="semana", ate=None, data=None):
             nums.append(numeros(base, cli, m, periodo, ate))
         except Exception as e:    # um motor quebrado não derruba a tela
             erros.append("%s: %s" % (m["id"], M.limpa(e)[:200]))
+    md_ = midia(base, cli, ate)
+    anterior = registro_anterior(base, data)
     return {"cliente": {**item, "nome": cli.get("nome") or item.get("nome")}, "configurado": True,
             "faltas": item.get("faltas", []), "data": data, "ate": ate.isoformat(), "periodo": periodo,
-            "motores": nums, "outros_motores": outros, "midia": midia(base, cli, ate),
-            "registro": ler_registro(arquivo_sprint(base, data)), "anterior": registro_anterior(base, data),
-            "erros": erros}
+            "motores": nums, "outros_motores": outros, "midia": md_,
+            "registro": ler_registro(arquivo_sprint(base, data)), "anterior": anterior,
+            "a_definir": a_definir(nums, md_, anterior, ate), "erros": erros}
+
+
+def a_definir(nums, md_, anterior, ate):
+    """O que a sprint precisa sair decidindo, só a partir de fato da tela (sem pergunta gerada)."""
+    brl = lambda v: PM.brl(v)
+    out = []
+    if anterior and (anterior.get("aberto") or "").strip("— \n"):
+        out.append({"tipo": "aberto", "texto": "Fechar o que ficou aberto na sprint de %s" % anterior["data"][8:10] + "/" + anterior["data"][5:7]})
+    if not md_["plano"]:
+        out.append({"tipo": "mudancas", "texto": "Sem plano de mídia no mês: definir a verba por canal e por tipo de campanha"})
+    for c in md_["canais"]:
+        if c.get("farol") in ("🔴", "🟡"):
+            out.append({"tipo": "mudancas", "texto": "%s a %d%% do ritmo: fecha o mês em %s para %s planejados. Manter (e registrar no plano) ou corrigir?"
+                        % (c["nome"], round(c["ritmo"] * 100), brl(c["projecao"]), brl(c["verba"]))})
+        for g in c["grupos"]:
+            if g["fora_do_plano"]:
+                out.append({"tipo": "mudancas", "texto": "%s: %d campanha(s) fora do plano (%s no mês). Entram no plano ou saem?"
+                            % (c["nome"], len(g["campanhas"]), brl(g["real"]))})
+        novas = [x["nome"] for g in c["grupos"] for x in g["campanhas"] if any(s.startswith("nova") for s in x["sinais"])]
+        if novas:
+            out.append({"tipo": "decisoes", "texto": "%s: %d campanha(s) nova(s). Qual o objetivo e quando se avalia?" % (c["nome"], len(novas))})
+    for m in nums:
+        for f in m["fontes"]:
+            if f["venda"] and (not f["ate"] or dt.date.fromisoformat(f["ate"]) < ate):
+                out.append({"tipo": "tarefas", "texto": "%s: venda (%s) %s. Quem traz e até quando?"
+                            % (m["nome"].split(":")[0], f["nome"], "até " + f["ate"][8:10] + "/" + f["ate"][5:7] if f["ate"] else "sem nenhum dado")})
+    return out
 
 
 # ------------------------------------------------------------------ atualizar fontes (APIs)
