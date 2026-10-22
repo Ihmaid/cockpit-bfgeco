@@ -397,17 +397,101 @@ def tela(slug, periodo="semana", ate=None, data=None):
             erros.append("%s: %s" % (m["id"], M.limpa(e)[:200]))
     md_ = midia(base, cli, ate)
     anterior = registro_anterior(base, data)
+    andamento = em_andamento(base, data)
     return {"cliente": {**item, "nome": cli.get("nome") or item.get("nome")}, "configurado": True,
             "faltas": item.get("faltas", []), "data": data, "ate": ate.isoformat(), "periodo": periodo,
-            "motores": nums, "outros_motores": outros, "midia": md_,
+            "motores": nums, "outros_motores": outros, "midia": md_, "andamento": andamento,
             "registro": ler_registro(arquivo_sprint(base, data)), "anterior": anterior,
-            "a_definir": a_definir(nums, md_, anterior, ate), "erros": erros}
+            "a_definir": a_definir(nums, md_, anterior, ate, andamento), "erros": erros}
 
 
-def a_definir(nums, md_, anterior, ate):
+# ------------------------------------------------------------------ em andamento (arquitetura/20)
+
+def _data(v):
+    return v if isinstance(v, dt.date) else (dt.date.fromisoformat(str(v)[:10]) if v else None)
+
+
+def em_andamento(base, data):
+    """Projetos ativos, testes em avaliação e tarefas do Ekyte, no horizonte até a sprint seguinte."""
+    hoje, ate_prox = dt.date.today(), dt.date.fromisoformat(data) + dt.timedelta(days=7)
+    projetos = []
+    for p in sorted(glob.glob(os.path.join(base, "projetos", "*.md"))):
+        fm = M.front_matter(p)
+        if fm.get("tipo") != "projeto" or fm.get("status") in ("concluido", "cancelado"):
+            continue
+        def classe(x):
+            prazo = _data(x.get("prazo"))
+            if x.get("status") in ("feito", "fechado", "decidido"):
+                return "feito"
+            if prazo and prazo < hoje:
+                return "atrasado"
+            return "proximo" if prazo and prazo <= ate_prox else "depois"
+        portoes = [{**x, "prazo": str(x.get("prazo") or ""), "classe": classe(x)} for x in fm.get("portoes") or []]
+        entregas = [{**x, "prazo": str(x.get("prazo") or ""), "classe": classe(x)} for x in fm.get("entregas") or []]
+        alvo = _data(fm.get("data_alvo"))
+        projetos.append({"slug": fm.get("slug") or os.path.basename(p)[:-3], "nome": fm.get("nome"), "status": fm.get("status"),
+                         "dono": fm.get("dono"), "data_alvo": str(alvo or ""), "dias": (alvo - hoje).days if alvo else None,
+                         "meta": fm.get("meta"), "interacao_com_trava": fm.get("interacao_com_trava"),
+                         "arquivo": os.path.relpath(p, RAIZ).replace("\\", "/"),
+                         "portoes": [x for x in portoes if x["classe"] != "feito"],
+                         "entregas": [x for x in entregas if x["classe"] in ("atrasado", "proximo")],
+                         "feitas": sum(1 for x in entregas if x["classe"] == "feito"), "total": len(entregas)})
+    testes = []
+    for p in sorted(glob.glob(os.path.join(base, "testes", "*.md"))):
+        fm = M.front_matter(p)
+        if fm.get("tipo") == "teste" and fm.get("status") == "em_teste":
+            av = _data(fm.get("avaliar_em"))
+            testes.append({"slug": fm.get("slug"), "acao": fm.get("acao"), "sinal": fm.get("sinal"), "criterio": fm.get("criterio"),
+                           "avaliar_em": str(av or ""), "avaliar_agora": bool(av and av <= ate_prox)})
+    ek = None
+    cache = os.path.join(base, "metricas", "serie", "ekyte_tarefas.json")
+    if os.path.exists(cache):
+        d = json.load(io.open(cache, encoding="utf-8"))
+        itens = []
+        for t in d["tarefas"]:
+            prazo, orig = _data(t.get("prazo")), _data(t.get("prazo_original"))
+            if prazo and prazo <= ate_prox:
+                itens.append({**t, "vencida": prazo < hoje, "empurrada": bool(orig and orig != prazo)})
+        ek = {"atualizado_em": d["atualizado_em"], "ativas": len(d["tarefas"]),
+              "itens": sorted(itens, key=lambda x: (not x["vencida"], x["prazo"] or ""))}
+    return {"projetos": projetos, "testes": testes, "ekyte": ek, "ate_prox": ate_prox.isoformat()}
+
+
+def baixar_ekyte(base, cli):
+    ws = cli.get("ekyte_workspace_id")
+    if not ws:
+        raise RuntimeError("cliente.md sem ekyte_workspace_id")
+    ek = _mod("ekyte")
+    try:
+        ativas = ek.tudo("/v1.2/tasks", workspaceId=ws, status=10)
+    except SystemExit as e:
+        raise RuntimeError("Ekyte indisponível: %s" % str(e)[:150])
+    tarefas = [{"titulo": t.get("title") or "", "executor": t.get("executor") or "", "prazo": (t.get("currentDueDate") or "")[:10] or None,
+                "prazo_original": (t.get("originalDueDate") or "")[:10] or None} for t in ativas]
+    json.dump({"atualizado_em": dt.datetime.now().isoformat(timespec="minutes"), "workspace": ws, "tarefas": tarefas},
+              io.open(os.path.join(base, "metricas", "serie", "ekyte_tarefas.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    return len(tarefas)
+
+
+def a_definir(nums, md_, anterior, ate, andamento=None):
     """O que a sprint precisa sair decidindo, só a partir de fato da tela (sem pergunta gerada)."""
     brl = lambda v: PM.brl(v)
     out = []
+    br_ = lambda s: "%s/%s" % (s[8:10], s[5:7]) if s else "sem data"
+    for p in (andamento or {}).get("projetos", []):
+        abertos = sorted([x for x in p["portoes"] if x["classe"] in ("atrasado", "proximo")], key=lambda x: x["prazo"])
+        if abertos:     # uma linha por projeto: o portão mais próximo e quantos vêm junto
+            x = abertos[0]
+            out.append({"tipo": "decisoes", "texto": "%s: %d portão(ões) até a próxima sprint (%s). O 1º é %s, %s (%s, %s %s)"
+                        % (p["nome"], len(abertos), ", ".join(y["id"] for y in abertos), x["id"], x["o_que"],
+                           x.get("dono") or "sem dono", "venceu em" if x["classe"] == "atrasado" else "vence", br_(x["prazo"]))})
+        atrasadas = [x for x in p["entregas"] if x["classe"] == "atrasado"]
+        if atrasadas:
+            out.append({"tipo": "tarefas", "texto": "%s: %d entrega(s) atrasada(s) (%s). Nova data ou corta escopo?"
+                        % (p["nome"], len(atrasadas), ", ".join(x["id"] for x in atrasadas))})
+    for t in (andamento or {}).get("testes", []):
+        if t["avaliar_agora"]:
+            out.append({"tipo": "decisoes", "texto": "Teste %s: avaliar (mantém, reverte ou escala?)" % t["slug"]})
     if anterior and (anterior.get("aberto") or "").strip("— \n"):
         out.append({"tipo": "aberto", "texto": "Fechar o que ficou aberto na sprint de %s" % anterior["data"][8:10] + "/" + anterior["data"][5:7]})
     if not md_["plano"]:
@@ -490,6 +574,10 @@ def atualizar(slug, ate=None):
             rel.append("google_ads por campanha: %d linhas" % baixar_google_campanhas(base, cli, ini, ate))
         except RuntimeError as e:
             rel.append("google_ads por campanha: %s" % M.limpa(e)[:200])
+    try:
+        rel.append("ekyte: %d tarefas ativas" % baixar_ekyte(base, cli))
+    except RuntimeError as e:
+        rel.append("ekyte: %s" % M.limpa(e)[:200])
     if cli.get("meta_ads_account"):
         try:
             META.baixar(slug, ini, ate)

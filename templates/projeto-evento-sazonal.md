@@ -10,10 +10,10 @@ criado_em: 2026-09-10
 # Template — projeto de evento sazonal
 
 Para eventos de data: Dia das Crianças, Black Friday, Natal, Ano Novo, Dia das Mães, volta às
-aulas. Gera uma `demanda`, não um `ciclo_pdca` — **é entrega, não hipótese**.
+aulas. Gera um **projeto** (`templates/projeto.md`, desde 22/10; antes, `demanda`), não um `ciclo_pdca` — **é entrega, não hipótese**.
 
-⚠️ Se o evento existe para **testar** algo (uma oferta nova, um canal novo), então é ciclo PDCA
-com métrica de interesse. O teste é: *há uma pergunta a responder?* Se não, é demanda.
+⚠️ Se o evento existe para **testar** algo (uma oferta nova, um canal novo), então é **teste**
+(`templates/teste.md`, `arquitetura/20`) com métrica de interesse. O teste é: *há uma pergunta a responder?* Se não, é demanda.
 
 ## ⚠️ Lançamento usa este template com uma inversão
 

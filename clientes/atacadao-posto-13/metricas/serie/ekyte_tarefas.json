@@ -1,0 +1,36 @@
+{
+ "atualizado_em": "2026-10-22T09:01",
+ "workspace": 91023,
+ "tarefas": [
+  {
+   "titulo": "Construir E-mails da Semana",
+   "executor": "Gabriel Ihmaid",
+   "prazo": "2026-10-26",
+   "prazo_original": "2026-10-19"
+  },
+  {
+   "titulo": "[BFG&Co] Otimizar campanhas e Overview ",
+   "executor": "Breno Ferreira",
+   "prazo": "2026-10-21",
+   "prazo_original": "2026-10-21"
+  },
+  {
+   "titulo": "Novos Roteiros ",
+   "executor": "Gabriel Ihmaid",
+   "prazo": "2026-11-03",
+   "prazo_original": "2026-11-03"
+  },
+  {
+   "titulo": "Disparar E-mail",
+   "executor": "Gabriel Ihmaid",
+   "prazo": "2026-10-22",
+   "prazo_original": "2026-10-22"
+  },
+  {
+   "titulo": "Enviar Funil GA4 no Grupo",
+   "executor": "Breno Ferreira",
+   "prazo": "2026-10-23",
+   "prazo_original": "2026-10-23"
+  }
+ ]
+}

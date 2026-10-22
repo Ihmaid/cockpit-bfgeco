@@ -3,6 +3,22 @@
 Projeto de gestão, análise e implementação do **Cockpit**: sistema para centralizar a gestão
 **estratégica, comercial e administrativa** da unidade BFG&Co da V4 Company.
 
+## 🔖⭐ 22/10/2026 (noite): MODELO DE TRABALHO + BLACK FRIDAY COMO 1º PROJETO
+
+✅ **Aprovado pelo Gabriel:** `arquitetura/20-modelo-de-trabalho.md`. Três tipos de trabalho e um corte:
+**projeto** (data-alvo, entregas, dependências: BF, volta às aulas) · **teste** (muda algo para mover métrica; o PDCA
+mora aqui, curto: sinal, ação, critério, data de avaliação) · **tarefa** (rotina) · **sprint** = o corte de ≤ 2
+semanas que a reunião de segunda tira dos três. O PDCA grande fica só na trava do plano. Toda tarefa da sprint aponta
+a origem (projeto, teste ou rotina); sem origem = ação solta. `pdca/` não recebe ciclos novos; `demandas/` → projetos.
+- Templates: `templates/projeto.md` (as 8 perguntas, portões, entregas) e `templates/teste.md`
+- ⭐ **1º projeto: `clientes/atacadao-posto-13/projetos/black-friday-2026.md`** — meta R$ 45,6 mil (semana 23/11,
+  realista), 8 portões (P1 lista de produtos, Matheus, **26/10**, trava o resto; P2–P7 prazos **propostos**, não
+  combinados; P8 caminho da medição, Gabriel, 28/10), 13 entregas até o fechamento em 04/12. Ligado ao plano Q4 por
+  `projeto_vinculado` (o alerta "BF sem demanda" saiu do radar)
+- Modo sprint ganhou o bloco **Em andamento**: projetos (portões e entregas até a próxima sprint), testes a avaliar,
+  Ekyte vencidas e até a próxima sprint (cache `metricas/serie/ekyte_tarefas.json`, gravado pelo "Atualizar dados").
+  A tela ocupa a largura toda
+
 ## 🔖⭐ 22/10/2026 (tarde): MODO SPRINT v1 NO APP — pronto para a sprint de 26/10
 
 `uv run --with pyyaml python app/server.py` → item **Sprint** na barra lateral (ou `http://127.0.0.1:8770/#sprint`).

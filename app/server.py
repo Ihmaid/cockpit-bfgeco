@@ -359,7 +359,7 @@ def gargalos(e: dict) -> list:
         agrava = ev.get("interacao_com_trava") == "agrava"
         if d > (60 if agrava else 30):
             continue
-        if not ev.get("demanda_vinculada"):
+        if not ev.get("demanda_vinculada") and not ev.get("projeto_vinculado"):   # projeto: arquitetura/20
             g.append({"sev": 0 if agrava else 1, "onde": "eventos", "ref": ev.get("evento"),
                       "t": f"{ev.get('evento')} sem demanda aberta",
                       "d": (f"Janela abriu há {-d} dias." if d < 0 else f"Janela abre em {d} dias.")

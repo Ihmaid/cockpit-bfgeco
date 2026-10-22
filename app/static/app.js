@@ -446,15 +446,15 @@ function vEventos(host){
   const rows = document.createElement("div"); rows.className = "rows";
   evs.forEach(e => {
     const d = e.dias_abre, agrava = e.interacao_com_trava === "agrava";
-    const semD = !e.demanda_vinculada;
+    const semD = !e.demanda_vinculada && !e.projeto_vinculado;   // projeto vale como demanda (arquitetura/20)
     const urgente = semD && d != null && d <= (agrava ? 60 : 30);
     const chips = [[e.tipo || "sazonal", "ghost"]];
     if(agrava) chips.push(["agrava a trava", "crit"]);
-    chips.push([e.demanda_vinculada ? "demanda ok" : "sem demanda",
-                e.demanda_vinculada ? "ok" : (urgente ? "crit" : "warn")]);
+    chips.push([e.projeto_vinculado ? "projeto ok" : (e.demanda_vinculada ? "demanda ok" : "sem projeto"),
+                !semD ? "ok" : (urgente ? "crit" : "warn")]);
     rows.append(linha({
       sev: urgente ? (agrava ? 0 : 1) : null,
-      st: e.demanda_vinculada ? "ok" : (urgente ? "crit" : "warn"),
+      st: !semD ? "ok" : (urgente ? "crit" : "warn"),
       titulo: e.evento,
       sub: `${e.data ? brl(e.data) : "—"} · janela abre ${e.abre ? br(e.abre) : "—"}${
         d != null ? ` (${d < 0 ? `há ${-d}d` : `em ${d}d`})` : ""} · ${e.canal_principal || ""}`,
@@ -903,6 +903,7 @@ function spTela(host, t){
     `<span class="chip ${FAROL[c.farol] || ""}">${esc(c.nome)} ${PCTv(c.ritmo)}</span>`).join(" ");
   host.innerHTML =
     spBloco("resumo", "Resumo", ritmo, spResumo(t), true) +
+    spBloco("andamento", "Em andamento", spAndamentoRes(t.andamento), spAndamento(t.andamento), true) +
     spBloco("numeros", "Números", `<span class="lbl">${esc({dia:"diário", semana:"semanal", mes:"mensal"}[t.periodo])} · mídia até ${br(t.ate)}</span>`,
             t.motores.map(spMotor).join("") || `<p class="vazio">Nenhum motor ativo com árvore de métricas.</p>`, true) +
     spBloco("midia", "Campanhas e plano de mídia", m_.plano ? `<span class="lbl">verba ${R$(m_.verba_total)} · dia ${m_.dia} de ${m_.dias_mes}</span>`
@@ -946,6 +947,53 @@ function spResumo(t){
   const erros = t.erros.length ? `<div class="alerta"><b>Erro:</b> ${t.erros.map(esc).join(" · ")}</div>` : "";
   return `${erros}${faltas}<div class="grid g2"><div><span class="lbl">motores de receita</span><ul class="sp-lista">${motores}</ul></div>
     <div><span class="lbl">o que ficou aberto</span>${ant}</div></div>`;
+}
+
+/* Em andamento (arquitetura/20): projetos, testes e Ekyte, no horizonte até a sprint seguinte. */
+const CLASSE = {atrasado:["atrasado","crit"], proximo:["até a próxima sprint","warn"], depois:["depois",""]};
+function spAndamentoRes(a){
+  const port = a.projetos.reduce((s, p) => s + p.portoes.filter(x => x.classe !== "depois").length, 0);
+  const venc = a.ekyte ? a.ekyte.itens.filter(i => i.vencida).length : 0;
+  return [`<span class="lbl">${a.projetos.length} projeto(s)</span>`,
+          port ? `<span class="chip warn">${port} portão(ões)</span>` : "",
+          a.testes.some(x => x.avaliar_agora) ? `<span class="chip warn">teste a avaliar</span>` : "",
+          venc ? `<span class="chip crit">${venc} vencida(s) no Ekyte</span>` : ""].join(" ");
+}
+function spAndamento(a){
+  const proj = a.projetos.map(p => {
+    const port = p.portoes.filter(x => x.classe !== "depois");
+    const tab = (titulo, itens, cols) => itens.length ? `<div><span class="lbl">${titulo}</span>
+      <div class="sp-tab"><table class="sp-lista-t">${itens.map(x => `<tr>
+        <td class="mono">${esc(x.id)}</td><td class="sp-txt">${inl(x.o_que)}${x.nota ? `<small> · ${inl(x.nota)}</small>` : ""}</td>
+        ${cols(x)}<td class="mono">${x.prazo ? br(x.prazo) : "—"}</td>
+        <td><span class="chip ${CLASSE[x.classe][1]}">${CLASSE[x.classe][0]}</span></td></tr>`).join("")}</table></div></div>` : "";
+    return `<div class="sp-proj">
+      <div class="sp-phd"><h3>${esc(p.nome)}</h3>
+        <span class="chip ghost">${esc(p.status)}</span>
+        <span class="mono">data-alvo ${br(p.data_alvo)}${p.dias != null ? ` · em ${p.dias} dias` : ""}</span>
+        <span class="mono">${p.feitas}/${p.total} entregas</span>
+        ${p.interacao_com_trava === "agrava" ? `<span class="chip crit" title="o pico cai sobre a trava: não escalar mídia sem a medição corrigida">agrava a trava</span>` : ""}
+        <span class="lbl sp-arq">${esc(p.arquivo)}</span></div>
+      ${p.meta && p.meta.valor ? `<p class="sp-nota">Meta: ${esc(p.meta.o_que)} = <b>${R$(p.meta.valor)}</b></p>` : ""}
+      <div class="grid g2">
+        ${tab("portões (decisões que travam o projeto)", port, x => `<td>${esc(x.dono || "")}</td>`) || `<p class="sp-nota">Nenhum portão em aberto.</p>`}
+        ${tab("entregas até a próxima sprint", p.entregas, x => `<td>${esc(x.responsavel || "")}</td>`) || `<p class="sp-nota">Nenhuma entrega vence até a próxima sprint.</p>`}
+      </div></div>`;
+  }).join("") || `<p class="sp-nota">Nenhum projeto em andamento. Modelo: <code>templates/projeto.md</code>.</p>`;
+  const testes = a.testes.length ? `<ul class="sp-lista">${a.testes.map(x => `<li><b>${esc(x.acao || x.slug)}</b>
+      <span class="chip ${x.avaliar_agora ? "warn" : "ghost"}">avaliar em ${br(x.avaliar_em)}</span>
+      <span class="sp-nota">sinal: ${inl(x.sinal || "—")} · critério: ${inl(x.criterio || "—")}</span></li>`).join("")}</ul>`
+    : `<p class="sp-nota">Nenhum teste registrado. O primeiro deve sair da próxima troca de criativo (<code>templates/teste.md</code>).</p>`;
+  const ek = a.ekyte ? (a.ekyte.itens.length ? `<ul class="sp-lista">${a.ekyte.itens.map(i => `<li>
+      ${i.vencida ? `<span class="chip crit">vencida</span>` : `<span class="chip ghost">vence ${br(i.prazo)}</span>`}
+      ${i.empurrada ? `<span class="chip warn" title="prazo original ${br(i.prazo_original)}">empurrada</span>` : ""}
+      ${esc(i.titulo)} <span class="sp-nota">${esc(i.executor)}${i.vencida ? " · prazo " + br(i.prazo) : ""}</span></li>`).join("")}</ul>`
+      : `<p class="sp-nota">Nada vencido nem vencendo até a próxima sprint.</p>`) +
+      `<p class="sp-nota">${a.ekyte.ativas} tarefas ativas · lido em ${esc(a.ekyte.atualizado_em.replace("T", " "))}</p>`
+    : `<p class="sp-nota">Sem leitura do Ekyte: use "Atualizar dados".</p>`;
+  return `${proj}<div class="grid g2 sp-and2">
+    <div><span class="lbl">testes</span>${testes}</div>
+    <div><span class="lbl">Ekyte: vencidas e até a próxima sprint</span>${ek}</div></div>`;
 }
 
 /* Mais antigo à esquerda, mais recente à direita; a 1ª coluna fica presa na rolagem lateral.
@@ -1091,7 +1139,7 @@ function render(){
     el.textContent = n || ""; el.className = "badge" + (n ? " on" : "") + (c ? " crit" : "");};
   set("#bgVisao", crit, true);
   set("#bgCiclos", abertos.length, false);
-  set("#bgEventos", E.eventos.filter(e => !e.demanda_vinculada && e.dias_abre != null
+  set("#bgEventos", E.eventos.filter(e => !e.demanda_vinculada && !e.projeto_vinculado && e.dias_abre != null
       && e.dias_abre <= (e.interacao_com_trava === "agrava" ? 60 : 30)).length, true);
   set("#bgEntregas", E.demandas.filter(d => (d.entregaveis || [])
       .some(x => !x.responsavel)).length, false);

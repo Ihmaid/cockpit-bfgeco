@@ -142,7 +142,7 @@ def gargalos(slug, indice):
         nome = evento.get("evento")
         quando = f"abriu ha {-dias}d" if dias < 0 else f"abre em {dias}d"
 
-        if not evento.get("demanda_vinculada"):
+        if not evento.get("demanda_vinculada") and not evento.get("projeto_vinculado"):
             achados.append((0 if agrava else 1,
                             f"'{nome}' {quando} SEM DEMANDA ABERTA"
                             + (" e AGRAVA a trava -- nao escalar midia" if agrava else "")))
