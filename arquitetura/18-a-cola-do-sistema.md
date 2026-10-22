@@ -45,7 +45,7 @@ falta é **o caminho de volta**. A cola são dois arquivos por reunião, um de i
 |---|---|---|---|---|
 | 1 | Análise recorrente | pauta do AP13 (e-commerce) | ✅ **feito em 20/10**: `scripts/pauta_motores.py` | ✅ |
 | 2 | ▶️ Cola: sprint/check-in alimentam o cliente | laço desenhado (`13` §4); notas e decisões no app | **formato do registro** + a próxima pauta ler o que ficou aberto | logo depois de 1; 1º teste na sprint de **26/10** |
-| 3 | Interface para a sprint | app local: seletor de cliente, aba "Check-in" grava notas e decisões | **modo sprint**: lista dos clientes na ordem da reunião; por cliente, desvios, plano de mídia, tarefas abertas/vencidas, o que ficou do último registro, e campos para registrar | depois de 2; alvo: sprint de **02/11** |
+| 3 | ⭐ Interface para a sprint (**antecipado em 22/10**: a pauta em doc foi reprovada no teste; desenho em `19-modo-sprint.md`) | app local: seletor de cliente, aba "Check-in" grava notas e decisões | **modo sprint**: lista dos clientes na ordem da reunião; por cliente, desvios, plano de mídia, tarefas abertas/vencidas, o que ficou do último registro, e campos para registrar | depois de 2; alvo: sprint de **02/11** |
 | 4 | Transcrição automática (Workspace) | o Meet já grava no Drive; o Claude lê pelo conector do Drive | script com **Drive + Agenda** (§3) | depois de 2 (o registro define o que extrair) |
 | 5 | Desdobrar em tarefas | Ekyte lido pela API; a skill antiga da Score gera **CSV de importação do Ekyte** | ponte por CSV agora; escrita direta (MCP) depois | junto com 2 (CSV); MCP é decisão sua (§4) |
 | 6 | Planejamento completo do cliente | plano Q4 do AP13; projeção; `docs/20` §8 | **template de projetos** + plano trimestral da Score | depois de 3 |
@@ -63,6 +63,13 @@ falta é **o caminho de volta**. A cola são dois arquivos por reunião, um de i
 - ⚠️ Condições: o nome do evento precisa trazer o cliente (convenção); a transcrição literal precisa
   estar ligada no Meet (resumo do Gemini não é fonte, só o literal); e a conta que organiza as reuniões
   precisa ser a que autoriza (em set/26 o conector do Drive parecia logado em outra conta)
+
+## 3.1 ⛔ 22/10: a pauta em documento foi reprovada
+
+No teste de 21/10 (Gabriel + Breno) a pauta `.md` não serviu: rolagem longa, ordem ruim, perguntas desconexas.
+O laço continua o mesmo (pauta → reunião → registro → Ekyte/Base/próxima pauta), mas **a ida e a volta passam a
+ser uma tela do app** (carrossel de clientes), não um documento. O registro segue gravado no `.md` da reunião.
+Desenho e datas: `19-modo-sprint.md`.
 
 ## 4.1 ✅ Decididas pelo Gabriel (20/10)
 

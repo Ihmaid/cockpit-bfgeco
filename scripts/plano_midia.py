@@ -93,7 +93,11 @@ def gasto_conector(base, canal, mes, ate=None):
                     soma[r["campanha"]] += float(r["gasto"] or 0)
                     ultimo = max(ultimo or d, d)
         if ultimo:
-            return [{"nome": n, "status": "", "gasto": g} for n, g in soma.items() if g > 0], ultimo
+            # status de hoje, gravado pelo scripts/meta.py (sem ele, "·" = sem status no cache)
+            st = os.path.join(base, "metricas", "serie", "meta_campanhas_status.json")
+            status = {c["name"]: c.get("effective_status", "") for c in json.load(io.open(st, encoding="utf-8"))["campanhas"]} \
+                if os.path.exists(st) else {}
+            return [{"nome": n, "status": status.get(n, ""), "gasto": g} for n, g in soma.items() if g > 0], ultimo
     arq = os.path.join(base, "midia", "real", "%s-%s.json" % (canal.split("_")[0], mes))
     if not os.path.exists(arq):
         raise RuntimeError("sem cache do conector em %s (o Claude grava a partir do conector)" % os.path.relpath(arq, RAIZ))

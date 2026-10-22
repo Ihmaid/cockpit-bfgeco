@@ -3,7 +3,24 @@
 Projeto de gestão, análise e implementação do **Cockpit**: sistema para centralizar a gestão
 **estratégica, comercial e administrativa** da unidade BFG&Co da V4 Company.
 
-## 🔖⭐ 21/10/2026: TESTE DAS PAUTAS COM O BRENO (antes da sprint de 26/10)
+## 🔖⭐ 22/10/2026: PAUTA EM DOC REPROVADA → MODO SPRINT NO APP (`arquitetura/19-modo-sprint.md`)
+
+O Gabriel testou as duas pautas com o Breno em 21/10 e **reprovou o formato documento**: dado difícil de achar
+(rolagem longa), ordem ruim, perguntas de abertura desconexas. O que rendeu foi o conhecimento das pessoas, não
+a pauta. Dump: `arquitetura/dump/2026-10-22-21`. Registro da reunião nos dois `reunioes/sprint/2026-10-21-sprint.md`.
+- **Novo desenho (proposta, aguarda o Gabriel, 4 perguntas em `19` §5):** carrossel de clientes **fora** da camada
+  de cliente; por cliente, blocos recolhíveis: resumo · números por motor com seletor **diário/semanal/mensal** ·
+  campanhas + plano de mídia (status, há quanto tempo, nova, pausada) · **criativos rodando** (catálogo com código
+  no nome do anúncio + miniatura da API) · registro. **Sai a lista de perguntas geradas**; entra sinal junto do número
+- Novo no escopo: **catálogo de criativos** (liga com o teste de criativo) e **gerador + catálogo de UTM**
+- ⛔ **Ciclo 1 sem "dentro do plano?"** (não há plano; o sistema primeiro ajuda a construir o plano)
+- Decidido na reunião (AP13): UTM obrigatória · 5 criativos/semana no Meta · validação 2× CPA / 4× CPA
+- ⚠️ Na transcrição, "Cláudio"/"Cloud" = Claude
+- **Meta: token aprovado; `scripts/meta.py` pronto** (`--validar`, `--cliente`: grava `meta_campanhas.csv` +
+  `meta_campanhas_status.json`; o `plano_midia.py` já lê o status). ⏳ **Falta o Gabriel colar o token no `.env`**
+  (linha `META_ACCESS_TOKEN=` já criada)
+
+## 🔖 21/10/2026: TESTE DAS PAUTAS COM O BRENO (antes da sprint de 26/10)
 
 O Gabriel antecipou o teste: reunião em **21/10 com o Breno** (GT do AP13; não é o GT da Score, ajuda no
 teste) para validar os modelos. Pautas geradas em 20/10 à noite:
