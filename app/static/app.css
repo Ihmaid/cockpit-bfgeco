@@ -105,7 +105,7 @@ button{font-family:inherit}
 .chip.ghost{background:none;border:1px solid var(--line-2);color:var(--ink-3)}
 
 /* ---------------- views ---------------- */
-.views{padding:22px 26px 64px;max-width:1180px;width:100%}
+.views{padding:22px 26px 64px;width:100%}   /* sem largura máxima: a tela usa o espaço todo (Gabriel, 22/10) */
 @media(max-width:560px){.top{padding:12px 16px}.views{padding:18px 16px 48px}}
 .bloco{margin-bottom:26px}
 .bloco-hd{display:flex;align-items:baseline;gap:12px;margin-bottom:10px}
@@ -356,8 +356,8 @@ input[type=text].mono{font-family:var(--f-num)}
 .sp-chd{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0 6px}
 .sp-chd:first-child{margin-top:4px}
 .sp-camp td.sp-cn,.sp-camp th:nth-child(2){text-align:left}
-.sp-camp td.sp-cn{max-width:420px;overflow:hidden;text-overflow:ellipsis}
-.sp-camp td.sp-cn>span:first-child{display:inline-block;max-width:300px;overflow:hidden;text-overflow:ellipsis;vertical-align:bottom}
+.sp-camp td.sp-cn{max-width:640px;overflow:hidden;text-overflow:ellipsis}
+.sp-camp td.sp-cn>span:first-child{display:inline-block;max-width:480px;overflow:hidden;text-overflow:ellipsis;vertical-align:bottom}
 .sp-camp tr.sp-g td{background:var(--surface-2);text-align:left;padding:6px 8px;white-space:normal}
 .sp-camp tr.sp-g td b{margin-right:8px}
 .sp-camp tr.sp-g.fora td{background:var(--crit-bg)}
