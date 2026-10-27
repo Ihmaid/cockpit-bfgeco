@@ -1,7 +1,7 @@
 # Árvore de métricas — motor GERAÇÃO DE LEAD (a mídia gera o contato; quem fecha é o comercial)
 #
 # Nasce com o 2º cliente (Score Positivo, pós-pago: contrato de gasto mínimo), em 20/10/2026
-# (arquitetura/17 §4.3). Serve depois a AMC, Sicher, Bloco D, Pezão Net (arquitetura/12: a carteira é
+# (arquitetura/17 §4.3). Serve depois a AMC, Sicher, Bloco D, Pezão Net (arquivo/arquitetura/12-growth-pack.md: a carteira é
 # majoritariamente de lead). Aplica-se a um MOTOR: `motores[].arvore: geracao-lead`.
 #
 # O elo que só existe aqui: o RESULTADO vem do comercial do cliente, por texto ou planilha, com atraso

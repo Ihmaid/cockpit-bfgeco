@@ -1,5 +1,7 @@
 # Rodada 4 — análise das respostas e trajeto proposto
 
+> 🔖 **Status em 27/10/2026:** trajeto aprovado em 13/10. Segue vigente o achado §8.1 (o que é cada compra que o Google recebe: 12% são pedidos não pagos). O trajeto foi reordenado em 20/10 (foco no sistema, Score como 2º cliente: `17`).
+
 > 10/10/2026. Insumo: `dump/2026-10-10-10` a `-13`. ⚠️ **Trajeto PROPOSTO, aguarda aprovação.** Nada
 > aqui autoriza execução. Perguntas novas no fim (Q52+).
 

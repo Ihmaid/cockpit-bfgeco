@@ -1,5 +1,7 @@
 # 13 — Consolidação da arquitetura
 
+> 🔖 **Status em 27/10/2026:** aprovada em 24/09 e base de tudo que veio depois. **Superado:** a pauta gerada em documento (→ `19`, tela da sprint), o PDCA como recipiente de toda ação e `demandas/` (→ `20`, projeto/teste/tarefa), "sem versionamento" (o repositório está no git desde 10/10). Os blocos de origem estão em `arquivo/arquitetura/`. O sistema hoje: `docs/sistema.md`.
+
 > 24/09/2026 · primeira proposta de arquitetura unificada, construída a partir de tudo nesta pasta
 > (blocos 01–07, respostas 08–11, Growth Pack 12). Três decisões tomadas pelo usuário na rodada;
 > quatro fecham por proposta, **sujeitas à revisão dele na leitura deste documento**.

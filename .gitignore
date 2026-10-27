@@ -16,8 +16,6 @@ google-ads.yaml
 *credential*
 *secret*
 *token*
-!docs/17-google-ads-token-passo-a-passo.md
-!docs/24-meta-token.md
 
 # ============================================================
 # Artefatos locais
@@ -55,6 +53,7 @@ desktop.ini
 # URLs de webhook do Cockpit (sem autenticação; CLAUDE.md: não publicar)
 # ============================================================
 docs/referencia/webhooks_clientes.csv
+arquivo/docs/referencia/webhooks_clientes.csv
 
 # Transcrição/ata de reunião com cliente: fica local (pode citar cliente final da Score)
 **/insumos/*Anotações do Gemini*

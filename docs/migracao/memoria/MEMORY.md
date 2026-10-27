@@ -1,13 +1,13 @@
 - [Perfil de Gabriel na V4 BFG&Co](perfil-gabriel-v4-bfgco.md) — sócio/prestador, Account dos 12 clientes do Fúria da Noite, forte em Power BI, pensa por Teoria das Restrições
-- [Papel: guardião do sistema operacional](papel-guardiao-do-cockpit.md) — consultoria contínua; escopo ampliado para o sistema próprio da unidade; manter docs/ atualizado é parte da função
+- [Papel: guardião do sistema](papel-guardiao-do-sistema.md) — consultoria contínua; aponta a decisão; um documento vigente por assunto e o "onde estamos" substituído, não empilhado
 - [Premissas de trabalho](premissas-de-trabalho-bfgco.md) — melhoria contínua sobre perfeição, nunca padronizar em cima de um cliente só, sazonalidade obrigatória no quarter, e a trava do cliente é hipótese (confirmá-la é saída do sistema, não entrada)
 - [Tese do sistema da BFG&Co](tese-do-sistema-bfgco.md) — apêndice de ritual, não destino; o produto é clareza sobre a rotina que falta; e nunca conectar fonte de dado antes de existir a pergunta
 - [Pauta da sprint vira tela](pauta-com-roteiro.md) — 22/10: pauta em doc com perguntas geradas reprovada; sprint = carrossel no app, dado por período, campanhas e criativos
-- [Foco no sistema, não no cliente](foco-ap13-antes-da-carteira.md) — 20/10: AP13 congelado, Score Positivo é o 2º cliente para generalizar o núcleo; teste: "serve ao 3º cliente?"
+- [Foco no sistema, não no cliente](foco-no-sistema.md) — 20/10: AP13 congelado, Score Positivo é o 2º cliente para generalizar o núcleo; teste: "serve ao 3º cliente?"
 - [Transcrição da sprint no Drive](transcricao-sprint-no-drive.md) — pasta do squad no Fúria, doc do Gemini de ~70 mil caracteres, filtrar pelo cliente
 - [Objetivo: a semana na frente](objetivo-semana-na-frente.md) — no domingo ver seg–sex dele e do time, com estágio e atraso; agentes são o meio; 1º teste real = Black Friday do AP13
 - [Horas são referência, não teto](horas-referencia-nao-teto.md) — 8–10 h/semana por cliente é régua de rentabilidade; passar é legítimo, dizer quanto e por quê
 - [Não lembrar pendência dispensada](nao-lembrar-pendencia-dispensada.md) — se ele disse "esquece, eu te chamo" (ex.: clone), parar de listar
-- [Conectores do claude.ai somem](conectores-claudeai-somem-apos-compactar.md) — Meta/Drive podem não carregar (sobretudo após /compact); conferir antes, onde paramos + chat novo, token é a saída
+- [Conectores do claude.ai somem](conectores-claudeai-somem-apos-compactar.md) — Drive e o Meta do AP13 ainda dependem do conector; o resto do Meta vem pela API desde 22/10
 - [Check-in de mídia feito aqui](checkin-de-midia-feito-no-cockpit.md) — desde 15/10 o deck do cliente sai da skill do projeto; material de referência enviado é digerido e apagado
 - [Design V4 no app](design-v4-no-app.md) — telas do sistema no padrão do check-in: preto, vermelho #e01b24, Bebas Neue, DM Sans, DM Mono

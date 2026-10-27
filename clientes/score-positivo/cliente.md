@@ -6,7 +6,7 @@ squad: furia-da-noite
 account: gabriel.ihmaid
 coordenador: lucas.bastos
 modelo: assessoria
-inicio_contrato: 2024-07          # docs/08 ⚠️ a confirmar
+inicio_contrato: 2024-07          # docs/unidade.md ⚠️ a confirmar
 fee_mensal: null                  # [aberto] o Gabriel não lembra (20/10)
 atendimento: "só CNPJ"            # 20/10: não atende CPF, o que reduz o universo (o Serasa domina, sobretudo em CPF)
 site: null                        # ⚠️ a confirmar o domínio principal; a LP mudou de .com.br para .net.br em set/26 (checkin/regras.md, tema 3)
@@ -18,7 +18,7 @@ canal_interno: "GChat — Fúria da Noite"
 capacidade_horas_semana: 10       # 10–12 h REFERÊNCIA (20/10); demanda muito variável: semana sem nada, semana cheia
 
 # Verba: NÃO HÁ PLANO DE MÍDIA REGISTRADO (o Gabriel não sabe; o Ekyte diz R$ 2.000, desatualizado). Até existir
-# o plano auditável (docs/20 §9), vale como referência o GASTO de set/2026, por decisão dele (20/10):
+# o plano auditável (docs/sistema.md §5), vale como referência o GASTO de set/2026, por decisão dele (20/10):
 #   Google R$ 4.662 · Meta R$ 3.570 (WhatsApp R$ 1.678, parado desde ~17/09 · formulário R$ 1.470 · tráfego R$ 421)
 #   · LinkedIn ~R$ 1.800 (R$ 60/dia, informado) → ~R$ 10.000/mês
 #   Últimos 30 dias (20/09–19/10): Google R$ 5.782 · Meta R$ 3.361 (formulário R$ 2.720 · LP CENPROT R$ 273 · tráfego R$ 368)

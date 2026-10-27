@@ -1,5 +1,7 @@
 # 18 · A cola do sistema: ritual → registro → tarefa → próxima pauta
 
+> 🔖 **Status em 27/10/2026:** aprovada (§4.1). O passo 3 foi antecipado e a ida deixou de ser documento: `19`.
+
 > 20/10/2026. Origem: `dump/2026-10-20-20-conectar-os-pontos.md`. Responde: como a sprint e o check-in
 > alimentam o cliente, como isso vira tarefa e planejamento, qual é a cola, se dá para receber a
 > transcrição do Workspace sozinho, e se já há interface para a sprint. ⚠️ Proposta, aguarda o Gabriel.
@@ -48,7 +50,7 @@ falta é **o caminho de volta**. A cola são dois arquivos por reunião, um de i
 | 3 | ⭐ Interface para a sprint (**antecipado em 22/10**: a pauta em doc foi reprovada no teste; desenho em `19-modo-sprint.md`) | app local: seletor de cliente, aba "Check-in" grava notas e decisões | **modo sprint**: lista dos clientes na ordem da reunião; por cliente, desvios, plano de mídia, tarefas abertas/vencidas, o que ficou do último registro, e campos para registrar | depois de 2; alvo: sprint de **02/11** |
 | 4 | Transcrição automática (Workspace) | o Meet já grava no Drive; o Claude lê pelo conector do Drive | script com **Drive + Agenda** (§3) | depois de 2 (o registro define o que extrair) |
 | 5 | Desdobrar em tarefas | Ekyte lido pela API; a skill antiga da Score gera **CSV de importação do Ekyte** | ponte por CSV agora; escrita direta (MCP) depois | junto com 2 (CSV); MCP é decisão sua (§4) |
-| 6 | Planejamento completo do cliente | plano Q4 do AP13; projeção; `docs/20` §8 | **template de projetos** + plano trimestral da Score | depois de 3 |
+| 6 | Planejamento completo do cliente | plano Q4 do AP13; projeção; `templates/projeto.md` | **template de projetos** + plano trimestral da Score | depois de 3 |
 | 7 | Semana na frente (domingo) | radar do Ekyte | depende de as tarefas certas estarem no Ekyte (2 + 5) | por último |
 
 ## 3. Transcrição pelo Workspace: dá, e rende mais que a transcrição
@@ -56,7 +58,7 @@ falta é **o caminho de volta**. A cola são dois arquivos por reunião, um de i
 - O Meet já salva transcrição e anotações do Gemini no Drive do organizador. **A Agenda diz qual reunião
   aconteceu, com qual cliente e quando.** Com as duas, um script baixa a transcrição de cada reunião e
   liga ao cliente sem ninguém mexer
-- Técnico: mesma credencial Google do projeto (`docs/25`), com dois escopos novos de **só leitura**
+- Técnico: mesma credencial Google do projeto (`docs/integracoes/ga4.md`), com dois escopos novos de **só leitura**
   (Drive e Agenda). O bruto fica fora do git; o registro é o que entra
 - ⭐ **Ganho que não foi pedido:** a Agenda mede o ritual. "Check-in da Score não aconteceu nesta semana"
   vira gargalo de rotina, que é a tese 1 do projeto (*clareza sobre a rotina que não acontece*)

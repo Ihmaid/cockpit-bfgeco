@@ -86,7 +86,7 @@ contas atribuídas a ele.
 
 **0. Verificar antes de criar.** Em business.facebook.com › **Configurações do negócio** ›
 **Usuários** › **Usuários do sistema**, ver se já existe um. Em 09/09 havia um "candidato
-encontrado" (`docs/12`, item 3). ⚠️ Se já existir um de leitura, reaproveitar.
+encontrado" (`arquivo/docs/12-roteiro-de-acao.md`, item 3). ⚠️ Se já existir um de leitura, reaproveitar.
 
 **1. Criar o app, que é exigido para gerar o token.**
 developers.facebook.com › **Meus apps** › **Criar app** › tipo **Empresa** (Business) › vincular

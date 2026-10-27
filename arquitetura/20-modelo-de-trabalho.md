@@ -2,7 +2,7 @@
 
 > 22/10/2026. Origem: `dump/2026-10-22-22-projetos-sprints-e-pdca.md`. ✅ **Aprovado pelo Gabriel em 22/10**
 > ("faz sentido, podemos seguir dessa forma"), com a Black Friday do AP13 como primeiro projeto.
-> Substitui o uso do `ciclo_pdca` como recipiente de qualquer ação (`docs/18`).
+> Substitui o uso do `ciclo_pdca` como recipiente de qualquer ação (`docs/sistema.md`).
 
 ## 1. O problema
 
@@ -60,7 +60,7 @@ O que está atrasado ou com portão vencido entra também em "O que sair decidid
 
 ## 5. Migração
 
-- **Projeto:** `templates/projeto.md` (as 8 perguntas de `docs/20` §8). 1ª instância: `clientes/atacadao-posto-13/projetos/black-friday-2026.md`
+- **Projeto:** `templates/projeto.md` (as 8 perguntas fixas, levantadas no plano da BF em 15/10). 1ª instância: `clientes/atacadao-posto-13/projetos/black-friday-2026.md`
 - **Eventos do plano** (`plano.eventos[]`) ligam ao projeto por `projeto_vinculado` (antes `demanda_vinculada`)
 - **`demandas/`** (eventos sazonais) passam a ser projetos; a do Dia das Crianças fica como histórico
 - **`pdca/`** deixa de receber ciclos novos. Os dois abertos do AP13 (03, 04) viram projeto ou diagnóstico quando

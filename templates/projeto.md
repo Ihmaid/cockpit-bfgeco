@@ -25,8 +25,8 @@ atualizado_em: AAAA-MM-DD
 
 # <nome>
 
-> Modelo de trabalho: `arquitetura/20`. Questionário fixo: `docs/20` §8 (as mesmas 8 perguntas para todo
-> projeto). Evento de data: ver também `templates/projeto-evento-sazonal.md` (lead time, regra da trava).
+> Modelo de trabalho: `arquitetura/20`. Questionário fixo: as 8 seções abaixo, as mesmas para todo
+> projeto. Evento de data: ver também `templates/projeto-evento-sazonal.md` (lead time, regra da trava).
 
 ## 1. Meta: quanto e como se mede
 ## 2. Decisões até a data (os portões)

@@ -64,6 +64,8 @@ def faltas(c, cli, base):
         f.append("plano de mídia do mês")
     if not cli.get("ekyte_workspace_id"):
         f.append("workspace do Ekyte")
+    if len(glob.glob(os.path.join(base, "contexto", "0[0-9]-*.md"))) < 10:   # padrão de todo cliente (templates/cliente/)
+        f.append("contexto do cliente (contexto/00..09)")
     return f
 
 

@@ -1,5 +1,7 @@
 # 14 — Acompanhamento de métricas: sai da planilha, entra na topologia
 
+> 🔖 **Status em 27/10/2026:** vigente no princípio (definição única no núcleo, cálculo por script, lido no app). **Superado:** a pauta em documento (`pauta.py`, arquivado) e a árvore única de e-commerce (hoje uma árvore por natureza de motor, `17`). "begin_checkout quebrado desde agosto" foi corrigido em 20/10: estava inflado de 20/07 a ~24/08.
+
 > 24/09/2026 · fala literal em [dump/2026-09-24-09-acompanhamento.md](dump/2026-09-24-09-acompanhamento.md).
 > Growth Pack do Atacadão relido **somente leitura** nesta data (abas 5.0, 5.1, 5.2 e as quatro bases).
 > ⚠️ Contém dado real do cliente — não publicar.
@@ -98,7 +100,7 @@ com a Google Ads API:
 
 ### 7. ⭐ Meta pelo conector (28/09): mais três regras
 
-Recorte do Meta para a mesma pauta (§2.2 e §3.1 dela), pelo conector do claude.ai (`docs/24`):
+Recorte do Meta para a mesma pauta (§2.2 e §3.1 dela), pelo conector do claude.ai (`docs/integracoes/meta.md`):
 
 - ⛔ **A conta do Meta mistura e-commerce com loja física.** Duas campanhas de tráfego para o
   Instagram e a loja levam ~30% do Meta e não vendem no site. **Regra:** o ROAS do e-commerce só
@@ -159,7 +161,7 @@ REPO DO CLIENTE (Clientes/<Cliente>/<repo>/)
 |---|---|
 | **Definição** (`<modelo>.yaml`) | **uma fórmula por métrica, num lugar só.** Nenhuma cópia no repo do cliente (regra dura do `13` §5). O que é igual por modelo de negócio fica aqui, e o que é do cliente fica no `cliente.md` |
 | **Script** | lê o `cliente.md`, busca cada fonte, grava o cache e calcula as visões. Reaproveita o padrão de `scripts/ekyte.py`: credencial do `.env`, `limpa()`, **nunca imprime token**. Só lê das fontes |
-| **Série automática** | **cache**, regerável a qualquer momento. Cada rodada **reprocessa uma janela móvel de ~30 dias**, porque a conversão do Google retroage por semanas (`docs/16`) |
+| **Série automática** | **cache**, regerável a qualquer momento. Cada rodada **reprocessa uma janela móvel de ~30 dias**, porque a conversão do Google retroage por semanas (`arquivo/docs/16-defeitos-do-payload.md`) |
 | **Lançamento manual** | `manual.csv` com dia, campo, valor e origem. É o único lugar desse dado |
 | **Caso a caso** | o `cliente.md` declara **quais campos são manuais**, de onde vêm (export JET, CRM…), **quem lança e com que cadência**. No AP13 é o export da JET; num cliente de lead serão os dados pós-lead do CRM |
 | **Visões** | diário · semanal (dom–sáb, como na planilha) · mensal. **Razões recalculadas a partir das somas do período**, nunca média de razões diárias |
@@ -205,9 +207,9 @@ O script não trava quando falta algo. Ele **mostra a lacuna** na pauta (premiss
 
 | Fonte | Situação |
 |---|---|
-| **Google Ads** | ✅ developer token em Basic Access + `adc.json` (`docs/17`). O script pode usar já |
-| **Meta Ads** | ✅ conector validado em 28/09 (conta `212245853`), mas só funciona dentro da sessão do Claude. O script precisa de **token de usuário de sistema**: criado em 27/09 na BM do AP13, aguardando aprovação de outro admin (`docs/24`) |
-| **GA4** | ✅ validado em 28/09: **OAuth do usuário**, no mesmo projeto e cliente OAuth do Google Ads, escopo `analytics.readonly`. AP13 = propriedade `363402252`. `scripts/ga4.py` já lê o site inteiro (`docs/25`). A conta de serviço fica para a escala |
+| **Google Ads** | ✅ developer token em Basic Access + `adc.json` (`docs/integracoes/google-ads.md`). O script pode usar já |
+| **Meta Ads** | ✅ conector validado em 28/09 (conta `212245853`), mas só funciona dentro da sessão do Claude. O script precisa de **token de usuário de sistema**: criado em 27/09 na BM do AP13, aguardando aprovação de outro admin (`docs/integracoes/meta.md`) |
+| **GA4** | ✅ validado em 28/09: **OAuth do usuário**, no mesmo projeto e cliente OAuth do Google Ads, escopo `analytics.readonly`. AP13 = propriedade `363402252`. `scripts/ga4.py` já lê o site inteiro (`docs/integracoes/ga4.md`). A conta de serviço fica para a escala |
 | **Manual** | não precisa: é arquivo no repo do cliente |
 
 🔐 As mesmas regras de sempre: token só no `.env`, nunca em `.md` nem em conversa, e o script nunca imprime token.
@@ -245,12 +247,12 @@ uv run --with pyyaml python scripts/pauta.py --cliente atacadao-posto-13
 ```
 
 **Teste de regressão (28/09):** a pauta gerada com dados até 26/09
-(`clientes/atacadao-posto-13/metricas/teste-regressao/2026-09-28-sprint-gerada.md`) reproduz os
+(`arquivo/clientes/atacadao-posto-13/metricas/teste-regressao/2026-09-28-sprint-gerada.md`) reproduz os
 números da pauta manual: Google e Meta ao centavo e JET igual. ⚠️ **Diferença conhecida:** as sessões
 somadas por dia dão ~2% a mais que a consulta por período (sessão que cruza a meia-noite conta
 duas vezes). O baseline de 0,78% usa a mesma base, então a comparação fica consistente.
 
-⚠️ **Não construído nesta etapa:** leitura do Meta por API (espera o token, `docs/24`) · aba
+⚠️ **Não construído nesta etapa:** leitura do Meta por API (espera o token, `docs/integracoes/meta.md`) · aba
 *Acompanhamento* no app · escrita no Ekyte · automação.
 
 ---
@@ -274,7 +276,7 @@ venda válida (aprovada e não cancelada)**, e `pedidos_cancelados` vira campo. 
 **91 compras / R$ 25.955** (era 90 / R$ 26.253 na pauta de 28/09: um pedido aprovado depois e um
 estornado). Glossário atualizado.
 
-**Pauta de teste:** `clientes/atacadao-posto-13/metricas/teste-regressao/2026-10-12-sprint-teste-fase-a.md`
+**Pauta de teste:** `arquivo/clientes/atacadao-posto-13/metricas/teste-regressao/2026-10-12-sprint-teste-fase-a.md`
 (dados até 10/10). Mostra as lacunas como devia: Meta só até 27/09 (conector fora desta sessão) e JET até 09/10.
 
 **Próximo:** agente de tráfego (`arquitetura/16` §5).

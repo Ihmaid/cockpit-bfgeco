@@ -1,23 +1,17 @@
 ---
 name: conectores-claudeai-somem-apos-compactar
-description: Meta Ads e Google Drive (conectores do claude.ai) às vezes não carregam na sessão, sobretudo depois de /compact; o Google Ads (MCP local) sobrevive
+description: "Conectores do claude.ai (Meta Ads, Google Drive) às vezes não carregam, sobretudo depois de /compact; desde 22/10 o Meta vem pela API (scripts/meta.py) e o conector só cobre o AP13"
 metadata:
+  node_type: memory
   type: feedback
+  originSessionId: 35eb447d-dde9-406f-9afd-2ef08694d99f
+  modified: 2026-10-27T10:07:15.028Z
 ---
 
-Os conectores do claude.ai (Meta Ads, Google Drive) às vezes não carregam na sessão. Em 15/10/2026,
-depois de um /compact, o Meta Ads nem aparecia no `/mcp`; o Google Ads, que é MCP local, seguiu de pé.
-Em 12–13/10 o mesmo aconteceu sem explicação. ⚠️ A causa não foi provada (suspeitas: compactação e
-`MCP_CONNECTION_NONBLOCKING`).
+Os conectores do claude.ai às vezes não carregam na sessão (12–13/10 e depois de um /compact em 15/10; causa não provada). O Google Ads, MCP local, sobrevive.
 
-**Why:** o Gabriel abriu um chat só para ter o Meta e ele caiu de novo; perder a sessão no meio de
-uma entrega (o check-in de 15/10) custa tempo.
+**Desde 22/10/2026 o Meta não depende do conector:** `scripts/meta.py` lê pela API com o token do usuário de sistema da BM "MCC" (no `.env`, nunca na conversa). **Exceção:** a conta do AP13 (`212245853`) ainda não está atribuída a esse usuário; até lá, o Meta do AP13 vem pelo conector (`meta_cache.py`). O Google Drive segue só pelo conector (a transcrição da sprint mora lá).
 
-**How to apply:**
-- No início de tarefa que depende do Meta, conferir se as ferramentas `mcp__claude_ai_Meta_Ads__*`
-  existem antes de planejar em cima delas
-- Se faltarem: pedir `/mcp`; se o Meta nem aparecer, escrever o "onde paramos" no CLAUDE.md, dar push
-  e recomendar chat novo (não insistir na sessão)
-- Evitar /compact no meio de tarefa que depende de conector; preferir fechar com "onde paramos" e abrir outro chat
-- Solução definitiva = token do Meta por script (`docs/24`; desde 18/10 pela BM "MCC" da unidade, um
-  token para todos). O conector vira plano B. Ver [[foco-ap13-antes-da-carteira]]
+**Why:** perder o conector no meio de uma entrega custou o check-in de 15/10.
+
+**How to apply:** antes de tarefa que depende do Meta do AP13 ou do Drive, conferir se as ferramentas `mcp__claude_ai_*` existem. Se faltarem: pedir `/mcp`; se nem aparecerem, atualizar o "onde estamos" do CLAUDE.md, dar push e recomendar chat novo. Para os outros clientes, usar `scripts/meta.py` (guia em `docs/integracoes/meta.md`). Ver [[foco-no-sistema]].

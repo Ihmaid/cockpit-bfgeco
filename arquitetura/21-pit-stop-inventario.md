@@ -1,5 +1,7 @@
 # 21 · Pit stop: inventário do repositório e proposta de organização
 
+> 🔖 **Status: executado em 27/10/2026** (respostas do Gabriel: CENPROT fica como está; análises antigas da Score para o arquivo; contexto 00..09 é o padrão de todo cliente; unidade num só documento). Resultado em `docs/sistema.md` e `arquivo/README.md`.
+>
 > 22/10/2026. Pedido do Gabriel: pausar a produção, revisar os documentos, tirar o que não se usa e melhorar o
 > que já foi feito. ⚠️ **Proposta: nada foi movido nem apagado.** Aguarda aprovação (perguntas no §6).
 

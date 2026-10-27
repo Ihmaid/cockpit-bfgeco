@@ -18,4 +18,4 @@ Visão de longo prazo declarada no mesmo dia: **rede de agentes de execução** 
 
 **Why:** a restrição do sistema é a atenção dele. Os agentes são meio, não fim. Não reordenar o plano A–G por fora dessa cadeia.
 
-**How to apply:** julgar qualquer proposta pelo critério "isto tira algo da caixinha das mãos dele, ou ajuda a ver a semana antes que ela aconteça?". O primeiro teste real escolhido por ele é **estruturar a Black Friday do AP13 dentro do sistema**. ⛔ O evento na Baixada foi só um exemplo e não é para levar adiante: o contrato é de mídia online, e propor tirar verba da mídia sem insumo custaria o cliente. Ver [[tese-do-sistema-bfgco]] e [[foco-ap13-antes-da-carteira]].
+**How to apply:** julgar qualquer proposta pelo critério "isto tira algo da caixinha das mãos dele, ou ajuda a ver a semana antes que ela aconteça?". O primeiro teste real escolhido por ele é **estruturar a Black Friday do AP13 dentro do sistema**. ⛔ O evento na Baixada foi só um exemplo e não é para levar adiante: o contrato é de mídia online, e propor tirar verba da mídia sem insumo custaria o cliente. Ver [[tese-do-sistema-bfgco]] e [[foco-no-sistema]].

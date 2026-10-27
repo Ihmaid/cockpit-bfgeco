@@ -20,7 +20,7 @@ A pergunta que este script responde (tese 2, nada se conecta sem pergunta):
 o carrinho -> checkout quebrou no GA4 em ~21/08 e o pixel do Meta nao (pauta de 28/09, §3.1).
 Qual e' o funil real do site inteiro, e desde quando a conversao cai?
 
-Levantado em 28/09/2026. Ver docs/25-ga4-credencial.md
+Levantado em 28/09/2026. Ver docs/integracoes/ga4.md
 """
 import io, os, re, sys, json, argparse, datetime
 import urllib.parse, urllib.request, urllib.error
@@ -65,7 +65,7 @@ def access_token():
         dica = ""
         if "invalid_grant" in msg:
             dica = ("\n-> refresh token expirado ou revogado. Se a tela de consentimento estiver "
-                    "'Externo + Em teste', ele expira em 7 dias. Gere de novo (docs/25).")
+                    "'Externo + Em teste', ele expira em 7 dias. Gere de novo (docs/integracoes/ga4.md).")
         sys.exit("Falha ao renovar o token (HTTP %s)\n%s%s" % (e.code, msg, dica))
     SEGREDOS.append(tok)
     return tok
@@ -84,10 +84,10 @@ def chamar(url, corpo=None):
         if "SERVICE_DISABLED" in msg or "has not been used" in msg:
             api = "Admin API" if "analyticsadmin" in url else "Data API"
             dica = ("\n-> a Google Analytics %s nao esta ativada no projeto do Cloud dono do "
-                    "cliente OAuth (o mesmo do Google Ads). Passo 1 do docs/25." % api)
+                    "cliente OAuth (o mesmo do Google Ads). Passo 1 do docs/integracoes/ga4.md." % api)
         elif e.code == 403:
             dica = ("\n-> a conta que autorizou nao tem acesso a esta propriedade. "
-                    "Passo 2 do docs/25 (papel Leitor).")
+                    "Passo 2 do docs/integracoes/ga4.md (papel Leitor).")
         elif e.code == 404:
             dica = "\n-> ID de propriedade inexistente. E' o numero, nao o G-XXXX."
         sys.exit("HTTP %s\n%s%s" % (e.code, msg[:400], dica))

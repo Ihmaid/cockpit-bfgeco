@@ -3,7 +3,7 @@
 # "carteira real do Fúria"); o campo `active` do Ekyte está desatualizado e não serve.
 #
 # Cliente com pasta em clientes/<slug>/ lê tudo do cliente.md. Os demais entram mostrando o que falta.
-# Contas abaixo: achadas pelo NOME nas listas da API (Meta, 22/10; Google, docs/08). ⚠️ A confirmar antes
+# Contas abaixo: achadas pelo NOME nas listas da API (Meta, 22/10; Google, docs/unidade.md). ⚠️ A confirmar antes
 # de ligar qualquer fonte: nenhuma fonte entra antes de existir a pergunta que ela responde (tese 2).
 
 squad: furia-da-noite

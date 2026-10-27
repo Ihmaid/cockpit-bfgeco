@@ -74,4 +74,4 @@ funcionam aqui, e mudam se o uso mostrar que erram. Não propor validação exte
 **6. Portão de escala.** *"Só vou popular quando AP13 estiver 100% e tiver um bom teste com outro
 cliente."* Popular os 12 clientes é **fase final**, com dois portões humanos — não item de MVP.
 
-Ver [[papel-guardiao-do-cockpit]] e [[perfil-gabriel-v4-bfgco]].
+Ver [[papel-guardiao-do-sistema]] e [[perfil-gabriel-v4-bfgco]].

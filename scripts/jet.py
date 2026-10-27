@@ -13,7 +13,7 @@ O export tem 1 linha por ITEM e traz nome, CPF, e-mail, endereco e telefone do c
 Nada disso sai daqui: o script so' le as colunas de pedido e grava contagens e somas por dia.
 A pasta bruto/ esta no .gitignore.
 
-Definicoes (docs/02-glossario-metricas.md, bloco E-commerce):
+Definicoes (docs/glossario-metricas.md, bloco E-commerce):
 - pre_pedido = a compra (1 checkout). A JET divide uma compra em N pedidos por centro de
   distribuicao, entao pedidos > pre_pedidos. O comparavel as transacoes do GA4 e' o pre_pedido
 - aprovado = tem Data Aprovacao. Pedido "Novo" sem aprovacao nao conta como compra paga

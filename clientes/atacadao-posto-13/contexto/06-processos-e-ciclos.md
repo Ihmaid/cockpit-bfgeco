@@ -31,7 +31,7 @@ O documento tem **um único ciclo preenchido** (03/03/2026). A seção "Fevereir
 branco, e os campos de Plan / Do / Check / Act estão vazios.
 
 Ou seja: o PDCA do Atacadão é **mais um instrumento iniciado e abandonado** — o mesmo padrão das
-planilhas de GPI, Funil e Plano de Mídia do squad (ver `../../docs/08-carteira-e-squads.md`).
+planilhas de GPI, Funil e Plano de Mídia do squad (ver `../../docs/unidade.md`).
 
 Isso é relevante para o piloto: o cliente **já tem um ritual desenhado** que casa com o
 check-in do Cockpit. Não é preciso inventar processo — é preciso fazer o existente rodar, e no

@@ -42,11 +42,11 @@ enxerga a MCC e a propriedade GA4.
 uv run --with google-auth-oauthlib python scripts/gerar-adc-google-ads.py   # → ~/.config/google-ads/adc.json
 uv run --with google-auth-oauthlib python scripts/gerar-adc-ga4.py          # → ~/.config/ga4/adc.json (reaproveita o cliente)
 ```
-Armadilhas conhecidas: `docs/17` (tipo do cliente OAuth, `redirect_uri_mismatch`) e `docs/25`.
+Armadilhas conhecidas: `docs/integracoes/google-ads.md` (tipo do cliente OAuth, `redirect_uri_mismatch`) e `docs/integracoes/ga4.md`.
 Alternativa: copiar os dois `adc.json` da máquina antiga por pendrive. **Não pela pasta
 compartilhada.**
 
-**5. Reinstalar o MCP do Google Ads.** `docs/17`, Parte C (`claude mcp add -s user google-ads ...`),
+**5. Reinstalar o MCP do Google Ads.** `docs/integracoes/google-ads.md`, Parte C (`claude mcp add -s user google-ads ...`),
 com as três variáveis `GOOGLE_ADS_*` do `.env`. Reiniciar a sessão.
 ⚠️ O MCP aceita o ID da MCC com hífens. A API REST, usada pelos scripts, não aceita, e os scripts
 já removem os hífens.

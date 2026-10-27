@@ -1,36 +1,27 @@
 # Atacadão Posto 13 — repositório do cliente
 
-**Squad:** Fúria da Noite · **Account:** Gabriel Ihmaid · **Produto:** assessoria
-**Piloto** do sistema próprio da unidade · reestruturado em **10/09/2026**
+**Squad:** Fúria da Noite · **Account:** Gabriel Ihmaid · **Produto:** assessoria · 1º cliente do sistema
+(piloto desde 10/09/2026). Estrutura no padrão de todo cliente: `docs/sistema.md` §3.
 
-## Estrutura
+## Onde está cada coisa
 
-| Pasta | O que guarda | Meia-vida |
-|---|---|---|
-| `cliente.md` | identificação, squad, modelo, natureza, IDs de conta | anos |
-| `contexto/00..09.md` | contexto estável | trimestres |
-| `planos/` | um plano por quarter; **`vigente: true` em um só** | quarter |
-| `pdca/` | ciclos — hipótese com métrica de interesse e SLA | semanas |
-| `demandas/` | trabalho **fora** do plano (eventos, pedidos) | semanas |
-| `pendencias/` | aguardando terceiro, quase sempre o cliente | até resolver |
-| `reunioes/` | **pauta gerada**, notas e decisões, uma subpasta por tipo (`sprint/`, `checkin/`) | evento |
-| `momentos/` | append-only e datado — a trajetória | permanente |
-| `diagnosticos/` | V4MOS (extração manual) ou diagnóstico próprio | quarter |
-| `revisoes/` | revisão de fim de quarter | quarter |
-
-## Estado em 10/09/2026
-
-- **Plano vigente:** [planos/2026-Q4.md](planos/2026-Q4.md) · trava: **Decisão**
-- **Ciclos abertos:** `ciclo-02` (30/09) · `ciclo-03` (17/10) · `ciclo-04` (19/10)
-- **Demanda em curso:** Dia das Crianças — janela abre **21/09**
-- **Pendência escalada:** CRM / medição do comercial
-- **Próxima pauta gerada:** [reunioes/checkin/2026-09-17-checkin15.md](reunioes/checkin/2026-09-17-checkin15.md)
+| Pasta | O que guarda |
+|---|---|
+| `cliente.md` | contas, time, motores de receita (e-commerce ativo · lojas físicas monitorado · marketplace fora) |
+| `contexto/00..09` | conhecimento estável; não guarda o momento atual |
+| `planos/` | plano do Q4 (trava: **Decisão**, sessão → compra) e a projeção do Q4 |
+| `projetos/` | ⭐ `black-friday-2026.md`, o 1º projeto do sistema (portões e entregas) |
+| `reunioes/sprint/` · `reunioes/checkin/` | registro de cada reunião |
+| `diagnosticos/` | tráfego (14/10) e tracking/GTM (20/10) |
+| `checkin/` | decks do check-in e `regras.md` (ler inteiro antes de montar um deck) |
+| `metricas/` | `manual.csv` (JET, gerado por `scripts/jet.py`), `serie/` (caches), `bruto/` (exports, fora do git) |
+| `pendencias/` | aguardando terceiro: medição da venda assistida |
+| `pdca/` · `demandas/` · `momentos/` · `revisoes/` | **legado** (modelo antigo, `arquitetura/20`): as telas antigas do app ainda leem; nada novo entra aqui |
 
 ## Regra de uso
 
-`contexto/` guarda **contexto estável**. **Não guarda momento atual** — performance do mês,
-campanha no ar e gargalo de agora vivem em `momentos/`, `planos/` e `pdca/`. Cada arquivo declara
-a data da fonte no topo.
+`contexto/` guarda **contexto estável**. O que muda toda semana fica nos registros das reuniões, nos projetos e
+nos números da tela da sprint. Cada arquivo declara a data da fonte no topo.
 
 ## Fontes consolidadas
 
@@ -54,16 +45,12 @@ Em ordem de retorno para o Q4:
 
 **Dono:** Gabriel Ihmaid (Account).
 
-**Gatilhos definidos:**
+**Gatilhos de atualização:**
 
-| Artefato | Gatilho de atualização |
+| Artefato | Gatilho |
 |---|---|
+| números (`metricas/`) | segunda antes da sprint: export da JET + "Atualizar dados" no app |
+| `reunioes/sprint/` | depois de cada sprint: o Claude grava o registro a partir da transcrição |
+| `projetos/` | a cada sprint: portões e entregas mudam de status |
 | `planos/` | abertura de quarter · revisão ao fim dele |
-| `reunioes/` | **cada check-in** — a pauta é gerada, não redigida |
-| `pdca/` | abertura e fechamento de ciclo |
-| `momentos/` | mensal, ou quando houver mudança material |
 | `contexto/` | revisão junto ao planejamento trimestral |
-
-> O gatilho de `reunioes/` é o que sustenta todo o resto: **se o plano não é aberto para gerar a
-> pauta, não há pauta** — e a defasagem aparece na hora, na frente do cliente. É o mecanismo que
-> os cinco instrumentos abandonados nunca tiveram.

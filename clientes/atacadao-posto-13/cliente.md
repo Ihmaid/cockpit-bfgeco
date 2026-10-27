@@ -20,15 +20,15 @@ margem_contribuicao: 0.20    # 15/10: PREMISSA conservadora do usuário, "não t
 referencia_sazonal_2025: "BF 2025 já era JET: pedidos exportáveis (Gabriel, 18/10), recalibrar a BF com eles. Melhor mês de 2025 = outubro (Dia das Crianças), ⚠️ ~R$ 70 mil a confirmar"   # 15/10; corrigido 18/10
 site: "atacadaoposto13.com.br"   # og:url declara atacadaopostotreze.com.br
 google_ads_customer_id: "6295738385"
-meta_ads_account: "212245853"   # "Grupo Atacadão Posto 13", BM do cliente; validado pelo conector em 28/09 (docs/24)
-ga4_property_id: "363402252"   # "Atacadão Posto Treze – GA4"; validado por scripts/ga4.py em 28/09 (docs/25)
+meta_ads_account: "212245853"   # "Grupo Atacadão Posto 13", BM do cliente; validado pelo conector em 28/09 (docs/integracoes/meta.md)
+ga4_property_id: "363402252"   # "Atacadão Posto Treze – GA4"; validado por scripts/ga4.py em 28/09 (docs/integracoes/ga4.md)
 plataforma_ecommerce: jet   # era Wake antes; ⚠️ 18/10: na BF 2025 já era JET (a informação de 13/10 estava errada). Data da migração a confirmar
 fonte_metrica_conversao: "jet ÷ ga4"   # 28/09: compras da JET (scripts/jet.py) ÷ sessões do GA4. Wake não foi preciso
-eventos_ga4_confiaveis: [sessions]   # 13/10: purchase saiu — conta pedido não pago e duplicado (arquitetura/16 §8.1), serve só de tendência · begin_checkout: NÃO quebrou, esteve inflado 20/07–~24/08 por tag de pageview; a série nativa (jun–jul e set–out) é consistente, ⚠️ exatidão não provada (diagnosticos/tracking-2026-10-20 item 3) · add_to_cart suspeito (docs/25)
+eventos_ga4_confiaveis: [sessions]   # 13/10: purchase saiu — conta pedido não pago e duplicado (arquitetura/16 §8.1), serve só de tendência · begin_checkout: NÃO quebrou, esteve inflado 20/07–~24/08 por tag de pageview; a série nativa (jun–jul e set–out) é consistente, ⚠️ exatidão não provada (diagnosticos/tracking-2026-10-20 item 3) · add_to_cart suspeito (docs/integracoes/ga4.md)
 stakeholder_principal: Paulo   # avalia por resultado; dores em contexto/04
 capacidade_horas_semana: 10   # 8–10 h/semana do TIME INTEIRO no AP13 (13/10). REFERÊNCIA de rentabilidade, não teto (14/10): semana de evento pede mais
 canal_interno: "GChat — Fúria da Noite"
-# acompanhamento de métricas (scripts/metricas.py + scripts/pauta.py, 28/09):
+# acompanhamento de métricas (scripts/metricas.py + scripts/motores.py; a pauta.py de 28/09 foi arquivada):
 ekyte_workspace_id: 91023
 modelo_metricas: ecommerce   # → compartilhado/arvores-metricas/ecommerce.yaml
 google_ads_compra_categoria: PURCHASE   # só a "GA4 (web) purchase" tem essa categoria; "Compras Site" é DEFAULT e fica fora

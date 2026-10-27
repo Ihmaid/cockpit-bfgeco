@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Leitura do Meta Ads pela API (token de usuário de sistema da BM "MCC", só ads_read; docs/24).
+Leitura do Meta Ads pela API (token de usuário de sistema da BM "MCC", só ads_read; docs/integracoes/meta.md).
 Substitui o conector do claude.ai como fonte do cache, que continua sendo o mesmo arquivo.
 
     uv run --with pyyaml python scripts/meta.py --validar
@@ -30,7 +30,7 @@ ACAO_LEAD, ACAO_COMPRA = "lead", "omni_purchase"
 def token():
     t = metricas.env().get("META_ACCESS_TOKEN")
     if not t:
-        raise SystemExit("META_ACCESS_TOKEN vazio no .env (docs/24, passo 6). Colar direto no arquivo, nunca na conversa.")
+        raise SystemExit("META_ACCESS_TOKEN vazio no .env (docs/integracoes/meta.md, passo 6). Colar direto no arquivo, nunca na conversa.")
     metricas.SEGREDOS.append(t)
     return t
 

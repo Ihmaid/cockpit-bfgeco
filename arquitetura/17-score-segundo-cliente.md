@@ -1,5 +1,7 @@
 # 17 · Score Positivo como 2º cliente: o que o sistema precisa mudar
 
+> 🔖 **Status em 27/10/2026:** respondida em 20/10 (§4.1) e construída: motores configuráveis, árvores por natureza, plano de mídia auditável.
+
 > 20/10/2026. Origem: `dump/2026-10-20-15-foco-no-sistema-e-score.md`. ⚠️ **Proposta, aguarda o
 > usuário.** Nada do núcleo muda antes da validação.
 
@@ -28,7 +30,7 @@ vai para o time. Diagnóstico operacional (por que o ROAS é 0,4, por que o pós
    O AP13 vira um cliente de um motor só. ⚠️ Decisão: **uma trava por motor** ou uma por cliente?
 2. **Árvore nova `geracao-lead.yaml`:** investimento → conversas/leads → qualificado → oportunidade
    → contrato (VCM) → consumo real. Serve a Score e, depois, AMC, Sicher, Bloco D, Pezão Net
-   (`arquitetura/12`: a carteira é majoritariamente de lead)
+   (`arquivo/arquitetura/12-growth-pack.md`: a carteira é majoritariamente de lead)
 3. **A árvore de e-commerce vira `autosservico`**, com recompra/coorte opcional. Na Score a recompra foi
    **66% da receita do pré-pago** no check-in 6 (R$ 1.608 de R$ 2.439). ⚠️ Hipótese a validar, não
    diagnóstico: o ROAS de 0,4 mede só a receita do período; um ROAS por coorte (o que a recarga
@@ -39,16 +41,16 @@ vai para o time. Diagnóstico operacional (por que o ROAS é 0,4, por que o pós
 
 ## 3. O que o repositório da Score já responde
 
-`V4 Company/Clientes/Score Positivo/score-positivo/` (parado desde 22/09; `arquitetura/diagnostico-repos-de-cliente.md`):
+`V4 Company/Clientes/Score Positivo/score-positivo/` (parado desde 22/09; `arquivo/arquitetura/diagnostico-repos-de-cliente.md`):
 - Duas receitas, fontes e **regras de ROAS pactuadas com o cliente** (LinkedIn e tráfego fora do
   ROAS; nova venda = cadastro no dia da compra; ROAS Meta [Mensagem] = contratos ÷ verba do WhatsApp)
 - Série dos check-ins 5 e 6 (até 17/09) e **8 temas em aberto**, entre eles: fechamento do pós-pago
   parado desde 04/09, pipeline sem atualização, cobertura de atribuição do Google caiu de 64% para 35%
   (troca de domínio `.com.br` → `.net.br`), conta Google limitada por política
 - Identidade, preço vigente, CENPROT (pós-pago), decisões de marca; skill `planejamento-projeto` com
-  **gerador de CSV para o Ekyte** (insumo para o template de projetos, `docs/20` §8)
-- Contas: Google `8392540933` ("Pré-Pago"); Meta na BM da unidade (`docs/24`); GA4 acessível (`docs/25`);
-  Ekyte com 71h44 apontadas e 8 tarefas vencidas em 24/09 (`arquitetura/11`)
+  **gerador de CSV para o Ekyte** (insumo para o template de projetos, `templates/projeto.md`)
+- Contas: Google `8392540933` ("Pré-Pago"); Meta na BM da unidade (`docs/integracoes/meta.md`); GA4 acessível (`docs/integracoes/ga4.md`);
+  Ekyte com 71h44 apontadas e 8 tarefas vencidas em 24/09 (`arquivo/arquitetura/11-respostas-rodada-3.md`)
 
 ## 4. Perguntas (só o que o repositório não responde)
 
@@ -87,7 +89,7 @@ em que a resposta veio por motor; o Gabriel não decidiu isso explicitamente.
 ## 4.2 Correções e o pedido novo (20/10, `dump/2026-10-20-17-plano-de-midia-e-score.md`)
 
 - ⭐ **Pedido de sistema: plano de mídia fixo e auditável** — verba planejada por canal, gasto real
-  acompanhado no mês, toda mudança registrada. "Isso acontece muito na unidade." → `docs/20` §9
+  acompanhado no mês, toda mudança registrada. "Isso acontece muito na unidade." → `docs/sistema.md` §5
 - Verba da Score: não há plano. Referência = **gasto de set/2026**: Google R$ 4.662 · Meta R$ 3.570 ·
   LinkedIn ~R$ 1.800 (R$ 60/dia) → ~R$ 10 mil. ⚠️ Li "sobre o Fi, vamos considerar o mês passado" como
   verba (a frase fala de gasto no Google e no Meta). O **fee segue em aberto**
@@ -130,7 +132,7 @@ motor: ok?
 ## 5. Ordem proposta (revista em 20/10)
 
 1. ✅ `motores[]` configurável → aplicado à Score e ao AP13
-2. ⭐ **Plano de mídia auditável** (`docs/20` §9). Proposto como próximo: genérico, as fontes de gasto já
+2. ⭐ **Plano de mídia auditável** (`docs/sistema.md` §5). Proposto como próximo: genérico, as fontes de gasto já
    estão ligadas, não depende de terceiro, serve aos dois clientes já
 3. `geracao-lead.yaml` e a variante `autosservico` → a pauta de segunda passa a rodar para a Score.
    Em paralelo, pedir à Ana Carolina as faturas de 12 meses e ver o acesso ao LeadFinder. É a análise

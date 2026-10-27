@@ -19,7 +19,7 @@ e o arquivo e escrito em:
 
 Nada e enviado para fora: o unico destino do token e o arquivo local. Nada e impresso.
 
-Levantado em 28/09/2026. Ver docs/25-ga4-credencial.md
+Levantado em 28/09/2026. Ver docs/integracoes/ga4.md
 """
 
 import argparse
@@ -103,7 +103,7 @@ def main() -> None:
     print("  Abrindo o navegador. Autorize com a conta que tem acesso de Leitor")
     print("  na propriedade GA4 do cliente.")
     print("  Se aparecer 'O Google nao verificou este app': Avancado > Acessar (app proprio).")
-    print("  Se aparecer 'redirect_uri_mismatch': ver docs/17, secao do tipo do cliente OAuth.")
+    print("  Se aparecer 'redirect_uri_mismatch': ver docs/integracoes/google-ads.md, secao do tipo do cliente OAuth.")
     print()
 
     # prompt="consent" forca a tela e garante o refresh_token (ver o script do Google Ads).

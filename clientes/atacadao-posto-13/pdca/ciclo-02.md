@@ -68,7 +68,7 @@ escolhido**. A definição precisa ser única e estável, ou a série não prest
 
 **Etapa C — fechar:**
 
-- [x] Escrever a definição em `docs/02-glossario-metricas.md`: ✅ `taxa-conversao-sessao-compra`,
+- [x] Escrever a definição em `docs/glossario-metricas.md`: ✅ `taxa-conversao-sessao-compra`,
       bloco *E-commerce* (28/09)
 - [x] Preencher `baseline` em `planos/2026-Q4.md` e escrever o `criterio_saida`: ✅ **0,78%** →
       **≥ 1,3%** (28/09)

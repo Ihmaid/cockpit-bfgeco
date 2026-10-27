@@ -8,10 +8,10 @@ Plano de mídia auditável: verba planejada × gasto real no mês, por canal, ti
 Lê clientes/<slug>/midia/plano-<AAAA-MM>.md (front matter) e reescreve só o bloco entre
 <!-- midia:inicio --> e <!-- midia:fim -->. Fontes do gasto, por canal (campo `fonte`):
   api       Google Ads, pela mesma credencial do metricas.py (.env + adc.json)
-  conector  Meta, enquanto o token da BM não sai (docs/24): o Claude grava midia/real/meta-AAAA-MM.json
+  conector  Meta, enquanto o token da BM não sai (docs/integracoes/meta.md): o Claude grava midia/real/meta-AAAA-MM.json
   manual    canal sem API (LinkedIn): `real_informado` no próprio plano
 Auditoria: a verba atual de cada item tem de bater com o último `para` do registro de `mudancas`.
-Pedido do Gabriel em 20/10/2026 (docs/20 §9). Só lê as plataformas; nunca altera campanha.
+Pedido do Gabriel em 20/10/2026 (docs/sistema.md §5). Só lê as plataformas; nunca altera campanha.
 """
 import argparse, calendar, collections, csv, datetime as dt, importlib.util, io, json, os, re, sys, urllib.error, urllib.request
 
@@ -49,7 +49,7 @@ def gasto_google(cli, ini, fim):
     e = metricas.env()
     faltam = [k for k in ("GOOGLE_ADS_DEVELOPER_TOKEN", "GOOGLE_ADS_LOGIN_CUSTOMER_ID", "GOOGLE_APPLICATION_CREDENTIALS") if not e.get(k)]
     if faltam:
-        raise RuntimeError("faltam no .env: %s (docs/17)" % ", ".join(faltam))
+        raise RuntimeError("faltam no .env: %s (docs/integracoes/google-ads.md)" % ", ".join(faltam))
     metricas.SEGREDOS.append(e["GOOGLE_ADS_DEVELOPER_TOKEN"])
     tok = metricas.oauth_token(e["GOOGLE_APPLICATION_CREDENTIALS"])
     conta = re.sub(r"\D", "", str(cli.get("google_ads_customer_id") or ""))

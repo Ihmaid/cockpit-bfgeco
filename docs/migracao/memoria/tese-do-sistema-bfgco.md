@@ -47,4 +47,4 @@ redundância de dono.
 **4. Conformidade antes de insight.** *"Garantir a conformidade de dados no Ekyte. Sem isso o
 Ekyte vira um checklist de luxo e não um sistema que gera insights valiosos."*
 
-Ver [[premissas-de-trabalho-bfgco]], [[papel-guardiao-do-cockpit]] e [[perfil-gabriel-v4-bfgco]].
+Ver [[premissas-de-trabalho-bfgco]], [[papel-guardiao-do-sistema]] e [[perfil-gabriel-v4-bfgco]].

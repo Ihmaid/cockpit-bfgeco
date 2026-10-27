@@ -78,7 +78,7 @@ antes de mexer no `ciclo-02`.** Mas é a primeira pista concreta em toda a inves
 
 | Workflow | Estado | Por que interessa |
 |---|---|---|
-| `Check-in E-commerce - Google Slides Automation` | inativo, 20/03 | ⭐ é **a cunha de adoção** do `docs/11` — trocar o PowerPoint do check-in. Já foi tentado |
+| `Check-in E-commerce - Google Slides Automation` | inativo, 20/03 | ⭐ é **a cunha de adoção** do `arquivo/docs/11-cunha-de-adocao.md` — trocar o PowerPoint do check-in. Já foi tentado |
 | `BASE DE DADOS - GA4` · `GA4 Clients` | inativo | base de dados de GA4 por cliente |
 | `Base de Dados ECOM` | inativo, 20/03 | e-commerce — provável origem dos R$ 50 mil/mês |
 | `AI MARKETING REPORT FÚRIA DA NOITE` | inativo, 20/05 | relatório do squad do piloto |

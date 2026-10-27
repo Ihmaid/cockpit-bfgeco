@@ -106,7 +106,7 @@ transações e receita, **do site inteiro**. O que conferir:
 | `SERVICE_DISABLED` / *has not been used in project* | API não ativada no projeto do cliente OAuth | passo 1 |
 | HTTP 403 `PERMISSION_DENIED` | a conta que autorizou não tem acesso à propriedade | passo 3 e depois o passo 4 de novo |
 | `invalid_grant` ao renovar | refresh token expirado (Externo + Em teste) ou revogado | passo 2 e depois o passo 4 |
-| `redirect_uri_mismatch` no navegador | cliente OAuth do tipo Web application | `docs/17`, seção do tipo do cliente |
+| `redirect_uri_mismatch` no navegador | cliente OAuth do tipo Web application | `docs/integracoes/google-ads.md`, seção do tipo do cliente |
 | sem `refresh_token` | o app já estava autorizado | remover em myaccount.google.com/permissions e repetir |
 
 🔐 O `~/.config/ga4/adc.json` fica fora do repositório e **nunca** vai para conversa nem para `.md`.

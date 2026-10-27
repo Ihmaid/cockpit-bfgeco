@@ -3,7 +3,7 @@
 Retorno do conector Meta Ads (claude.ai) -> metricas/serie/meta_ads.csv do cliente.
 
 É o executor "Claude" do passo Meta (P2, executor trocável) enquanto o token de usuário de
-sistema não é aprovado (docs/24). Quando o token sair, o metricas.py passa a buscar sozinho e
+sistema não é aprovado (docs/integracoes/meta.md). Quando o token sair, o metricas.py passa a buscar sozinho e
 este script fica como plano B.
 
     uv run --with pyyaml python scripts/meta_cache.py --cliente atacadao-posto-13 --arquivo <dump.json>

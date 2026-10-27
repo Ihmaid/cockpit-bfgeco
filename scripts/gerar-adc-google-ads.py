@@ -21,7 +21,7 @@ O Client ID e o Secret podem vir de variavel de ambiente
 (GOOGLE_OAUTH_CLIENT_ID / GOOGLE_OAUTH_CLIENT_SECRET) ou serem digitados no prompt.
 Nada e enviado para fora: o unico destino do token e o arquivo local.
 
-Levantado em 10/09/2026. Ver docs/17-google-ads-token-passo-a-passo.md
+Levantado em 10/09/2026. Ver docs/integracoes/google-ads.md
 """
 
 import argparse
@@ -184,7 +184,7 @@ def main() -> None:
         print("autenticar e falhar na primeira consulta. Rode de novo.")
     print()
     print("Proximo passo: o claude mcp add da Parte C do")
-    print("docs/17-google-ads-token-passo-a-passo.md")
+    print("docs/integracoes/google-ads.md")
     print()
 
 

@@ -13,7 +13,7 @@ Como rodar (na pasta do projeto):
     python scripts/radar.py                      # se pyyaml ja estiver instalado
     python scripts/radar.py --cliente atacadao-posto-13
 
-Levantado em 10/09/2026. Ver docs/18-sistema-proprio-spec.md
+Levantado em 10/09/2026. Ver docs/sistema.md
 """
 
 import argparse

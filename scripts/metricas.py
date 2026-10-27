@@ -10,7 +10,7 @@ O que faz:
 1. Lê o cliente.md (IDs, regras de compra, budget, campos manuais) e o plano vigente (baseline).
 2. Lê a definição do modelo no núcleo: compartilhado/arvores-metricas/<modelo_metricas>.yaml.
 3. Atualiza o cache por fonte, metricas/serie/<fonte>.csv (dia, campo, valor), reprocessando a
-   janela do 1º dia do mês anterior até --ate. A conversão do Google retroage (docs/16).
+   janela do 1º dia do mês anterior até --ate. A conversão do Google retroage (arquivo/docs/16-defeitos-do-payload.md).
 4. Soma os recortes decididos na avaliação de 28/09 (penúltima semana, última semana, mês até
    --ate, mês anterior até o mesmo dia) e calcula as derivadas pela RAZÃO DAS SOMAS.
 
@@ -142,7 +142,7 @@ def google_ads_consulta(cli):
     e = env()
     faltam = [k for k in ("GOOGLE_ADS_DEVELOPER_TOKEN", "GOOGLE_ADS_LOGIN_CUSTOMER_ID", "GOOGLE_APPLICATION_CREDENTIALS") if not e.get(k)]
     if faltam:
-        raise RuntimeError("faltam no .env: %s (docs/17)" % ", ".join(faltam))
+        raise RuntimeError("faltam no .env: %s (docs/integracoes/google-ads.md)" % ", ".join(faltam))
     SEGREDOS.append(e["GOOGLE_ADS_DEVELOPER_TOKEN"])
     tok = oauth_token(e["GOOGLE_APPLICATION_CREDENTIALS"])
     conta = re.sub(r"\D", "", str(cli.get("google_ads_customer_id") or ""))
@@ -318,10 +318,10 @@ def calcular(slug, ate=None, atualizar=True, log=print):
     if meta:
         fontes["meta_ads"] = {"status": "cache", "ate": max(meta),
                               "detalhe": "cache preenchido pelo conector (sem token de API)" if not env().get("META_ACCESS_TOKEN")
-                              else "token presente: leitura por API ainda não implementada (docs/24); usando o cache"}
+                              else "token presente: leitura por API ainda não implementada (docs/integracoes/meta.md); usando o cache"}
     else:
         fontes["meta_ads"] = {"status": "lacuna", "ate": None,
-                              "detalhe": "sem token (aguardando aprovação na BM, docs/24) e sem cache do conector"}
+                              "detalhe": "sem token (aguardando aprovação na BM, docs/integracoes/meta.md) e sem cache do conector"}
     series.append(meta)
 
     manual = ler_manual(base)
