@@ -11,3 +11,5 @@
 - [Conectores do claude.ai somem](conectores-claudeai-somem-apos-compactar.md) — Drive e o Meta do AP13 ainda dependem do conector; o resto do Meta vem pela API desde 22/10
 - [Check-in de mídia feito aqui](checkin-de-midia-feito-no-cockpit.md) — desde 15/10 o deck do cliente sai da skill do projeto; material de referência enviado é digerido e apagado
 - [Design V4 no app](design-v4-no-app.md) — telas do sistema no padrão do check-in: preto, vermelho #e01b24, Bebas Neue, DM Sans, DM Mono
+- [Verificar a tela no navegador](verificar-tela-no-navegador.md) — Playwright com o Edge; reiniciar o app depois de mudar sprint.py
+- [Estrutura do repositório é comigo](estrutura-do-repositorio-e-comigo.md) — organização de arquivos o Gabriel delega; arquivar na dúvida, CLAUDE.md curto
